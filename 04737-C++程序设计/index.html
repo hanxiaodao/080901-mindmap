@@ -1,0 +1,1580 @@
+<!--
+Exam Note Distiller · 思维导图 HTML 模板（资产）
+
+用法：本模板是"内容 → 页面"的唯一呈现层。把 exam-notes.md（格式见 references/format-contract.md）
+的内容渲染进本模板，输出 index.html。交互脚本（折叠/主题/导出）原样保留，不要改动 JS。
+
+═══ Token 替换表 ═══
+@@PAGE_TITLE@@    页面 <title>，格式"课程名 · 考点笔记"
+@@H1@@            页头大标题 = 课程名
+@@STAT_CH@@       章数（数字）
+@@STAT_KP@@       考点总数（数字）
+@@SUBTITLE_STAT@@ 副标题统计区。有副标题时填：
+                  <div class="header-divider"></div><div class="header-stat"><strong>副标题文本</strong></div>
+                  无则删除此行占位
+@@BODY_CLASS@@    无 GitHub 按钮 → no-github；有 → 空字符串
+@@GITHUB@@        GitHub 仓库 URL（不展示按钮时保留占位即可，按钮已被 no-github 隐藏）
+@@CHAPTERS@@      所有章节 HTML（生成规则见下）
+@@EXPORT_NAME@@   导出 Markdown 文件名，如"数据结构考点笔记.md"
+
+═══ exam-notes.md → HTML 渲染规则 ═══
+## 章标题     → <div class="ch" style="--accent:暗色;--accent-light:亮色"> 卡片，章标题放 .ch-title 内，
+                考点数徽章：<span class="badge">N考点</span>（0 个考点则省略），折叠箭头 <span class="arrow">▼</span>
+章导语内容    → <div class="ch-intro">…</div>（章标题下、考点前）
+### 考点N：名 → .kp 行：
+                <span class="kp-num">考点N</span><span class="kp-name">名称</span>
+                meta: level=S → <span class="kp-level lv-S">S</span>（A/B/C/D 同理，仅 S/A/B/C/D 有样式）
+                meta: freq=… → <span class="kp-freq">…</span>
+                末尾 <span class="kp-arrow">▼</span>，详情容器 <div class="kp-detail">
+#### 子主题   → <span class="kp-sub">标题</span>
+普通行        → 转义 HTML 后整行输出，行尾加 <br>；**x** → <b>x</b>；==x== → <span class="em">x</span>
+```f 块      → <span class="formula">…（换行保留，多行直接放 
+）</span>
+```err/tip/ok → <span class="callout err|tip|ok">…</span>
+| 表格        → <table><tr><th>表头…</th></tr><tr><td>…</td></tr></table>（单元格内同样处理 **bold**）
+- 列表        → <ul><li>…</li></ul>
+
+═══ 章节配色 ═══
+按章节顺序取下表（暗色, 亮色），超过 12 章用黄金角扩展 hue=(217+n*137.5)%360：
+ 1 (#60a5fa,#2563eb)  2 (#34d399,#059669)  3 (#fbbf24,#d97706)  4 (#f472b6,#db2777)
+ 5 (#a78bfa,#7c3aed)  6 (#22d3ee,#0891b2)  7 (#fb923c,#ea580c)  8 (#a3e635,#65a30d)
+ 9 (#fb7185,#e11d48) 10 (#4ade80,#16a34a) 11 (#e879f9,#a21caf) 12 (#facc15,#a16207)
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>04737 C++程序设计 · 考点笔记</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var t;
+  try{ t=localStorage.getItem('theme'); }catch(e){}
+  if(t!=='light'&&t!=='dark'){ t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'; }
+  document.documentElement.setAttribute('data-theme',t);
+})();
+
+/* 导出前临时展开全部内容并切亮色主题，导出后还原页面原状态 */
+function expandAllForExport(){var st={theme:document.documentElement.getAttribute('data-theme'),opens:[],disp:[]};document.documentElement.setAttribute('data-theme','light');[].forEach.call(document.querySelectorAll('.ch,.kp'),function(el){st.opens.push([el,el.classList.contains('open')]);el.classList.add('open')});[].forEach.call(document.querySelectorAll('.kp-detail'),function(d){st.disp.push([d,d.style.display]);d.style.display='block'});return st}
+function restoreAfterExport(st){if(!st)return;document.documentElement.setAttribute('data-theme',st.theme);st.opens.forEach(function(p){p[0].classList.toggle('open',p[1])});st.disp.forEach(function(p){p[0].style.display=p[1]})}
+function exportPDF(){var st=expandAllForExport();showToast('已展开全部内容。请在打印对话框中，将目标打印机选为「另存为 PDF」',8000);window.addEventListener('afterprint',function onDone(){window.removeEventListener('afterprint',onDone);restoreAfterExport(st);hideToast()});setTimeout(function(){window.print()},350)}
+/* 内嵌 SVG → PNG：SVG 里的 var(--x) 颜色在独立序列化后会失效，需用计算后的具体颜色值重写 */
+function svgToPngDataUrl(svg){return new Promise(function(resolve){try{var rect=svg.getBoundingClientRect();var w=Math.max(1,Math.ceil(rect.width)),h=Math.max(1,Math.ceil(rect.height));var clone=svg.cloneNode(true);clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.setAttribute('width',w);clone.setAttribute('height',h);clone.removeAttribute('style');var src=[svg].concat([].slice.call(svg.querySelectorAll('*')));var dst=[clone].concat([].slice.call(clone.querySelectorAll('*')));for(var i=1;i<src.length;i++){var cs=getComputedStyle(src[i]),tag=src[i].tagName.toLowerCase(),st='fill:'+cs.fill+';stroke:'+cs.stroke+';';if(cs.stroke&&cs.stroke!=='none')st+='stroke-width:'+cs.strokeWidth+';';if(tag==='text')st+='font-family:'+cs.fontFamily+';font-size:'+cs.fontSize+';font-weight:'+cs.fontWeight+';';dst[i].setAttribute('style',st)}var str=new XMLSerializer().serializeToString(clone);var img=new Image();img.onload=function(){try{var s=2,cvs=document.createElement('canvas');cvs.width=w*s;cvs.height=h*s;var ctx=cvs.getContext('2d');ctx.scale(s,s);ctx.drawImage(img,0,0,w,h);resolve(cvs.toDataURL('image/png'))}catch(err){resolve(null)}};img.onerror=function(){resolve(null)};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(str)}catch(e){resolve(null)}})}
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+/* 导出 Word：示意图全部栅格化为 PNG 内嵌（base64），生成 Word 兼容 HTML 存为 .doc */
+function exportWord(){var st=expandAllForExport();showToast('正在生成 Word 文档（含示意图），请稍候…');var svgs=[].slice.call(document.querySelectorAll('.kp-detail svg'));Promise.all(svgs.map(function(s){return svgToPngDataUrl(s)})).then(function(urls){var urlMap=new Map();svgs.forEach(function(s,i){if(urls[i])urlMap.set(s,urls[i])});var buf=[];var h1=document.querySelector('header h1');buf.push('<h1>'+escHtml(h1?h1.textContent.trim():'考点笔记')+'</h1>');var stats=[].map.call(document.querySelectorAll('.header-stat'),function(s){return s.textContent.replace(/\s+/g,' ').trim()});if(stats.length)buf.push('<p class="stats">'+escHtml(stats.join(' · '))+'</p>');[].forEach.call(document.querySelectorAll('.ch'),function(ch){var ts=ch.querySelector('.ch-title span');var title='';if(ts){var c=ts.cloneNode(true);[].forEach.call(c.querySelectorAll('.badge'),function(b){b.remove()});title=c.textContent.trim()}buf.push('<h2>'+escHtml(title)+'</h2>');[].forEach.call(ch.querySelectorAll('.kp'),function(kp){var num=kp.querySelector('.kp-num'),name=kp.querySelector('.kp-name');buf.push('<h3>'+escHtml(((num?num.textContent.trim():'')+' '+(name?name.textContent.trim():'')).trim())+'</h3>');var d=kp.querySelector('.kp-detail');if(!d)return;var dc=d.cloneNode(true);[].forEach.call(dc.querySelectorAll('.kp-sub'),function(s){var h=document.createElement('h4');h.innerHTML=s.innerHTML;s.parentNode.replaceChild(h,s)});[].forEach.call(dc.querySelectorAll('.formula'),function(s){var p=document.createElement('p');p.className='formula';p.innerHTML=s.innerHTML;s.parentNode.replaceChild(p,s)});var orig=[].slice.call(d.querySelectorAll('svg')),cl=[].slice.call(dc.querySelectorAll('svg'));cl.forEach(function(cs,i){var u=orig[i]&&urlMap.get(orig[i]);var img=document.createElement('img');if(u){img.setAttribute('src',u);var w=Math.ceil(orig[i].getBoundingClientRect().width)||300;img.setAttribute('width',String(Math.min(480,w)))}cs.parentNode.replaceChild(img,cs)});buf.push('<div class="det">'+dc.innerHTML+'</div>')})});buf.push('<p class="foot">导出于 '+new Date().toLocaleString('zh-CN',{hour12:false})+' · 由考点笔记页面导出</p>');var css="body{font-family:'Microsoft YaHei','微软雅黑',SimSun,serif;font-size:10.5pt;color:#242930;line-height:1.7}h1{font-size:19pt;color:#1f2429;margin:0 0 4pt}h2{font-size:14.5pt;color:#1f2429;border-bottom:1.5pt solid #c9c5ba;padding-bottom:3pt;margin:18pt 0 8pt}h3{font-size:12pt;color:#242930;margin:14pt 0 6pt}h4{font-size:10.5pt;color:#4c5868;margin:10pt 0 4pt}p{margin:4pt 0}p.stats{color:#626b7a;font-size:9.5pt}p.foot{color:#9aa1ab;font-size:9pt;margin-top:20pt;border-top:.5pt solid #c9c5ba;padding-top:6pt}p.formula{background:#eef2fa;color:#2c5cb0;padding:6pt 9pt;margin:6pt 0;border-left:2.25pt solid #2c5cb0}p.formula b{color:#1d4e97}ul{margin:4pt 0 6pt 20pt}li{margin:2pt 0}table{border-collapse:collapse;margin:6pt 0;font-size:9.5pt}td,th{border:.75pt solid #9aa1ab;padding:3.5pt 6pt;vertical-align:top}th{background:#eeede7;font-weight:bold}.det b{color:#1f2429}.tag{background:#e9e7e1;color:#5d6570;font-size:9pt;padding:0 3pt}.tip{color:#a16207}.ok{color:#047857}.err{color:#dc2626}.em{color:#a16207;font-weight:bold}img{margin:4pt 0}";var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>04737 C++程序设计</title><!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]--><style>'+css+'</style></head><body>'+buf.join('\n')+'</body></html>';downloadBlob(new Blob(['\ufeff'+html],{type:'application/msword;charset=utf-8'}),'04737C++程序设计考点笔记.md'.replace(/\.md$/,'.doc'));restoreAfterExport(st);var n=urls.filter(Boolean).length;showToast('Word 文档已导出（内嵌 '+n+' 张示意图）',3200)}).catch(function(e){restoreAfterExport(st);showToast('Word 导出失败：'+e,4000)})}
+</script>
+<style>
+:root {
+  --bg:#0d1117; --surface:#161b22; --card:#1c2230;
+  --border:#2a3344; --border-strong:#3d4f66;
+  --text:#c9d2dd; --muted:#7d8fa8; --faint:#4a5568;
+  --heading:#e2eaf2;
+  --hover-bg:rgba(255,255,255,.03);
+  --detail-bg:rgba(0,0,0,.15);
+  --formula-bg:#111c2e; --formula-text:#8fb5e8;
+  --th-bg:rgba(255,255,255,.05);
+  --row-hover-bg:rgba(255,255,255,.02);
+  --tip:#fbbf24; --ok:#34d399; --err:#f87171; --em:#fbbf24;
+  --focus:#60a5fa;
+  --detail-text:var(--muted); --detail-size:13px;
+  color-scheme:dark;
+}
+:root[data-theme="light"] {
+  --bg:#f3f1ec; --surface:#faf9f5; --card:#faf9f5;
+  --border:#e2dfd7; --border-strong:#c9c5ba;
+  --text:#33393f; --muted:#626b7a; --faint:#9aa1ab;
+  --heading:#242930;
+  --hover-bg:rgba(45,45,55,.045);
+  --detail-bg:#f5f3ee;
+  --formula-bg:#eef2fa; --formula-text:#2c5cb0;
+  --th-bg:rgba(45,45,55,.05);
+  --row-hover-bg:rgba(45,45,55,.03);
+  --tip:#a16207; --ok:#047857; --err:#dc2626; --em:#a16207;
+  --focus:#2563eb;
+  --detail-text:#4c5868; --detail-size:14px;
+  color-scheme:light;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── Header ── */
+header {
+  padding:40px 20px 32px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  margin-bottom:20px;
+}
+header h1 {
+  font-family:'Noto Serif SC',serif;
+  font-size:26px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:var(--heading);
+  margin-bottom:10px;
+}
+.header-meta {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.header-stat {
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.5px;
+}
+.header-stat strong {
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  display:block;
+  font-family:'Noto Sans SC',sans-serif;
+  line-height:1.2;
+  margin-bottom:2px;
+}
+.header-divider {
+  width:1px; height:28px;
+  background:var(--border-strong);
+}
+
+/* ── Chapter list ── */
+.chapters { padding:0 16px 60px; display:flex; flex-direction:column; gap:8px; max-width:860px; margin:0 auto; }
+
+.ch {
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--surface);
+  transition:border-color .2s;
+}
+.ch:hover { border-color:var(--border-strong); }
+
+.ch-title {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 18px 14px 20px;
+  cursor:pointer;
+  font-weight:600;
+  font-size:15px;
+  color:var(--text);
+  position:relative;
+  transition:background .15s;
+}
+.ch-title:hover { background:var(--hover-bg); }
+.ch-title::before {
+  content:'';
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:3px;
+  background:var(--accent);
+  transition:width .2s;
+}
+:root[data-theme="light"] .ch-title::before { background:var(--accent-light, var(--accent)); }
+.ch.open .ch-title { background:var(--hover-bg); }
+.ch.open .ch-title::before { width:5px; }
+
+.ch-title-text { flex:1; }
+.ch-title .badge {
+  font-size:11px;
+  font-weight:400;
+  color:var(--muted);
+  margin-left:8px;
+  font-family:'Noto Sans SC',sans-serif;
+}
+.ch-title .arrow {
+  font-size:10px;
+  color:var(--faint);
+  transition:transform .25s;
+  flex-shrink:0;
+  margin-left:12px;
+}
+.ch.open .arrow { transform:rotate(180deg); }
+
+.ch-body {
+  background:var(--card);
+  border-top:1px solid var(--border);
+  display:none;
+}
+.ch.open .ch-body { display:block; }
+
+/* 章导语 */
+.ch-intro {
+  padding:14px 20px 16px;
+  font-size:var(--detail-size);
+  color:var(--detail-text);
+  line-height:1.75;
+  border-bottom:1px solid var(--border);
+  background:var(--detail-bg);
+}
+.ch-intro b { color:var(--text); font-weight:600; }
+
+/* ── 考点 ── */
+.kp { border-bottom:1px solid var(--border); }
+.kp:last-child { border-bottom:none; }
+
+.kp-title {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 18px 11px 20px;
+  cursor:pointer;
+  transition:background .15s;
+}
+.kp-title:hover { background:var(--hover-bg); }
+
+.kp-num {
+  font-size:10px;
+  font-weight:600;
+  color:var(--accent);
+  min-width:36px;
+  white-space:nowrap;
+  letter-spacing:.3px;
+  font-family:'Noto Sans SC',sans-serif;
+}
+:root[data-theme="light"] .kp-num { color:var(--accent-light, var(--accent)); }
+.kp-name {
+  flex:1;
+  font-size:14px;
+  font-weight:500;
+  color:var(--text);
+}
+.kp-level {
+  font-size:10px;
+  font-weight:700;
+  padding:0 8px;
+  line-height:18px;
+  border-radius:9px;
+  flex-shrink:0;
+  letter-spacing:.5px;
+}
+.kp-level.lv-S { color:#f87171; background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.35); }
+.kp-level.lv-A { color:#fbbf24; background:rgba(251,191,36,.10); border:1px solid rgba(251,191,36,.32); }
+.kp-level.lv-B { color:#60a5fa; background:rgba(96,165,250,.10); border:1px solid rgba(96,165,250,.32); }
+.kp-level.lv-C { color:#9ab; background:rgba(153,170,187,.10); border:1px solid rgba(153,170,187,.30); }
+.kp-level.lv-D { color:var(--faint); background:rgba(74,85,104,.12); border:1px solid rgba(74,85,104,.30); }
+:root[data-theme="light"] .kp-level.lv-S { color:#dc2626; background:rgba(220,38,38,.07); }
+:root[data-theme="light"] .kp-level.lv-A { color:#b45309; background:rgba(180,83,9,.07); }
+:root[data-theme="light"] .kp-level.lv-B { color:#2563eb; background:rgba(37,99,235,.07); }
+.kp-freq {
+  font-size:10px;
+  color:var(--faint);
+  font-weight:400;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.kp-arrow {
+  font-size:9px;
+  color:var(--faint);
+  transition:transform .2s;
+  flex-shrink:0;
+}
+.kp.open .kp-arrow { transform:rotate(180deg); }
+
+.kp-detail {
+  display:none;
+  padding:14px 20px 18px 68px;
+  font-size:var(--detail-size);
+  color:var(--detail-text);
+  line-height:1.75;
+  border-top:1px solid var(--border);
+  background:var(--detail-bg);
+}
+.kp.open .kp-detail { display:block; }
+.kp-detail b { color:var(--text); font-weight:600; }
+
+/* 公式块 */
+.kp-detail .formula, .ch-intro .formula {
+  display:block;
+  background:var(--formula-bg);
+  border-left:2px solid var(--accent);
+  border-radius:0 6px 6px 0;
+  padding:8px 14px;
+  margin:8px 0;
+  font-size:13px;
+  color:var(--formula-text);
+  letter-spacing:.6px;
+  line-height:1.7;
+  overflow-x:auto;
+  white-space:pre-wrap;
+  font-family:'Consolas','Courier New',monospace;
+}
+:root[data-theme="light"] .kp-detail .formula,
+:root[data-theme="light"] .ch-intro .formula { border-left-color:var(--accent-light, var(--accent)); }
+
+/* 语义提示块 */
+.callout {
+  display:block;
+  border-left:2px solid;
+  border-radius:0 6px 6px 0;
+  padding:8px 14px;
+  margin:8px 0;
+  font-size:13px;
+  line-height:1.7;
+  white-space:pre-wrap;
+}
+.callout.err { color:var(--err); background:rgba(248,113,113,.07); border-color:var(--err); }
+.callout.tip { color:var(--tip); background:rgba(251,191,36,.06); border-color:var(--tip); }
+.callout.ok  { color:var(--ok);  background:rgba(52,211,153,.07); border-color:var(--ok); }
+.callout b { color:inherit; }
+
+/* 表格 */
+.kp-detail table, .ch-intro table {
+  width:100%;
+  border-collapse:collapse;
+  margin:10px 0;
+  font-size:12px;
+}
+.kp-detail td, .kp-detail th, .ch-intro td, .ch-intro th {
+  border:1px solid var(--border);
+  padding:6px 10px;
+  text-align:center;
+  vertical-align:middle;
+}
+.kp-detail th, .ch-intro th {
+  background:var(--th-bg);
+  color:var(--text);
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:.3px;
+}
+.kp-detail tr:hover td, .ch-intro tr:hover td { background:var(--row-hover-bg); }
+.kp-detail ul, .ch-intro ul { padding-left:16px; }
+.kp-detail li, .ch-intro li { margin:3px 0; }
+
+/* 子标题 */
+.kp-sub {
+  display:block;
+  color:var(--text);
+  font-size:12px;
+  font-weight:600;
+  margin-top:14px;
+  margin-bottom:4px;
+  letter-spacing:.3px;
+  padding-bottom:4px;
+  border-bottom:1px solid var(--border);
+}
+.kp-sub:first-child { margin-top:2px; }
+
+/* ── 右上角功能按钮 ── */
+.theme-toggle, .github-link, .export-md {
+  position:fixed;
+  top:16px;
+  width:38px; height:38px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--muted);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  z-index:100;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+  transition:border-color .2s, color .2s, transform .15s;
+}
+.theme-toggle:hover, .github-link:hover, .export-md:hover {
+  border-color:var(--border-strong);
+  color:var(--text);
+  transform:scale(1.06);
+}
+.theme-toggle { right:64px; }
+.github-link { right:16px; }
+.export-md { right:112px; }
+body.no-github .github-link { display:none; }
+body.no-github .theme-toggle { right:16px; }
+body.no-github .export-md { right:64px; }
+body.no-github .export-menu { right:64px; }
+.theme-toggle .icon-sun { display:none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display:block; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display:none; }
+
+/* 键盘焦点 */
+.ch-title:focus-visible, .kp-title:focus-visible { outline:2px solid var(--focus); outline-offset:-2px; }
+.theme-toggle:focus-visible, .github-link:focus-visible, .export-md:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+
+/* ── 响应式 ── */
+@media (max-width:600px) {
+  header { padding:52px 16px 24px; }
+  header h1 { font-size:21px; }
+  .chapters { padding:0 10px 48px; }
+  .kp-detail { padding-left:20px; }
+  .header-divider { display:none; }
+  .theme-toggle, .github-link, .export-md { top:10px; width:36px; height:36px; }
+  .theme-toggle { right:52px; }
+  .github-link { right:10px; }
+  .export-md { right:94px; }
+  body.no-github .theme-toggle { right:10px; }
+  body.no-github .export-md { right:52px; }
+  body.no-github .export-menu { right:52px; }
+  .export-menu { top:52px; right:94px; }
+}
+/* ── 章节列表工具条：全部展开 / 收起 ── */
+.list-tools {
+  display:flex; justify-content:flex-end; gap:8px;
+  margin-bottom:2px;
+}
+.list-tools button {
+  display:flex; align-items:center; gap:5px;
+  height:30px; padding:0 12px;
+  border-radius:15px; border:1px solid var(--border);
+  background:var(--surface); color:var(--muted); cursor:pointer;
+  font-size:12.5px; font-family:inherit;
+  transition:color .15s, border-color .15s;
+}
+.list-tools button:hover { color:var(--heading); border-color:var(--border-strong); }
+.list-tools button:focus-visible { outline:2px solid var(--border-strong); outline-offset:2px; }
+.list-tools svg { flex:none; }
+/* 导出下拉菜单 */
+.export-menu {
+  position:fixed; top:60px; right:112px; z-index:101;
+  min-width:186px; padding:6px;
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.28);
+  display:flex; flex-direction:column; gap:2px;
+}
+.export-menu[hidden] { display:none; }
+.export-menu button {
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  padding:9px 12px; border:0; border-radius:8px; background:none;
+  color:var(--text); font-size:13px; font-family:inherit; cursor:pointer; text-align:left;
+}
+.export-menu button:hover { background:var(--hover-bg); }
+.export-menu .em-ext {
+  font-size:11px; color:var(--muted);
+  border:1px solid var(--border); border-radius:5px; padding:1px 6px;
+}
+.export-menu button:hover .em-ext { border-color:var(--border-strong); color:var(--text); }
+.export-menu button:focus-visible { outline:2px solid var(--c1); outline-offset:-2px; }
+/* 导出状态提示 */
+.export-toast {
+  position:fixed; left:50%; bottom:28px; transform:translateX(-50%);
+  z-index:200; max-width:88vw;
+  background:var(--card); color:var(--text);
+  border:1px solid var(--border); border-radius:10px;
+  padding:10px 16px; font-size:13px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+/* ── 悬浮工具（滚动后浮现）：整页搜索 + 回到顶部 ── */
+.float-tools {
+  position:fixed; right:16px; bottom:16px; z-index:110;
+  display:flex; flex-direction:column; gap:8px;
+  opacity:0; visibility:hidden; transform:translateY(10px);
+  transition:opacity .2s, transform .2s, visibility .2s;
+}
+.float-tools.show { opacity:1; visibility:visible; transform:none; }
+.float-btn {
+  width:40px; height:40px; border-radius:50%;
+  border:1px solid var(--border); background:var(--surface); color:var(--muted);
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  padding:0; box-shadow:0 4px 14px rgba(0,0,0,.22);
+  transition:border-color .2s, color .2s;
+}
+.float-btn:hover { border-color:var(--border-strong); color:var(--text); }
+.float-btn:focus-visible { outline:2px solid var(--border-strong); outline-offset:2px; }
+/* 搜索面板：悬浮按钮上方 */
+.search-panel {
+  position:fixed; right:16px; bottom:68px; z-index:120;
+  width:min(440px, calc(100vw - 24px));
+  max-height:min(64vh, 580px);
+  display:flex; flex-direction:column;
+  background:var(--surface); border:1px solid var(--border); border-radius:14px;
+  box-shadow:0 14px 40px rgba(0,0,0,.35);
+  overflow:hidden;
+}
+.search-panel[hidden] { display:none; }
+.sp-input-row {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 12px; border-bottom:1px solid var(--border);
+}
+.sp-input-row input {
+  flex:1; min-width:0;
+  background:none; border:0; outline:none;
+  color:var(--text); font-size:14px; font-family:inherit;
+}
+.sp-input-row input::placeholder { color:var(--faint); }
+.sp-count { font-size:11.5px; color:var(--muted); white-space:nowrap; }
+.sp-close {
+  border:0; background:none; color:var(--muted); cursor:pointer;
+  font-size:13px; padding:4px 7px; border-radius:6px; font-family:inherit; line-height:1;
+}
+.sp-close:hover { color:var(--text); background:var(--hover-bg); }
+.sp-results { overflow-y:auto; padding:6px; }
+.sr-item { padding:8px 10px; border-radius:8px; cursor:pointer; }
+.sr-item:hover { background:var(--hover-bg); }
+.sr-path { font-size:11.5px; color:var(--muted); margin-bottom:3px; }
+.sr-snippet { font-size:12.5px; color:var(--text); line-height:1.55; word-break:break-word; }
+.sr-snippet mark, .kp-detail mark.search-hit {
+  background:rgba(251,191,36,.5); color:inherit; border-radius:2px; padding:0 1px;
+}
+.sp-empty { padding:18px 12px; font-size:12.5px; color:var(--muted); text-align:center; }
+@media (max-width:600px) {
+  .float-tools { right:12px; bottom:12px; }
+  .search-panel { left:8px; right:8px; width:auto; bottom:64px; }
+  .sp-input-row input { font-size:16px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .arrow, .kp-arrow, .ch-title::before, .theme-toggle, .github-link, .export-md, .list-tools button, .float-tools, .float-btn { transition:none; }
+}
+/* ── 导出 PDF（打印 → 另存为 PDF）：全部展开、隐藏控件、保留配色 ── */
+@media print {
+  @page { margin: 14mm 12mm; }
+  body { background:#fff; }
+  .corner-links, .export-md, .export-menu, .theme-toggle, .github-link,
+  .export-toast, .arrow, .kp-arrow, .list-tools, .float-tools, .search-panel { display:none !important; }
+  .ch-body, .kp-detail { display:block !important; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  header { padding-top:8px; }
+  .ch { box-shadow:none; break-inside:auto; }
+  .ch-title { break-after:avoid; }
+  .kp { break-inside:auto; }
+  .kp-title { break-after:avoid; }
+  .kp-detail table { break-inside:auto; }
+  .kp-detail tr, .kp-detail .formula, .kp-detail svg { break-inside:avoid; }
+}
+</style>
+</head>
+<body class="no-github">
+<button class="export-md" onclick="toggleExportMenu(event)" aria-label="导出笔记（Markdown / PDF / Word）" title="导出笔记（Markdown / PDF / Word）" aria-haspopup="menu" aria-expanded="false" aria-controls="exportMenu">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+</button>
+<div class="export-menu" id="exportMenu" role="menu" hidden>
+  <button role="menuitem" onclick="onExportItem('md')"><span>Markdown 笔记</span><span class="em-ext">.md</span></button>
+  <button role="menuitem" onclick="onExportItem('pdf')"><span>PDF 文档</span><span class="em-ext">.pdf</span></button>
+  <button role="menuitem" onclick="onExportItem('word')"><span>Word 文档</span><span class="em-ext">.doc</span></button>
+</div>
+
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="切换亮色/暗色模式" title="切换亮色/暗色模式">
+  <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+<a class="github-link" href="#" target="_blank" rel="noopener" aria-label="GitHub 项目源码" title="GitHub 项目源码">
+  <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+<div class="float-tools" id="floatTools">
+  <button class="float-btn" onclick="toggleSearchPanel()" aria-label="搜索笔记内容" title="搜索笔记内容（Ctrl+K）">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+  </button>
+  <button class="float-btn" id="backTopBtn" onclick="scrollTopSmooth()" aria-label="回到顶部" title="回到顶部">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+</div>
+<div class="search-panel" id="searchPanel" role="dialog" aria-label="搜索笔记内容" hidden>
+  <div class="sp-input-row">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--muted);flex:none"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+    <input id="searchInput" type="text" placeholder="搜索全部章节与考点内容…" aria-label="搜索全部章节与考点内容">
+    <span class="sp-count" id="searchCount"></span>
+    <button class="sp-close" onclick="closeSearchPanel()" aria-label="关闭搜索">✕</button>
+  </div>
+  <div class="sp-results" id="searchResults"></div>
+</div>
+<header>
+  <h1>04737 C++程序设计</h1>
+  <div class="header-meta">
+    <div class="header-stat"><strong>15</strong>章</div>
+    <div class="header-divider"></div>
+    <div class="header-stat"><strong>58</strong>考点</div>
+    <div class="header-divider"></div><div class="header-stat"><strong>全国自考 04737 · 2023.04–2026.04 七套真题蒸馏</strong></div>
+  </div>
+</header>
+<div class="chapters">
+<div class="list-tools">
+  <button onclick="expandAllChapters()" aria-label="展开全部章节和考点" title="展开全部章节和考点">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
+    展开全部
+  </button>
+  <button onclick="collapseAllChapters()" aria-label="收起全部章节和考点" title="收起全部章节和考点">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 11 12 6 17 11"/><polyline points="7 18 12 13 17 18"/></svg>
+    收起全部
+  </button>
+</div>
+<style>.corner-links{position:fixed;top:16px;right:160px;display:flex;gap:8px;z-index:100;}.corner-link{height:38px;border-radius:19px;border:1px solid var(--border);background:var(--surface);color:var(--muted);display:flex;align-items:center;gap:6px;padding:0 13px;font-size:12.5px;text-decoration:none;transition:color .15s,border-color .15s;}.corner-link:hover{color:var(--heading);border-color:var(--border-strong);}.corner-link:focus-visible{outline:2px solid var(--border-strong);outline-offset:2px;}@media (max-width:600px){.corner-links{top:10px;right:96px;}.corner-link{height:36px;padding:0 11px;}}</style><div class="corner-links"><a class="corner-link" href="https://hanxiaodao.github.io/04737-cpp-quiz/" target="_blank" rel="noopener" aria-label="刷题" title="刷题"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>刷题</a><a class="corner-link" href="mistakes.html" target="_blank" rel="noopener" aria-label="错题集" title="错题集"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>错题集</a></div><div class="ch" style="--accent:#60a5fa;--accent-light:#2563eb">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">补充速查：cout 格式控制一页树</span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro"><span class="formula">cout 格式控制
+│
+├─ ① 宽度 width
+│  ├─ cout.width(n)
+│  └─ setw(n)
+│      → 设置字段最小宽度
+│      → 只对"下一次输出"有效
+│      → 内容不够宽 → 填充
+│
+├─ ② 对齐
+│  ├─ right      → 右对齐【默认】
+│  ├─ left       → 左对齐
+│  └─ internal   → 符号/前缀在左，数字部分右对齐
+│
+├─ ③ 填充
+│  └─ setfill(c)
+│      → 设置空白位置的填充字符
+│      → 一直有效，直到重新设置
+│
+├─ ④ 浮点精度
+│  └─ setprecision(n)
+│      ├─ 默认/一般格式 → n位有效数字
+│      └─ fixed          → 小数点后n位
+│         scientific     → 小数点后n位
+│
+├─ ⑤ 浮点表示方式
+│  ├─ fixed       → 定点形式
+│  ├─ scientific  → 科学计数法
+│  └─ defaultfloat/取消上述格式 → 默认格式
+│
+├─ ⑥ 正负号
+│  └─ showpos
+│      → 正数显示 +
+│
+├─ ⑦ 小数点
+│  └─ showpoint
+│      → 强制显示小数点及必要的尾随0
+│
+├─ ⑧ 大小写
+│  └─ uppercase
+│      → 科学计数法 E、十六进制 A~F 等改大写
+│
+├─ ⑨ 进制
+│  ├─ dec → 十进制【默认】
+│  ├─ oct → 八进制
+│  └─ hex → 十六进制
+│
+├─ ⑩ 进制前缀
+│  └─ showbase
+│      → 显示 0、0x 等前缀
+│
+└─ ⑪ 布尔值
+   ├─ boolalpha     → true / false
+   └─ 默认          → 1 / 0</span>
+<ul><li>三大高频坑：width/setw <b>一次有效</b>；对齐默认<b>右对齐</b>、填充默认<b>空格</b>（不写 setfill 就别想成 * 或 0）；showpos/setf 一旦设置<span class="em">一直有效</span>，后面的输出都得带着（2025.10 分析30 最后一行 +1.234568e+002 的 + 就是这么来的）。</li></ul></div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#34d399;--accent-light:#059669">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">考试地图</span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">本笔记由 2023.04–2026.04 七套全国卷逐题反推聚类而成（概念填空 15→10→0→2026.04 回归 5×2 分）。共 58 个考点：S 级 11、A 级 14、B 级 21、C 级 10、D 级 2。考点 54、55 为教材正文/附录补覆盖，未单独出过题；考点 56、57、58（标识符/循环/递归）为 2026.04 新考面孔。<br>
+<b>现行题型结构（2026.04 大改版，单套样本【待核实】是否延续）</b><br>
+<table><tr><th>题型</th><th>2023–2025 口径</th><th>2026.04</th><th>备考方式</th></tr><tr><td>单项选择</td><td>20×1</td><td>10×2</td><td>考点全覆盖，重在辨析</td></tr><tr><td>概念填空</td><td>10×1（2025.10 取消）</td><td>5×2（回归）</td><td>背"考前速记"关键词条</td></tr><tr><td>程序填空</td><td>5×4~6</td><td>2 题 5 空×4</td><td>熟练六大补空套路</td></tr><tr><td>程序阅读/分析</td><td>5×6=30</td><td>4×5=20（明显基础化）</td><td>熟练五大坑位模型</td></tr><tr><td>程序设计</td><td>2×10=20</td><td>2×15=30</td><td>基础类设计 + 抽象类族两大题材</td></tr></table>
+<b>S 级考点（必须全拿下）</b><br>
+<table><tr><th>考点</th><th>频率</th><th>常出题型</th><th>重要度</th></tr><tr><td>构造函数（考点18）</td><td>7/7 套</td><td>单选/填空/程序填空/阅读/设计</td><td>S</td></tr><tr><td>静态成员与静态变量（考点22）</td><td>5/7 套</td><td>单选/分析大题</td><td>S</td></tr><tr><td>友元（考点25）</td><td>6/7 套</td><td>单选/填空/程序填空/分析</td><td>S</td></tr><tr><td>运算符重载规则（考点26）</td><td>7/7 套</td><td>单选/填空</td><td>S</td></tr><tr><td>重载算术运算符（考点28）</td><td>5/7 套</td><td>单选/程序填空/分析</td><td>S</td></tr><tr><td>继承方式与访问控制（考点33）</td><td>7/7 套</td><td>单选/填空</td><td>S</td></tr><tr><td>派生类的构造与析构（考点34）</td><td>6/7 套</td><td>单选/程序填空/分析</td><td>S</td></tr><tr><td>虚函数与动态绑定（考点39）</td><td>7/7 套</td><td>单选/程序填空/阅读/设计</td><td>S</td></tr><tr><td>纯虚函数与抽象类（考点41）</td><td>7/7 套</td><td>单选/填空/设计大题</td><td>S</td></tr><tr><td>流操纵符（考点43）</td><td>6/7 套（2026.04 首次缺席）</td><td>单选/填空/分析大题</td><td>S</td></tr><tr><td>文件流与打开模式（考点47）</td><td>6/7 套（2026.04 首次缺席）</td><td>单选/程序填空/设计大题</td><td>S</td></tr></table>
+<b>程序阅读/分析坑位</b>：2023–2025 高度模板化——① 构造/析构顺序输出 ② 静态成员累加 ③ 运算符重载追踪 ④ 虚函数绑定输出 ⑤ 流格式输出；2026.04 改考基础追踪（指针解引用、构造析构、递归、单层虚绑定）——基础追踪 + 模板坑位都要练。<br>
+<b>程序设计两大题材</b>：① 文件读写（2023–2025 每年必考，2026.04 未考）② 继承族/抽象类族设计（2026.04 设计23）；第一小题连续三套出现纯基础题（圆周长面积、数组排序、Student 类设计）——保底 15 分必拿。<br></div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#fbbf24;--accent-light:#d97706">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第一章 C++ 语言基础<span class="badge">18考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">本章考点碎而稳，几乎全部以 1 分选择/填空出现，是"白送分"也是"易丢分"区。近年每年单选第 1 题固定考语言概述。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点1</span><span class="kp-name">C++ 语言概述</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">1.1 必背<br>
+<ul><li>C++ 是<b>高级程序设计语言</b>，由 C 语言发展而来，<b>兼容 C</b>。</li><li>相对 C 最根本的变化：<b>引进类和对象的概念</b>（2023.04 单选1）。</li><li>支持面向对象、泛型编程、结构化（过程化）编程，三种范式都支持。</li><li>可跨平台运行（2025.04 单选1 选"可运行于 MAC"）。</li><li>代码复用粒度：<b>类 &gt; 函数 &gt; 变量</b>（2023.04 单选3）。</li><li>程序设计风格首要是<b>清晰、可读性好</b>（2024.04 单选1）。</li><li>C++ 程序结构：<b>有且仅有一个 main 函数</b>；两种注释（`//` 行注释、`/* */` 块注释）。</li></ul>
+1.2 易错点<br>
+<span class="callout err">"完全支持面向对象、不兼容C" "不支持泛型" "不支持过程化" 都是错误说法——C++ 三种编程范式全支持。</span>
+1.3 真题<br>
+2023.04 第1题：相对 C 最根本变化是引进类和对象<br>
+2025.04 第1题：C++ 可运行于 MAC 操作系统<br>
+2025.10 第1题：属于高级程序设计语言范畴<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点2</span><span class="kp-name">面向对象基本概念与类间关系</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2024.04、2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">2.1 必背<br>
+<ul><li>面向对象的基本特点：<b>抽象、封装、继承、多态</b>（选项里"实例"不是特点，2025.10 单选3）。</li><li>抽象：把同一类事物的共同特点概括出来的过程（2024.10 单选3）。</li><li>对象 = <b>状态 + 行为</b>（人话：数据成员是状态，成员函数是行为）。</li><li>属性是描述对象的<b>静态特征</b>的数据项，操作（函数）是行为（2025.04 填空21）。</li><li>封装：把数据和操作（函数）捆在一起作为不可分割的整体处理（2024.04 填空24）。</li><li>对象结构图三要素：<b>类名、属性、操作</b>（不含"对象名"，2025.04 单选4）。</li><li>类间关系：<b>is-a（继承）、has-a（组合/包含）</b>。is-a 具有<b>传递性</b>（A→B→C，C 同时是 A 的成员，2024.04 填空29）。</li><li>结构化程序设计（面向过程）：<b>自顶向下、以函数为单位</b>，数据与操作分离；局限是大程序数据不安全、难维护——面向对象用类把数据与操作封装在一起（大纲识记层次，对比记）。</li></ul>
+2.2 怎么判断<br>
+<ul><li>"学生是一种人" → is-a → 继承。</li><li>"汽车有发动机" → has-a → 成员对象（封闭类）。</li></ul>
+2.3 真题<br>
+2025.10 第3题：基本特点不包括"实例"<br>
+2025.04 填空25：A 的成员变量是 B 的对象 → 组合（has-a）关系<br>
+2024.04 填空23：属性=描述对象的静态特征<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点3</span><span class="kp-name">命名空间</span><span class="kp-level lv-C">C</span><span class="kp-freq">2023.04、2023.10、2024.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">3.1 必背<br>
+<span class="formula">namespace ns { int x = 24; }        // 定义
+using namespace ns;                  // 引入全部成员
+using ns::x;                         // 只引入一个成员
+cout &lt;&lt; ns::x;                       // 作用域运算符限定访问</span>
+<ul><li>匿名命名空间 `namespace { int x,y; }` 中的成员<b>仅本文件可见</b>，等价于 `static int x,y;`（2023.10 单选2）。</li><li>命名空间作用域是 C++ 中<b>最大</b>的作用域（2023.04 填空22）。</li></ul>
+3.2 真题<br>
+2023.04 第2题：使用命名空间的语句 using namespace myspace;<br>
+2024.04 程序填空36：补 namespace ns{int x=24;} 与 cout&lt;&lt;ns::x<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点4</span><span class="kp-name">函数默认参数</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">4.1 核心规则<br>
+<ul><li>默认值必须<b>从右至左</b>连续提供，有默认值的形参右侧不能出现无默认值的形参（2025.04 单选2、2025.10 单选2）。</li><li>`void f(int a, double b=3.0);` 正确；`void f(int a=2, double b);` 错误。</li><li>默认值写在<b>声明</b>处（原型），定义处一般不再写。</li></ul>
+4.2 易错点<br>
+<span class="callout err">构造函数 T(int i=20,int j=10) 调 T d(24)：y=24、m=10 —— 只替换从左开始的前几个，其余用默认值（2024.10 单选5）。</span>
+4.3 真题<br>
+2025.04 第2题：提供默认值必须按从右至左的顺序<br>
+2025.10 第2题：void f(int a,double b=3.0) 正确<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点5</span><span class="kp-name">函数重载与调用规则</span><span class="kp-level lv-C">C</span><span class="kp-freq">2025.04、2023.10、2024.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">5.1 核心规则<br>
+<ul><li>重载 = <b>同名不同参</b>（参数个数、类型、次序不同），<b>返回值类型不参与重载</b>。</li><li>调用时按实参<b>精确匹配</b>决议：`fun(15.0)` 匹配 fun(double)、`fun(15)` 匹配 fun(int)（2025.04 分析36：5 + 30 = 35）。</li><li>函数必须<b>先定义或声明后调用</b>：一个源文件中 f2() 可以调用定义在它之前的 main() 和 f1()（2024.10 填空21）。</li><li>默认参数与重载同用可能产生<b>二义性</b>：如 `f(int)` 与 `f(int,int=5)`，调 f(1) 时编译器无法选择。</li><li>函数定义 = <b>返回类型 + 函数名(形参表)</b>，形参表写"类型 形参名"逗号隔开；调用写函数名加实参（2026.04 程序填空20：max(int a,int b) 与 max(x,y)）。</li></ul>
+5.2 真题<br>
+2026.04 程序填空20：补 max 形参表 int a,int b 与调用 max(x,y)（每空 4 分）<br>
+2025.04 分析36：a.fun(15.0)+a.fun(15) 输出 35（6 分）<br>
+2024.10 填空21：f2() 中可调用 main() 和 f1()<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点6</span><span class="kp-name">const、常量与指针</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.10、2024.04、2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">6.1 必背<br>
+<table><tr><th>写法</th><th>含义</th><th>人话</th></tr><tr><td>`const int *p`</td><td>指向常量的指针</td><td>*p 不能改，p 能改</td></tr><tr><td>`int * const p`</td><td>常指针</td><td>p 不能改，*p 能改</td></tr><tr><td>`const int * const p`</td><td>都不能改</td><td>全禁（2025.04 单选3 选"均禁止修改"）</td></tr></table>
+<span class="callout tip">【记忆】const 在 * 左边管内容（*p），在 * 右边管指针本身（p）。</span>
+<ul><li>用 const 修饰的是<b>指向常量的指针</b>时，写法是在非常量指针声明前加 const（2024.10 填空25 相关）。</li><li>`const_cast` 只能去掉<b>指针或引用</b>的 const 属性，不能去掉 const 变量本身的常量性。</li></ul>
+6.2 易错点<br>
+<span class="callout err">const int *p = &amp;a; 后 a 的值仍可以通过 a 自己修改，p 只是"不能通过 p 改"。2024.10 分析36：setzero(a) 改的是 a，*p 跟着变（1 2 1 → 0 0 0）。</span>
+6.3 真题<br>
+2025.04 第3题：const char *const p 两个都禁止修改<br>
+2024.10 分析36：const 指针 + 引用传参输出 1 2 1 / 0 0 0<br>
+2024.04 第2题：const int *a=&amp;a; 是不正确的 const 用法<br>
+6.4 常量定义（const 常量 vs #define 宏）<br>
+<ul><li>格式：`const 类型名 常量名 = 初值;`，如 `const double PI = 3.1415926;`——<b>必须在定义处初始化</b>，此后只读。</li></ul>
+<table><tr><th>写法</th><th>结果</th></tr><tr><td>`const double pi = 3.14;`</td><td>✅ 正确</td></tr><tr><td>`const pi = 3.14;`</td><td>❌ 缺类型（a type specifier is required）</td></tr><tr><td>`const double pi; pi = 3.14;`</td><td>❌ const 变量必须定义时初始化</td></tr><tr><td>`double pi = 3.14;`</td><td>⚠️ 语法对，但不满足"用常量定义"的要求</td></tr><tr><td>`#define PI 3.1415926`</td><td>✅ 宏也可以，<b>不能写 =、末尾不加分号</b></td></tr><tr><td>`#define PI = 3.14` / `#define PI 3.14;`</td><td>❌ 多写 = 或多写分号，展开后编译报错</td></tr></table>
+<span class="callout err">const 常量 = 有类型的只读变量（编译期检查、遵守作用域）；#define 宏 = 预处理阶段的纯文本替换（无类型、无作用域、吃分号）。考试写「pi 用常量定义」两种都算，用 const 更稳。</span>
+6.5 真题<br>
+2025.04 设计41：输入半径算圆周长面积，pi 用常量定义（10 分基础保底题；周长 2πr、面积 πr²）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点7</span><span class="kp-name">引用与传参</span><span class="kp-level lv-C">C</span><span class="kp-freq">2023.10、2024.04、2024.10、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">7.1 核心规则<br>
+<ul><li>引用的本质是变量的<b>别名</b>，格式 `类型 &amp;引用名 = 变量名;`。</li><li>引用<b>必须初始化</b>，且不能用常量、表达式初始化非常量引用（`int &amp;r = 5;` 错，`const int &amp;r = 5;` 可以）。</li><li>引用<b>不能更换指向</b>、<b>不能为空</b>——绑定后全程只指向同一变量（2026.04 单选2）。</li><li><b>传值</b>：形参是副本，改形参不动实参；<b>传引用</b>：形参是别名，改形参就是改实参（2024.10 分析36 的 setzero(int &amp;a)）。</li><li><b>读出函数要用引用把数据带出去</b>：`void get(string &amp;p, int &amp;a, int &amp;b)` 把对象内数据赋给外部变量——值传递只改副本，"读出"无效（2024.04 设计47 实际错点）。</li><li>引用作函数返回值：函数返回的是原变量的别名，可作<b>左值</b>继续赋值。</li><li>指针传参要传地址：对象 `v1` 要写 `&amp;v1`，数组名 `v2` 本身就是地址（2023.10 单选3：f1(&amp;v1,v2)）。</li></ul>
+7.2 真题<br>
+2024.04 设计47：stud::get(string&amp;,int&amp;,int&amp;) 引用把对象数据读出到外部变量（类设计配引用）<br>
+2026.04 第2题：引用是变量的别名（必须初始化/不能换绑定/不能为空）<br>
+2023.10 第3题：f1(&amp;v1,v2) 正确传参<br>
+2024.10 分析36：引用传参 setzero 改变实参<br>
+2025.10 设计31：sortA(int a[],int n) 冒泡排序保底题（10 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点8</span><span class="kp-name">内联函数</span><span class="kp-level lv-C">C</span><span class="kp-freq">2023.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">8.1 必背<br>
+<ul><li>内联函数体在<b>编译时</b>被替换展开；一般函数在调用时转去执行（2023.04 填空21）。</li><li>声明方式：函数定义前加 <b>inline</b> 关键字。</li><li>类体内定义的成员函数<b>自动成为内联函数</b>（2023.04 填空35）。</li><li>含循环、switch、递归的函数一般不内联。</li></ul></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点9</span><span class="kp-name">new/delete 与动态内存</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">9.1 核心规则<br>
+<ul><li>new 在<b>程序运行期间</b>分配内存，变量具有<b>动态生存期</b>（2024.10 单选2、2023.04 单选6）。</li><li>new 的变量/对象直到 <b>delete</b>（或程序结束）生存期才结束（2024.10 填空25）。</li><li>new 对象<b>加括号才初始化</b>（`new int(10)` 初值 10，`new int` 值随机）。</li></ul>
+9.2 必背（四种使用形式）<br>
+<span class="formula">int *p1 = new int(5);        // 分配变量并初始化
+int *p2 = new int[10];       // 分配数组（不初始化）
+A *p3 = new A;               // 分配对象（调默认构造）
+A *p4 = new A[3];            // 分配对象数组（每个元素都调构造）
+delete p1;                   // 释放变量/对象
+delete[] p2;                 // 释放数组必须加 []</span>
+<ul><li><b>delete[] 与 new[] 配对</b>，忘写 `[]` 数组不能完全释放。</li><li>对象数组元素必须有无参（或全默认参数）构造函数。</li></ul>
+9.3 必背（对象数组的构造析构）<br>
+<ul><li>`Demo *pd = new Demo[2];` 按下标<b>顺序</b>调构造；`delete[] pd;` <b>逆序</b>调析构（2023.04 分析42：1constructor 2constructor … 2destructor 1destructor）。</li></ul>
+9.4 真题<br>
+2026.04 第6题：释放 new 动态数组用 delete []<br>
+2023.04 分析42：new Demo[2] + delete[] 的构造析构顺序（6 分）<br>
+2024.04 分析41：new int(a) 构造析构输出<br>
+2025.10 程序填空24：经基类指针 delete 派生对象（配虚析构）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点10</span><span class="kp-name">string 类</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.10、2024.04、2024.10、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">10.1 必背<br>
+<table><tr><th>成员</th><th>功能</th><th>例子</th></tr><tr><td>size()/length()</td><td>字符个数</td><td>c.size()（2023.10 填空36）</td></tr><tr><td>substr(起,长)</td><td>取子串</td><td>str.substr(5,3) → "C++"（2024.04 填空22）</td></tr><tr><td>insert(位,s)</td><td>插入</td><td>s[2].insert(8,c)（2023.10 填空36）</td></tr><tr><td>empty()</td><td>判空</td><td>c.empty()（2023.10 填空36）</td></tr><tr><td>find(s)</td><td>查找，返回位置</td><td>找不到返回 npos</td></tr><tr><td>append(s)</td><td>追加</td><td>str.append("ab")</td></tr><tr><td>c_str()</td><td>转 char*</td><td>配合 strcpy/printf</td></tr><tr><td>str[i]</td><td>访问单个字符</td><td>str[0]='H'</td></tr><tr><td>赋值 =、连接 +</td><td>拷贝/拼接</td><td>s = s1 + s2</td></tr></table>
+<ul><li>使用 string 要包含头文件 <b>string</b>。</li></ul></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点11</span><span class="kp-name">作用域与可见性</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">11.1 必背<br>
+<ul><li>作用域从大到小：<b>命名空间（文件）&gt; 类 &gt; 局部（块）&gt; 函数原型</b>（函数原型作用域最小，2023.04 填空22 考最大=命名空间）。</li><li><b>可见性（内层优先）</b>：内层同名标识符<b>屏蔽</b>外层——局部变量遮住全局变量、成员变量遮住形参。</li><li>被屏蔽的外层变量仍有生存期，只是不可见；成员变量被形参遮蔽时用 `this-&gt;` 或 `类名::` 访问。</li></ul>
+11.2 真题<br>
+2023.04 填空22：最大的作用域是命名空间作用域<br>
+2025.10 第7题：局部变量所在块结束撤销空间（配考点12）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点12</span><span class="kp-name">变量的生存期与存储类别</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.10、2025.04、2025.10、2025.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">12.1 必背<br>
+<table><tr><th>变量</th><th>生存期</th><th>可见范围</th><th>初始化</th></tr><tr><td>局部（自动）变量</td><td>块开始到块结束</td><td>所在函数体/块</td><td>不自动初始化</td></tr><tr><td>静态局部变量</td><td><b>整个程序</b></td><td>所在函数体</td><td><b>只初始化一次</b>，默认 0</td></tr><tr><td>全局变量</td><td>整个程序</td><td>整个文件（extern 扩展）</td><td>默认 0</td></tr><tr><td>new 出来的</td><td>到 delete/程序结束</td><td>经指针访问</td><td>看是否加括号</td></tr></table>
+<ul><li><b>局部变量</b>：函数体/块内可见，块结束释放空间（2025.10 单选7）。</li><li><b>静态局部变量</b>：函数体内可见，<b>只执行一次初始化</b>，程序结束才释放（2024.10 单选6、2025.04 单选7 选"函数体内可见，程序结束释放"）。</li><li>静态局部变量未初始化时系统自动置 0；局部变量不初始化则是随机值。</li></ul>
+12.2 怎么算（每次调用的区别）<br>
+<ul><li>普通局部变量：每次调用重建重算（2025.04 分析37：f(i) 中 b、c 每次重建 → 11/12/13）。</li><li>静态局部变量：修改保留、累加（对照考点22 静态成员累加题）。</li></ul>
+12.3 真题<br>
+2025.04 分析37：局部变量版本输出 11/12/13（6 分）<br>
+2024.10 第6题：函数中声明的静态变量只执行一次初始化<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点13</span><span class="kp-name">指针与字符串基础</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.10、2024.04、2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">13.1 必背<br>
+<ul><li><b>指针变量存的是所指向变量的地址</b>（2026.04 填空13）；`*p` 解引用、`&amp;x` 取地址、`int <b>pb=&amp;pa` 二级指针，`</b>pb` 即 `*pa` 的值（2025.04 分析38：输出 10 / 10）。</li><li>解引用追踪：`*p = *p + *q` 即"p 指向的变量 = 自己加 q 指向的变量"，改的是 a 的值，b 不动（2026.04 阅读16：a=3,b=5 → 输出 8,5）。</li><li><b>char 参与算术运算自动提升为 int</b>：`'a'+1` 输出 98 而非 'b'，char 变量单独输出仍是字符（2024.04 单选17：985a）。</li><li>实参个数按最外层表达式数：`aver(x+(x+y),++z,sqrt(x+a),max(x,f(y)))` 是 <b>4 个</b>实参（2023.10 填空22）。</li><li>`while(*y++);` 扫到 '\0' 结束，`y-x-1` 即字符串长度（2024.04 填空21）。</li><li>常用逻辑短路：`x || !x` 恒为真，输出 ABC（2023.10 填空21）。</li><li>常用转义字符：`\n` 换行、`\t` 制表、`\0` 字符串结束标志、`\\` 反斜杠、`\"` 双引号、`\'` 单引号（教材附录；`\0` 与文件路径里的 `\\` 最常入题）。</li></ul>
+13.2 真题<br>
+2026.04 填空13：指针变量存储的是地址<br>
+2026.04 阅读16：*p=*p+*q → 输出 8,5（5 分）<br>
+2025.04 分析38：二级指针输出 10 / 10<br>
+2024.04 第17题：cout&lt;&lt;c+1&lt;&lt;a&lt;&lt;c 输出 985a（char 提升）<br>
+2023.10 填空22：实参个数 4 个<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点54</span><span class="kp-name">C++ 风格强制类型转换</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题（教材 1.2 节正文，大纲未单列，作 const/强转的语法基础保留）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">54.1 必背<br>
+<span class="formula">oneInt2 = static_cast&lt;int&gt;(oneDouble);   // 显式指定目标类型
+oneInt2 = int(oneDouble);                // 新形式：函数式写法（static_cast 可省略）
+oneInt2 = (int)oneDouble;                // 旧形式：C 风格
+oneInt2 = oneDouble;                     // 自动类型转换</span>
+<ul><li><b>static_cast&lt;类型名&gt;(表达式)</b>：基本类型之间、void* 与具体指针之间的常规强制转换。</li><li><b>const_cast&lt;类型名&gt;(表达式)</b>：<b>只能去除指针或引用的常量性</b>，不能去除 const 变量本身的常量性（详见考点6）。</li><li>与考点31 区分：`operator double()` 是<b>类类型 → 基本类型</b>的自定义转换；本考点是基本类型之间的转换。</li><li>与考点37 区分：派生类指针/对象转基类可直接，基类转派生类才需要强制转换。</li></ul>
+54.2 易错点<br>
+<span class="callout err">const_cast 去不掉 const 变量本身的常量性：const int ca=30; 之后 ca=40; 仍然是编译错误。</span></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点55</span><span class="kp-name">常用数学函数（cmath）</span><span class="kp-level lv-D">D</span><span class="kp-freq">未单独出题（sqrt 已随 2023.10 填空22 的程序出现过）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">55.1 必背<br>
+<table><tr><th>函数</th><th>功能</th><th>返回类型</th></tr><tr><td>fabs(x)</td><td>绝对值</td><td>double</td></tr><tr><td>sqrt(x)</td><td>平方根</td><td>double</td></tr><tr><td>pow(a,b)</td><td>a 的 b 次方</td><td>double</td></tr><tr><td>floor(x)</td><td>向下取整</td><td>double</td></tr><tr><td>ceil(x)</td><td>向上取整</td><td>double</td></tr><tr><td>round(x)</td><td>四舍五入</td><td>double</td></tr></table>
+<ul><li>使用需包含 <b>cmath</b>（math.h 亦可）。</li><li>大纲未单独列出、六套真题未直接考函数名，但填空/设计题的程序里出现过 sqrt，认得即可。</li></ul>
+55.2 易错点<br>
+<span class="callout err">floor 是"向更小方向取整"，不是"去小数"：floor(-12.1) = -13，ceil(-12.1) = -12。</span></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点56</span><span class="kp-name">标识符与关键字</span><span class="kp-level lv-C">C</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">56.1 必背<br>
+<ul><li>标识符 = 程序员给变量、函数、类起的名字。组成规则三条：① 只能由<b>字母、数字、下划线</b>组成；② <b>第一个字符不能是数字</b>；③ <b>不能是关键字</b>（int、if、for、return 等）。</li><li><b>区分大小写</b>：sum 与 Sum 是两个不同标识符。</li><li>合法例：abc_123、_tmp、x1；非法例：123abc（数字开头）、int（关键字）、abc-123（含减号）、a b（含空格）。</li></ul>
+56.2 易错点<br>
+<span class="callout err">abc-123 看着像"字母数字"就合法——中间是减号，不属字母/数字/下划线，非法（2026.04 单选1）。</span>
+56.3 真题<br>
+2026.04 第1题：abc_123 合法；123abc、int、abc-123 均非法（2 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点57</span><span class="kp-name">循环与流程控制</span><span class="kp-level lv-C">C</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">57.1 必背<br>
+<ul><li>for/while 计数：for(int i=0;i&lt;5;i++) 循环体在 i=0,1,2,3,4 时各执行一次。</li><li><b>break</b> = 立即跳出<b>整个循环</b>（本层）；<b>continue</b> = 跳过本次循环体，继续下一次。</li><li>计数技巧：循环体执行次数 = 正常进入循环体时的 i 取值个数；break 后面的次数不算（2026.04 单选9：i==3 时 break，i=0,1,2,3 共执行 4 次）。</li></ul>
+57.2 真题<br>
+2026.04 第9题：for(int i=0;i&lt;5;i++){if(i==3)break;} 循环体执行 4 次（2 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点58</span><span class="kp-name">递归函数</span><span class="kp-level lv-C">C</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">58.1 必背<br>
+<ul><li>递归两要素：① <b>终止条件</b>（如 n<span class="em">0||n</span>1 return 1）② <b>递归调用</b>（函数自己调自己，规模递减）。</li><li>追踪方法：从主调值<b>逐层展开到终止条件，再逐层回乘/回加</b>：</li><li>`fun(4)` = 4×fun(3) = 4×3×fun(2) = 4×3×2×fun(1) = 4×3×2×1 = <b>24</b>（2026.04 阅读18）。</li><li>阶乘模型 fun(n)=n*fun(n-1) 即算 n!；含循环/switch 的递归一般不内联（考点8）。</li></ul>
+58.2 真题<br>
+2026.04 阅读18：fun(4) 输出 24（5 分）<br></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#f472b6;--accent-light:#db2777">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第二章 类与对象<span class="badge">4考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">类的定义格式与对象访问是每年 1~2 分的稳定送分点，注意"类定义以分号结束"这类细节。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点14</span><span class="kp-name">类定义与访问控制</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">14.1 必背<br>
+<ul><li>类定义以<b>分号结束</b>；定义类<b>不分配内存</b>。</li><li>成员按功能分：<b>成员变量 + 成员函数</b>；按访问权限分：<b>public / private / protected</b>。</li><li><b>class 默认成员权限是 private</b>（struct 默认 public）（2026.04 填空12）。</li><li><b>私有成员类外不能直接访问</b>——通过公有成员函数接口或友元才碰得到（2026.04 单选3）。</li><li>成员函数可以在类外定义：`返回类型 类名::函数名(参数){...}`（2024.10 填空23）。</li><li>成员函数<b>可以</b>设默认参数、可以类外定义（2025.04 单选5 的 D 是错误项）。</li><li>隐藏私有成员、暴露 public 接口，是封装的标准做法（2025.04 填空23）。</li><li>类体可以为空（空类）；类中成员变量一般不直接赋初值（教材口径，静态常量除外）。</li></ul>
+14.2 易错点<br>
+<span class="callout err">"成员函数都应是公有的，数据成员都应是私有的"是错误说法——成员函数也可以是私有的（2024.04 单选3）。</span>
+<span class="callout err">class 默认成员权限是 private，不是 protected；struct 才默认 public。别和继承的默认方式混：class 继承不写方式默认也是 private 继承（考点33）——两个「默认 private」一起记，protected 永远不会是默认值（2026.04 填空12 实际错点）。</span>
+14.3 真题<br>
+2024.04 设计47：stud 类设计（姓名/英语/C++ + 构造/写入/读出/平均/显示），get 用引用把数据带出（10 分）<br>
+2026.04 填空12：class 默认成员访问权限 private<br>
+2026.04 第3题：私有成员类外不能直接访问（"只能通过友元"不对，公有接口亦可）<br>
+2026.04 程序填空21：Rectangle 类补 private:<br>
+2026.04 设计22：Student 类封装（私有成员+构造+showInfo）（15 分）<br>
+2023.04 第4题：成员不能定义在类外是错误叙述<br>
+2025.10 第10题：派生类内经 基类名::公有成员函数 访问基类成员<br>
+2025.04 第5题：类中可以声明成员函数并给参数默认值（D 错误项）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点15</span><span class="kp-name">对象与内存</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2023.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">15.1 必背<br>
+<ul><li>定义对象时，系统只为<b>成员变量</b>分配内存，成员函数所有对象共用一份（2023.10 填空23、2024.10 单选4）。</li><li>同一类创建的若干对象<b>数据结构相同</b>，内容可不同（2024.04 单选4 的 D 是错误项）。</li><li>对象是类的<b>实例</b>；同类型对象之间可以相互赋值（默认按成员复制）。</li></ul>
+15.2 必背（对象大小计算）<br>
+<ul><li>对象大小 = 各成员变量大小之和，<b>按成员中最宽的基本类型对齐补齐</b>（int 4、double 8、char 1 但要补齐到 4）。</li><li><b>空类的大小是 1 字节</b>（保证对象有独立地址）。</li><li>成员指针占 4/8 字节；派生类大小 = 基类部分 + 新增成员（含基类私有成员，2023.10 程序填空39：name[80] → sizeof(Derived)=80）。</li></ul>
+15.3 真题<br>
+2023.10 程序填空39：sizeof(Derived)=80（char name[80] 占 80 字节）<br>
+2023.10 第6题：A1.*p=5 通过成员指针赋值<br>
+2024.10 填空22：sp=&amp;ss 后用 sp-&gt;访问成员<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点16</span><span class="kp-name">对象成员访问与成员指针</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.10、2024.10、2024.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">16.1 必背<br>
+<table><tr><th>场景</th><th>写法</th></tr><tr><td>对象访问成员</td><td>`对象名.成员`</td></tr><tr><td>对象指针访问成员</td><td>`指针名-&gt;成员`（等价 `(*指针名).成员`）</td></tr><tr><td>对象引用访问成员</td><td>`引用名.成员`</td></tr><tr><td>对象指针赋值</td><td>`sp = &amp;ss;`（2024.10 填空22）</td></tr><tr><td>成员指针</td><td>`int A::*p = &amp;A::m;  A1.*p = 5;`</td></tr><tr><td>new 创建对象</td><td>`A *p = new A;  p-&gt;成员`</td></tr></table>
+<ul><li>成员指针解引用用 `.*`（对象）或 `-&gt;*`（对象指针），2023.10 单选6 选 `A1.*p=5`。</li><li>new 创建对象的四种形式见考点9；`new A(参数)` 加括号才调带参构造。</li></ul>
+16.2 真题<br>
+2023.10 第6题：A1.*p=5 给成员 m 赋值<br>
+2024.10 填空22：sp=&amp;ss 指向对象<br>
+2023.04 填空37：Sample *p=&amp;s; p-&gt;display()<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点17</span><span class="kp-name">this 指针</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2024.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">17.1 必背<br>
+<ul><li>this 是<b>非静态成员函数</b>的隐含指针，类型 `类名 * const`（2023.04 填空25）。</li><li><b>静态成员函数没有 this</b>（2024.04 单选7：只有类的非静态成员函数有 this）。</li><li>典型用法：`this-&gt;x = x;` 解决同名屏蔽；`return *this;` 支持链式/连续赋值（2025.10 程序填空22）。</li><li>全局函数、友元函数都<b>没有</b> this。</li></ul>
+17.2 真题<br>
+2025.10 程序填空22：CTest::Add() 内 this-&gt;x++; return *this;<br>
+2023.04 填空25：this 的类型是 类名*const<br></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#a78bfa;--accent-light:#7c3aed">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第三章 构造、析构与特殊成员<span class="badge">8考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">本章是全卷分值最高的区：构造析构年年考、静态成员分析题是固定大题、友元和常成员反复出现。程序填空的"补构造/初始化列表"也集中在这里。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点18</span><span class="kp-name">构造函数</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04~2026.04 全部 7 套</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">18.1 是什么<br>
+<ul><li>构造函数：与类<b>同名</b>、<b>无返回值</b>（连 void 都不写）、可重载、可带默认参数，创建对象时自动调用。</li><li>类中没有构造函数时，系统<b>自动添加默认构造函数</b>（2023.04 填空23）；一旦自己定义了任何构造函数，系统就不再提供默认版本。</li><li>`A a;` 调默认构造；`A a(1,2);` 调带参构造。</li></ul>
+18.2 必背（类外定义三形式）<br>
+<span class="formula">Point::Point(int x,int y):x(x),y(y) {}   // 初始化列表（常量成员/成员对象/基类必须用它）
+Point::Point(int x,int y) { this-&gt;x=x; this-&gt;y=y; }  // 函数体赋值（2023.04 填空37）</span>
+<ul><li>形参与成员同名时必须写 `this-&gt;x = i;`（2025.10 程序填空21）。</li></ul>
+18.3 易错点<br>
+<span class="callout err">构造函数"必须指定返回类型"是错误说法——构造函数没有返回类型（2025.04 单选6）。</span>
+<span class="callout err">int Test(); 和 void Test(int); 都不能作构造函数——构造函数不写返回类型（2023.10 单选7）。</span>
+18.4 真题<br>
+2026.04 第5题：构造函数可以有返回值——错误（2 分）<br>
+2026.04 阅读17：t1、t2 构造后逆序析构（5 分）<br>
+2026.04 程序填空21：Rectangle(int w,int h):width(w),height(h){}（4 分）<br>
+2026.04 设计22：Student 类构造函数初始化 id/name/score（15 分）<br>
+2023.04 填空37：补类外定义 Sample::Sample(int a,int b) 与 Sample s(2,3)<br>
+2023.10 第7题：Test(int); 可作构造函数（~Test/void Test 都不行）<br>
+2025.10 程序填空21：构造函数补空 + Test mt(10,20)<br>
+2024.04 单选5：A(int aa,int bb){a=aa++;b=a*++bb;} → x.a=4, x.b=24<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点19</span><span class="kp-name">析构函数</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">19.1 必背<br>
+<ul><li>格式 `~类名()`：<b>无参数、无返回值、不能重载、每个类仅一个</b>（2025.10 单选5：析构函数没有参数）。</li><li>没有定义时系统自动生成默认析构函数。</li><li>主要作用：释放 <b>new 分配的内存</b>、做收尾工作（2025.04 填空24）。</li><li>类外定义格式：`类名::~类名(){...}`（2024.10 填空24）。</li></ul>
+19.2 核心规则（何时调用）<br>
+<ul><li>对象<b>销毁时</b>自动调用：① 局部对象离开作用域 ② delete 指针 ③ 对象数组 delete[]（逆序）④ 临时对象生命周期结束。</li><li>`A *p = new A;` 必须显式 `delete p;` 才调析构。</li><li><b>构造函数与析构函数不被继承</b>（见考点34）。</li></ul>
+19.3 真题<br>
+2026.04 阅读17：t1、t2 离开 main 时逆序析构，输出 构造×2 → 析构×2（5 分）<br>
+2023.04 第5题：析构函数被调用的时间点是对象被销毁时<br>
+2025.10 第5题：析构函数没有参数<br>
+2024.10 填空24：~myDate(){...} 为类添加析构函数<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点20</span><span class="kp-name">类型转换构造函数</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.04、2024.10、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">20.1 是什么<br>
+<ul><li><b>只有一个参数</b>的构造函数可以把参数类型<b>隐式转换</b>为类类型：`A(int x){m_a=x;}` 使 `A a3 = 9;` 合法（人话：数字 9 自动变成 A 对象）。</li><li>转换发生在：对象初始化 `A a3=9;`、赋值 `a = 100;`、以及把实参传给<b>形参为类对象</b>的非成员函数时。</li></ul>
+20.2 怎么算（配合运算符重载的追踪题）<br>
+<ul><li>非成员 `operator+(A&amp;,A&amp;)` 接收引用参数<b>不发生隐式转换</b>时要靠类型转换构造生成临时对象（2024.10 分析38：`a3=1` 即 A(1)）。</li><li>`A a2;` 用默认参数 `A(int a=100)` 构造 → m_a=100（2024.10 分析38、2024.04 程序填空40）。</li></ul>
+20.3 真题<br>
+2024.10 分析38：a3=1 隐式转换后参与 a2+a3（6 分）<br>
+2025.10 分析26：非 const 对象 getValue() 返 5+a=25（配 const 重载）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点21</span><span class="kp-name">复制构造函数与深浅拷贝</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2024.10、2025.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">21.1 是什么<br>
+<ul><li>格式<b>固定</b>：`A(const A &amp;a)` —— 形参必须是<b>本类对象的引用</b>（写成值传递会无限递归）。</li><li><b>自动调用的三种情况</b>：① 用对象初始化新对象 `A b(a);` ② 对象作<b>实参传值</b> ③ 函数<b>返回对象</b>。</li></ul>
+21.2 核心规则（深浅拷贝）<br>
+<table><tr><th></th><th>浅拷贝</th><th>深拷贝</th></tr><tr><td>指针成员</td><td>复制<b>地址</b>，两对象共享一块内存</td><td><b>new 新内存</b>再复制内容</td></tr><tr><td>后果</td><td>重复释放、非法访问（2023.04 单选8）</td><td>安全，各管各的</td></tr></table>
+<span class="formula">pointer(const pointer &amp;t) {
+    if(this != &amp;t) {          // 防自赋值（2025.04 程序填空32）
+        a = t.a;
+        p = new int(*t.p);    // 深拷贝：新内存
+    }
+}</span>
+21.3 易错点<br>
+<span class="callout err">2023.10 程序填空38 与 2025.04 程序填空32 都是"补深拷贝"：复制构造里必须 new 新空间，直接 st=t.st 是浅拷贝。</span>
+21.4 真题<br>
+2025.04 程序填空32：补 this!=&amp;tempp 与 p=new int(*tempp.p)（4 分）<br>
+2024.10 程序填空32：复制构造声明 + Print 访问私有成员<br>
+2023.04 第8题：浅拷贝问题不包括"变量类型转换错误"<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点22</span><span class="kp-name">静态成员与静态变量</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">22.1 必背<br>
+<ul><li>静态成员变量：<b>所有对象共有</b>（2023.10 单选8 的 B 是错误项），类内加 static 声明，<b>类外定义并初始化且不再写 static</b>（2025.04 程序填空31）。</li><li>三种访问：`类名::成员`、`对象.成员`、`指针-&gt;成员`。</li><li>静态成员函数：<b>没有 this 指针</b>，<b>只能访问静态成员</b>；非静态函数可以直接调用静态函数，反之不行（2025.10 单选6）。</li><li>静态成员可以被<b>继承</b>（派生类与基类共用同一份）。</li></ul>
+22.2 怎么算（固定大题模型：静态累加器）<br>
+<span class="formula">int Count::num = 2;                 // 类外初始化
+for(i=0;i&lt;3;i++) cout&lt;&lt;Count::stat(5);
+// stat: return num = a + num;  →  7  12  17   （2023.04 分析41）</span>
+<span class="formula">Sample a(2),b(3),c(5);  各 add() 后：
+n=2,sum=2 / n=3,sum=5 / n=5,sum=10    （2024.04 分析44）</span>
+22.3 易错点<br>
+<span class="callout err">静态成员"在类外定义时不加 static、初始化不加 static"；类内只是声明，不分配内存。</span>
+22.4 真题<br>
+2023.04 分析41：静态计数输出 第1次7 第2次12 第3次17（6 分）<br>
+2024.10 分析37：静态 num + new 对象 → 1 1 / 2 2 / The num = 2<br>
+2025.04 程序填空31：static int x; 与 int Test::x=73;<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点23</span><span class="kp-name">常对象与常成员函数</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">23.1 必背<br>
+<ul><li><b>常对象只能调用常成员函数</b>（2024.04 单选6）。</li><li>常成员函数不修改成员变量；`const` 写在函数<b>后面</b>：`int Get() const { return n; }`。</li><li>const 构成<b>重载</b>：常对象/常引用调 const 版，普通对象调非 const 版（2025.04 分析39：x.print() 输出 10，y.print() 输出 2）。</li><li>常量成员变量必须在<b>初始化列表</b>中初始化。</li><li><b>常引用成员</b>（`const int &amp;r;`）与常量成员一样只能经初始化列表绑定：`A(int &amp;x) : r(x) {}`，绑定后不可改指（大纲第三章要求掌握常量成员与常引用成员的初始化方法）。</li><li>成员可用 const 修饰（2025.10 单选4）。</li></ul>
+23.2 真题<br>
+2024.04 程序填空37：补 int Get() const {return n;}<br>
+2025.10 分析26：const 对象调 const 版返 20，普通对象调非 const 版返 5+a=25 → 输出 2025 / 25（6 分）<br>
+2025.04 分析39：print() 与 print() const 重载输出 10 / 2（6 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点24</span><span class="kp-name">封闭类与成员对象</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">24.1 核心规则（顺序四条）<br>
+<ul><li>成员对象 = 一个类的对象作为另一个类的成员；含成员对象的类叫<b>封闭类</b>。</li><li>构造顺序：<b>先成员对象（按类中声明顺序），后封闭类自身构造函数</b>。</li><li>析构顺序：<b>与构造相反</b>（2025.04 程序填空33 输出：Base 默认构造 → D_Base 默认构造 → D_Base 析构 → Base 析构）。</li><li>成员对象通过<b>初始化列表</b>初始化：`D_Base(int p,int tr,int w): price(p), ty(tr,w) {}`。</li><li>has-a（组合）关系见考点2；封闭类的<b>派生类</b>对象创建次序 = 基类 → 成员对象 → 派生类自身，见考点34（大纲要求掌握封闭类的派生机制）。</li></ul>
+24.2 真题<br>
+2025.04 第8题：创建封闭类对象时先执行成员对象的构造函数<br>
+2025.04 程序填空33：补 price(p) 与 ~D_Base()（4 分）<br>
+2023.10 分析42：Course 含 data d1/d2 → class data/School/class data/Course/Score（6 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点25</span><span class="kp-name">友元</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">25.1 必背<br>
+<span class="formula">friend void Print(Date &amp;d);        // 友元函数（写在类内任意位置）
+friend class Line;                 // 友元类</span>
+<ul><li>友元<b>不是成员函数</b>，但能访问类的<b>所有成员</b>（不受访问权限限制）。</li><li>友元关系<b>单向且不传递</b>：A 是 B 的友元、B 是 C 的友元 ⇒ A 不是 C 的友元（2025.04 单选9）。</li><li>代价是破坏封装，收益是<b>提高访问效率</b>（2023.04 填空24）。</li><li>友元函数<b>没有 this 指针</b>；友元不是成员函数，不能被继承。</li></ul>
+25.2 怎么判断（固定大题模型：友元访问私有）<br>
+<ul><li>友元函数形参是对象引用，函数体内直接 `d.year` 访问私有成员（2023.04 程序填空38：补 friend void Print(Date&amp;)）。</li><li>类 A 的成员函数要访问类 B 私有成员：在 B 中声明 `friend class A;`（2023.10 程序填空37：Line 访问 Point 私有 x,y）。</li><li>判空技巧：空长成 `____(const 类名&amp; obj);` 且类外有同名函数定义、函数体访问 obj.私有成员 ⇒ 填 `friend void 函数名`，friend 不能丢；只填 `void Print(...)` 是声明了一个私有成员函数，类外定义照样报 private（2024.10 填空32：INTEGER 类补 friend void Print，另一空 this-&gt;a=a）。</li></ul>
+25.3 真题<br>
+2026.04 第10题：友元破坏了类的封装性（非成员函数/不能继承/可访问私有）（2 分）<br>
+2023.10 分析41：Time24 友元函数输出 11:30PM=23:30 / 10:45AM=10:45（6 分）<br>
+2023.10 填空27：friend class FriendClass;<br>
+2025.10 分析26：friend int max(int a,int b) 配合 const 重载<br>
+2024.10 填空32：friend void Print(const INTEGER&amp;)（另一空 this-&gt;a=a，参数与成员同名）<br></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#22d3ee;--accent-light:#0891b2">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第四章 运算符重载<span class="badge">6考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">运算符重载是程序填空 + 程序分析双料考点。格式题背模板，追踪题按"调谁、改谁、返回谁"一步步走。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点26</span><span class="kp-name">运算符重载规则</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04~2026.04 全部 7 套</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">26.1 必背（五条铁律）<br>
+<ul><li>实质：编写名为 `operator 运算符` 的函数（2024.04 填空27：operator delete）。</li><li><b>不能重载</b>：`.  .*  ::  sizeof  ?:  #`（2025.04 单选10 选 #）。</li><li>不能改变优先级、结合性、操作数个数，<b>不能创造新运算符</b>。</li><li>`=  []  ()  -&gt;` <b>只能重载为成员函数</b>（2024.04 单选9：= 必须成员函数重载）。</li><li>`=` 和 `&amp;` 系统<b>默认提供</b>重载版本（2025.04 填空26）。</li></ul>
+26.2 必背（成员 vs 友元参数个数）<br>
+<table><tr><th>重载方式</th><th>一元（++、!）</th><th>二元（+、-、*）</th></tr><tr><td>成员函数</td><td>0 个参数</td><td><b>1 个</b>参数（2025.10 单选8）</td></tr><tr><td>友元/非成员</td><td>1 个参数</td><td><b>2 个</b>参数（2023.10 填空29）</td></tr></table>
+<ul><li>无参运算符函数 = <b>一元成员运算符</b>（2024.04 单选8）。</li><li>`++a` 成员重载被编译器解释为 `a.operator++()`（2024.10 单选8）。</li></ul>
+26.3 易错点<br>
+<span class="callout err">"运算符重载不能重载为全局函数"是错误说法——除 =[]()-&gt; 外都可以重载为友元/全局函数（2023.04 单选7）。</span>
+<span class="callout err">"调用运算符函数必须使用关键字 operator"是错误说法——运算时编译器自动调用，不用写 operator（2023.10 单选9）。</span>
+26.4 真题<br>
+2026.04 第4题：:: 不能被重载（2 分）<br>
+2024.10 第7题："用于类运算的运算符无须重载"是错误说法<br>
+2025.04 填空26：系统默认重载 = 和 &amp;<br>
+2025.04 单选11：运算符函数是特殊的友元函数或成员函数<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点27</span><span class="kp-name">重载赋值运算符 =</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2024.04、2025.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">27.1 核心规则<br>
+<span class="formula">A&amp; operator=(const A &amp;a) {         // 只能成员函数、返回 *this 引用
+    if(this == &amp;a) return *this;   // 防自赋值
+    // 先 delete 旧内存，再 new 新内存（深拷贝）
+    return *this;                  // 支持连续赋值 c = b = a
+}</span>
+<ul><li>有指针成员的类：<b>复制构造 + operator= 都要深拷贝</b>，缺一个就出浅拷贝问题。</li><li>系统默认的 operator= 是按成员复制（浅拷贝）。</li></ul>
+27.2 真题<br>
+2023.04 分析43：TriCoor 重载 -- 与 =，c=b=a 连续赋值输出 4,3,2（6 分）<br>
+2023.10 程序填空38：str 类补 operator= 与 s2=s1（4 分）<br>
+2024.04 单选9：重载 = 必须用成员函数<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点28</span><span class="kp-name">重载算术运算符（+ - * ==）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">28.1 必背（两个模板）<br>
+<span class="formula">// 成员版本：参数 1 个，左操作数是调用者
+Complex operator-(const Complex &amp;a) const {
+    return Complex(real-a.real, image-a.image);
+}
+// 非成员/友元版本：参数 2 个，可实现 1+对象（配合类型转换构造）
+int operator+(A &amp;a1, A &amp;a2);
+Complex operator*(const Complex &amp;c);   // 成员版乘法（2025.10 分析27）</span>
+<ul><li>优先写成<b>成员函数</b>；要支持"实数+复数"这类混合运算时用<b>友元</b>。</li></ul>
+28.2 怎么算（追踪模型）<br>
+<ul><li>见到 `a1 + a2` 配非成员 operator+ 且类有 `get(){return m_a++;}`：先算 a1.get()（值 m_a 自增 1），再算 a2.get()，再代入表达式（2024.10 分析38：10000+100-14=10086，下一句 a2 再 get 已是 101 → 88）。</li><li><b>同一对象第二次 get() 返回值已 +1</b>：给每个对象的 m_a 单独记一本账（2024.04 程序填空40：a1(888)+a2(135)-15=1008 后，第二句 a1+a3=889+9-15=883，a1.get() 返回的是 889 不是 888；a3=9 走类型转换构造）。</li><li>见到 `c = a - b`：c 是"返回的临时对象"，按构造参数算分量（2023.10 分析45：c=1+8i）。</li><li>`==` 重载返回 int（1/0），常配合三目输出"相等/不相等"。</li></ul>
+28.3 真题<br>
+2023.10 分析45：Complex operator- 输出 a=2+9i / b=1+1i / c=1+8i（6 分）<br>
+2025.10 分析27：Complex operator* 输出 (2.2,4.4) / (1.1,2.2)（6 分）<br>
+2024.04 程序填空40：补 int operator+(A &amp;a1,A &amp;a2)<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点29</span><span class="kp-name">重载自增自减 ++ --</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2024.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">29.1 必背<br>
+<span class="formula">TriCoor&amp; operator--() { x--; y--; z--; return *this; }   // 前置：返回引用（修改后）
+TriCoor operator--(int) { TriCoor t(*this); x--; return t; }  // 后置：int 占位，返回修改前副本</span>
+<ul><li>后置版本<b>额外加一个无用 int 形参</b>来区分（2023.10 单选10）。</li><li><b>前置返回引用（*this），后置返回值（修改前的临时对象）</b>。</li><li>前置 `--a` 被解释为 `a.operator--()`；后置 `a--` 为 `a.operator--(0)`。</li><li>成员版参数 0 个、友元版参数 1 个（前置）/ 2 个（后置）。</li></ul>
+29.2 真题<br>
+2023.04 分析43：循环 5 次 `--a` 输出 4,3,2（6 分）<br>
+2023.10 第10题：后置式额外参数类型是 int<br>
+2024.10 单选8：++a 解释为 a.operator++()<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点30</span><span class="kp-name">重载流插入与流提取</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">30.1 必背（只能友元）<br>
+<span class="formula">friend ostream&amp; operator&lt;&lt;(ostream &amp;output, 类名 &amp;对象名) {
+    output &lt;&lt; 对象名.成员;
+    return output;          // 必须返回流引用，支持连续输出
+}
+friend istream&amp; operator&gt;&gt;(istream &amp;input, 类名 &amp;对象名);</span>
+<ul><li><b>必须重载为友元/非成员</b>：左操作数是流对象而不是本类对象，成员函数做不到。</li><li>第一个参数是 `ostream&amp;/istream&amp;`，返回值也是流引用（2025.10 单选9 选 D 格式）。</li><li>`&gt;&gt;` 是<b>输入（提取）</b>、`&lt;&lt;` 是<b>输出（插入）</b>的非成员函数（2023.10 填空28）。</li></ul>
+30.2 真题<br>
+2023.04 填空26：friend istream&amp; operator&gt;&gt;(istream&amp;, CS&amp;);<br>
+2025.10 第9题：ostream &amp;operator&lt;&lt;(ostream&amp;,类名&amp;){...return output;} 正确<br>
+2023.10 填空29：二元运算符重载为友元，形参 2 个<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点31</span><span class="kp-name">重载强制类型转换</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题（教材 *第四节，选学）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">31.1 必背<br>
+<span class="formula">operator double() { return real; }    // 无返回类型写法！函数名即目标类型</span>
+<ul><li>格式特殊：<b>函数名 = operator 目标类型，不写返回类型</b>、无参数。</li><li><b>单目运算符，只能重载为成员函数</b>。</li><li>定义后 `double(对象)`、`(double)对象` 都会自动调用它。</li><li>说明：教材此节带 *（选学），大纲考核知识点未单列，六套样本未直接出题，按低频保留复习。</li></ul></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#fb923c;--accent-light:#ea580c">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第五章 继承与派生<span class="badge">6考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">继承章单选密度最高。四大件：继承语法、访问控制表、构造析构顺序、赋值兼容。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点32</span><span class="kp-name">继承语法与继承范围</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.10、2024.04、2024.10、2025.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">32.1 必背<br>
+<span class="formula">class DerivedClass : public BaseClass { int v; };   // 派生类名:继承方式 基类名（2024.04 单选11）
+class DerivedC : public BaseA, BaseB { ... };       // 多重继承，BaseB 默认 private</span>
+<ul><li>派生类继承了基类<b>除构造函数和析构函数之外</b>的全部成员（2024.10 填空27）。</li><li><b>基类的友元关系不被继承</b>；基类的<b>静态成员被继承</b>（全族共用一份）。</li><li>同名成员构成<b>隐藏</b>：派生类对象调用的是派生类版本，要访问基类版本用 `基类名::成员`。</li><li>基类私有成员被继承但在派生类中<b>不可直接访问</b>、仍占内存（2024.04 填空28：B{b1,b2} + D:d → 私有成员变量 3 个）。</li><li>直接基类、间接基类：A→B→C 中 A 是 C 的<b>间接基类</b>（2025.04 填空27）。</li></ul>
+32.2 真题<br>
+2024.04 单选11：class derived: private student 中 derived 是派生类名<br>
+2024.10 单选9：v 是派生类的私有成员变量<br>
+2025.04 填空27：类 A 是类 C 的间接基类<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点33</span><span class="kp-name">继承方式与访问控制</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04~2026.04 全部 7 套</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">33.1 必背（访问控制表）<br>
+<table><tr><th>基类成员</th><th>public 继承</th><th>private 继承</th><th>protected 继承</th></tr><tr><td>public</td><td>public</td><td>private</td><td>protected</td></tr><tr><td>protected</td><td>protected</td><td>private</td><td>protected</td></tr><tr><td>private</td><td>不可直接访问</td><td>不可直接访问</td><td>不可直接访问</td></tr></table>
+<ul><li><b>class 默认 private 继承</b>（2025.04 单选13），struct 默认 public。</li><li><b>protected 成员</b>：外界不能直接访问，<b>派生类成员可以直接访问</b>（2023.04 单选10、2023.10 填空30）。</li><li>派生类对象<b>永远不能</b>直接访问基类私有成员——任何继承方式都不可（2023.10 单选11）。</li><li>派生类内访问基类成员用 `基类名::成员`（2025.10 单选10）。</li><li>公有继承下基类公有成员成为派生类的 <b>public</b> 成员（2025.04 单选12）。</li><li>"继承的基类成员访问权限不变"只对 public 继承成立（2024.04 单选10）。</li></ul>
+33.2 真题<br>
+2026.04 第8题：公有继承下基类 protected 成员在派生类中仍是 protected（2 分）<br>
+2025.04 第12题：公有继承后基类公有成员成为派生类 public 成员<br>
+2024.04 填空28：私有成员变量有 3 个<br>
+2025.04 第13题：C++ 默认的继承方式是 private<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点34</span><span class="kp-name">派生类的构造与析构</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">34.1 必背（顺序）<br>
+<ul><li>构造顺序：<b>基类（按继承声明顺序）→ 成员对象 → 派生类自身</b>；析构<b>完全相反</b>（2023.10 单选15：A→B→C 构造，析构 C→B→A）。</li><li><b>构造/析构函数不被继承</b>（2023.10 单选12）。</li><li>基类只有带参构造时，<b>派生类必须定义构造函数</b>并在初始化列表里调基类构造（2025.10 程序填空23：B(int n):A(n/2)）。</li><li>派生类构造/析构体为空 `B(){}` `~B(){}` 时，基类构造/析构仍会自动调用（2024.04 程序填空39：B(){} ~B(){} 空体也输出 2024年 / 自学考试；补空版本 B() 里 cout&lt;&lt;"4月"&lt;&lt;endl、~B() 里 cout&lt;&lt;"C++程序设计"，输出 2024年4月 / C++程序设计自学考试——B 里不需要写 A(); ~A();，基类版本编译器隐式调用）。</li><li>派生类对象的初始化由<b>基类和派生类的构造函数共同实现</b>（2023.04 填空28）。</li></ul>
+34.2 怎么算（固定大题模型：构造析构顺序输出）<br>
+<span class="formula">Person→Student→Teacher 全空体构造析构：
+输出 Constructor of Person / Constructor of Student / Constructor of Person / Destructor of Teacher
+（2025.10 分析28：s 先构造，t 后构造；析构逆序 t 先）</span>
+34.3 真题<br>
+2026.04 填空14：派生类调基类构造函数在成员初始化列表中完成（2 分）<br>
+2023.10 分析42：三层继承+成员对象 → class data/School/class data/Course/Score（6 分）<br>
+2023.10 单选15：构造 ABC、析构 CBA<br>
+2025.10 单选11：DerivedC:public BaseA,BaseB 构造次序 BaseA→BaseB→DerivedC<br>
+2025.10 分析28：s、t 栈对象 → 构造 Person/Student/Person、析构逆序仅 Teacher 有输出（6 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点35</span><span class="kp-name">多重继承与二义性</span><span class="kp-level lv-B">B</span><span class="kp-freq">2025.10、2024.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">35.1 必背<br>
+<span class="formula">class D : public A, public B { ... };    // 多重继承格式</span>
+<ul><li>两个基类有<b>同名成员</b>时产生<b>二义性</b>：必须用 `基类名::成员` 限定访问。</li><li>构造顺序按<b>继承声明顺序</b>：BaseA → BaseB → D（2025.10 单选11）。</li><li>两个类互相包含时用<b>向前引用声明</b> `class B;`（只声明不定义，声明前不能创建对象）。</li><li>同一基类经两条路径被继承两次 → 用<b>虚基类</b>解决（考点36）。</li></ul>
+35.2 真题<br>
+2025.10 单选11：多重继承构造次序按声明顺序<br>
+2024.04 分析42：虚基类使间接基类只构造一次（配考点36）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点36</span><span class="kp-name">虚基类</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">36.1 必背<br>
+<span class="formula">class x1 : virtual public x {};    // 声明格式（2024.04 单选15 选 B）
+class y : public x1, public x2 {}; // x 经 x1、x2 两条路继承</span>
+<ul><li>作用：多重继承中<b>间接基类成员只保留一份</b>，消除二义性。</li><li>虚基类构造由<b>最远派生类</b>负责，只构造<b>一次</b>（2024.04 分析42：x 只构造 1 次，a 累加到 3，输出 x1:2,x2:3,y:3）。</li></ul>
+36.2 真题<br>
+2024.04 分析42：虚基类构造一次输出 x1:2,x2:3,y:3（6 分）<br>
+2024.04 第15题：class B:virtual public A 正确<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点37</span><span class="kp-name">类型兼容规则与指针转换</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">37.1 必背（赋值兼容三规则）<br>
+<ul><li>派生类对象 → 赋给基类对象 ✔</li><li>派生类对象 → 初始化基类<b>引用</b> ✔（2025.04 单选14 选 B）</li><li>派生类对象地址 → 赋给基类<b>指针</b> ✔（2024.10 单选10）</li><li><b>反向全部不允许</b>（派生类引用=基类对象 ✘、派生类指针=基类地址需强转 ✘）。</li></ul>
+37.2 核心规则（指针转换）<br>
+<ul><li>基类指针指向派生类对象：<b>不能调用派生类新增成员</b>（2024.10 单选11）。</li><li>派生类指针指向基类对象必须<b>强制转换</b> `pD=(D*)&amp;oB;`（2024.04 单选12），写入会越界，慎用。</li><li><b>对象切片</b>：`((Date)t).print()` 把 Time 对象转成 Date 临时对象，只保留基类部分，调基类版本（2025.10 分析29）。</li><li>非 virtual 的 print 经 `((Date*)p)` 调用 → <b>静态绑定调 Date::print</b>；直接 `p-&gt;print()`（Time*）调 Time::print（2025.10 分析29 输出 2025/10/25、9:30、2025/10/25）。</li></ul>
+37.3 真题<br>
+2025.10 分析29：Date/Time 指针与切片三连输出 2025/10/25、9:30、2025/10/25（6 分）<br>
+2025.04 第14题：允许的赋值是"基类的引用=派生类对象"<br>
+2024.10 第10题：公有派生兼容规则=派生类对象地址赋给基类指针<br></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#a3e635;--accent-light:#65a30d">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第六章 多态与虚函数<span class="badge">4考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">全课核心。每年必有一道"基类指针 + 混虚非虚"输出追踪题；2023.10 还出了纯虚函数设计大题。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点38</span><span class="kp-name">多态的概念与联编分类</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.10、2024.04、2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">38.1 必背<br>
+<ul><li>多态：<b>不同对象调用相同名称的函数</b>，产生不同行为（2024.04 单选13）。</li><li><b>编译时多态（静态联编）</b>：函数重载、模板、强制类型转换——编译期确定调用。</li><li><b>运行时多态（动态联编）</b>：虚函数 + 基类指针/引用——运行期确定调用。</li><li>"根据参数个数、类型调用重载函数"<b>不属于</b>运行时多态（2023.10 单选13）。</li><li>静态多态和动态多态的区别：把函数实现和函数<b>关联（绑定/联编）起来的阶段不同</b>（2024.04 填空30）。</li><li>实现多态的<b>两种方式</b>：<b>基类指针</b>指向派生类对象、<b>基类引用</b>绑定派生类对象，配合 virtual 调用（大纲"简单应用"层次，模板见考点39）。</li></ul>
+38.2 真题<br>
+2026.04 第7题：实现多态性的核心机制是虚函数（2 分）<br>
+2024.04 单选13：多态性=不同对象调用相同名称的函数<br>
+2023.10 第13题：重载不属于运行时多态<br>
+2024.04 填空30：绑定阶段不同<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点39</span><span class="kp-name">虚函数与动态绑定</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04~2026.04 全部 7 套</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">39.1 必背（动态绑定两条件 + 虚函数特性）<br>
+<ul><li>动态绑定两条件：① 函数声明为 <b>virtual</b> ② 通过<b>基类指针或引用</b>调用（2023.04 单选13、2025.04 单选15：基类对象指针）。</li><li>虚函数具有<b>继承性</b>：基类声明 virtual，派生类同签名函数自动成为虚函数（2025.10 单选12）。</li><li><b>静态成员函数、友元函数不能是虚函数</b>；构造函数不能虚、operator= 不要虚。</li><li>虚函数一般<b>不声明为内联</b>；类外定义时<b>不重复写 virtual</b>。</li><li>重写（覆盖）要求<b>函数名、参数表、返回值完全相同</b>；全局函数无多态。</li><li>在<b>构造函数和析构函数中不要调用虚函数</b>——此时对象不完整，不会发生动态绑定（大纲"领会"要求）。</li></ul>
+39.2 必背（声明格式）<br>
+<span class="formula">virtual 返回类型 函数名(参数表);     // 类内声明处写 virtual
+返回类型 类名::函数名(参数表){...}   // 类外定义不重复写 virtual</span>
+39.3 怎么算（固定大题模型：混虚非虚输出）<br>
+<span class="formula">Person::study() 非虚、rest() 虚；Student 覆写两者；Person *p = &amp;s;
+p-&gt;study() → 静态绑定 → Person::study
+p-&gt;rest()  → 动态绑定 → Student::rest
+（2023.04 分析44：Student::rest / Person::study / Student::rest）</span>
+<span class="formula">三层 A→B→C，A::f1 非虚、f2 虚；A *pa=&amp;obj(C)：pa-&gt;f1()=A::f1、pa-&gt;f2()=C::f2、pb-&gt;f1()=C::f1
+（2024.10 分析39）</span>
+<ul><li>判定流程：<b>看指针类型（静态）→ 该函数在此类型中是否 virtual → 是则看实际对象类型（动态）</b>。</li><li>去掉 virtual：能编译运行，但结果可能改变（2023.04 单选11 选 D）。</li><li>用 `p-&gt;Traffic::vc()` 类名限定 → 强制调 Traffic 版本（2024.10 单选12）。</li></ul>
+39.4 易错点<br>
+<span class="callout err">"虚函数不具有继承性""静态成员函数可以声明为虚函数"都是错误说法（2023.10 单选14、2024.04 单选14）。</span>
+39.5 真题<br>
+2026.04 阅读19：Base *p=new Derived; p-&gt;show() 输出 Derived（5 分）<br>
+2026.04 设计23：Shape 基类指针指向 Circle/Rectangle 多态调用 getArea()（15 分）<br>
+2023.04 分析44：混虚非虚输出（6 分）<br>
+2024.10 分析39：三层虚函数输出 A::f1 / C::f2 / C::f1（6 分）<br>
+2024.10 程序填空34：补 virtual void f2() 与 A *a=&amp;b<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点40</span><span class="kp-name">虚析构函数</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">40.1 必背<br>
+<ul><li>`A *p = new B; delete p;` 若 ~A <b>非虚</b>：只调<b>基类析构</b>，派生类析构不执行，可能内存泄漏（2023.04 单选12）。</li><li>解决：基类析构声明 `virtual ~A()`，则整条继承链析构全虚。</li><li><b>构造函数不能是虚函数</b>。</li></ul>
+40.2 真题<br>
+2025.10 程序填空24：B *a=new E(...) 经 fun(B*) delete → 必须补 virtual ~B()（6 分）<br>
+2023.10 分析43：delete &amp;p（Math 引用）非虚析构只输出 Math（6 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点41</span><span class="kp-name">纯虚函数与抽象类</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04~2026.04 全部 7 套</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">41.1 必背<br>
+<span class="formula">virtual 返回类型 函数名(参数表) = 0;      // 纯虚函数（2025.04 单选16、2024.04 填空31）
+class Math { virtual void f() const = 0; };  // 含纯虚函数 → 抽象类</span>
+<ul><li>抽象类<b>不能实例化</b>（不能定义对象，2023.04 填空31），但<b>可以定义指针和引用</b>（2024.10 单选14：AbsClass *p）。</li><li>派生类<b>未实现全部</b>纯虚函数仍是抽象类（"派生类必定是具体类"是错误说法，2023.04 单选14、2024.10 单选13）。</li><li>纯虚函数与函数体为空的虚函数共同点：<b>都可以派生出新类</b>（2025.10 单选13）。</li><li>纯虚函数允许没有具体实现，由派生类给出实现（2024.10 单选13 的 B 正确项）。</li></ul>
+41.2 怎么算（固定大题模型：抽象类族设计）<br>
+<ul><li>给基类 Figure（纯虚 showarea）补 Triangle/Square 派生类（2023.10 设计46）；给 Shape（纯虚 getArea）写 Circle(r)/Rectangle(w,h) 重写并经基类指针调用（2026.04 设计23，15 分）。</li><li>写法骨架：公有继承 → 补构造 → 重写全部纯虚函数 → 实现自己的成员。</li></ul>
+41.3 真题<br>
+2026.04 填空11：声明纯虚函数的关键字 virtual（2 分）<br>
+2026.04 设计23：Shape（纯虚 getArea）→Circle/Rectangle 抽象类族设计（15 分）<br>
+2023.10 设计46：Figure→Triangle/Square 实现纯虚 showarea()（5 分）<br>
+2023.10 分析43：Math 抽象类 + Add 实现 + 基类引用调用输出 5/8/2/Math（6 分）<br>
+2025.10 分析43 相关：Math &amp;p=*new Add 经基类引用调用<br></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#fb7185;--accent-light:#e11d48">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第七章 输入/输出流<span class="badge">5考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">I/O 章的格式控制是程序分析每年 1 道 6 分题的稳定来源，必须做到"见操纵符能默写输出"。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点42</span><span class="kp-name">流类库与标准流对象</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2024.04、2024.10、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">42.1 必背（类层次与四对象）<br>
+<ul><li>C++ 没有输入/输出语句，I/O 通过<b>流</b>完成（2024.10 单选15）。</li><li>层次：ios → istream / ostream → iostream → ifstream / ofstream / fstream（iostream 派生出 ostream，2023.04 单选15）。</li><li>ifstream 从 <b>istream</b> 派生（2024.04 填空33）；ofstream 从 ostream 派生；fstream 从 iostream 派生。</li></ul>
+<table><tr><th>对象</th><th>类</th><th>缓冲</th><th>重定向</th></tr><tr><td>cin</td><td>istream</td><td>有</td><td>可（freopen）</td></tr><tr><td>cout</td><td>ostream</td><td>有</td><td>可</td></tr><tr><td>cerr</td><td>ostream</td><td><b>无</b></td><td><b>不可</b></td></tr><tr><td>clog</td><td>ostream</td><td>有</td><td><b>不可</b></td></tr></table>
+<ul><li>四个标准流对象：<b>cin、cout、cerr、clog</b>（2023.10 单选16）。</li><li><b>cerr 非缓冲、clog 缓冲，都不能重定向</b>；cin 与 cerr 的共同点：都是<b>标准流对象</b>（2025.10 单选15）。</li><li>cin 是 istream 类的<b>对象</b>，不是类（2023.04 单选16）。</li></ul>
+42.2 真题<br>
+2026.04 填空15：标准输入流对象是 cin（2 分）<br>
+2023.10 第16题：istream 的对象是 cin<br>
+2025.10 第15题：cin 与 cerr 共同点是标准流对象<br>
+2023.04 单选15：iostream 派生出 ostream<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点43</span><span class="kp-name">流操纵符（格式控制）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04~2025.10 全部 6 套、2026.04 缺席（6/7 套）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">43.1 必背（操纵符速查）<br>
+<table><tr><th>操纵符</th><th>作用</th><th>坑</th></tr><tr><td>setw(n) / width(n)</td><td>设最小域宽</td><td><b>只对随后一项有效</b>（2023.04 单选17）</td></tr><tr><td>setfill(c) / fill(c)</td><td>填充字符</td><td>配合 setw 用</td></tr><tr><td>setprecision(n) / precision(n)</td><td>默认=<b>n 位有效数字</b>；配 fixed/scientific 后=<b>小数位数</b></td><td>1.234567 配 3 → 1.23</td></tr><tr><td>fixed / scientific</td><td>定点 / 科学计数法（2025.04 单选17）</td><td>scientific 输出 1.045600e+001</td></tr><tr><td>hex / oct / dec / setbase(n)</td><td>进制</td><td>切换要 setf(新进制, ios::basefield)，见考点44</td></tr><tr><td>showpos</td><td>正数前加 +</td><td>cnt=+3（2024.10 分析40）</td></tr><tr><td>showbase / showpoint / uppercase</td><td>显示进制前缀/小数点/大写</td><td></td></tr><tr><td>left / right / internal</td><td>对齐（2025.04 分析40）</td><td>默认右对齐</td></tr><tr><td>endl</td><td>换行并<b>刷新缓冲区</b>（2024.04 填空32）</td><td></td></tr><tr><td>ws / boolalpha</td><td>跳过前导空白 / 布尔按字面</td><td></td></tr></table>
+<ul><li>setw、setprecision、setfill 等带参操纵符要包含 <b>iomanip</b> 头文件（2024.04 单选16、2025.10 单选14：指定数据输入/输出格式）。</li></ul>
+43.2 怎么算（固定大题模型：默写输出）<br>
+判定流程：① 数宽度（内容不足补填充符）② 定对齐（默认右）③ 定精度（默认 6 位有效）④ 看进制/符号/科学计数法标志。<br>
+<span class="formula">cout&lt;&lt;setfill('*')&lt;&lt;setw(8)&lt;&lt;234;          →  *****234
+cout&lt;&lt;setw(8)&lt;&lt;setprecision(3)&lt;&lt;1.234567;  →  ␣␣␣␣1.23  （默认空格填充；2023.04 分析45 里因上一行 setfill('*') 仍生效，第4行输出 ****1.23——setfill 持久，不重新设就沿用）
+cout.width(10); cout.fill('#'); cout&lt;&lt;10.456;  →  ####10.456
+cout&lt;&lt;showpos&lt;&lt;cnt;                        →  cnt=+3      （2024.10 分析40）
+cout.width(4); cout.fill('#'); cout&lt;&lt;setiosflags(ios::right)&lt;&lt;123;   →  #123</span>
+43.3 真题<br>
+2023.04 分析45：setf dec + setw/setfill/precision + put（6 分）<br>
+2023.10 分析44：showpos/hex/width#fill/left/scientific/put('a'+25)（6 分）<br>
+2025.04 分析40：width(4) fill('#') right → #123，fill('+') left → 456+（6 分）<br>
+2025.10 分析30：width 一次有效 ␣␣␣*a= / 123.457 / +123.457 / ␣␣-123.457 / +1.234568e+002（6 分）<br>
+2024.10 分析40：setprecision(5) 按有效数字 → 123.46，setw(10) 左补 4 个空格；setfill('*') setw(8) → **123_Hi；showpos → cnt=+3（6 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点44</span><span class="kp-name">标志字与 setf/setiosflags</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">44.1 必背（两种设置方式）<br>
+<span class="formula">cout.setf(ios::hex, ios::basefield);   // 成员函数：设置新进制前清互斥域（2023.10 单选17）
+cout.setf(ios::scientific);
+cout &lt;&lt; setiosflags(ios::left) &lt;&lt; ...;   // 操纵符版
+cout &lt;&lt; resetiosflags(ios::left);        // 清除标志</span>
+<ul><li><b>三大互斥域</b>：<b>basefield（dec|oct|hex）、adjustfield（left|right|internal）、floatfield（scientific|fixed）</b>。</li><li><b>标志字是什么</b>：每个流对象内部有一组格式开关位，`ios::xxx` 就是这些开关的常量名——`ios::dec` 十进制、`ios::oct` 八进制、`ios::hex` 十六进制、`ios::left/right` 对齐、`ios::scientific` 科学计数法……而 <b>`ios::basefield` 不是开关，是「域掩码」</b>：它等于 dec|oct|hex 三个开关的合并，用来一次性圈住整个进制域；同理 adjustfield 圈对齐域、floatfield 圈浮点域。</li><li><b>setf 两参数形式 `setf(新标志, 域掩码)` 的意思</b>：先把域掩码圈住的旧开关<b>全部清零</b>，再打开新开关——保证同域互斥的标志只剩一个。`cout.setf(ios::dec, ios::basefield)` 读作「进制域清零后设为十进制」，`setf(ios::hex, ios::basefield)` 就是「清掉 dec/oct 残留、切到十六进制」（2023.10 单选17）。<b>单参数 `setf(标志)` 只置 1 不清 0</b>，同域旧标志还挂着，dec|hex 同置后进制不可靠——所以进制/对齐/浮点域切换必须用两参数形式。</li><li>2023.04 分析45 首句 `cout.setf(ios::dec,ios::basefield)`：默认本来就是十进制，这句是「保险动作」，输出仍是 234，认识写法即可。</li><li>常见标志字：skipws、dec/oct/hex、showbase、showpoint、uppercase、showpos、scientific、fixed、unitbuf。</li><li>setiosflags/resetiosflags 作用<b>持久</b>；setw/width <b>一次有效</b>（教材表 7-6 口径）。</li><li>`setiosflags(ios::resetiosflags)` 是错误用法——resetiosflags 是独立操纵符不是标志字（2025.10 单选16）；教材习题答案中 `setiosflags(ios::hex)` 是合法用法。</li></ul>
+44.2 真题<br>
+2023.10 第17题：清除基数位设十六进制 → setf(ios::hex,ios::basefield)<br>
+2025.10 第16题：setiosflags(ios::resetiosflags) 不正确<br>
+2025.04 填空29：通过 setiosflags() 设置标志字进行格式控制<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点45</span><span class="kp-name">cout 成员函数与重定向</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2024.04、2025.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">45.1 必背（cout 常用成员函数）<br>
+<table><tr><th>成员函数</th><th>等价操纵符</th></tr><tr><td>cout.width(n)</td><td>setw(n)，一次有效</td></tr><tr><td>cout.fill(c)</td><td>setfill(c)</td></tr><tr><td>cout.precision(n)</td><td>setprecision(n)</td></tr><tr><td>cout.setf(标志,域) / unsetf</td><td>setiosflags / resetiosflags</td></tr><tr><td>cout.flags()</td><td>读/设置整个标志字</td></tr></table>
+<ul><li><b>put(c)</b>：输出单个字符，参数是字符但可传表达式 `cout.put(c+2)` 输出 'c'（2023.04 分析45）。</li><li><b>write(字符串, n)</b>：输出指定长度的字符串。</li><li><b>重定向</b>（大纲要求）：`freopen("a.txt", "r", stdin);` 把标准输入重定向到文件；`freopen("out.txt","w",stdout);` 重定向输出（2023.04 程序填空36）。</li></ul>
+45.2 真题<br>
+2023.04 分析45：cout.put(c+2) 输出字符 c<br>
+2024.04 分析43：cout.width(10) 输出左补空格<br>
+2023.04 程序填空36：补 freopen("a.txt","r",stdin)<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点46</span><span class="kp-name">cin 输入成员函数与流状态</span><span class="kp-level lv-B">B</span><span class="kp-freq">2023.04、2024.10、2025.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">46.1 必背（cin 常用成员函数）<br>
+<table><tr><th>成员函数</th><th>功能</th><th>坑</th></tr><tr><td>get()</td><td>读单个字符</td><td>不跳过空白</td></tr><tr><td>get(字符数组,n,终止符)</td><td>读一行，最多 n-1 字符</td><td>终止符留在流中</td></tr><tr><td>getline(数组,n)</td><td>读一行，<b>行结束符 '\n'</b>（2023.04 填空32）</td><td>读 n-1 字符自动加 '\0'</td></tr><tr><td>ignore(数量,终止符)</td><td>跳过若干字符（2025.04 程序填空35）</td><td>cin.ignore(10,',')</td></tr><tr><td>peek()</td><td>预读下一字符不取走</td><td></td></tr><tr><td>eof()</td><td>读到文件结束符返回真</td><td>键盘上 Ctrl+Z</td></tr><tr><td>gcount()</td><td>上次读取的字符数</td><td>配 get/read</td></tr></table>
+<ul><li><b>while(cin&gt;&gt;n)</b> 以 <b>Ctrl+Z</b>（failbit）结束循环（2024.10 单选16）。</li><li>流状态标志：<b>goodbit=0、eofbit=1、failbit=2、badbit=4</b>；判断函数 `good()/eof()/fail()/bad()`，读整个状态 `rdstate()`，恢复 `clear()`。</li></ul>
+46.2 真题<br>
+2025.04 程序填空35：补 !cin.eof() 与 getline（4 分）<br>
+2024.10 第16题：while(cin&gt;&gt;n){cnt++;} 的解释<br>
+2023.04 填空32：getline 的行结束符是 '\n'<br></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#4ade80;--accent-light:#16a34a">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第八章 文件操作<span class="badge">4考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">每年程序设计必考一道文件题。打开模式单选也几乎年年有。模板必须默写级熟练。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点47</span><span class="kp-name">文件流类与打开模式</span><span class="kp-level lv-S">S</span><span class="kp-freq">2023.04~2025.10 全部 6 套、2026.04 缺席——设计题首次不考文件（6/7 套）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">47.1 必背（类与头文件）<br>
+<ul><li>头文件：<b>fstream</b>（2023.10 单选18）；三个流类 <b>ifstream 读 / ofstream 写 / fstream 读写</b>。</li><li>文件本质是<b>字节流</b>；文本文件记录按行分隔（2023.04 单选19）；文件名是<b>字符串常量</b>（2025.10 单选18）。</li><li>文件分类：文本文件 / 二进制文件；顺序存取 / 随机存取。</li></ul>
+<table><tr><th>模式</th><th>含义</th><th>坑</th></tr><tr><td>ios::in</td><td>读方式</td><td>文件不存在则<b>出错</b></td></tr><tr><td>ios::out</td><td>写方式</td><td>文件已存在则<b>清空</b></td></tr><tr><td>ios::app</td><td><b>追加</b>（2025.04 单选18）</td><td>总写到末尾</td></tr><tr><td>ios::ate</td><td>打开后定位到末尾</td><td>可移动</td></tr><tr><td>ios::trunc</td><td>截断清空</td><td></td></tr><tr><td>ios::binary</td><td>二进制方式</td><td>组合用 \</td><td>连接：ios::out\</td><td>ios::binary</td></tr></table>
+<ul><li>两种打开方式：`ifstream infile("D:\\f1.txt", ios::in);` 或先定义再 `infile.open("data.dat");`（2023.10 单选19、2023.04 填空33）。</li><li>读方式打开 → ifstream + ios::in；<b>二进制写</b> → ios::out|ios::binary（2024.04 单选18）。</li><li>判断打开失败：`if(!infile) {...}` 或 `if(infile.fail())`。</li><li><b>close()</b>：把缓冲区数据<b>写入文件</b>、加文件结束标记、断开连接（2025.04 填空30）。</li></ul>
+47.2 真题<br>
+2024.10 第18题：ios::out 表示以写方式打开<br>
+2025.04 第18题：追加方式是 ios::app<br>
+2023.10 第19题：ifstream infile("D:\\f1.txt",ios::in) 正确<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点48</span><span class="kp-name">文本文件读写</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04、2023.10、2024.10、2025.04、2025.10（2024.04 设计47 复核改判：写入/读出是成员函数非文件操作，归考点14；2026.04 缺席——5/7 套）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">48.1 必背（读写方式）<br>
+<span class="formula">ofstream fout("b.txt");            // 写文本
+fout &lt;&lt; name &lt;&lt; " " &lt;&lt; score &lt;&lt; endl;
+ifstream fin("a.txt");             // 读文本
+fin &gt;&gt; a &gt;&gt; b;                     // 按空白分隔提取
+while (fin &gt;&gt; a &gt;&gt; b) { ... }      // 按数据项读到 EOF（条件用读取表达式）
+while (fin.getline(buf,80)) {...}  // 逐行读到 EOF
+fin.get(ch);  fout.put(ch);        // 逐字符</span>
+<ul><li>文本文件是<b>无结构字节流</b>，Windows 下文本方式读写会做 `\r\n` ↔ `\n` 转换。</li><li>逐行读用 `fin.getline(buf, n)`；按数据项读用 `fin &gt;&gt; x`；循环条件<b>直接用读取表达式</b> `while (fin &gt;&gt; a &gt;&gt; b)` 或 `while (fin.getline(buf,n))`，不要用 `!fin.eof()`。</li><li>读一行加行号写出（2023.04 设计46）、读成绩排序写回（2024.10 设计41）都走这条路径。</li><li><b>逐行加行号写出模板</b>（2023.04 设计46，已编译实测）：`char buf[80]; int line = 0; while (fin.getline(buf, 80)) { line++; fout &lt;&lt; line &lt;&lt; ": " &lt;&lt; buf &lt;&lt; endl; }`——getline(buf, n) 第二参是最多读入的字符数（n−1 个 + 自动补 `\0`），遇 `\n` 停止并<b>把换行符从流中取走丢弃</b>，buf 里就是纯行内容；`&gt;&gt;` 按空白分隔提取，会把一行代码按空格切碎、丢掉缩进，做不了整行处理；当前文件夹下的文件直接写文件名，不用带路径。</li></ul>
+<span class="callout err">「读到哪里结束」的判断是考点48 最容易错的地方：while (fin &gt;&gt; x) 的读取表达式本身作条件，读成功为真、读失败（到文件尾）为假，循环自然结束。改成 while(!fin.eof()) { fin &gt;&gt; a &gt;&gt; b; 输出; } 一定多输出一遍最后一条记录——eof 是"上一次读取失败之后"才置位的标志，读完最后一条时它还是 false，循环会再进一次，这次读取失败但变量里仍留着上一条的值（sentry 失败时操作数不被修改），于是最后一条记录输出两遍。逗号误写 while (fin &gt;&gt; a, b, c) 只把最后一个操作数当条件，前面的读取被丢弃，常导致死循环；字段顺序也要和文件中的列一一对应，写反了整行串位。</span>
+48.2 真题<br>
+2023.04 设计46：读 dev1.cpp 加行号写 dev2.txt（5 分）<br>
+2025.04 设计42：score.txt 读学号姓名成绩显示（10 分）<br>
+2023.10 设计47：读 data.txt 排序写 res.txt（10 分）<br>
+2025.10 设计32：file1.txt→file2.txt 复制并显示、打开失败提示（10 分）<br>
+2024.10 设计41：c 盘 score.txt 读姓名+总成绩 → 显示 → 成绩降序 sort → 写 out.txt（10 分）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点49</span><span class="kp-name">二进制文件与 read/write</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.04、2025.10、2024.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">49.1 必背<br>
+<span class="formula">ostream&amp; write(const char *pch, int nCount);   // 输出字节序列（2025.10 单选17）
+istream&amp; read(char *pch, int nCount);
+int gcount();                                   // 上次读到的字节数</span>
+<ul><li>二进制方式打开：`ios::out | ios::binary`（2024.04 单选18）；模式参数解释题：第 1 参是文件名、第 2 参是打开模式（2024.10 单选18）。</li><li>write/read 按<b>字节</b>搬运，不做格式转换；对象可直接整体写入 `fout.write((char*)&amp;obj, sizeof(obj))`。</li><li><b>逐字符 read/write 复制模板</b>（2024.04 设计46）：`char ch; while(fin.read(&amp;ch,1)) fout.write(&amp;ch,1);`——read 要 char* 地址所以写 `&amp;ch`；read 返回流引用可直接作循环条件，读到文件尾自动停；打开后先 `if(!fin)` 判失败，路径反斜杠双写。</li><li><b>文本 vs 二进制差异</b>：文本方式对换行做转换，二进制方式原样搬运。</li><li>使用文件的一般步骤：<b>打开 → 读写 → 关闭</b>（2024.10 单选17：使用流类完成打开、读、写、关闭）。</li></ul>
+49.2 真题<br>
+2025.10 第17题：向输出流插入字节序列的函数是 ostream&amp; write(const char*,int)<br>
+2024.04 设计46：f1.txt→f2.txt 逐字符 read/write 复制（5 分）<br>
+2024.10 第17题：使用流类完成文件打开读写关闭<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点50</span><span class="kp-name">文件随机访问</span><span class="kp-level lv-D">D</span><span class="kp-freq">2023.04</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">50.1 必背<br>
+<span class="formula">input.seekg(100, ios::cur);   // 读指针从当前位置向后移 100 字节（2023.04 单选18）</span>
+<ul><li>基准：ios::beg（开头）/ ios::cur（当前）/ ios::end（末尾）；seekg 移<b>读</b>指针，seekp 移<b>写</b>指针，tellg/tellp 返回当前位置。</li><li>大纲要求"综合应用"层次，但样本中仅 2023.04 考过 1 次单选，保持熟练即可。</li></ul></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#e879f9;--accent-light:#a21caf">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第九章 模板<span class="badge">3考点</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">模板每年 2~3 道选择 + 约两年一次程序填空。概念题集中在"实例化"与"匹配顺序"。<br></div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点51</span><span class="kp-name">函数模板</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04~2025.10 全部 6 套、2026.04 缺席（6/7 套）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">51.1 必背<br>
+<span class="formula">template &lt;typename T&gt;          // 或 template &lt;class T&gt;
+T max1(T x, T y) { return (x&gt;y)?x:y; }   // T 不能作函数模板名（2024.04 单选19）</span>
+<ul><li>实例化由<b>编译器</b>完成，生成<b>模板函数</b>（具体函数，2023.04 填空34），生成实例时才生成目标代码（2025.10 单选19）。</li><li>同一次调用的实参类型必须<b>一致</b>：max(10,100) ✔、max(10,10.5) ✘（2023.10 单选20）。</li><li>add("a","b","c") 不合法——指针相加无意义（2023.04 单选20）。</li></ul>
+51.2 核心规则（与同名普通函数匹配顺序）<br>
+1. 先找<b>参数完全匹配的普通函数</b>（2024.10 单选19）；<br>
+2. 再找<b>完全匹配的模板函数</b>；<br>
+3. 实参经自动类型转换能匹配普通函数；<br>
+4. 都不匹配 → 报错。<br>
+<ul><li>函数模板可以重载（不同类型、不同个数参数均可，2025.04 单选19）。</li></ul>
+51.3 真题<br>
+2023.10 程序填空40：补 template&lt;typename AT&gt; AT max1(AT x,AT y)（4 分）<br>
+2025.10 程序填空25：补模板头与 T max(T x,T y)（6 分）<br>
+2023.04 填空34：函数模板实例化生成模板函数<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点52</span><span class="kp-name">类模板</span><span class="kp-level lv-A">A</span><span class="kp-freq">2023.04~2025.10 全部 6 套、2026.04 缺席（6/7 套）</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">52.1 必背<br>
+<span class="formula">template &lt;class T&gt; class Sample { T n; ... };
+template &lt;class T&gt; int Sample&lt;T&gt;::operator==(Sample &amp;s) { ... }  // 类外定义要再写 template 行
+Sample&lt;int&gt; s1(2);      // 实例化：模板类 → 对象（2025.04 单选20）</span>
+<ul><li>`Tclass Tobj;` 出错：类模板<b>必须提供类型实参</b>，应写 `Tclass&lt;int&gt; Tobj;`（2023.10 填空35）。</li><li>类外定义成员函数格式：`T TestClass&lt;T&gt;::getData(形参表){...}`（2025.10 单选20）。</li><li>类模板是对<b>不同类的公共性质</b>的抽象；"类模板与类是同一层次抽象"是错误说法（2024.04 单选20）。</li><li>类模板成员能取<b>多种数据类型</b>（泛型类型，2024.10 填空30）；使用模板（泛型）可增强可扩充性、精简代码（2024.10 填空28）。</li></ul>
+52.2 怎么算（分析大题模型：类模板链表）<br>
+<ul><li>2024.04 分析45：List&lt;int&gt; 头结点 + new List&lt;int&gt;(i*2) 五次 append → 输出 2 4 6 8 10 / total=5（静态 total 每次 append 自增）。</li></ul>
+52.3 真题<br>
+2024.10 程序填空35：补 template&lt;class T&gt; 与 Sample&lt;int&gt; s1(2)<br>
+2024.04 分析45：List&lt;int&gt; 类模板链表输出（6 分）<br>
+2025.10 程序填空23 相关：A&lt;int&gt; a; A&lt;double&gt; b;（类模板对象）<br></div>
+</div>
+<div class="kp">
+<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点53</span><span class="kp-name">类模板的派生与友元</span><span class="kp-level lv-C">C</span><span class="kp-freq">2024.10</span><span class="kp-arrow">▼</span></div>
+<div class="kp-detail">53.1 必背（四种继承情况）<br>
+<ul><li>普通类继承类模板：`class B : public A&lt;int&gt; {}`。</li><li>类模板继承普通类：`template&lt;class T&gt; class B : public A {}`。</li><li>类模板继承类模板：`template&lt;class T&gt; class B : public A&lt;T&gt; {}`。</li><li>类模板继承模板类：`template&lt;class T&gt; class B : public A&lt;T2&gt; {}`。</li><li>类模板的友元：`friend void f(X&lt;T&gt;&amp;);`（2024.10 单选20）。</li><li>大纲要求"掌握类模板的派生（领会）"，六套样本仅 2024.10 单选20 间接考到。</li></ul></div>
+</div>
+</div>
+</div>
+
+<div class="ch" style="--accent:#facc15;--accent-light:#a16207">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">高频公式（代码模板）</span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">考前把以下模板默写到肌肉记忆——程序填空 5 题基本从这里面出。<br>
+<span class="formula">// 1) 构造 + 初始化列表（常量成员/成员对象/基类构造都必须走列表）
+Circle(double xx=0,double yy=0,double rr=0):Point(xx,yy),r(rr){}</span>
+<span class="formula">// 2) 深拷贝复制构造（程序填空最爱）
+A(const A &amp;t){ if(this!=&amp;t){ a=t.a; p=new int(*t.p); } }</span>
+<span class="formula">// 3) 赋值运算符（成员、防自赋值、返回 *this）
+A&amp; operator=(const A &amp;a){ if(this!=&amp;a){...} return *this; }</span>
+<span class="formula">// 4) 运算符重载四件套
+T operator+(const T &amp;o) const;                    // 成员二元：1 参
+friend T operator+(T &amp;a, T &amp;b);                   // 友元二元：2 参
+T&amp; operator++();    T operator++(int);            // 前置返引用 / 后置加 int
+friend ostream&amp; operator&lt;&lt;(ostream &amp;out, T &amp;o){ out&lt;&lt;o.x; return out; }</span>
+<span class="formula">// 5) 继承骨架
+class D : public B {
+public:
+    D(int x):B(x){}          // 初始化列表调基类构造
+    virtual void f(){}       // 重写虚函数
+    ~D(){}
+};</span>
+<span class="formula">// 6) 纯虚函数 / 抽象类
+virtual void showarea() const = 0;    // 派生类必须全部实现</span>
+<span class="formula">// 7) 文件三连
+ifstream fin("a.txt", ios::in);       // 读
+ofstream fout("b.txt", ios::out);     // 写（清空）；追加用 ios::app
+while(fin&gt;&gt;x){ ... }  fin.close(); fout.close();</span>
+<span class="formula">// 8) 重定向
+freopen("a.txt", "r", stdin);</span>
+<span class="formula">// 9) 类模板类外定义
+template &lt;class T&gt; T TestClass&lt;T&gt;::getData(形参表){ ... }</span>
+<span class="formula">// 10) 读入数组 + sort 排序（#include &lt;algorithm&gt;）
+struct Stu { string name; double score; };
+bool cmp(const Stu &amp;x, const Stu &amp;y){ return x.score &gt; y.score; }   // 大于号 = 降序
+sort(s, s + n, cmp);    // 升序可省略 cmp</span>
+<span class="formula">// 11) 基础类设计保底（2026.04 设计22、2025.04 设计41——第一题送分 15/10 分）
+class Student {
+    int id;  string name;  double score;              // 私有成员（class 默认 private）
+public:
+    Student(int i, string n, double s): id(i), name(n), score(s) {}   // 初始化列表
+    void showInfo(){ cout&lt;&lt;id&lt;&lt;" "&lt;&lt;name&lt;&lt;" "&lt;&lt;score&lt;&lt;endl; }
+};
+int main(){ Student s(1,"张三",90.5); s.showInfo(); }</span></div>
+</div>
+</div>
+
+<div class="ch" style="--accent:hsl(67,70%,62%);--accent-light:hsl(67,78%,38%)">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">高频易错</span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro"><span class="callout err">类定义结尾漏分号；构造函数写返回类型；析构函数带参数——三个"不可能"。</span>
+<span class="callout err">后置 ++ 重载必须加 int 形参区分；前置返回引用、后置返回值（修改前的副本）。</span>
+<span class="callout err">=new 出来的对象必须 delete；new[] 必须配 delete[]；基类指针 delete 派生对象必须虚析构。</span>
+<span class="callout err">setw/width 只对下一个输出有效；setprecision 默认是有效数字位数，加 fixed/scientific 后才是小数位。</span>
+<span class="callout err">class 默认 private 继承；派生类对象永远访问不了基类私有成员；派生类指针=基类地址必须强转。</span>
+<span class="callout err">复制构造形参必须是引用（值传递会无限递归）；静态成员类外定义不再写 static。</span>
+<span class="callout err">友元关系单向、不传递；静态成员函数没有 this，也不能声明为虚函数。</span>
+<span class="callout err">构造顺序：基类→成员对象→自身（析构相反）；虚基类只构造一次、由最远派生类负责。</span>
+<span class="callout err">operator double() 不写返回类型；强制类型转换运算符只能重载为成员函数。</span>
+<span class="callout err">标识符三不：不能数字开头（123abc）、不能是关键字（int）、不能含连字符等非字母数字下划线符号（abc-123）。</span></div>
+</div>
+</div>
+
+<div class="ch" style="--accent:hsl(204,70%,62%);--accent-light:hsl(204,78%,38%)">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">题型索引</span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro">程序分析·五大坑位模型（2023–2025 每年 5×6=30 分；2026.04 改 4×5=20 分且明显基础化）<br>
+【题型】读程序写结果 【输入】含类定义与 main 的完整程序 【核心】按执行顺序追踪<br>
+<span class="formula">① 构造析构顺序：对象定义顺序 → 构造输出 → 离开作用域逆序析构（虚基类只一次、封闭类先成员后自身）
+② 静态成员累加：静态变量初值 → 每次调用修改保留 → 循环代入
+③ 运算符重载追踪：分清成员/友元 → 前置/后置 → get() 类自增副作用逐个算
+④ 虚函数绑定：基类指针 → 该函数在基类是否 virtual → 虚则看实际对象，非虚则看指针类型
+⑤ 流格式输出：宽度(填充+对齐) → 精度(有效位/小数位) → 进制/符号/科学计数法
+⓪ 基础追踪（2026.04 新面孔）：指针解引用 *p=*p+*q、递归展开回代 fun(4)=24、for+break 计数——难题不考时它顶上</span>
+程序填空·六大套路（2023–2025 为 5×4~6=20~30 分；2026.04 改 2 题 5 空×4=20 分）<br>
+<span class="formula">① 补构造函数/初始化列表        ② 补友元声明 friend void f(类&amp;)
+③ 补运算符重载函数            ④ 补继承头 class D:public B + 初始化列表
+⑤ 补模板头 template&lt;typename T&gt; ⑥ 补深拷贝/文件打开/重定向
+⑦ 补函数形参表与调用（2026.04 新面孔：max(int a,int b) / max(x,y)）</span>
+程序设计·两大题材（2023–2025 为 2×10=20 分；2026.04 改 2×15=30 分）<br>
+【题材一】文件：打开→读（while(fin&gt;&gt;x) 读取表达式作条件）→处理（排序/统计）→写→关闭。失败判断：`if(!fin){cout&lt;&lt;"打开失败";return 0;}`（2023–2025 每年必考；2026.04 未考，保留复习）<br>
+【题材二】继承族/抽象类族：基类（protected 成员+虚函数/纯虚）→ 派生类（初始化列表调基类构造、重写虚函数、新增成员函数 Area/getArea 等）→ 主函数基类指针多态调用（2026.04 设计23 即 Shape→Circle/Rectangle）。<br>
+【保底题】2025 起第一小题连续三套考纯基础（2025.04 圆周长面积、2025.10 数组排序 sortA、2026.04 Student 类设计）——模板见高频公式 10)/11)，确保 15 分拿满。<br></div>
+</div>
+</div>
+
+<div class="ch" style="--accent:hsl(342,70%,62%);--accent-light:hsl(342,78%,38%)">
+<div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">考前速记</span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="ch-intro"><ul><li>题型：2023–2025 口径 = 单选 20 + 填空 0~10 + 程序填空 20~30 + 程序分析 30 + 程序设计 20；2026.04 改版 = 单选 10×2 + 填空 5×2 + 程序填空 5 空×4 + 程序阅读 4×5 + 程序设计 2×15（是否延续【待核实】）。</li><li>程序分析五坑位：顺序 / 静态 / 重载 / 虚绑定 / 格式；2026.04 改考基础追踪：指针解引用 / 构造析构 / 递归 / 虚绑定。</li><li>标识符：字母/数字/下划线组成、不能数字开头、不能是关键字、区分大小写。</li><li>引用：必须初始化、是别名、不能换绑定、不能为空。</li><li>不可重载：`. .* :: sizeof ?: #`；只能成员重载：`= [] () -&gt;`；默认已重载：`= &amp;`。</li><li>动态绑定两条件：virtual + 基类指针/引用。</li><li>纯虚函数：`virtual 返回类型 函数名(参数)=0;` 抽象类不能实例化、可定义指针引用。</li><li>后置 ++ 加 int 形参；流插入提取只能友元且返回流引用。</li><li>setw 一次有效；setprecision 默认有效位；fixed/scientific 后变小数位。</li><li>互斥域：basefield / adjustfield / floatfield，切换前先清。</li><li>class 默认 private 继承；protected=外界不可、派生类可。</li><li>构造顺序：基类→成员对象→自身；析构相反；虚基类一次。</li><li>复制构造三时机：初始化对象、传值实参、返回对象。</li><li>常对象只能调常成员函数；const 版本与非 const 版本构成重载。</li><li>静态成员：类外定义不写 static；静态函数无 this。</li><li>友元：单向、不传递、可访问私有。</li><li>cerr 非缓冲、clog 缓冲，都不能重定向。</li><li>流状态：goodbit 0 / eofbit 1 / failbit 2 / badbit 4；Ctrl+Z 结束 cin。</li><li>文件模式：in（不存在出错）/ out（清空）/ app（追加）/ binary；二进制写= out|binary。</li><li>函数匹配顺序：普通函数 → 模板函数 → 转换后普通函数 → 报错。</li><li>类模板实例化：模板类→对象，必须给类型实参。</li><li>空类大小 1 字节；成员按最宽类型补齐。</li></ul></div>
+</div>
+</div>
+
+<script>
+function toggleTheme(){var r=document.documentElement,next=r.getAttribute('data-theme')==='light'?'dark':'light';r.setAttribute('data-theme',next);try{localStorage.setItem('theme',next)}catch(e){}}
+document.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var el=e.target;if(el.classList&&el.classList.contains('ch-title')){e.preventDefault();toggleCh(el)}else if(el.classList&&el.classList.contains('kp-title')){e.preventDefault();toggleKp(el)}});
+function toggleCh(el){var ch=el.closest('.ch'),isOpen=ch.classList.contains('open');ch.classList.toggle('open');el.setAttribute('aria-expanded',String(!isOpen));if(!isOpen){ch.querySelectorAll('.kp-detail').forEach(function(d){d.style.display='none'});ch.querySelectorAll('.kp').forEach(function(k){k.classList.remove('open')});ch.querySelectorAll('.kp-title').forEach(function(t){t.setAttribute('aria-expanded','false')})}}
+function toggleKp(el){var kp=el.closest('.kp'),isOpen=kp.classList.contains('open');kp.classList.toggle('open');el.setAttribute('aria-expanded',String(!isOpen));kp.querySelector('.kp-detail').style.display=isOpen?'none':'block'}
+function mdInline(n){if(n.nodeType===3)return n.textContent;if(n.nodeType!==1)return '';if(n.tagName==='BR')return '\n';var s='';for(var i=0;i<n.childNodes.length;i++)s+=mdInline(n.childNodes[i]);var t=n.tagName;if(t==='B'||t==='STRONG')return '**'+s.trim()+'**';return s}
+function mdTable(t){var rows=[].map.call(t.rows,function(r){return [].map.call(r.cells,function(c){return mdInline(c).trim().replace(/\|/g,'\\|').replace(/\n/g,' ')})});if(!rows.length)return '';function line(cs){return '| '+cs.join(' | ')+' |'}var out=[line(rows[0]),line(rows[0].map(function(){return '---'}))];for(var i=1;i<rows.length;i++)out.push(line(rows[i]));return out.join('\n')}
+function mdDetail(el){var lines=[],cur='';function flush(){cur=cur.trim();if(cur)lines.push(cur);cur=''}[].forEach.call(el.childNodes,function(n){if(n.nodeType===3){cur+=n.textContent.replace(/\s+/g,' ');return}if(n.nodeType!==1)return;var tag=n.tagName;if(tag==='svg'){return}if(tag==='BR'){flush();return}if(tag==='TABLE'){flush();lines.push(mdTable(n));return}if(tag==='UL'){flush();[].forEach.call(n.children,function(li){lines.push('- '+mdInline(li).trim())});return}var txt=mdInline(n).trim();if(!txt)return;if(n.classList.contains('kp-sub')){flush();lines.push('#### '+txt);return}if(n.classList.contains('formula')){flush();txt.split('\n').forEach(function(l){lines.push('> '+l)});return}if(n.classList.contains('callout')){flush();txt.split('\n').forEach(function(l){lines.push('> '+l)});return}cur+=mdInline(n)});flush();return lines.join('\n\n')}
+function exportMarkdown(){var parts=[];var h1=document.querySelector('header h1');parts.push('# '+(h1?h1.textContent.trim():'考点笔记'));var stats=[].map.call(document.querySelectorAll('.header-stat'),function(s){return s.textContent.replace(/\s+/g,' ').trim()});if(stats.length)parts.push('> '+stats.join(' · '));[].forEach.call(document.querySelectorAll('.ch'),function(ch){var ts=ch.querySelector('.ch-title span');var title='';if(ts){var c=ts.cloneNode(true);[].forEach.call(c.querySelectorAll('.badge'),function(b){b.remove()});title=c.textContent.trim()}parts.push('## '+title);[].forEach.call(ch.querySelectorAll('.kp'),function(kp){var num=kp.querySelector('.kp-num'),name=kp.querySelector('.kp-name');var head=((num?num.textContent.trim():'')+' '+(name?name.textContent.trim():'')).trim();parts.push('### '+head);var d=kp.querySelector('.kp-detail');var dt=d?mdDetail(d):'';if(dt)parts.push(dt)})});parts.push('---');parts.push('*导出于 '+new Date().toLocaleString('zh-CN',{hour12:false})+'*');var md=parts.join('\n\n');var blob=new Blob(['\ufeff'+md],{type:'text/markdown;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='04737C++程序设计考点笔记.md';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000);return md}
+function downloadBlob(blob,name){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}
+function showToast(msg,ms){var t=document.getElementById('exportToast');if(!t){t=document.createElement('div');t.className='export-toast';t.id='exportToast';document.body.appendChild(t)}t.style.display='block';t.textContent=msg;clearTimeout(showToast._t);if(ms)showToast._t=setTimeout(function(){t.style.display='none'},ms);return t}
+function hideToast(){var t=document.getElementById('exportToast');if(t)t.style.display='none'}
+function toggleExportMenu(e){e.stopPropagation();var m=document.getElementById('exportMenu'),b=document.querySelector('.export-md');var open=m.hasAttribute('hidden');if(open){m.removeAttribute('hidden')}else{m.setAttribute('hidden','')}b.setAttribute('aria-expanded',String(open))}
+function closeExportMenu(){var m=document.getElementById('exportMenu');if(m)m.setAttribute('hidden','');var b=document.querySelector('.export-md');if(b)b.setAttribute('aria-expanded','false')}
+function onExportItem(kind){closeExportMenu();if(kind==='pdf'){exportPDF()}else if(kind==='word'){exportWord()}else{exportMarkdown()}}
+document.addEventListener('click',function(e){var m=document.getElementById('exportMenu');if(m&&!m.hasAttribute('hidden')&&!m.contains(e.target)&&!e.target.closest('.export-md'))closeExportMenu()});
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+/* 全部展开 / 收起：与单个 toggle 保持同一套状态（.open 类 + kp-detail 内联 display + aria-expanded） */
+function setAllChapters(open){[].forEach.call(document.querySelectorAll('.ch'),function(ch){ch.classList.toggle('open',open);var t=ch.querySelector('.ch-title');if(t)t.setAttribute('aria-expanded',String(open))});[].forEach.call(document.querySelectorAll('.kp'),function(kp){kp.classList.toggle('open',open);var t=kp.querySelector('.kp-title');if(t)t.setAttribute('aria-expanded',String(open));var d=kp.querySelector('.kp-detail');if(d)d.style.display=open?'block':'none'})}
+function expandAllChapters(){setAllChapters(true)}
+function collapseAllChapters(){setAllChapters(false)}
+/* ── 悬浮工具：整页搜索（含折叠内容）+ 回到顶部 ── */
+var _searchIndex=null;
+function getSearchIndex(){if(_searchIndex)return _searchIndex;_searchIndex=[];[].forEach.call(document.querySelectorAll('.ch'),function(ch){var ts=ch.querySelector('.ch-title span');var chName='';if(ts){var c=ts.cloneNode(true);[].forEach.call(c.querySelectorAll('.badge'),function(b){b.remove()});chName=c.textContent.trim()}[].forEach.call(ch.querySelectorAll('.kp'),function(kp){var num=kp.querySelector('.kp-num'),name=kp.querySelector('.kp-name'),d=kp.querySelector('.kp-detail');_searchIndex.push({ch:chName,kp:((num?num.textContent.trim():'')+' '+(name?name.textContent.trim():'')).trim(),kpEl:kp,chEl:ch,text:d?d.textContent.replace(/\s+/g,' '):''})})});return _searchIndex}
+var searchMarks=[];
+function clearSearchMarks(){searchMarks.forEach(function(m){var p=m.parentNode;if(!p)return;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()});searchMarks=[]}
+function markSnippet(text,lq){var low=text.toLowerCase(),out='',pos=0,i;while((i=low.indexOf(lq,pos))>=0){out+=escHtml(text.slice(pos,i))+'<mark>'+escHtml(text.substr(i,lq.length))+'</mark>';pos=i+lq.length}return out+escHtml(text.slice(pos))}
+function runSearch(){var inp=document.getElementById('searchInput'),box=document.getElementById('searchResults'),cnt=document.getElementById('searchCount');var q=inp.value.trim().toLowerCase();box.innerHTML='';if(!q){cnt.textContent='';box.innerHTML='<div class="sp-empty">输入关键词，搜索全部章节与考点（含折叠内容）</div>';return}var hits=getSearchIndex().filter(function(it){return it.text.toLowerCase().indexOf(q)>=0||it.kp.toLowerCase().indexOf(q)>=0||it.ch.toLowerCase().indexOf(q)>=0});cnt.textContent=hits.length?('共 '+hits.length+' 个考点'):'';
+if(!hits.length){box.innerHTML='<div class="sp-empty">没有找到「'+escHtml(inp.value.trim())+'」相关内容</div>';return}
+hits.slice(0,60).forEach(function(it,i){var text=it.text,low=text.toLowerCase(),f=low.indexOf(q),snip;if(f<0){snip=markSnippet(it.kp,q)}else{var s=Math.max(0,f-32),e=Math.min(text.length,f+q.length+64);snip=(s>0?'…':'')+markSnippet(text.slice(s,e),q)+(e<text.length?'…':'')}
+var el=document.createElement('div');el.className='sr-item';el.innerHTML='<div class="sr-path">'+escHtml(it.ch)+' ▸ '+escHtml(it.kp)+'</div><div class="sr-snippet">'+snip+'</div>';el.addEventListener('click',function(){jumpToSearchHit(it,q)});box.appendChild(el)});
+if(hits.length>60){var more=document.createElement('div');more.className='sp-empty';more.textContent='仅显示前 60 条，请细化关键词';box.appendChild(more)}}
+/* 页内高亮：只包普通文本节点，跳过 SVG 子树（mark 在 SVG 里非法） */
+function markInElement(root,q){if(!q)return;var lq=q.toLowerCase(),made=0;var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,function(n){if(!n.nodeValue||n.nodeValue.toLowerCase().indexOf(lq)<0)return NodeFilter.FILTER_REJECT;if(n.parentNode&&n.parentNode.ownerSVGElement)return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}),nodes=[],n;while((n=walker.nextNode()))nodes.push(n);nodes.forEach(function(node){var txt=node.nodeValue,low=txt.toLowerCase(),pos=0,idx,frag=null;while((idx=low.indexOf(lq,pos))>=0&&made<120){if(!frag)frag=document.createDocumentFragment();if(idx>pos)frag.appendChild(document.createTextNode(txt.slice(pos,idx)));var m=document.createElement('mark');m.className='search-hit';m.textContent=txt.substr(idx,q.length);frag.appendChild(m);searchMarks.push(m);made++;pos=idx+q.length}if(frag){if(pos<txt.length)frag.appendChild(document.createTextNode(txt.slice(pos)));node.parentNode.replaceChild(frag,node)}})}
+function jumpToSearchHit(it,q){clearSearchMarks();it.chEl.classList.add('open');var ct=it.chEl.querySelector('.ch-title');if(ct)ct.setAttribute('aria-expanded','true');it.kpEl.classList.add('open');var kt=it.kpEl.querySelector('.kp-title');if(kt)kt.setAttribute('aria-expanded','true');var d=it.kpEl.querySelector('.kp-detail');if(d)d.style.display='block';markInElement(d,q);var y=it.kpEl.getBoundingClientRect().top+(window.scrollY||document.documentElement.scrollTop)-90;animateScrollTo(Math.max(0,y))}
+function openSearchPanel(){var p=document.getElementById('searchPanel');if(!p.hasAttribute('hidden')){document.getElementById('searchInput').focus();return}p.removeAttribute('hidden');if(!document.getElementById('searchInput').value)document.getElementById('searchResults').innerHTML='<div class="sp-empty">输入关键词，搜索全部章节与考点（含折叠内容）</div>';setTimeout(function(){document.getElementById('searchInput').focus()},50)}
+function closeSearchPanel(){var p=document.getElementById('searchPanel');if(p.hasAttribute('hidden'))return;p.setAttribute('hidden','');clearSearchMarks()}
+function toggleSearchPanel(){var p=document.getElementById('searchPanel');if(p.hasAttribute('hidden'))openSearchPanel();else closeSearchPanel()}
+/* 平滑滚动：定时器驱动，不依赖合成器动画帧（部分环境原生 smooth 不推进）；尊重减弱动效偏好 */
+function animateScrollTo(targetY){var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced){window.scrollTo(0,targetY);onScrollFloat();return}var startY=window.scrollY||document.documentElement.scrollTop||0,delta=targetY-startY;if(delta===0)return;var t0=Date.now(),DUR=Math.min(650,240+Math.abs(delta)*0.15);var timer=setInterval(function(){var p=Math.min(1,(Date.now()-t0)/DUR);p=1-Math.pow(1-p,3);window.scrollTo(0,Math.round(startY+delta*p));if(p>=1){clearInterval(timer);onScrollFloat()}},16)}
+function scrollTopSmooth(){animateScrollTo(0)}
+document.addEventListener('click',function(e){var p=document.getElementById('searchPanel');if(p&&!p.hasAttribute('hidden')&&!p.contains(e.target)&&!e.target.closest('.float-tools'))closeSearchPanel()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeExportMenu();closeSearchPanel()}});
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='k'||e.key==='K')){e.preventDefault();openSearchPanel()}});
+document.getElementById('searchInput').addEventListener('input',runSearch);
+document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var first=document.querySelector('#searchResults .sr-item');if(first)first.click()}});
+/* 滚动后浮现悬浮工具（搜索 / 回到顶部） */
+function onScrollFloat(){var y=window.scrollY||document.documentElement.scrollTop||0;document.getElementById('floatTools').classList.toggle('show',y>280)}
+window.addEventListener('scroll',onScrollFloat,{passive:true});
+onScrollFloat();
+</script>
+</div></body></html>

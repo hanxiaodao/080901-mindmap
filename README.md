@@ -10,6 +10,9 @@
 
 | 课程代码 | 课程 | 页面 |
 |---|---|---|
+| 02324 | 离散数学 | [考点笔记](https://hanxiaodao.github.io/080901-mindmap/02324-离散数学/) · [错题集](https://hanxiaodao.github.io/080901-mindmap/02324-离散数学/mistakes.html) · [模块说明](./02324-离散数学/README.md) |
+| 04737 | C++程序设计 | [考点笔记](https://hanxiaodao.github.io/080901-mindmap/04737-C++程序设计/) · [错题集](https://hanxiaodao.github.io/080901-mindmap/04737-C++程序设计/mistakes.html) · [模块说明](./04737-C++程序设计/README.md) |
+| 13003 | 数据结构与算法 | [考点笔记](https://hanxiaodao.github.io/080901-mindmap/13003-数据结构与算法/) · [错题集](https://hanxiaodao.github.io/080901-mindmap/13003-数据结构与算法/mistakes.html) · [模块说明](./13003-数据结构与算法/README.md) |
 | 13015 | 计算机系统原理 | [考点笔记](https://hanxiaodao.github.io/080901-mindmap/13015-计算机系统原理/) · [错题集](https://hanxiaodao.github.io/080901-mindmap/13015-计算机系统原理/mistakes.html) · [模块说明](./13015-计算机系统原理/README.md) |
 
 ## 目录结构

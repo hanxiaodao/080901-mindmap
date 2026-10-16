@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>错题集 · 04737 C++程序设计</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var t;
+  try{ t=localStorage.getItem('theme'); }catch(e){}
+  if(t!=='light'&&t!=='dark'){ t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'; }
+  document.documentElement.setAttribute('data-theme',t);
+})();
+</script>
+<style>
+:root {
+  --c1:#60a5fa; --c2:#34d399; --c3:#fbbf24;
+  --c4:#f472b6; --c5:#a78bfa; --c6:#22d3ee;
+  --c7:#fb923c; --c8:#a3e635; --c9:#fb7185;
+  --bg:#0d1117; --surface:#161b22; --card:#1c2230;
+  --border:#2a3344; --border-strong:#3d4f66;
+  --text:#c9d2dd; --muted:#7d8fa8; --faint:#4a5568;
+  --heading:#e2eaf2;
+  --hover-bg:rgba(255,255,255,.03);
+  --tag-bg:rgba(255,255,255,.07); --tag-text:#9ab;
+  --code-bg:#111c2e; --code-text:#8fb5e8;
+  --ok:#34d399; --err:#f87171;
+  --focus:#60a5fa;
+  color-scheme:dark;
+}
+:root[data-theme="light"] {
+  --bg:#f3f1ec; --surface:#faf9f5; --card:#faf9f5;
+  --border:#e2dfd7; --border-strong:#c9c5ba;
+  --text:#33393f; --muted:#626b7a; --faint:#9aa1ab;
+  --heading:#242930;
+  --hover-bg:rgba(45,45,55,.045);
+  --tag-bg:rgba(45,45,55,.06); --tag-text:#5d6570;
+  --code-bg:#eef2fa; --code-text:#2c5cb0;
+  --ok:#047857; --err:#dc2626;
+  --c1:#2563eb; --c2:#059669; --c3:#d97706;
+  --c4:#db2777; --c5:#7c3aed; --c6:#0891b2;
+  --c7:#ea580c; --c8:#65a30d; --c9:#e11d48;
+  --focus:#2563eb;
+  color-scheme:light;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap { max-width:860px; margin:0 auto; padding:0 16px 60px; }
+
+/* ── 右上角浮动按钮 ── */
+.topbar { position:fixed; top:16px; right:16px; display:flex; gap:10px; z-index:100; }
+.topbar a, .topbar button {
+  height:38px; border-radius:19px; border:1px solid var(--border);
+  background:var(--surface); color:var(--muted); cursor:pointer;
+  display:flex; align-items:center; gap:6px; padding:0 13px;
+  font-size:12.5px; font-family:inherit; text-decoration:none;
+  transition:color .15s, border-color .15s;
+}
+.topbar a:hover, .topbar button:hover { color:var(--heading); border-color:var(--border-strong); }
+.topbar a:focus-visible, .topbar button:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+
+/* ── 页头 ── */
+header { padding:56px 4px 22px; border-bottom:1px solid var(--border); margin-bottom:16px; }
+header h1 {
+  font-family:'Noto Serif SC',serif;
+  font-size:26px; font-weight:700; letter-spacing:2px;
+  color:var(--heading); margin-bottom:6px;
+}
+header .sub { font-size:12.5px; color:var(--muted); letter-spacing:.5px; }
+header .sub a { color:var(--muted); text-decoration:none; border-bottom:1px dashed var(--border-strong); }
+header .sub a:hover { color:var(--heading); }
+
+/* ── 筛选条 ── */
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+.chips-label { font-size:11.5px; color:var(--faint); align-self:center; margin-right:2px; }
+.chipbtn {
+  border:1px solid var(--border); background:var(--surface); color:var(--muted);
+  border-radius:14px; padding:3px 12px; font-size:12.5px;
+  cursor:pointer; font-family:inherit; transition:color .15s, border-color .15s, background .15s;
+}
+.chipbtn:hover { color:var(--heading); border-color:var(--border-strong); }
+.chipbtn.on { background:var(--heading); border-color:var(--heading); color:var(--bg); }
+.chipbtn:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+.dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:1px; }
+.ctrlrow { display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:8px; }
+.ctrlrow label { font-size:12.5px; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:5px; }
+.ctrlrow input[type=checkbox] { accent-color:var(--c1); }
+.searchrow { margin-bottom:6px; }
+.searchrow input {
+  width:100%; height:36px; padding:0 13px;
+  border:1px solid var(--border); border-radius:10px;
+  background:var(--surface); color:var(--text);
+  font-size:13.5px; font-family:inherit; outline:none;
+  transition:border-color .15s;
+}
+.searchrow input:focus { border-color:var(--border-strong); }
+.searchrow input::placeholder { color:var(--faint); }
+.stat { font-size:12px; color:var(--faint); margin-bottom:16px; }
+
+/* ── 试卷分组 ── */
+.exam { border:1px solid var(--border); border-radius:10px; background:var(--surface); margin-bottom:12px; overflow:hidden; }
+.exam-head { display:flex; align-items:center; gap:10px; padding:11px 16px; cursor:pointer; user-select:none; }
+.exam-head:hover { background:var(--hover-bg); }
+.exam-head:focus-visible { outline:2px solid var(--focus); outline-offset:-2px; }
+.exam-name { font-family:'Noto Serif SC',serif; font-weight:700; font-size:15.5px; letter-spacing:.5px; color:var(--heading); }
+.exam-count { font-size:12px; color:var(--muted); }
+.exam-todo { font-size:12px; color:var(--err); }
+.exam-ok { font-size:12px; color:var(--ok); }
+.exam-arrow { margin-left:auto; color:var(--faint); font-size:12px; transition:transform .18s; }
+.exam.open .exam-arrow { transform:rotate(180deg); }
+.exam-body { display:none; border-top:1px solid var(--border); }
+.exam.open .exam-body { display:block; }
+
+/* ── 错题卡片 ── */
+.mistake { padding:14px 16px; }
+.mistake + .mistake { border-top:1px dashed var(--border); }
+.mtags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:7px; }
+.tag { font-size:11.5px; border-radius:10px; padding:1px 9px; background:var(--tag-bg); color:var(--tag-text); }
+.tag.chc, .tag.wtag, .tag.dtag, .tag.tytag { background:var(--tag-bg); border:1px solid currentColor; }
+.tag.tytag { font-style:normal; }
+.q { font-size:14.5px; font-weight:500; color:var(--heading); margin-bottom:6px; }
+.opts { margin:2px 0 6px; }
+.opt { font-size:13.5px; padding:1px 0 1px 12px; color:var(--text); }
+.code {
+  margin:8px 0; padding:10px 14px;
+  background:var(--code-bg); border-left:2px solid var(--border-strong); border-radius:0 6px 6px 0;
+  color:var(--code-text);
+  font-family:'Consolas','Courier New',monospace; font-size:12.5px; line-height:1.65;
+  overflow-x:auto; white-space:pre; tab-size:2;
+}
+.wrow { font-size:13.5px; }
+.wrow b { color:var(--err); font-weight:600; margin-right:4px; }
+.reveal {
+  margin-top:9px; border:1px dashed var(--border-strong); background:none;
+  color:var(--muted); border-radius:8px; padding:3px 12px;
+  font-size:12.5px; cursor:pointer; font-family:inherit;
+  transition:color .15s, border-color .15s;
+}
+.reveal:hover { color:var(--heading); border-color:var(--muted); }
+.reveal:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+.frow { margin-top:9px; font-size:13.5px; padding:9px 12px; border-radius:8px; background:var(--tag-bg); }
+.frow b { color:var(--ok); font-weight:600; margin-right:4px; }
+.showfix .reveal { display:none; }
+.showfix .frow { display:block !important; }
+
+/* ── 空状态 / 提示 ── */
+.empty { text-align:center; padding:70px 20px; color:var(--muted); }
+.empty .big { font-size:40px; margin-bottom:14px; }
+.empty p { font-size:13.5px; line-height:2; }
+.empty code {
+  font-family:'Consolas','Courier New',monospace; font-size:12.5px;
+  background:var(--tag-bg); border-radius:4px; padding:1px 5px; color:var(--text);
+}
+
+@media (max-width:600px) {
+  header { padding:52px 4px 18px; }
+  header h1 { font-size:21px; }
+  .topbar { top:10px; }
+  .topbar a, .topbar button { height:36px; font-size:12px; }
+  .mistake { padding:13px 13px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .exam-arrow, .topbar a, .topbar button, .chipbtn, .reveal { transition:none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a href="index.html" aria-label="返回考点笔记" title="返回考点笔记">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      考点笔记
+    </a>
+    <button onclick="toggleTheme()" aria-label="切换亮色/暗色模式" title="切换亮色/暗色模式">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+  <header>
+    <h1>错题集</h1>
+    <div class="sub">04737 C++程序设计 · 按试卷归档 · 错题由 AI 总结录入 <code>mistakes-data.js</code></div>
+  </header>
+  <div class="chips" id="chChips"></div>
+  <div class="chips" id="tyChips"></div>
+  <div class="ctrlrow">
+    <label><input type="checkbox" id="onlyTodo" onchange="renderAll()"> 只看未掌握</label>
+    <label><input type="checkbox" onchange="document.getElementById('groups').classList.toggle('showfix',this.checked)"> 直接显示正确思路（复习模式）</label>
+  </div>
+  <div class="searchrow">
+    <input id="kw" type="search" placeholder="搜索题干、选项、代码、错因…" aria-label="搜索错题" oninput="renderAll()">
+  </div>
+  <div class="stat" id="stat"></div>
+  <div id="groups"></div>
+  <div class="empty" id="empty" hidden></div>
+</div>
+<script src="mistakes-data.js"></script>
+<script>
+/* 章节元数据：章号 → 筛选短名 / 卡片标签 */
+var CH_META = [null,
+  {short:'语言基础', full:'第一章 C++语言基础'},
+  {short:'类与对象', full:'第二章 类与对象'},
+  {short:'构造析构', full:'第三章 构造、析构与特殊成员'},
+  {short:'运算符重载', full:'第四章 运算符重载'},
+  {short:'继承派生', full:'第五章 继承与派生'},
+  {short:'多态虚函数', full:'第六章 多态与虚函数'},
+  {short:'输入输出', full:'第七章 输入/输出流'},
+  {short:'文件操作', full:'第八章 文件操作'},
+  {short:'模板', full:'第九章 模板'}
+];
+var curCh = 0, curTy = '';
+
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+/* 保留换行：错因/思路里手写的多行文本按行显示 */
+function escLines(s){ return esc(s).replace(/\r\n|\r|\n/g,'<br>'); }
+function examSortVal(name){
+  var m = /(\d{4})\s*年\s*(\d{1,2})\s*月/.exec(name||'');
+  if(m) return (+m[1])*100 + (+m[2]);
+  var y = /(\d{4})/.exec(name||'');
+  if(y) return (+y[1])*100;
+  var n = /(\d{6})/.exec(name||'');   /* 202304 这类卷名 */
+  if(n) return (+n[1].slice(0,4))*100 + (+n[1].slice(4,6));
+  return 0;
+}
+function toggleTheme(){var r=document.documentElement,next=r.getAttribute('data-theme')==='light'?'dark':'light';r.setAttribute('data-theme',next);try{localStorage.setItem('theme',next)}catch(e){}}
+function toggleFix(btn){
+  var f = btn.nextElementSibling;
+  f.hidden = !f.hidden;
+  btn.textContent = f.hidden ? '看正确思路' : '收起解答';
+}
+function setCh(i){ curCh = i; renderAll(); }
+function setTy(t){ curTy = t; renderAll(); }
+
+function renderChips(){
+  var html = '<span class="chips-label">章节</span>'
+           + '<button class="chipbtn'+(curCh===0?' on':'')+'" onclick="setCh(0)">全部</button>';
+  for(var i=1;i<=9;i++){
+    html += '<button class="chipbtn'+(curCh===i?' on':'')+'" onclick="setCh('+i+')">'
+          + '<span class="dot" style="background:var(--c'+i+')"></span>'+CH_META[i].short+'</button>';
+  }
+  document.getElementById('chChips').innerHTML = html;
+
+  /* 题型筛选：从数据里现取，没录入过的题型不出现 */
+  var types = [];
+  (window.MISTAKES||[]).forEach(function(x){ if(x.type && types.indexOf(x.type)<0) types.push(x.type); });
+  var ORDER = ['单选','填空','程序填空','程序分析','程序设计'];
+  types.sort(function(a,b){ var d=ORDER.indexOf(a)-ORDER.indexOf(b); return d!==0?d:(a<b?-1:1); });
+  var thtml = '';
+  if(types.length){
+    thtml = '<span class="chips-label">题型</span>'
+          + '<button class="chipbtn'+(curTy===''?' on':'')+'" onclick="setTy(\'\')">全部</button>';
+    types.forEach(function(t){
+      thtml += '<button class="chipbtn'+(curTy===t?' on':'')+'" onclick="setTy(\''+esc(t).replace(/'/g,"\\'")+'\')">'+esc(t)+'</button>';
+    });
+  }
+  document.getElementById('tyChips').innerHTML = thtml;
+}
+
+function renderAll(){
+  var data = window.MISTAKES || [];
+  renderChips();
+  var onlyTodo = document.getElementById('onlyTodo').checked;
+  var kw = (document.getElementById('kw').value||'').trim().toLowerCase();
+  var groupsEl = document.getElementById('groups');
+  var emptyEl = document.getElementById('empty');
+  var statEl = document.getElementById('stat');
+
+  if(!data.length){
+    groupsEl.innerHTML = '';
+    emptyEl.hidden = false;
+    emptyEl.innerHTML = '<div class="big">📝</div><p>还没有错题记录。<br>'
+      + '做题时把错题发给 AI（拍照、口述、粘贴题干均可），AI 总结后追加到 <code>mistakes-data.js</code>，<br>'
+      + '推送上线后这里就会按试卷分组显示；也可以自己照文件末尾的模板手动追加。</p>';
+    statEl.textContent = '';
+    return;
+  }
+
+  function hay(x){
+    return [x.q, x.kp, x.type, x.no, x.wrong, x.fix, x.code, (x.opts||[]).join(' '), x.exam]
+           .filter(Boolean).join(' ').toLowerCase();
+  }
+  var todoN = data.filter(function(x){ return !x.done; }).length;
+  var fdata = data
+    .filter(function(x){ return curCh===0 || (+x.ch||0)===curCh; })
+    .filter(function(x){ return !curTy || x.type===curTy; })
+    .filter(function(x){ return !onlyTodo || !x.done; })
+    .filter(function(x){ return !kw || hay(x).indexOf(kw)>=0; });
+
+  statEl.textContent = '共 '+data.length+' 题 · 未掌握 '+todoN
+    + ((curCh||curTy||onlyTodo||kw) ? ' · 当前显示 '+fdata.length+' 题' : '');
+
+  if(!fdata.length){
+    groupsEl.innerHTML = '';
+    emptyEl.hidden = false;
+    emptyEl.innerHTML = '<div class="big">🔍</div><p>当前筛选条件下没有错题。<br>'
+      + '点击上方「全部」、清空搜索框或取消「只看未掌握」可查看全部记录。</p>';
+    return;
+  }
+  emptyEl.hidden = true;
+
+  var exams = {};
+  fdata.forEach(function(x){
+    var k = x.exam || '未编号';
+    (exams[k] = exams[k] || []).push(x);
+  });
+  var keys = Object.keys(exams).sort(function(a,b){
+    var d = examSortVal(b) - examSortVal(a);
+    return d !== 0 ? d : (a < b ? 1 : a > b ? -1 : 0);
+  });
+
+  var html = '';
+  keys.forEach(function(k, gi){
+    var items = exams[k];
+    var gtodo = items.filter(function(x){ return !x.done; }).length;
+    html += '<div class="exam'+(gi===0?' open':'')+'">'
+         +  '<div class="exam-head" role="button" tabindex="0" aria-expanded="'+(gi===0)+'" '
+         +  'onclick="toggleExam(this)" onkeydown="examKey(event,this)">'
+         +  '<span class="exam-name">'+esc(k)+'</span>'
+         +  '<span class="exam-count">'+items.length+' 题</span>'
+         +  (gtodo ? '<span class="exam-todo">'+gtodo+' 未掌握</span>'
+                   : '<span class="exam-ok">全部掌握 ✓</span>')
+         +  '<span class="exam-arrow">▼</span></div><div class="exam-body">';
+    items.forEach(function(x){
+      var ch = +x.ch || 0;
+      html += '<div class="mistake"><div class="mtags">';
+      if(ch && CH_META[ch]) html += '<span class="tag chc" style="color:var(--c'+ch+')" title="'+esc(CH_META[ch].full)+'">'+esc(CH_META[ch].full)+'</span>';
+      if(x.kp) html += '<span class="tag">'+esc(x.kp)+'</span>';
+      if(x.type) html += '<span class="tag tytag">'+esc(x.type)+'</span>';
+      if(x.no) html += '<span class="tag">题'+esc(x.no)+'</span>';
+      html += '<span class="tag '+(x.done?'dtag':'wtag')+'">'+(x.done?'已掌握':'未掌握')+'</span>';
+      html += '</div><div class="q">'+escLines(x.q)+'</div>';
+      if(x.opts && x.opts.length){
+        html += '<div class="opts">'+x.opts.map(function(o){ return '<div class="opt">'+escLines(o)+'</div>'; }).join('')+'</div>';
+      }
+      if(x.code) html += '<pre class="code">'+esc(x.code)+'</pre>';
+      if(x.wrong) html += '<div class="wrow"><b>✗ 错因</b>'+escLines(x.wrong)+'</div>';
+      html += '<button class="reveal" onclick="toggleFix(this)">看正确思路</button>'
+           +  '<div class="frow" hidden><b>✓ 思路</b>'+escLines(x.fix)+'</div></div>';
+    });
+    html += '</div></div>';
+  });
+  groupsEl.innerHTML = html;
+}
+function toggleExam(head){
+  var box = head.parentNode;
+  box.classList.toggle('open');
+  head.setAttribute('aria-expanded', String(box.classList.contains('open')));
+}
+function examKey(e, head){
+  if(e.key!=='Enter' && e.key!==' ') return;
+  e.preventDefault();
+  toggleExam(head);
+}
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ var el=document.getElementById('kw'); if(document.activeElement===el){ el.value=''; renderAll(); el.blur(); } }
+});
+renderAll();
+</script>
+</body>
+</html>

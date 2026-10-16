@@ -1,0 +1,11 @@
+# 密钥，绝不提交
+.env
+
+# 可再生成的产物
+materials/parsed/
+distill/shots/
+
+# 系统文件
+Thumbs.db
+Desktop.ini
+materials/upload_url.txt

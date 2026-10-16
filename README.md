@@ -18,7 +18,7 @@
 |---|---|
 | `index.html` | 站点落地页（课程模块导航） |
 | `<课程代码>-<课程名>/` | 课程模块：笔记页 `index.html`、错题集 `mistakes.html`、内容源 `exam-notes.md`、真题拆解与核查 `distill/` |
-| `.github/workflows/deploy.yml` | GitHub Pages 自动部署（push 到 main 即触发） |
+| GitHub Pages | 仓库 `Settings → Pages`：Source 选 **Deploy from a branch**，分支 `main`、目录 `/(root)`，push 后自动更新 |
 
 ## 本地使用
 

@@ -610,13 +610,12 @@ body.no-github .export-menu { right:64px; }
   .kp-title { break-after:avoid; }
   .kp-detail table { break-inside:auto; }
   .kp-detail tr, .kp-detail .formula, .kp-detail svg { break-inside:avoid; }
-  /* 速记图打印视图：仅保留章标题与 .speedmap 速记图，每章新起一页 */
+  /* 速记图打印视图：仅保留章标题与 .speedmap 速记图，章节连续排布（不强制分页） */
   body.printing-speedmaps > :not(#speedmapView) { display:none !important; }
   body.printing-speedmaps #speedmapView { display:block; }
   #speedmapView .sm-head { font-size:12px; color:var(--muted); padding-bottom:6px; margin-bottom:12px; border-bottom:1px solid var(--border); }
-  #speedmapView .sm-ch { break-before:page; margin:0; padding:0; border:0; background:none; box-shadow:none; }
-  #speedmapView .sm-head + .sm-ch { break-before:auto; }
-  #speedmapView .ch-title { cursor:default; break-after:avoid; padding:4px 0 8px 12px; border-bottom:1px solid var(--border-strong); margin-bottom:10px; }
+  #speedmapView .sm-ch { margin:0 0 20px; padding:0; border:0; background:none; box-shadow:none; }
+  #speedmapView .ch-title { cursor:default; break-after:avoid; break-inside:avoid; padding:4px 0 8px 12px; border-bottom:1px solid var(--border-strong); margin-bottom:10px; }
   #speedmapView .sm-body { padding:0; }
   #speedmapView .kp { border:0; margin:0; padding:0; }
   #speedmapView .kp-title { cursor:default; break-after:avoid; padding:4px 0 8px; border-bottom:1px solid var(--border); }

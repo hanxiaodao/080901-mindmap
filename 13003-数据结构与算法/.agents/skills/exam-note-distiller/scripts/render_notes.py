@@ -170,7 +170,8 @@ def build_tree(lines):
         return ''
     root_txt, root_kids = nodes[0]
     inner = ''.join(li_html(t, k) for t, k in root_kids)
-    return ('<div class="tree"><ul class="troot">'
+    # speedmap = 「速记图 PDF」导出收集标记：所有章级速记图统一带此 class，打印逻辑见模板 exportSpeedmaps
+    return ('<div class="tree speedmap"><ul class="troot">'
             f'<li><span class="tnode troot-l">{inline(root_txt)}</span>'
             + (f'<ul>{inner}</ul>' if inner else '')
             + '</li></ul></div>')

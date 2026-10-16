@@ -6,7 +6,7 @@
 
 **https://hanxiaodao.github.io/13003-mindmap/**
 
-- [考点笔记页](https://hanxiaodao.github.io/13003-mindmap/)（index.html）：58 个考点按教材八章编号，含考点评级（S/A/B）、真题出处、公式块、易错提醒；支持章节折叠、深浅主题、`Ctrl+K` 全文搜索、导出 Markdown。
+- [考点笔记页](https://hanxiaodao.github.io/13003-mindmap/)（index.html）：58 个考点按教材八章编号，含考点评级（S/A/B）、真题出处、公式块、易错提醒；支持章节折叠、深浅主题、`Ctrl+K` 全文搜索、导出 Markdown、速记图 PDF 汇编（导出菜单一键打印全部章节速记图）。
 - [错题集](https://hanxiaodao.github.io/13003-mindmap/mistakes.html)（mistakes.html）：按真题卷归档，支持按章筛选、只看未掌握、复习模式（直接展开思路）；错题数据录在 `mistakes-data.js`，把错题发给 AI 总结入档、推送后页面直接可见，无需手动导入。
 
 ## 仓库内容

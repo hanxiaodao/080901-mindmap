@@ -33,6 +33,8 @@ Exam Note Distiller · 思维导图 HTML 模板（资产）
 ```err/tip/ok → <span class="callout err|tip|ok">…</span>
 ```d 块      → <figure class="diagram">…原样内嵌 <svg>…</svg>…</figure>（图示块：SVG 手写在 md 里，
                 配色必须走 .dg-* 类（本模板 CSS），深浅主题自动适配；不要在 SVG 里写死颜色）
+```tree 块     → <div class="tree speedmap">…</div>（章级速记图：缩进树文本 → 带树线的树状速记图；
+                 speedmap 标记供导出菜单「速记图 PDF」按章汇编；其他形式的速记图加 class="speedmap" 即可被收集）
 | 表格        → <table><tr><th>表头…</th></tr><tr><td>…</td></tr></table>（单元格内同样处理 **bold**）
 - 列表        → <ul><li>…</li></ul>
 
@@ -63,6 +65,10 @@ Exam Note Distiller · 思维导图 HTML 模板（资产）
 function expandAllForExport(){var st={theme:document.documentElement.getAttribute('data-theme'),opens:[],disp:[]};document.documentElement.setAttribute('data-theme','light');[].forEach.call(document.querySelectorAll('.ch,.kp'),function(el){st.opens.push([el,el.classList.contains('open')]);el.classList.add('open')});[].forEach.call(document.querySelectorAll('.kp-detail'),function(d){st.disp.push([d,d.style.display]);d.style.display='block'});return st}
 function restoreAfterExport(st){if(!st)return;document.documentElement.setAttribute('data-theme',st.theme);st.opens.forEach(function(p){p[0].classList.toggle('open',p[1])});st.disp.forEach(function(p){p[0].style.display=p[1]})}
 function exportPDF(){var st=expandAllForExport();showToast('已展开全部内容。请在打印对话框中，将目标打印机选为「另存为 PDF」',8000);window.addEventListener('afterprint',function onDone(){window.removeEventListener('afterprint',onDone);restoreAfterExport(st);hideToast()});setTimeout(function(){window.print()},350)}
+/* ── 速记图打印（导出菜单「速记图 PDF」）：收集所有带 .speedmap 标记的速记图（```tree 块由渲染脚本自动加标记，
+   其他形式的速记图手动加 class="speedmap"），按章汇编成打印视图——修改/新增速记图内容无需改这里 ── */
+function buildSpeedmapView(){var groups=[];[].forEach.call(document.querySelectorAll('.ch'),function(ch){var maps=ch.querySelectorAll('.speedmap');if(maps.length)groups.push([ch,[].slice.call(maps)])});if(!groups.length)return null;var view=document.createElement('div');view.id='speedmapView';var h1=document.querySelector('header h1'),head=document.createElement('div');head.className='sm-head';var smName=h1?h1.textContent.trim().replace(/\s*·\s*考点笔记$/,''):'';head.textContent=(smName||'考点笔记')+' · 章节速记图（共 '+groups.length+' 章）';view.appendChild(head);groups.forEach(function(g){var box=g[0].cloneNode(false);box.classList.add('sm-ch');var title=g[0].querySelector('.ch-title');if(title){var t=title.cloneNode(true);[].forEach.call(t.querySelectorAll('.badge,.arrow'),function(b){b.parentNode.removeChild(b)});box.appendChild(t)}var body=document.createElement('div');body.className='sm-body';g[1].forEach(function(m){body.appendChild(m.cloneNode(true))});box.appendChild(body);view.appendChild(box)});return view}
+function exportSpeedmaps(){var view=buildSpeedmapView();if(!view){showToast('本页暂无可打印的速记图',4000);return}var prevTheme=document.documentElement.getAttribute('data-theme');document.documentElement.setAttribute('data-theme','light');document.body.appendChild(view);document.body.classList.add('printing-speedmaps');showToast('已将 '+view.querySelectorAll('.sm-ch').length+' 章速记图汇编为打印视图。请在打印对话框中选择「另存为 PDF」或打印机',8000);window.addEventListener('afterprint',function onDone(){window.removeEventListener('afterprint',onDone);document.body.classList.remove('printing-speedmaps');if(view.parentNode)view.parentNode.removeChild(view);document.documentElement.setAttribute('data-theme',prevTheme);hideToast()});setTimeout(function(){window.print()},350)}
 /* 内嵌 SVG → PNG：SVG 里的 var(--x) 颜色在独立序列化后会失效，需用计算后的具体颜色值重写 */
 function svgToPngDataUrl(svg){return new Promise(function(resolve){try{var rect=svg.getBoundingClientRect();var w=Math.max(1,Math.ceil(rect.width)),h=Math.max(1,Math.ceil(rect.height));var clone=svg.cloneNode(true);clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.setAttribute('width',w);clone.setAttribute('height',h);clone.removeAttribute('style');var src=[svg].concat([].slice.call(svg.querySelectorAll('*')));var dst=[clone].concat([].slice.call(clone.querySelectorAll('*')));for(var i=1;i<src.length;i++){var cs=getComputedStyle(src[i]),tag=src[i].tagName.toLowerCase(),st='fill:'+cs.fill+';stroke:'+cs.stroke+';';if(cs.stroke&&cs.stroke!=='none')st+='stroke-width:'+cs.strokeWidth+';';if(tag==='text')st+='font-family:'+cs.fontFamily+';font-size:'+cs.fontSize+';font-weight:'+cs.fontWeight+';';dst[i].setAttribute('style',st)}var str=new XMLSerializer().serializeToString(clone);var img=new Image();img.onload=function(){try{var s=2,cvs=document.createElement('canvas');cvs.width=w*s;cvs.height=h*s;var ctx=cvs.getContext('2d');ctx.scale(s,s);ctx.drawImage(img,0,0,w,h);resolve(cvs.toDataURL('image/png'))}catch(err){resolve(null)}};img.onerror=function(){resolve(null)};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(str)}catch(e){resolve(null)}})}
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -587,6 +593,8 @@ body.no-github .export-menu { right:64px; }
 @media (prefers-reduced-motion:reduce) {
   .arrow, .kp-arrow, .ch-title::before, .theme-toggle, .github-link, .export-md, .list-tools button, .float-tools, .float-btn { transition:none; }
 }
+/* ── 速记图打印视图（导出菜单「速记图 PDF」时按章汇编；屏幕不显示） ── */
+#speedmapView { display:none; }
 /* ── 导出 PDF（打印 → 另存为 PDF）：全部展开、隐藏控件、保留配色 ── */
 @media print {
   @page { margin: 14mm 12mm; }
@@ -602,6 +610,19 @@ body.no-github .export-menu { right:64px; }
   .kp-title { break-after:avoid; }
   .kp-detail table { break-inside:auto; }
   .kp-detail tr, .kp-detail .formula, .kp-detail svg { break-inside:avoid; }
+  /* 速记图打印视图：仅保留章标题与 .speedmap 速记图，每章新起一页 */
+  body.printing-speedmaps > :not(#speedmapView) { display:none !important; }
+  body.printing-speedmaps #speedmapView { display:block; }
+  #speedmapView .sm-head { font-size:12px; color:var(--muted); padding-bottom:6px; margin-bottom:12px; border-bottom:1px solid var(--border); }
+  #speedmapView .sm-ch { break-before:page; margin:0; padding:0; border:0; background:none; box-shadow:none; }
+  #speedmapView .sm-head + .sm-ch { break-before:auto; }
+  #speedmapView .ch-title { cursor:default; break-after:avoid; padding:4px 0 8px 12px; border-bottom:1px solid var(--border-strong); margin-bottom:10px; }
+  #speedmapView .sm-body { padding:0; }
+  #speedmapView .kp { border:0; margin:0; padding:0; }
+  #speedmapView .kp-title { cursor:default; break-after:avoid; padding:4px 0 8px; border-bottom:1px solid var(--border); }
+  #speedmapView .kp-detail { display:block !important; padding:0; border:0; background:none; }
+  #speedmapView .tree li { break-inside:avoid; }
+  #speedmapView .kp-detail svg { break-inside:avoid; max-width:100%; }
 }
 </style>
 </head>
@@ -613,6 +634,7 @@ body.no-github .export-menu { right:64px; }
   <button role="menuitem" onclick="onExportItem('md')"><span>Markdown 笔记</span><span class="em-ext">.md</span></button>
   <button role="menuitem" onclick="onExportItem('pdf')"><span>PDF 文档</span><span class="em-ext">.pdf</span></button>
   <button role="menuitem" onclick="onExportItem('word')"><span>Word 文档</span><span class="em-ext">.doc</span></button>
+  <button role="menuitem" id="smMenuItem" onclick="onExportItem('speedmaps')"><span>速记图 PDF</span><span class="em-ext">.pdf</span></button>
 </div>
 
 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换亮色/暗色模式" title="切换亮色/暗色模式">
@@ -676,7 +698,7 @@ function showToast(msg,ms){var t=document.getElementById('exportToast');if(!t){t
 function hideToast(){var t=document.getElementById('exportToast');if(t)t.style.display='none'}
 function toggleExportMenu(e){e.stopPropagation();var m=document.getElementById('exportMenu'),b=document.querySelector('.export-md');var open=m.hasAttribute('hidden');if(open){m.removeAttribute('hidden')}else{m.setAttribute('hidden','')}b.setAttribute('aria-expanded',String(open))}
 function closeExportMenu(){var m=document.getElementById('exportMenu');if(m)m.setAttribute('hidden','');var b=document.querySelector('.export-md');if(b)b.setAttribute('aria-expanded','false')}
-function onExportItem(kind){closeExportMenu();if(kind==='pdf'){exportPDF()}else if(kind==='word'){exportWord()}else{exportMarkdown()}}
+function onExportItem(kind){closeExportMenu();if(kind==='pdf'){exportPDF()}else if(kind==='word'){exportWord()}else if(kind==='speedmaps'){exportSpeedmaps()}else{exportMarkdown()}}
 document.addEventListener('click',function(e){var m=document.getElementById('exportMenu');if(m&&!m.hasAttribute('hidden')&&!m.contains(e.target)&&!e.target.closest('.export-md'))closeExportMenu()});
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 /* 全部展开 / 收起：与单个 toggle 保持同一套状态（.open 类 + kp-detail 内联 display + aria-expanded） */
@@ -712,5 +734,7 @@ document.getElementById('searchInput').addEventListener('keydown',function(e){if
 function onScrollFloat(){var y=window.scrollY||document.documentElement.scrollTop||0;document.getElementById('floatTools').classList.toggle('show',y>280)}
 window.addEventListener('scroll',onScrollFloat,{passive:true});
 onScrollFloat();
+/* 页面暂无速记图时隐藏入口；以后补上 .speedmap 标记的内容会自动出现 */
+(function(){if(!document.querySelector('.speedmap')){var b=document.getElementById('smMenuItem');if(b)b.style.display='none'}})();
 </script>
 </div></body></html>

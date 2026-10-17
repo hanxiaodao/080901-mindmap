@@ -14,6 +14,8 @@ exam-notes.md 是唯一内容源；内容修改后重跑本脚本即可，不要
    模板自身的导出/主题/GitHub 按钮（见 build_corner 内 CSS 注释）。
 6. 正文里的 C 代码（判等符 ==、指针、表达式）一律用反引号 `…` 包住：
    inline() 会把行内成对的 ==x== 解析成强调样式，裸写两个判等符等号会被吃掉。
+7. 章导语要随「速记图 PDF」一起打印时，在 `## 章名` 后单独写一行 `print: speedmap`：
+   该行不渲染，渲染出的章导语容器会带 .speedmap 标记（模板 exportSpeedmaps 按章汇编）。
 
 用法：
   python render_notes.py [exam-notes.md] [-t 模板.html] [-o index.html]
@@ -191,7 +193,7 @@ def parse_notes(path):
     cur = None
     for line in lines[i:]:
         if line.startswith('## '):
-            cur = {'title': line[3:].strip(), 'intro': [], 'kps': [], 'buf': None}
+            cur = {'title': line[3:].strip(), 'intro': [], 'kps': [], 'buf': None, 'speedmap': False}
             chapters.append(cur)
             continue
         if cur is None:
@@ -205,6 +207,9 @@ def parse_notes(path):
                 cur['buf']['body'].append(('sub', line[5:].strip()))
             else:
                 cur['intro'].append(('sub', line[5:].strip()))
+            continue
+        if cur['buf'] is None and re.match(r'^print:\s*speedmap\s*$', line.strip()):
+            cur['speedmap'] = True   # 章导语随速记图 PDF 一起打印（模板按 .speedmap 汇编）
             continue
         target = cur['buf']['body'] if cur['buf'] is not None else cur['intro']
         if line.strip():
@@ -231,7 +236,8 @@ def build_chapters(chapters):
                  f'<span class="arrow">▼</span></div>')
         body = ['<div class="ch-body">']
         if ch['intro']:
-            body.append('<div class="ch-intro">' + render_blocks([b[1] for b in ch['intro']]) + '</div>')
+            cls = 'ch-intro speedmap' if ch.get('speedmap') else 'ch-intro'
+            body.append(f'<div class="{cls}">' + render_blocks([b[1] for b in ch['intro']]) + '</div>')
         for kp in ch['kps']:
             m = re.match(r'^考点(\d+)[：:]\s*(.*)$', kp['title'])
             num, name = (f'考点{m.group(1)}', m.group(2)) if m else ('', kp['title'])

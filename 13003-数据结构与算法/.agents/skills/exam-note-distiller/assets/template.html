@@ -630,6 +630,9 @@ body.no-github .export-menu { right:64px; }
   #speedmapView .sm-ch { margin:0 0 32px; padding:0; border:0; background:none; box-shadow:none; }
   #speedmapView .ch-title { cursor:default; break-after:avoid; break-inside:avoid; padding:4px 0 8px 12px; border-bottom:1px solid var(--border-strong); margin-bottom:10px; }
   #speedmapView .sm-body { padding:0; }
+  #speedmapView .ch-intro { padding:0; border-bottom:none; background:none; }  /* 章导语式速记块（print: speedmap）与树状速记图打印风格一致 */
+  #speedmapView .ch-intro table { break-inside:auto; }
+  #speedmapView .ch-intro tr, #speedmapView .ch-intro .formula, #speedmapView .ch-intro .callout { break-inside:avoid; }
   #speedmapView .kp { border:0; margin:0; padding:0; }
   #speedmapView .kp-title { cursor:default; break-after:avoid; padding:4px 0 8px; border-bottom:1px solid var(--border); }
   #speedmapView .kp-detail { display:block !important; padding:0; border:0; background:none; }

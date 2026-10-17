@@ -627,13 +627,14 @@ body.no-github .export-menu { right:64px; }
   body.printing-speedmaps > :not(#speedmapView) { display:none !important; }
   body.printing-speedmaps #speedmapView { display:block; }
   #speedmapView .sm-head { font-size:12px; color:var(--muted); padding-bottom:6px; margin-bottom:12px; border-bottom:1px solid var(--border); }
-  #speedmapView .sm-ch { margin:0 0 20px; padding:0; border:0; background:none; box-shadow:none; }
+  #speedmapView .sm-ch { margin:0 0 32px; padding:0; border:0; background:none; box-shadow:none; }
   #speedmapView .ch-title { cursor:default; break-after:avoid; break-inside:avoid; padding:4px 0 8px 12px; border-bottom:1px solid var(--border-strong); margin-bottom:10px; }
   #speedmapView .sm-body { padding:0; }
   #speedmapView .kp { border:0; margin:0; padding:0; }
   #speedmapView .kp-title { cursor:default; break-after:avoid; padding:4px 0 8px; border-bottom:1px solid var(--border); }
   #speedmapView .kp-detail { display:block !important; padding:0; border:0; background:none; }
-  #speedmapView .tree li { break-inside:avoid; }
+  #speedmapView .tree li { break-inside:auto; }
+  #speedmapView .tree li:not(:has(ul)) { break-inside:avoid; }
   #speedmapView .kp-detail svg { break-inside:avoid; max-width:100%; }
 }
 </style>

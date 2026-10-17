@@ -1,6 +1,6 @@
 course: 13003 数据结构与算法
 subtitle: 考点笔记 × 历年真题（2024.10–2026.04）· 按教材章节编号
-github: https://github.com/hanxiaodao/13003-mindmap
+github: https://github.com/hanxiaodao/080901-mindmap
 mistakes: mistakes.html
 
 ## 考试地图

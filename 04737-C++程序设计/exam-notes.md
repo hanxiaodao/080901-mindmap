@@ -1,5 +1,6 @@
 course: 04737 C++程序设计
 subtitle: 全国自考 04737 · 2023.04–2026.04 七套真题蒸馏
+github: https://github.com/hanxiaodao/080901-mindmap
 quiz: https://hanxiaodao.github.io/04737-cpp-quiz/
 mistakes: mistakes.html
 

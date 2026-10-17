@@ -2,10 +2,12 @@
 
 全国自考 04737 C++程序设计考点思维导图与错题集（交互式 HTML，纯静态、无构建依赖）。
 
+页面含九章树状速记图：支持章节折叠、深浅主题、`Ctrl+K` 全文搜索、导出 Markdown，以及「速记图 PDF」汇编（导出菜单一键打印全部章节速记图，可在打印对话框另存为 PDF）。
+
 ## 结构
 
 ```
-├── exam-notes.md        # 唯一内容源：考点笔记（58 考点 / 9 章）
+├── exam-notes.md        # 唯一内容源：考点笔记（58 考点 / 9 章，每章附树状速记图）
 ├── index.html           # 思维导图页面（由 skill 的 render_notes.py 从 exam-notes.md 生成，勿手改）
 ├── render.py            # 旧版渲染器（已被 .agents/skills/exam-note-distiller/scripts/render_notes.py 取代）
 ├── mistakes-data.js     # 错题集数据（AI 维护，追加条目即可）

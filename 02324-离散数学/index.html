@@ -543,7 +543,7 @@ header h1 {
 <header>
   <h1>离散数学 · 考点笔记</h1>
   <div class="header-meta">
-    <div class="header-stat"><strong>10</strong>章</div>
+    <div class="header-stat"><strong>12</strong>章</div>
     <div class="header-divider"></div>
     <div class="header-stat"><strong>全国自考 02324</strong>考点覆盖</div>
   </div>
@@ -2442,6 +2442,170 @@ n 个结点的树总度数必为 <span class="formula">2(n−1)</span>——先�
 <b>例（2024-04 真题）：</b> 4 个点 A、B、C、D，从 A 出发游完其余 3 点回 A：回路共 (4−1)!/2 = 3 条，逐一算权和取最小<br>
 <svg role="img" aria-label="旅行商问题示例：4点带权完全图与最短回路" viewBox="0 0 360 208" style="display:block;max-width:460px;margin:8px 0"><line x1="250" y1="155" x2="110" y2="155" style="stroke:var(--c2);stroke-width:2.4"/><line x1="110" y1="45" x2="250" y2="45" style="stroke:var(--c2);stroke-width:2.4"/><line x1="250" y1="45" x2="110" y2="155" style="stroke:var(--c2);stroke-width:2.4"/><line x1="110" y1="45" x2="250" y2="155" style="stroke:var(--c2);stroke-width:2.4"/><line x1="250" y1="45" x2="250" y2="155" style="stroke:var(--muted);stroke-width:1.6"/><line x1="110" y1="155" x2="110" y2="45" style="stroke:var(--muted);stroke-width:1.6"/><text x="180" y="36" text-anchor="middle" font-size="11.5" fill="var(--muted)">1</text><text x="264" y="104" text-anchor="middle" font-size="11.5" fill="var(--muted)">3</text><text x="180" y="170" text-anchor="middle" font-size="11.5" fill="var(--muted)">1</text><text x="96" y="104" text-anchor="middle" font-size="11.5" fill="var(--muted)">3</text><text x="136" y="88" text-anchor="middle" font-size="11.5" fill="var(--muted)">2</text><text x="226" y="120" text-anchor="middle" font-size="11.5" fill="var(--muted)">2</text><circle cx="110" cy="45" r="13" fill="var(--card)" stroke="var(--border-strong)" stroke-width="1.5"/><text x="110" y="49.5" text-anchor="middle" font-size="12.5" fill="var(--text)">A</text><circle cx="250" cy="45" r="13" fill="var(--card)" stroke="var(--border-strong)" stroke-width="1.5"/><text x="250" y="49.5" text-anchor="middle" font-size="12.5" fill="var(--text)">B</text><circle cx="250" cy="155" r="13" fill="var(--card)" stroke="var(--border-strong)" stroke-width="1.5"/><text x="250" y="159.5" text-anchor="middle" font-size="12.5" fill="var(--text)">C</text><circle cx="110" cy="155" r="13" fill="var(--card)" stroke="var(--border-strong)" stroke-width="1.5"/><text x="110" y="159.5" text-anchor="middle" font-size="12.5" fill="var(--text)">D</text><text x="180" y="184" text-anchor="middle" font-size="10.5" fill="var(--muted)">3 条回路（(4−1)!/2=3）：A-B-C-D-A=8　A-B-D-C-A=6 ✓　A-C-B-D-A=10</text><text x="180" y="199" text-anchor="middle" font-size="11.5" fill="var(--muted)">绿＝最短哈密顿回路，逐一算权和取最小</text></svg>
 <b>审题要点：</b> "游遍各点回到起点的最短路线" → 哈密顿应用题，别套最小生成树<br>
+</div></div>
+</div></div>
+
+<div class="ch ch1">
+<div class="ch-title" onclick="toggleCh(this)" role="button" tabindex="0" aria-expanded="false"><span>考试公式速查表<span class="badge">10速查</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="kp"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">说明</span><span class="kp-name">来源与用法</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+根据 hanxiaodao/080901-mindmap/02324-离散数学/index.html 的九章结构整理。用途：考前快速查公式、定义、适用条件与典型解法。符号约定：T/1 为真，F/0 为假；集合、关系与图的结论必须连同条件一起记。
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第一章　命题逻辑</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 五个联结词</span>
+<table><tr><th>联结词</th><th>记号</th><th>真假规则</th></tr><tr><td>否定</td><td>¬P</td><td>取反</td></tr><tr><td>合取</td><td>P∧Q</td><td>两者都真才真</td></tr><tr><td>析取（相容或）</td><td>P∨Q</td><td>至少一个真即真</td></tr><tr><td>单条件</td><td>P→Q</td><td>仅 P 真、Q 假时为假</td></tr><tr><td>双条件</td><td>P↔Q</td><td>P、Q 同真或同假时为真</td></tr></table>
+<ul><li>只要 P 就 Q：P→Q（充分条件）。</li><li>只有 P 才 Q：Q→P（必要条件）。</li><li>当且仅当、充要条件：P↔Q。</li><li>n 个命题变元的真值表有 2ⁿ 行。</li><li>永真式：所有指派都真；永假式：所有指派都假；可满足式：至少一组指派为真。</li></ul>
+<span class="kp-sub">2. 必背等值式</span>
+<ul><li>双重否定：¬¬A ⇔ A</li><li>德摩根律：¬(A∨B) ⇔ ¬A∧¬B；¬(A∧B) ⇔ ¬A∨¬B</li><li>蕴含消去：A→B ⇔ ¬A∨B</li><li>逆否：A→B ⇔ ¬B→¬A（注意不是逆命题 B→A）</li><li>双条件：A↔B ⇔ (A→B)∧(B→A)</li><li>分配律：A∨(B∧C) ⇔ (A∨B)∧(A∨C)；A∧(B∨C) ⇔ (A∧B)∨(A∧C)</li><li>幂等：A∨A ⇔ A；A∧A ⇔ A</li><li>排中：A∨¬A ⇔ T；矛盾：A∧¬A ⇔ F</li><li>同一/零律：A∨F ⇔ A；A∨T ⇔ T；A∧T ⇔ A；A∧F ⇔ F</li></ul>
+<span class="kp-sub">3. 推理规则</span>
+<ul><li>假言推理（MP）：P→Q, P ⊢ Q</li><li>析取三段论：P∨Q, ¬P ⊢ Q（或对称形式）</li><li>合取消去：P∧Q ⊢ P，P∧Q ⊢ Q</li><li>双条件分解：P↔Q, P ⊢ Q；P↔Q, ¬P ⊢ ¬Q</li><li>CP：证明 A→B，先把 A 作为附加前提，再推出 B，最后明确写出 A→B。</li><li>归谬：证明 C，假设 ¬C，推出矛盾后得 C。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第二章　范式</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 主析取范式（PDNF）</span>
+<ul><li>小项：每个变元恰出现一次的合取式；真值为 1 写原变元，真值为 0 写否定。</li><li>主析取范式：把公式所有成真指派对应的小项用 ∨ 连接。</li><li><b>小项个数 = 真值表中结果为 1 的行数。</b></li><li>含 n 个变元的永真式：PDNF 有 2ⁿ 个小项；永假式：没有成真小项。</li></ul>
+<span class="kp-sub">2. 主合取范式（PCNF）</span>
+<ul><li>大项：每个变元恰出现一次的析取式；成假指派中真值为 0 写原变元、真值为 1 写否定。</li><li>主合取范式：把所有成假指派对应的大项用 ∧ 连接。</li><li><b>大项个数 = 真值表中结果为 0 的行数。</b></li><li>含 n 个变元：小项数 + 大项数 = 2ⁿ。</li><li>永假式：PCNF 有 2ⁿ 个大项；永真式：没有成假大项。</li></ul>
+<span class="kp-sub">3. 小项、大项</span>
+<ul><li>¬mᵢ ⇔ Mᵢ，¬Mᵢ ⇔ mᵢ</li><li>i≠j 时：mᵢ∧mⱼ ⇔ F；Mᵢ∨Mⱼ ⇔ T</li><li>缺变元补全：A∧(B∨¬B) ⇔ A（补小项）；A∨(B∧¬B) ⇔ A（补大项）。</li><li><b>做题流程：先消去 →、↔，列真值表，分别数真行/假行，再写范式。</b></li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第三章　谓词逻辑</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 常见语句符号化</span>
+设 P(x) 表示 x 具有性质 P，Q(x) 表示 x 具有性质 Q：<br>
+<ul><li>所有 P 都是 Q：∀x(P(x)→Q(x))</li><li>有的 P 是 Q：∃x(P(x)∧Q(x))</li><li>所有 P 都不是 Q：∀x(P(x)→¬Q(x))</li><li>有的 P 不是 Q：∃x(P(x)∧¬Q(x))</li><li>并非所有 P 都是 Q：∃x(P(x)∧¬Q(x))（等值于否定全称句）</li><li>不存在满足 P 的对象：¬∃xP(x)，等值于 ∀x¬P(x)。</li></ul>
+<b>记忆：全称句通常用 →；存在句通常用 ∧。</b> 不要把“所有 P 都是 Q”写成 ∀x(P(x)∧Q(x))。<br>
+<span class="kp-sub">2. 量词规律</span>
+<ul><li>¬∀xP(x) ⇔ ∃x¬P(x)</li><li>¬∃xP(x) ⇔ ∀x¬P(x)</li><li>有限论域消去量词：∀xP(x) 化为各对象实例的合取；∃xP(x) 化为各对象实例的析取。</li><li>∀x∃y R(x,y) 与 ∃y∀x R(x,y) 通常不等价，不能随意交换量词顺序。</li><li>前束范式常用步骤：约束变元改名 → 消去 →、↔ → 将量词前移（注意变元自由出现条件）。</li><li>全称实例化：∀xP(x) ⊢ P(c)。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第四章　集合</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 基本关系与运算</span>
+<ul><li>子集：A⊆B ⇔ ∀x(x∈A→x∈B)；真子集：A⊂B 且 A≠B。</li><li>幂集：P(A)={X | X⊆A}；若 |A|=n，则 |P(A)|=2ⁿ。</li><li>笛卡尔积：A×B={(a,b)|a∈A,b∈B}；有限集合时 |A×B|=|A||B|。</li><li>差集：A−B=A∩Bᶜ；对称差：A⊕B=(A−B)∪(B−A)=(A∪B)−(A∩B)。</li><li>德摩根律：(A∪B)ᶜ=Aᶜ∩Bᶜ；(A∩B)ᶜ=Aᶜ∪Bᶜ。</li><li>幂集恒等式：P(A∩B)=P(A)∩P(B)；P(A)∪P(B)⊆P(A∪B)（一般不等号不能改成等号）。</li></ul>
+<span class="kp-sub">2. 容斥原理</span>
+<ul><li>两集合：|A∪B|=|A|+|B|−|A∩B|。</li><li>三集合：|A∪B∪C|=|A|+|B|+|C|−|A∩B|−|A∩C|−|B∩C|+|A∩B∩C|。</li><li>有限集合计数时，检查端点是否包含、0 是否满足倍数条件、重复元素是否去重；<b>1 不是质数</b>。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第五章　关系与函数</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 关系</span>
+<ul><li>A 到 B 的二元关系：R⊆A×B。</li><li>定义域：dom(R)={x | ∃y,(x,y)∈R}；值域：ran(R)={y | ∃x,(x,y)∈R}。</li><li>逆关系：R⁻¹={(y,x)|(x,y)∈R}；dom(R⁻¹)=ran(R)，ran(R⁻¹)=dom(R)。</li><li>复合关系：按定义逐步追踪中间元素；按项目速记约定，R₁∘R₂ 中先看 R₁ 的尾，再找 R₂ 的头，考试须以教材对复合顺序的定义为准。</li><li>关系性质：<ul><li>自反：∀x, xRx；反自反：∀x, ¬xRx</li><li>对称：xRy⇒yRx</li><li>反对称：xRy∧yRx⇒x=y（不是“非对称”）</li><li>传递：xRy∧yRz⇒xRz</li></ul></li><li>等价关系 = 自反 + 对称 + 传递。</li><li>偏序关系 = 自反 + 反对称 + 传递。</li><li>拟序（严格序关系常用定义）= 反自反 + 传递。</li><li>等价类：[a]R={x∈A|xRa}；等价关系的等价类构成集合划分，反之每个划分唯一确定一个等价关系。</li><li>哈斯图：只画覆盖关系，省略自反环与可由传递性推出的边；偏序方向要统一。</li><li>极大元不一定是最大元；极小元不一定是最小元。最大/最小元若存在则唯一。</li></ul>
+<span class="kp-sub">2. 函数</span>
+<ul><li>函数 f:A→B：每个 a∈A 恰好对应一个 b∈B。</li><li>单射：f(a₁)=f(a₂)⇒a₁=a₂。</li><li>满射：∀b∈B,∃a∈A:f(a)=b。</li><li>双射 = 单射 + 满射；有逆函数当且仅当函数为双射。</li><li>若有限集合 |A|=|B|=n，则单射 ⇔ 满射 ⇔ 双射。</li><li>从 m 元集合到 n 元集合的函数总数：nᵐ；若要求单射且 m≤n：n!/(n−m)!；若 m&gt;n，单射数为 0。</li><li>复合函数：(g∘f)(x)=g(f(x))，先算右边的 f，再算左边的 g。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第六章　代数系统与群</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 二元运算</span>
+<ul><li>二元运算：* : A×A→A（封闭性）。</li><li>结合律：(a*b)*c=a*(b*c)；交换律：a*b=b*a；幂等律：a*a=a。</li><li>幺元 e：e*a=a*e=a。</li><li>左零元 θ：θ*a=θ；右零元 θ：a*θ=θ。左右定义不要互换。</li><li>a 的逆元 b：a*b=b*a=e（若只满足一侧，要依教材的结构与条件判断）。</li></ul>
+<span class="kp-sub">2. 代数结构</span>
+<ul><li>半群：封闭 + 结合。</li><li>独异点（幺半群）：半群 + 幺元。</li><li>群：封闭 + 结合 + 幺元 + 每个元素有逆元。</li><li>阿贝尔群：群 + 交换律。</li><li>群中单位元唯一、每个元素的逆元唯一；群中幂等元只能是单位元 e。</li><li>有限群阶：群元素个数；元素 a 的阶是满足 aᵏ=e 的最小正整数 k。</li><li>若 a 是 n 阶循环群的生成元，则 ord(aᵏ)=n/gcd(n,k)。</li><li>群方程优先用逆元左右乘消元；不要在一般格或一般二元运算中擅自使用群的消去律。</li><li>环、域：按课程定义检查加法群、乘法结合/分配及乘法逆元条件；域中非零元素对乘法构成阿贝尔群。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第七章　格与布尔代数</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 格</span>
+<ul><li>格：任意两个元素都有唯一的最大下界（meet，a∧b）与最小上界（join，a∨b）。</li><li>幂等：a∧a=a，a∨a=a；交换、结合、吸收律均成立。</li><li>吸收律：a∧(a∨b)=a；a∨(a∧b)=a。</li><li>对偶原则：将 ∧ 与 ∨、0 与 1 互换，格的有效公式仍成立。</li><li>分配格：a∧(b∨c)=(a∧b)∨(a∧c)，以及对偶式 a∨(b∧c)=(a∨b)∧(a∨c)。</li><li>证明格中 a=b：若已知 a∧c=b∧c 且 a∨c=b∨c，可用吸收律、分配律与代入逐步把 a 变为 b，不能凭空“消去 c”。</li></ul>
+<span class="kp-sub">2. 有界格、补元、布尔代数</span>
+<ul><li>有界格有最小元 0、最大元 1。</li><li>补元 b 满足 a∧b=0 且 a∨b=1。</li><li>布尔代数常用律：a∧a'=0，a∨a'=1；德摩根律：(a∧b)'=a'∨b'，(a∨b)'=a'∧b'。</li><li>常见化简：<ul><li>a∧(a'∨b)=(a∧a')∨(a∧b)=a∧b</li><li>b∨(a∧b')=(b∨a)∧(b∨b')=a∨b</li></ul></li><li>吸收律形式不匹配时，改用分配律展开，再用补元律凑 0 或 1。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第八章　图论基础</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 握手定理与度数</span>
+<ul><li>无向图：Σ_{v∈V} deg(v)=2m，其中 m 为边数。</li><li>因此奇度顶点数必为偶数。</li><li>n 阶连通图至少有 n−1 条边，所以度数和至少 2(n−1)。</li><li>最大度不小于平均度：Δ(G)≥2m/n。</li><li>若 m=kn+1，则平均度 2m/n=2k+2/n&gt;2k，因最大度是整数，Δ(G)≥2k+1。</li></ul>
+<span class="kp-sub">2. 常见图的边数</span>
+<ul><li>完全图：|E(Kₙ)|=n(n−1)/2 = C(n,2)。</li><li>完全二分图：|E(K_{m,n})|=mn。</li><li>r-正则图：2m=nr，故 m=nr/2（nr 必须为偶数）。</li><li>补图：|E(Ḡ)|=C(n,2)−|E(G)|。</li><li>自补图必要条件：m=C(n,2)/2，因此 n(n−1)/2 必须为偶数。</li></ul>
+<span class="kp-sub">3. 连通性、矩阵与同构</span>
+<ul><li>连通图至少 n−1 条边；树恰有 n−1 条边。</li><li>关联矩阵（无向图，按通常定义）每条边对应列有两个端点标记，非环边列和为 2；连通图关联矩阵秩通常为 n−1（需按课程对矩阵与图的约定）。</li><li>同构必须保持顶点数、边数、度数序列、连通性及邻接关系；这些不变量不同即可判不同构，但相同不保证同构。</li><li>割边：删除该边后连通分支数增加的边。树中每条边都是割边。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">第九章　图的应用、平面图与树</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. 欧拉图与哈密顿图</span>
+<ul><li>连通无向图是欧拉图 ⇔ 所有顶点度数均为偶数。</li><li>连通无向图有欧拉通路（不要求闭合） ⇔ 奇度顶点数恰为 0 或 2。</li><li>欧拉问题“每条边恰一次”；哈密顿问题“每个顶点恰一次”，不要混淆。</li><li>狄拉克定理：简单图 G 有 n≥3 个顶点，若最小度 δ(G)≥n/2，则存在哈密顿回路。</li><li>旅行商问题：在完全加权图中求最短哈密顿回路；小规模可枚举，注意同一回路的旋转/反向通常视为相同。</li></ul>
+<span class="kp-sub">2. 平面图</span>
+<ul><li>欧拉公式（连通平面图）：n−m+r=2，r 为面数。</li><li>平面图面次数总和：Σ deg(face)=2m。</li><li>若连通简单平面图且每个面至少由 3 条边围成：3r≤2m，结合欧拉公式得 m≤3n−6（n≥3）。</li><li>因而若简单图 m&gt;3n−6，可判定它不是平面图；反向不成立。</li><li>对简单平面图还常用 m≤2n−4（不含三角形时，在适用条件下使用）。</li></ul>
+<span class="kp-sub">3. 树与二叉树</span>
+<ul><li>树（连通无圈图）：m=n−1。</li><li>树中任意两顶点之间有唯一简单通路；删任一边会不连通，添任一新边会产生圈。</li><li>树的握手式：Σdeg(v)=2(n−1)。</li><li>若树有 n₀ 个度为 1 的叶结点等分类计数，先明确题目中的“叶/分支结点/内部结点”定义，再列度数和方程。</li><li>二叉树遍历：先序 NLR，中序 LNR，后序 LRN；已知中序 + 先序或中序 + 后序（结点不重复）可唯一重建二叉树。</li><li>算术表达式树：叶为操作数，内部结点为运算符；先序/中序/后序分别对应前缀/中缀/后缀表达式。</li><li>Kruskal 最小生成树：边按权从小到大取；若加入会形成回路则跳过；直到选出 n−1 条边。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">速查</span><span class="kp-name">考场最后检查清单</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+1. P→Q 只在 P=1,Q=0 时假；“只有…才…”方向要反过来。<br>
+2. PDNF 数真行、PCNF 数假行；小项与大项写正/写反规则相反。<br>
+3. 全称谓词用蕴涵、存在谓词用合取；否定量词要翻转量词并否定谓词。<br>
+4. dom(R) 取第一分量、ran(R) 取第二分量；逆关系交换定义域和值域。<br>
+5. 偏序是自反+反对称+传递，不是对称；等价关系是自反+对称+传递。<br>
+6. 群中幂等元只有单位元；找逆元前先找幺元。<br>
+7. 无向图度数和等于 2m；连通图至少 n−1 条边。<br>
+8. 欧拉图必须连通且所有度为偶数；哈密顿回路看顶点，不是边。<br>
+9. 平面图不等式必须写清简单、连通、n 的条件。<br>
+10. 证明题写出使用的定理、代入步骤与最后结论，尤其是 CP 证明要收回附加前提。<br>
+</div></div>
+</div></div>
+
+<div class="ch ch2">
+<div class="ch-title" onclick="toggleCh(this)" role="button" tabindex="0" aria-expanded="false"><span>错题速记点<span class="badge">8速记</span></span><span class="arrow">▼</span></div>
+<div class="ch-body">
+<div class="kp"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">说明</span><span class="kp-name">来源与用法</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+根据仓库 02324-离散数学/mistakes-data.js 当前记录提炼。记录共 26 题，均标记为 done:false，因此以下内容应视为仍需复习的错题清单，而非已掌握知识。
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">一、命题逻辑与范式</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">1. “当且仅当”不能写成单向蕴含</span>
+<ul><li><b>原题线索</b>：P：“0.4 是有理数”；Q：“0.4 可写成分数”；命题“P 当且仅当 Q”如何符号化？</li><li><b>正确</b>：P↔Q。</li><li><b>错因</b>：把双向条件写成 P→Q，或因为 P、Q 都真而写成 P∧Q。</li><li><b>速记</b>：只要→前推后；只有→后推前；当且仅当→双向。</li></ul>
+<span class="kp-sub">2. 可满足式不等于永真式</span>
+<ul><li><b>原题线索</b>：(P∧(P→Q))→¬Q 是什么类型？</li><li><b>正确</b>：可满足式，但既非永真式也非永假式。</li><li><b>关键验证</b>：P=1、Q=1 时前件真、后件假，整个公式为假；其余三组赋值为真。</li><li><b>错因</b>：看到 P∧(P→Q) 就机械套用假言推理，忽略后件实际是 ¬Q。</li></ul>
+<span class="kp-sub">3. 主析取范式的小项数看真行</span>
+<ul><li><b>原题线索</b>：(P∧Q)→Q 的主析取范式含多少小项？</li><li><b>正确</b>：公式恒真，2 个变元共 2²=4 行，因此有 4 个小项。</li><li><b>错因</b>：误按 P→Q 计算，误得 3 个小项。</li><li><b>速记</b>：PDNF 数 1；PCNF 数 0；两者总数 2ⁿ。</li></ul>
+<span class="kp-sub">4. CP 规则最后一步不能省</span>
+<ul><li><b>原题线索</b>：前提 P∨Q、¬P∨¬R、Q→S，证明 R→S。</li><li><b>正确链条</b>：假设 R → 由 ¬P∨¬R 得 ¬P → 由 P∨Q 得 Q → 由 Q→S 得 S → 收回附加前提写 R→S。</li><li><b>错因</b>：推到 S 就停笔；S 是后件，不是要求证明的完整结论。</li><li><b>检查</b>：结论若是 A→B，最后必须写 A→B。</li></ul>
+<span class="kp-sub">5. “全对、全错、对一半”要拆成逐句真值</span>
+<ul><li><b>原题线索</b>：三人分别对矿样金属作两句判断，要求一人全对、一人全错、一人对一半。</li><li><b>结论</b>：矿样是铁。</li><li><b>方法</b>：把每个自然语言判断拆成两个原子命题；“对一半”表示一真一假。观察乙、丙两组判断逐句互为否定，可先定位“全对/全错”候选，再排除矛盾情况。</li><li><b>错因</b>：把两句话合成一个命题，或一开始就武断指定谁全对。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">二、谓词逻辑</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<ul><li>本版错题数据未记录第三章专属错题；复习时重点检查量词顺序与否定规则：<ul><li>¬∀xP(x) ⇔ ∃x¬P(x)</li><li>¬∃xP(x) ⇔ ∀x¬P(x)</li><li>∀x∃y 一般不等价于 ∃y∀x。</li></ul></li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">三、集合</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">6. 0 是 5 的倍数，端点要算清</span>
+<ul><li><b>原题线索</b>：S={n|1≤n≤100,n∈Z}，A={n|n−1 是 5 的倍数}，求 |A|。</li><li><b>正确</b>：20；元素为 {1,6,11,…,96}。</li><li><b>推导</b>：n−1=5k，允许 k=0，所以 n=5k+1≤100，k=0,…,19，共 20 个。</li><li><b>错因</b>：漏掉 n=1，或首尾差一。</li></ul>
+<span class="kp-sub">7. 1 不是质数，9 也不是质数</span>
+<ul><li><b>原题线索</b>：在 {1,…,10} 中分别按 x+2、2x−1 为质数筛集合，再求对称差。</li><li><b>正确</b>：A={1,3,5,9}，B={2,3,4,6,7,9,10}，A⊕B={1,2,4,5,6,7,10}。</li><li><b>检查</b>：1 不是质数；9=3² 不是质数；对称差只保留“恰属于一个集合”的元素。</li><li><b>公式</b>：A⊕B=(A−B)∪(B−A)。</li></ul>
+<span class="kp-sub">8. 三集合容斥最后要加回三重交集</span>
+<ul><li><b>公式</b>：|A∪B∪C|=|A|+|B|+|C|−|A∩B|−|A∩C|−|B∩C|+|A∩B∩C|。</li><li><b>错因</b>：只记住两两交集要减，忘了三重交集被多减一次。</li><li><b>证明骨架</b>：先对 (A∪B) 与 C 用两集合容斥，再用 (A∪B)∩C=(A∩C)∪(B∩C) 展开。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">四、关系</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">9. ran(R) 取第二分量，且要去重</span>
+<ul><li><b>原题线索</b>：R={(1,a),(2,b),(3,c),(4,a),(4,b)}。</li><li><b>正确</b>：ran(R)={a,b,c}；dom(R)={1,2,3,4}。</li><li><b>错因</b>：把定义域与值域弄反，或忘记集合会自动去重。</li><li><b>口诀</b>：第一分量是 dom，第二分量是 ran。</li></ul>
+<span class="kp-sub">10. 逆关系会交换定义域和值域</span>
+<ul><li><b>原题线索</b>：R={(a,2),(b,3),(c,1)}，求 ran(R⁻¹)。</li><li><b>正确</b>：{a,b,c}。</li><li><b>四项联记</b>：dom(R⁻¹)=ran(R)；ran(R⁻¹)=dom(R)。</li><li><b>错因</b>：ran(R) 与 dom(R⁻¹) 常恰好相同，容易被另一问干扰。</li></ul>
+<span class="kp-sub">11. 偏序不要求对称</span>
+<ul><li><b>正确分类</b>：<ul><li>等价：自反 + 对称 + 传递。</li><li>偏序：自反 + 反对称 + 传递。</li><li>拟序（严格序常用定义）：反自反 + 传递。</li><li>相容关系（本笔记定义）：自反 + 对称。</li></ul></li><li><b>错因</b>：把“反对称”误读成“对称”。</li><li><b>检查</b>：反对称只要求 xRy 与 yRx 同时成立时 x=y。</li></ul>
+<span class="kp-sub">12. 划分构造等价关系：自环、块内双向、块间无边</span>
+<ul><li><b>原题线索</b>：划分 {{a,b},{c,d}}。</li><li><b>正确关系</b>：{(a,a),(b,b),(c,c),(d,d),(a,b),(b,a),(c,d),(d,c)}，共 8 个序偶。</li><li><b>口诀</b>：自环全带上、块内配成对、块间不往来。</li></ul>
+<span class="kp-sub">13. 两元素集合有 2 个等价关系</span>
+<ul><li><b>原题线索</b>：A={1,2}，求等价关系个数。</li><li><b>正确</b>：2 个，对应划分 {{1},{2}} 与 {{1,2}}。</li><li><b>原则</b>：等价关系与集合划分一一对应；不要枚举所有普通关系后凭直觉计数。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">五、代数系统与群</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">14. 元素幂的阶用 gcd 公式</span>
+<ul><li><b>原题线索</b>：10 阶循环群，a 是生成元，求 a⁴ 的阶。</li><li><b>正确</b>：ord(aᵏ)=n/gcd(n,k)，所以 ord(a⁴)=10/gcd(10,4)=5。</li><li><b>错因</b>：把指数 4 直接当成阶，或把 10/4 取整。</li></ul>
+<span class="kp-sub">15. 判断左右零元要看元素放在哪边</span>
+<ul><li><b>原题线索</b>：x*y=x，求右零元个数。</li><li><b>正确</b>：0 个。右零元 θ 要求 x*θ=θ 对所有 x 成立；本题 x*θ=x，不可能对所有 x 都等于同一个 θ。</li><li><b>辨析</b>：本运算下每个元素都是左零元（θ*x=θ），每个元素都是右单位元（x*e=x），但没有右零元。</li><li><b>做法</b>：把候选元素放进定义对应的左/右位置，代入后检查是否对所有 x 成立。</li></ul>
+<span class="kp-sub">16. 群中的幂等元只能是单位元</span>
+<ul><li><b>正确</b>：若 a*a=a，则 a*a=a*e，由群的消去律得 a=e。</li><li><b>错因</b>：把半群或独异点中可能存在多个幂等元的结论搬到群中。</li></ul>
+<span class="kp-sub">17. 求逆元前先求幺元</span>
+<ul><li><b>原题线索</b>：在 {1,2,3,4} 上定义 x⊗y=(xy) mod 5，求 4 的逆元。</li><li><b>正确</b>：幺元是 1；4⊗4=16 mod 5=1，故 4⁻¹=4。</li><li><b>固定步骤</b>：先求 e，再解 a⊗x=e；最后检查运算是否在集合上封闭以及结构条件是否成立。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">六、格与布尔代数</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">18. 布尔代数化简：吸收律形式不匹配时用分配律</span>
+<ul><li><b>公式一</b>：b∨(a∧b')=(b∨a)∧(b∨b')=(a∨b)∧1=a∨b。</li><li><b>公式二</b>：a∧(a'∨b)=(a∧a')∨(a∧b)=0∨(a∧b)=a∧b。</li><li><b>错因</b>：看到 ∧、∨ 混合就硬套吸收律，忽略字面结构不匹配。</li><li><b>方法</b>：分配律展开，再用 b∨b'=1 或 a∧a'=0。</li></ul>
+<span class="kp-sub">19. 分配格证明不能随意“消去 c”</span>
+<ul><li><b>题设</b>：a∧c=b∧c 且 a∨c=b∨c。</li><li><b>正确骨架</b>：a=a∧(a∨c)=a∧(b∨c)=(a∧b)∨(a∧c)=(a∧b)∨(b∧c)=b∧(a∨c)=b∧(b∨c)=b。</li><li><b>错因</b>：把群的消去律错误套用到格中。</li><li><b>检查</b>：每步标明吸收律、分配律或代入。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">七、图论</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+<span class="kp-sub">20. 欧拉图的判定必须同时满足连通与全偶度</span>
+<ul><li><b>正确</b>：无向图是欧拉图 ⇔ 连通且每个顶点度数为偶数。</li><li><b>错因</b>：只写“所有顶点度数为偶数”，遗漏连通性。</li><li><b>区分</b>：欧拉关注每条边恰一次；哈密顿关注每个顶点恰一次。</li></ul>
+<span class="kp-sub">21. 连通图度数和至少为 2(n−1)</span>
+<ul><li><b>推导</b>：n 阶连通图至少有 n−1 条边；握手定理 Σdeg(v)=2m，故 Σdeg(v)≥2(n−1)=2n−2。</li><li><b>错因</b>：误写成 2n，或忘了连通图的最少边数条件。</li></ul>
+<span class="kp-sub">22. 完全二分图边数是 mn</span>
+<ul><li><b>原题线索</b>：求 K₃,₃ 的边数。</li><li><b>正确</b>：|E(K_{m,n})|=mn，故 K₃,₃ 有 9 条边。</li><li><b>错因</b>：误用完全图 K₆ 的公式 C(6,2)=15。</li><li><b>辨析</b>：完全二分图的同一部集内部没有边，所有边跨越两个部集。</li></ul>
+<span class="kp-sub">23. 平面图不等式的证明要把面数消掉</span>
+<ul><li><b>目标</b>：连通简单平面图且每个面至少由 3 条边围成，证明 m≤3n−6。</li><li><b>证明骨架</b>：设面数 r；面次数总和 2m，故 3r≤2m；欧拉公式 n−m+r=2，即 r=2+m−n；代入得 3(2+m−n)≤2m，整理 m≤3n−6。</li><li><b>错因</b>：没把“每个面至少 3 条边”翻译成不等式，或忘记桥的两侧计入面次数两次。</li><li><b>反证非平面</b>：若简单图 m&gt;3n−6，则它不是平面图；反向不成立。</li></ul>
+<span class="kp-sub">24. 用狄拉克定理证明圆桌相邻为朋友</span>
+<ul><li><b>建模</b>：人作顶点，朋友关系作无向边。</li><li><b>定理</b>：简单图 n≥3 且最小度 δ(G)≥n/2，则有哈密顿回路。</li><li><b>本题</b>：30 人每人至少 15 个朋友，δ(G)≥15=30/2，故有哈密顿回路；按回路顺序入座即可。</li><li><b>错因</b>：没有把“每人至少 n/2 个朋友”识别为狄拉克定理条件。</li></ul>
+<span class="kp-sub">25. 握手定理证明最大度下界，最后一步靠整数性</span>
+<ul><li><b>题设</b>：无向图 |V|=n，|E|=kn+1，证明 Δ(G)≥2k+1。</li><li><b>推导</b>：平均度 2m/n=2(kn+1)/n=2k+2/n&gt;2k；最大度不小于平均度，所以 Δ&gt;2k；Δ 为整数，故 Δ≥2k+1。</li><li><b>错因</b>：只写 Δ&gt;2k 就停止，没有转换成题目要求的整数下界。</li></ul>
+</div></div>
+<div class="kp speedmap"><div class="kp-title" onclick="toggleKp(this)" role="button" tabindex="0" aria-expanded="false"><span class="kp-num">错题</span><span class="kp-name">八、优先复习顺序</span><span class="kp-arrow">▼</span></div><div class="kp-detail">
+1. <b>先背规则</b>：蕴含方向、PDNF/PCNF、量词否定、关系性质、群的定义、握手定理、欧拉图判定。<br>
+2. <b>再练算法</b>：集合筛选、关系定义域/值域、逆关系、求逆元、布尔代数化简、二分图计边。<br>
+3. <b>最后练证明模板</b>：CP 规则、三集合容斥、格中等式、握手定理平均度、平面图不等式、狄拉克定理应用。<br>
+4. 每题复盘只写三件事：错在什么判断、正确规则是什么、下次看到哪个关键词要立刻触发该规则。<br>
 </div></div>
 </div></div>
 

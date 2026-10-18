@@ -391,6 +391,18 @@ body.no-github .export-md { right:64px; }
 :root[data-theme="light"] .theme-toggle .icon-sun { display:block; }
 :root[data-theme="light"] .theme-toggle .icon-moon { display:none; }
 
+/* 右上角入口胶囊组（错题本 / 首页） */
+.corner-links { position:fixed; top:16px; right:160px; display:flex; gap:8px; z-index:100; }
+.corner-link {
+  height:38px; border-radius:19px; border:1px solid var(--border);
+  background:var(--surface); color:var(--muted); display:flex; align-items:center; gap:6px;
+  padding:0 13px; font-size:12.5px; text-decoration:none;
+  transition:color .15s, border-color .15s;
+}
+.corner-link:hover { color:var(--heading); border-color:var(--border-strong); }
+.corner-link:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+@media (prefers-reduced-motion:reduce) { .corner-link { transition:none; } }
+
 /* 键盘焦点 */
 .ch-title:focus-visible, .kp-title:focus-visible { outline:2px solid var(--focus); outline-offset:-2px; }
 .theme-toggle:focus-visible, .github-link:focus-visible, .export-md:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
@@ -408,6 +420,8 @@ body.no-github .export-md { right:64px; }
   .export-md { right:94px; }
   body.no-github .theme-toggle { right:10px; }
   body.no-github .export-md { right:52px; }
+  .corner-links { top:10px; right:136px; }
+  .corner-link { height:36px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .arrow, .kp-arrow, .ch-title::before, .theme-toggle, .github-link, .export-md { transition:none; }
@@ -425,6 +439,16 @@ body.no-github .export-md { right:64px; }
 <a class="github-link" href="@@GITHUB@@" target="_blank" rel="noopener" aria-label="GitHub 项目源码" title="GitHub 项目源码">
   <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
 </a>
+<div class="corner-links">
+<a class="corner-link" href="mistakes.html" aria-label="错题本" title="错题本">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+  错题本
+</a>
+<a class="corner-link" href="../index.html" aria-label="首页" title="返回首页">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  首页
+</a>
+</div>
 <header>
   <h1>@@H1@@</h1>
   <div class="header-meta">

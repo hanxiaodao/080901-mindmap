@@ -430,18 +430,17 @@ header h1 {
   background:rgba(251,191,36,.5); color:inherit; border-radius:2px; padding:0 1px;
 }
 .sp-empty { padding:18px 12px; font-size:12.5px; color:var(--muted); text-align:center; }
-/* 错题本入口 */
-.mistakes-link {
-  position:fixed; top:16px; right:160px; height:38px; z-index:100;
-  border-radius:19px; border:1px solid var(--border);
-  background:var(--surface); color:var(--muted); cursor:pointer;
-  display:flex; align-items:center; gap:6px; padding:0 13px;
-  font-size:12.5px; text-decoration:none;
+/* 右上角入口胶囊组（错题本 / 首页） */
+.corner-links { position:fixed; top:16px; right:160px; display:flex; gap:8px; z-index:100; }
+.corner-link {
+  height:38px; border-radius:19px; border:1px solid var(--border);
+  background:var(--surface); color:var(--muted); display:flex; align-items:center; gap:6px;
+  padding:0 13px; font-size:12.5px; text-decoration:none;
   transition:color .15s, border-color .15s;
 }
-.mistakes-link:hover { color:var(--heading); border-color:var(--border-strong); }
-.mistakes-link:focus-visible { outline:2px solid var(--c1); outline-offset:2px; }
-@media (prefers-reduced-motion:reduce) { .mistakes-link { transition:none; } }
+.corner-link:hover { color:var(--heading); border-color:var(--border-strong); }
+.corner-link:focus-visible { outline:2px solid var(--c1); outline-offset:2px; }
+@media (prefers-reduced-motion:reduce) { .corner-link { transition:none; } }
 .theme-toggle .icon-sun { display:none; }
 :root[data-theme="light"] .theme-toggle .icon-sun { display:block; }
 :root[data-theme="light"] .theme-toggle .icon-moon { display:none; }
@@ -461,7 +460,8 @@ header h1 {
   .theme-toggle { right:52px; }
   .github-link { right:10px; }
   .export-md { right:94px; }
-  .mistakes-link { top:10px; right:136px; height:36px; }
+  .corner-links { top:10px; right:136px; }
+  .corner-link { height:36px; }
   .export-menu { top:52px; right:94px; }
   .float-tools { right:12px; bottom:12px; }
   .search-panel { left:8px; right:8px; width:auto; bottom:64px; }
@@ -477,7 +477,7 @@ header h1 {
 @media print {
   @page { margin: 14mm 12mm; }
   body { background:#fff; }
-  .mistakes-link, .export-md, .export-menu, .theme-toggle, .github-link,
+  .corner-links, .export-md, .export-menu, .theme-toggle, .github-link,
   .export-toast, .arrow, .kp-arrow, .list-tools, .float-tools, .search-panel { display:none !important; }
   .ch-body, .kp-detail { display:block !important; }
   * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -503,10 +503,16 @@ header h1 {
 </style>
 </head>
 <body>
-<a class="mistakes-link" href="mistakes.html" aria-label="错题本" title="错题本">
+<div class="corner-links">
+<a class="corner-link" href="mistakes.html" aria-label="错题本" title="错题本">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
   错题本
 </a>
+<a class="corner-link" href="../index.html" aria-label="首页" title="返回首页">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  首页
+</a>
+</div>
 <button class="export-md" onclick="toggleExportMenu(event)" aria-label="导出笔记（Markdown / PDF / Word）" title="导出笔记（Markdown / PDF / Word）" aria-haspopup="menu" aria-expanded="false" aria-controls="exportMenu">
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
 </button>

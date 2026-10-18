@@ -253,7 +253,7 @@ def build_chapters(chapters):
 
 def build_corner(front):
     """右上角固定入口胶囊组（仿 02324 站点的错题本入口）。
-    front matter 里 quiz:/mistakes: 有值就各生成一枚，方便以后追加。
+    front matter 里 quiz:/mistakes: 有值就各生成一枚；「首页」胶囊固定生成，指向站点主导航 ../index.html，方便以后追加。
     坐标依据本模板：桌面端导出/主题按钮占 right:64~112px，GitHub（若启用）占 right:16px，
     故胶囊组桌面放 right:160px；移动端 no-github 时按钮最左到 52+36=88px，故放 right:96px。"""
     items = (('quiz', '刷题',
@@ -279,8 +279,11 @@ def build_corner(front):
                          f'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
                          f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
                          f'aria-hidden="true">{icon}</svg>{label}</a>')
-    if not links:
-        return ''
+    links.append('<a class="corner-link" href="../index.html" aria-label="首页" title="返回首页">'
+                 '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                 'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                 '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'
+                 '<polyline points="9 22 9 12 15 12 15 22"/></svg>首页</a>')
     return css + '<div class="corner-links">' + ''.join(links) + '</div>'
 
 def main():

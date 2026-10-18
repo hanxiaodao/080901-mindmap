@@ -70,11 +70,11 @@ def render_blocks(lines):
                 # 行内沿用 **加粗**、==强调==，【S】【A】…自动转为重要度徽章。
                 out.append(build_tree(buf))
                 continue
-            body = '\n'.join(html.escape(l, quote=False) for l in buf)
             if kind in ('err', 'tip', 'ok'):
-                out.append(f'<span class="callout {kind}">{body}</span>')
+                # 提示块内沿用行内语法（**加粗**、==强调==）；公式块保持原样（公式里可能出现 == 等符号）
+                out.append(f'<span class="callout {kind}">' + '\n'.join(inline(l) for l in buf) + '</span>')
             else:
-                out.append(f'<span class="formula">{body}</span>')
+                out.append(f'<span class="formula">' + '\n'.join(html.escape(l, quote=False) for l in buf) + '</span>')
             continue
         if stripped.startswith('|'):
             rows, i = [], i
@@ -99,6 +99,28 @@ def render_blocks(lines):
             continue
         out.append(inline(stripped) + '<br>')
         i += 1
+    return '\n'.join(out)
+
+def render_body(items):
+    """考点/章导语的 (kind, text) 列表 → HTML。
+
+    #### 子主题渲染为 <span class="kp-sub"> 子标题（模板样式与导出都按它识别）；
+    其余行按块语法交给 render_blocks——块可跨多行，故先按连续行分组。
+    """
+    out, buf = [], []
+
+    def flush():
+        if buf:
+            out.append(render_blocks(buf))
+            del buf[:]
+
+    for kind, val in items:
+        if kind == 'sub':
+            flush()
+            out.append(f'<span class="kp-sub">{inline(val)}</span>')
+        else:
+            buf.append(val)
+    flush()
     return '\n'.join(out)
 
 def build_tree(lines):
@@ -209,7 +231,7 @@ def build_chapters(chapters):
                  f'<span class="arrow">▼</span></div>')
         body = ['<div class="ch-body">']
         if ch['intro']:
-            body.append('<div class="ch-intro">' + render_blocks([b[1] for b in ch['intro']]) + '</div>')
+            body.append('<div class="ch-intro">' + render_body(ch['intro']) + '</div>')
         for kp in ch['kps']:
             m = re.match(r'^考点(\d+)[：:]\s*(.*)$', kp['title'])
             num, name = (f'考点{m.group(1)}', m.group(2)) if m else ('', kp['title'])
@@ -221,7 +243,7 @@ def build_chapters(chapters):
             body.append(f'<div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)">'
                         f'<span class="kp-num">{num}</span><span class="kp-name">{inline(name)}</span>'
                         f'{lv}{fq}<span class="kp-arrow">▼</span></div>')
-            body.append('<div class="kp-detail">' + render_blocks([b[1] for b in kp['body']]) + '</div>')
+            body.append('<div class="kp-detail">' + render_body(kp['body']) + '</div>')
             body.append('</div>')
         body.append('</div>')
         p.extend(body)

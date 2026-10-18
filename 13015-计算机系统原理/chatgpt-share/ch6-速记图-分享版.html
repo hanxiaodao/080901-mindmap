@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第六章《计算机系统原理》速记图 · ChatGPT 分享还原</title>
+<style>
+  :root { color-scheme: light; }
+  body { margin:0; background:#f3f4f6; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:#111827; }
+  main { max-width:780px; margin:24px auto; background:#fff; border-radius:14px; padding:36px 40px 28px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  p { line-height:1.75; margin:0 0 14px; font-size:.95rem; }
+  h2 { font-size:1.15rem; margin:26px 0 12px; }
+  ul { margin:0 0 14px; padding-left:1.3em; line-height:1.9; font-size:.95rem; }
+  table { border-collapse:collapse; width:100%; margin:6px 0 18px; font-size:.9rem; }
+  th,td { border:1px solid #e5e7eb; padding:7px 10px; text-align:left; }
+  th { background:#f9fafb; }
+  .note { color:#6b7280; font-size:.85rem; font-style:italic; }
+  .dil-run { font-size:.95rem; line-height:1.5; }
+  .mapwrap { margin:6px 0 10px; }
+  footer { max-width:780px; margin:0 auto 28px; color:#9ca3af; font-size:.72rem; text-align:center; line-height:1.7; }
+  footer a { color:#9ca3af; }
+  @media print {
+    body { background:#fff; }
+    main { box-shadow:none; margin:0; padding:8px 0; border-radius:0; max-width:none; }
+    footer { max-width:none; }
+    .mapwrap, .dil-box { break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<main>
+<p>是的。<strong>第六章《计算机系统原理》本章速记图，更适合做成“思维导图式速记图”，而不是按考点编号逐条罗列。</strong> 但不能为了图形整齐而删掉原笔记里零散的考试点。</p><p>建议采用：<strong>一张总图串联知识体系 + 每条分支保留具体考点、公式、真题陷阱。</strong></p><h2>第六章本章速记图：建议结构</h2>
+<div class="mapwrap"><div class="dil-box" style="display:flex;flex-direction:column;min-width:0;border-radius:16px;padding:12px;gap:8px;align-items:center;text-align:center;border:1px solid rgba(100,116,139,.45)"><div class="dil-box" style="display:flex;flex-direction:column;min-width:0;border-radius:12px;padding:12px;gap:4px;align-items:center;text-align:center;width:72%;background:#1D4ED8;color:#FFFFFF"><div style="font-size:1.05rem;font-weight:700;line-height:1.35;color:#FFFFFF"><div class="dil-run">第六章：I/O 系统</div></div><div style="font-size:0.82rem;line-height:1.4;color:#FFFFFF"><div class="dil-run">体系结构 → 控制方式 → 软件层次 → 性能与考点</div></div></div><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%"><div style="min-width:0;display:flex"><div class="dil-box" style="display:flex;flex-direction:column;min-width:0;border-radius:8px;padding:12px;gap:4px;background:#E0ECFF"><div class="dil-run"><strong>① I/O 基础与硬件</strong></div><div style="font-size:0.82rem;line-height:1.4"><div class="dil-run">设备、接口、控制器、中断</div></div><hr style="border:none;border-top:1px solid #93B4F5;width:100%;margin:2px 0;opacity:.9"><div style="font-size:0.72rem;line-height:1.4"><div class="dil-run">记：组成、功能、分类、易混概念</div></div></div></div><div style="min-width:0;display:flex"><div class="dil-box" style="display:flex;flex-direction:column;min-width:0;border-radius:8px;padding:12px;gap:4px;background:#DDF5E5"><div class="dil-run"><strong>② I/O 控制方式</strong></div><div style="font-size:0.82rem;line-height:1.4"><div class="dil-run">程序查询、中断、DMA 等</div></div><hr style="border:none;border-top:1px solid #8AC9A0;width:100%;margin:2px 0;opacity:.9"><div style="font-size:0.72rem;line-height:1.4"><div class="dil-run">记：工作流程、CPU 参与程度、适用场景</div></div></div></div><div style="min-width:0;display:flex"><div class="dil-box" style="display:flex;flex-direction:column;min-width:0;border-radius:8px;padding:12px;gap:4px;background:#F3E8FF"><div class="dil-run"><strong>③ I/O 软件体系</strong></div><div style="font-size:0.82rem;line-height:1.4"><div class="dil-run">用户空间、内核空间、驱动</div></div><hr style="border:none;border-top:1px solid #C4A5F0;width:100%;margin:2px 0;opacity:.9"><div style="font-size:0.72rem;line-height:1.4"><div class="dil-run">记：分层、设备无关层、运行时系统</div></div></div></div><div style="min-width:0;display:flex"><div class="dil-box" style="display:flex;flex-direction:column;min-width:0;border-radius:8px;padding:12px;gap:4px;background:#FFF0D9"><div class="dil-run"><strong>④ I/O 处理与性能</strong></div><div style="font-size:0.82rem;line-height:1.4"><div class="dil-run">中断处理、缓冲、缓存、异步</div></div><hr style="border:none;border-top:1px solid #E7C28A;width:100%;margin:2px 0;opacity:.9"><div style="font-size:0.72rem;line-height:1.4"><div class="dil-run">记：执行流程、特性、区别与计算公式</div></div></div></div></div><div class="dil-box" style="display:flex;flex-direction:column;min-width:0;border-radius:12px;padding:8px;gap:4px;align-items:center;text-align:center;width:100%;border:1px solid #64748B"><div class="dil-run"><strong>每条分支继续挂载原笔记中的具体考点</strong></div><div style="font-size:0.82rem;line-height:1.4"><div class="dil-run">定义 / 分类 / 流程 / 公式 / 真题年份 / 易错选项 / 边界条件</div></div></div></div></div>
+<p class="note"><em>上图只是结构示意，不代表第六章的完整考点目录。实际分支应以你的原始笔记为准。</em></p><h2>和原来的逐条速记相比，关键区别是什么？</h2><table><tr><th>原来的考点清单</th><th>思维导图式速记</th></tr><tr><td>按考点编号顺序记忆</td><td>按知识之间的关系记忆</td></tr><tr><td>零散概念容易割裂</td><td>先建立主干，再挂载细节</td></tr><tr><td>分类题容易混淆</td><td>把相似概念放在同一分支对比</td></tr><tr><td>复习时需要逐条翻看</td><td>可以先看全章，再沿分支回忆考点</td></tr></table><h2>我建议采用的最终形式</h2><p>不是只有关键词的简陋思维导图，而是你之前喜欢的那种<strong>考前冲刺速记图</strong>：</p><ul><li><strong>一级分支：</strong> 本章知识体系。</li><li><strong>二级分支：</strong> 各类知识点及其关系。</li><li><strong>三级分支：</strong> 具体考试结论、公式、操作步骤。</li><li><strong>重点标记：</strong> 真题年份、易错选项、特殊条件。</li><li><strong>覆盖原则：</strong> 原笔记出现的考试点全部保留，重复内容可以合并，但不能漏掉独立考点。</li></ul><p>这样既能快速回忆全章，又能直接用于做题，而不是只看懂框架却答不出具体考点。</p><p><strong>下一步最好直接依据第六章原笔记重构总图</strong>，先核对全部考点，再组织分支，避免只凭通用教材知识重新编排后遗漏真题考点。</p>
+</main>
+<footer>
+  来源：ChatGPT 分享链接（<a href="https://chatgpt.com/s/t_6ad44f8cb7b88191bb577bc02f8431f2">chatgpt.com/s/t_6ad44f8cb7b88191bb577bc02f8431f2</a>） · 分享时间：2026/10/18 12:48:12 · 模型：gpt-6-t-mini-mini<br>
+  本页与同目录 Markdown 文件由分享数据流还原；渲染样式为近似复刻，非 ChatGPT 官方渲染结果。
+</footer>
+</body>
+</html>

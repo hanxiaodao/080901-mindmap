@@ -690,28 +690,28 @@ body.no-github .export-menu { right:64px; }
 <span class="callout tip">【做题】先统计每类指令条数 → 乘以各自 CPI → 求总周期数 → 除以主频求 CPU 时间 → 根据题目求 MIPS 或比较性能。主频更高不一定更快；MIPS 不适合直接比较不同指令集的机器。</span></div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点1</span><span class="kp-name">存储程序</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.10、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">1.1 是什么<br>
+<div class="kp-detail"><span class="kp-sub">1.1 是什么</span>
 存储程序工作方式：<b>必须将事先编好的程序和原始数据送入主存后才能执行程序，一旦程序被启动执行，计算机不需要操作人员干预就能自动完成逐条指令取出和执行的任务</b>。<br>
 人话：程序和数据先搬进主存，CPU 自动逐条取指令、执行指令，中途不用人管。<br>
-1.2 三个得分要点<br>
+<span class="kp-sub">1.2 三个得分要点</span>
 <ul><li>程序<b>和</b>原始数据都要先送<b>主存</b>。</li><li>启动后<b>不需要操作人员干预</b>（自动连续执行）。</li><li>逐条指令<b>取出并执行</b>。</li></ul>
-1.3 真题<br>
+<span class="kp-sub">1.3 真题</span>
 <b>【教材·第一章习题二】</b> 什么是"存储程序"工作方式？<br>
 <b>答案：</b>必须将事先编好的程序和原始数据送入主存后才能执行程序；一旦程序被启动执行，计算机不需要操作人员干预，就能自动完成逐条指令的取出和执行的任务。<br>
 <b>【2024.10·单选2】</b> 冯·诺依曼计算机工作方式的基本特点是（　）——答案为"存储程序工作方式"，即本考点（完整题干与选项见考点2）。<br>
-1.4 易错<br>
+<span class="kp-sub">1.4 易错</span>
 <span class="callout err">存储程序 ≠ "程序放在硬盘上"。要点是程序和数据都进主存、CPU 能自动逐条执行。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点2</span><span class="kp-name">冯·诺依曼结构基本思想</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">2.1 四大基本思想（必背）<br>
+<div class="kp-detail"><span class="kp-sub">2.1 四大基本思想（必背）</span>
 1. 采用"存储程序"工作方式。<br>
 2. 计算机由<b>运算器、控制器、存储器、输入设备和输出设备</b>五个基本部件组成。<br>
 3. 存储器既能存放<b>数据</b>，也能存放<b>指令</b>。<br>
 4. 计算机内部以<b>二进制</b>形式表示指令和数据。<br>
-2.2 五大部件与功能（简答模板）<br>
+<span class="kp-sub">2.2 五大部件与功能（简答模板）</span>
 <table><tr><th>部件</th><th>功能</th></tr><tr><td>运算器</td><td>执行算术和逻辑运算</td></tr><tr><td>控制器</td><td>从主存取指令、译码，指挥协调各部件工作</td></tr><tr><td>存储器</td><td>存放程序和数据（主存+外存）</td></tr><tr><td>输入设备</td><td>接收用户输入的数据和指令</td></tr><tr><td>输出设备</td><td>展示计算机处理后的结果</td></tr></table>
-2.3 真题<br>
+<span class="kp-sub">2.3 真题</span>
 <b>【2024.04·简答23】</b> 简述冯·诺依曼计算机的组成部分，并说明各部分的功能。（教材 P44 第一章习题第 1 题原题）<br>
 <b>答案：</b>①采用"存储程序"工作方式；②计算机由运算器、控制器、存储器、输入设备和输出设备五大基本部件组成；③存储器既能存放数据也能存放指令，控制器能自动执行指令，运算器能进行基本算术和逻辑运算，操作人员可以通过输入、输出设备使用计算机；④计算机内部以二进制形式表示指令和数据。<br>
 <b>【2024.10·单选2】</b> 冯·诺依曼计算机工作方式的基本特点是（　）<br>
@@ -721,24 +721,24 @@ body.no-github .export-menu { right:64px; }
 <b>答案：</b>控制器、存储器（顺序可对调）<br>
 <b>【2025.10·简答23】</b> 简述冯·诺依曼结构模型计算机的基本硬件组成和功能。<br>
 <b>答案：</b>计算机由主存储器、算术逻辑部件、控制器和输入/输出设备组成：主存（内存）用来存放指令和数据；算术逻辑部件（ALU）用来进行算术逻辑运算；控制器用于自动逐条取出指令并进行译码；输入/输出设备用来实现计算机和用户之间的信息交换。（教材 P26）<br>
-2.4 易错<br>
+<span class="kp-sub">2.4 易错</span>
 <span class="callout err">五大部件里没有"寄存器"——寄存器是 CPU 内部部件，不是冯·诺依曼结构级部件。
 控制器负责"指挥协调"，运算器只管"运算"——两者功能别写反。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点3</span><span class="kp-name">模型计算机的基本硬件结构</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">3.1 四大硬件部件<br>
+<div class="kp-detail"><span class="kp-sub">3.1 四大硬件部件</span>
 1. 主存储器（主存/内存）<br>
 2. 算术逻辑部件（ALU）<br>
 3. 控制元件（控制器）<br>
 4. 输入/输出设备<br>
-3.2 总线三线（必背）<br>
+<span class="kp-sub">3.2 总线三线（必背）</span>
 <table><tr><th>总线</th><th>传输的信息</th></tr><tr><td>地址线</td><td>地址信息</td></tr><tr><td>数据线</td><td>数据信息</td></tr><tr><td>控制线</td><td>控制信息</td></tr></table>
 CPU 访问主存：先把主存<b>地址</b>送地址线、<b>读/写命令</b>送控制线，再通过<b>数据线</b>发送或接收数据。<br>
-3.3 CPU 组成与寄存器<br>
+<span class="kp-sub">3.3 CPU 组成与寄存器</span>
 CPU = <b>控制部件 + 运算部件 + 各类寄存器</b>。<br>
 <ul><li>通用寄存器：临时存放从主存取来的数据或运算的结果。</li><li>专用寄存器：程序计数器 PC（存下一条指令地址）、指令寄存器 IR（暂存当前指令）、标志寄存器（存标志位）。</li><li>名解"中央处理器（CPU）"：由控制部件、运算部件和各类寄存器互连组成的电路，负责执行程序中的指令、处理数据并控制各部件协调工作。</li></ul>
-3.4 真题<br>
+<span class="kp-sub">3.4 真题</span>
 <b>【2024.04·名解21】</b> 中央处理器（CPU）（教材第一章习题原题）<br>
 <b>答案：</b>通常把控制部件、运算部件和各类寄存器互连组成的电路称为中央处理器，负责执行程序中的指令、处理数据并控制各部件协调工作。<br>
 <b>【2024.04·填空17】</b> 中央处理器（CPU）的基本部件是＿＿和＿＿。<br>
@@ -751,55 +751,55 @@ CPU = <b>控制部件 + 运算部件 + 各类寄存器</b>。<br>
 <b>【2026.04·单选2】</b> CPU 中用来进行算术逻辑运算的部件是（　）<br>
 <ul><li>A. ALU</li><li>B. 加法器</li><li>C. 移位器</li><li>D. 多路选择器</li></ul>
 <b>答案：A</b>（ALU = 算术逻辑运算部件）<br>
-3.5 易错<br>
+<span class="kp-sub">3.5 易错</span>
 <span class="callout err">"状态计数器"是编造名词——CPU 里没有这个部件，转基因题常拿它当正确答案。
 通用寄存器 ≠ 所有寄存器：PC、IR、标志寄存器都是专用寄存器。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点4</span><span class="kp-name">指令</span><span class="kp-level lv-B">B</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">4.1 是什么<br>
+<div class="kp-detail"><span class="kp-sub">4.1 是什么</span>
 指令：用 0 和 1 表示的一串 0/1 序列，用来指示 CPU 完成一个特定的<b>原子操作</b>（不可分割）。<br>
 每条指令由<b>操作码</b>和<b>地址码</b>两部分组成：操作码指明做什么操作，地址码指明操作数在哪。<br>
-4.2 模型机 8 位定长指令字（必背）<br>
+<span class="kp-sub">4.2 模型机 8 位定长指令字（必背）</span>
 <table><tr><th>格式</th><th>位段划分</th><th>功能</th></tr><tr><td>R型</td><td>op(4位) + rt(2位) + rs(2位)</td><td>R[rt] ← R[rt] op R[rs] 或 R[rt] ← R[rs]</td></tr><tr><td>M型</td><td>op(4位) + addr(4位)</td><td>R[0] ← M[addr] 或 M[addr] ← R[0]</td></tr></table>
 op 编码规定：0000=传送（mov）、0001=加（add）、1110=取数（load）、1111=存数（store）。<br>
 两条必会的指令：`0001 0001` → R[0]←R[0]+R[1]；`1110 0110` → R[0]←M[0110]（6 号主存单元）。<br>
-4.3 四类基本指令与数据流向<br>
+<span class="kp-sub">4.3 四类基本指令与数据流向</span>
 <ul><li>load（取数，M型）：主存 → 通用寄存器。</li><li>store（存数，M型）：通用寄存器 → 主存。</li><li>add（加，R型）：通用寄存器 → 通用寄存器。</li><li>mov（传送，R型）：通用寄存器 → 通用寄存器。</li></ul>
-4.4 真题<br>
+<span class="kp-sub">4.4 真题</span>
 <b>【2026.04·填空11】</b> 指挥计算机如何操作的指令序列称为＿＿，指令操作的对象是＿＿。<br>
 <b>答案：</b>程序、数据<br>
 <b>【教材·第一章习题五】</b> 仿照模型机为 v=(x−y)×y 设计指令序列（附机器代码与执行过程）。<br>
-4.5 易错<br>
+<span class="kp-sub">4.5 易错</span>
 <span class="callout err">模型机指令字只有 8 位：操作码固定占高 4 位、地址码只有 4 位（寻址范围 0000~1111）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点5</span><span class="kp-name">程序和指令的执行过程</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">5.1 核心例子：z = x + y<br>
+<div class="kp-detail"><span class="kp-sub">5.1 核心例子：z = x + y</span>
 x、y 分别放主存 5、6 号单元（x=16、y=33），结果存 7 号单元。<br>
 <table><tr><th>机器代码</th><th>汇编指令</th><th>含义</th></tr><tr><td>1110 0110</td><td>load r0, 6#</td><td>R[0] ← M[6]（取 y）</td></tr><tr><td>0000 0100</td><td>mov r1, r0</td><td>R[1] ← R[0]（y 备份到 r1）</td></tr><tr><td>1110 0101</td><td>load r0, 5#</td><td>R[0] ← M[5]（取 x）</td></tr><tr><td>0001 0001</td><td>add r0, r1</td><td>R[0] ← R[0] + R[1]（x+y）</td></tr><tr><td>1111 0111</td><td>store 7#, r0</td><td>M[7] ← R[0]（存 z）</td></tr></table>
-5.2 单条指令的微操作（以 load 为例）<br>
+<span class="kp-sub">5.2 单条指令的微操作（以 load 为例）</span>
 IR ← M[PC]（按 PC 取指）→ PC ← PC+1（指向下一条）→ 按地址码取数 MDR ← M[addr] → R[0] ← MDR。<br>
 add 指令：A ← R[0]、B ← R[1]（取两个操作数）→ 加法运算得 F → R[0] ← F。<br>
-5.3 一条指令执行的六步（简答模板）<br>
+<span class="kp-sub">5.3 一条指令执行的六步（简答模板）</span>
 取指令 → 指令译码 → 计算源操作数地址并取操作数 → 执行操作 → 计算目的操作数地址并存结果 → 计算下一条指令地址。<br>
-5.4 真题<br>
+<span class="kp-sub">5.4 真题</span>
 <b>【2025.04·简答25】</b> 简述 CPU 执行一条指令的大致过程。<br>
 <b>答案：</b>取指令 → 指令译码 → 计算源操作数地址并取操作数 → 执行数据操作 → 计算目的操作数地址并存结果 → 计算下条指令地址。<br>
 <b>【2026.04·填空17】</b> CPU 执行一条指令的大致过程，分成取指令、＿＿、计算源操作数地址并取操作数、执行数据操作、计算＿＿并存结果、计算下条指令地址这几个步骤。<br>
 <b>答案：</b>指令译码、目的操作数地址<br>
-5.5 易错<br>
+<span class="kp-sub">5.5 易错</span>
 <span class="callout err">PC 加 1 发生在取指之后——PC 里存的始终是"下一条"指令的地址，不是当前指令。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点6</span><span class="kp-name">程序设计语言和翻译程序</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">6.1 语言分层<br>
+<div class="kp-detail"><span class="kp-sub">6.1 语言分层</span>
 <ul><li>低级语言：机器语言（如 1110 0110）、汇编语言（如 load r0, 6#）。</li><li>高级语言：C、C++、Java 等。</li></ul>
-6.2 翻译程序三类（必背）<br>
+<span class="kp-sub">6.2 翻译程序三类（必背）</span>
 <table><tr><th>类型</th><th>作用</th><th>例子</th></tr><tr><td>汇编程序</td><td>汇编语言源程序 → 机器语言目标程序</td><td>微软 x86 汇编器</td></tr><tr><td>解释程序</td><td>按执行顺序逐条翻译源程序语句并立即执行</td><td>JavaScript、Python</td></tr><tr><td>编译程序</td><td>高级语言源程序 → 汇编语言或机器语言目标程序</td><td>C、C++</td></tr></table>
-6.3 必背术语<br>
+<span class="kp-sub">6.3 必背术语</span>
 <ul><li>汇编语言：用<b>助记符</b>表示的、与机器指令<b>一一对应</b>的指令系统，属低级语言。</li><li>助记符：容易记忆的英文单词或缩写，表示指令操作码的含义。</li><li>反汇编：把机器指令翻译成汇编指令（与汇编方向相反）。</li></ul>
-6.4 真题<br>
+<span class="kp-sub">6.4 真题</span>
 <b>【2024.04·单选3】</b> 下列不属于翻译程序种类的是（　）<br>
 <ul><li>A. 汇编程序</li><li>B. 解释程序</li><li>C. 编译程序</li><li>D. 链接程序</li></ul>
 <b>答案：D</b>（链接程序把多个目标文件与库文件链接成可执行程序，不属于翻译程序）<br>
@@ -816,17 +816,17 @@ add 指令：A ← R[0]、B ← R[1]（取两个操作数）→ 加法运算得 
 <b>【2026.04·单选5】</b> 反汇编程序是一种语言转换程序，它的功能是（　）<br>
 <ul><li>A. 将汇编指令翻译成机器指令</li><li>B. 将机器指令翻译成汇编指令</li><li>C. 将高级语言程序翻译成汇编指令</li><li>D. 将高级语言程序翻译成机器指令</li></ul>
 <b>答案：B</b><br>
-6.5 易错<br>
+<span class="kp-sub">6.5 易错</span>
 <span class="callout err">翻译程序只有·汇·解·编·三类——"链接程序"不是翻译程序（2024.04 单选的原题陷阱）。
 解释程序逐条翻译立即执行、不生成独立目标程序；编译程序生成目标程序。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点7</span><span class="kp-name">从源程序到可执行文件</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">7.1 四步转换（以 hello.c → hello 为例）<br>
+<div class="kp-detail"><span class="kp-sub">7.1 四步转换（以 hello.c → hello 为例）</span>
 <table><tr><th>步骤</th><th>处理程序</th><th>输入→输出</th><th>扩展名</th><th>文件类型</th></tr><tr><td>预处理</td><td>cpp</td><td>处理以 # 开头的命令</td><td>.i</td><td>文本</td></tr><tr><td>编译</td><td>ccl</td><td>预处理后源程序 → 汇编语言源程序</td><td>.s</td><td>文本</td></tr><tr><td>汇编</td><td>as</td><td>汇编源程序 → 可重定位目标文件</td><td>.o</td><td>二进制</td></tr><tr><td>链接</td><td>ld</td><td>多个 .o + 库中目标文件 → 可执行目标文件</td><td>无</td><td>二进制</td></tr></table>
-7.2 每步的本质<br>
+<span class="kp-sub">7.2 每步的本质</span>
 <ul><li>预处理：对源程序中"#"开头的命令进行处理。</li><li>编译：生成汇编语言源程序（文本）。</li><li>汇编：生成可重定位目标文件（二进制，打开是乱码）。</li><li>链接：把若干可重定位目标文件组合成一个可执行目标文件（二进制，打开是乱码）。</li></ul>
-7.3 真题<br>
+<span class="kp-sub">7.3 真题</span>
 <b>【2024.04·单选6】</b>（链接定义题，完整题干见考点57）用来将若干可重定位目标文件组合起来、生成一个可执行目标文件的过程称为——<b>链接</b>。<br>
 <b>【2024.04·填空16】</b> 目标代码是指编译器或＿＿处理源代码后所生成的＿＿代码。<br>
 <b>答案：</b>汇编器、机器语言<br>
@@ -840,21 +840,21 @@ add 指令：A ← R[0]、B ← R[1]（取两个操作数）→ 加法运算得 
 <b>【2026.04·单选6】</b> 实现汇编语言代码转换为机器语言代码的是（　）<br>
 <ul><li>A. 预处理</li><li>B. 编译</li><li>C. 汇编</li><li>D. 链接</li></ul>
 <b>答案：C</b><br>
-7.4 口诀<br>
+<span class="kp-sub">7.4 口诀</span>
 <span class="callout tip">【记忆】预处理→编译→汇编→链接；扩展名 .i → .s → .o → 可执行。
 生成"二进制文件（乱码）"从汇编起步；.i、.s 都是文本文件。</span>
-7.5 易错<br>
+<span class="kp-sub">7.5 易错</span>
 <span class="callout err">"高级语言→机器语言"是编译阶段的活；汇编阶段翻译的是汇编语言源程序。
 预处理是第一步（2024.10 单选原题）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点8</span><span class="kp-name">计算机系统抽象层的转换</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">8.1 是什么<br>
+<div class="kp-detail"><span class="kp-sub">8.1 是什么</span>
 ISA（指令集体系结构，Instruction Set Architecture）：机器语言程序所运行的计算机<b>硬件和软件之间的"桥梁"</b>，是软件和硬件之间接口的完整定义。<br>
 ISA 规定了：计算机可以执行的所有指令的集合、每条指令执行什么操作、操作数的地址空间和类型等。<br>
-8.2 层次位置与设计目标<br>
+<span class="kp-sub">8.2 层次位置与设计目标</span>
 <ul><li>ISA 的<b>上面是软件</b>、<b>下面是硬件</b>。</li><li>ISA 设计追求的目标：提高机器级程序执行速度、缩短机器级指令长度、提高机器级程序设计的灵活性。</li><li>微体系结构：处理器内部组件的结构、功能与交互方式，决定处理器如何执行指令、管理数据、处理中断。</li></ul>
-8.3 真题<br>
+<span class="kp-sub">8.3 真题</span>
 <b>【2024.04·单选4】</b> 下列说法中不正确的是（　）<br>
 <ul><li>A. 任何可以由软件实现的操作也可以由硬件来实现</li><li>B. 固件就功能而言类似于软件，从形态来说又类似于硬件</li><li>C. 在计算机系统的层次结构中，指令集体系结构属于硬件级</li><li>D. 面向高级语言程序设计的机器是完全可以实现的</li></ul>
 <b>答案：C</b>（ISA 处于软件与硬件的交界处，不属于纯硬件级）<br>
@@ -866,20 +866,20 @@ ISA 规定了：计算机可以执行的所有指令的集合、每条指令执�
 <b>【2025.10·单选2】</b> 机器语言程序所运行的计算机硬件和软件之间需要一个"桥梁"，这个在软件和硬件之间的界面是（　）<br>
 <ul><li>A. 指令集体系结构</li><li>B. 微体系结构</li><li>C. 操作系统/虚拟机</li><li>D. 程序</li></ul>
 <b>答案：A</b><br>
-8.4 易错<br>
+<span class="kp-sub">8.4 易错</span>
 <span class="callout err">ISA 设计目标里没有"增大控制存储器的容量"（2025.04 单选用它当陷阱）。
 ISA 是"接口的完整定义"，微体系结构是"怎么实现"——两个层次别混。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点9</span><span class="kp-name">计算机系统的不同用户</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2024.10、2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">9.1 软件两大类（必背）<br>
+<div class="kp-detail"><span class="kp-sub">9.1 软件两大类（必背）</span>
 <table><tr><th>类别</th><th>定义</th><th>例子</th></tr><tr><td>系统软件</td><td>介于计算机硬件与应用程序之间，为有效、安全地使用和管理计算机以及为开发运行应用软件提供的各种软件</td><td>操作系统（Windows、UNIX、Linux）、语言处理系统（Visual Studio、GCC）、数据库管理系统（Oracle）、实用程序（磁盘碎片整理、备份程序）</td></tr><tr><td>应用软件</td><td>为完成具体应用任务而提供的软件</td><td>电子邮件、多媒体播放、游戏、炒股、文字处理、电子表格、演示文稿</td></tr></table>
-9.2 四类用户（必背）<br>
+<span class="kp-sub">9.2 四类用户（必背）</span>
 1. <b>最终用户</b>：直接使用计算机和应用程序完成具体任务的人（如股民、游戏玩家、财会人员）。<br>
 2. <b>系统管理员</b>：负责安装、配置和维护系统的硬件和软件。<br>
 3. <b>应用程序员</b>：使用高级语言开发应用程序（如 C++ 开发工程师）。<br>
 4. <b>系统程序员</b>：开发操作系统、编译器、数据库管理系统等系统软件。<br>
-9.3 真题<br>
+<span class="kp-sub">9.3 真题</span>
 <b>【2024.04·单选1】</b> 完整的计算机系统应包括（　）<br>
 <ul><li>A. 运算器、存储器、控制器</li><li>B. 硬件和软件</li><li>C. 主机和实用程序</li><li>D. 外部设备和主机</li></ul>
 <b>答案：B</b><br>
@@ -895,52 +895,52 @@ ISA 是"接口的完整定义"，微体系结构是"怎么实现"——两个层
 <b>答案：B</b>（其余为应用软件）<br>
 <b>【2025.10·填空11】</b> shell 命令行解释器是操作系统的＿＿，它为用户提供了一个启动程序执行的＿＿。<br>
 <b>答案：</b>外壳程序、操作环境<br>
-9.4 易错<br>
+<span class="kp-sub">9.4 易错</span>
 <span class="callout err">判断系统软件/应用软件的送分题：QQ、播放器、Office 全是应用软件；语言处理系统（编译器）是系统软件。
 教材习题有"3 类用户"的另一种表述（高级用户/系统程序员/机器语言程序员），考试按课件 4 类口径答。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点10</span><span class="kp-name">计算机系统核心层之间的关联（API 与 ABI）</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">10.1 必背区分<br>
+<div class="kp-detail"><span class="kp-sub">10.1 必背区分</span>
 <ul><li><b>API（应用程序编程接口）</b>：较高层次的<b>源程序代码和库</b>之间的接口，通常与硬件无关；同样的源程序可在支持相同 API 的系统上编译。</li><li><b>ABI（应用程序二进制接口）</b>：为特定 ISA 及特定操作系统平台上的应用程序规定的<b>机器级目标代码接口</b>，含过程调用约定、系统调用约定、目标文件二进制格式、寄存器使用规定、虚拟地址空间划分等；编译程序后端必须遵循 ABI；ABI 相同或兼容的系统上，已编译好的目标代码可直接运行。</li></ul>
-10.2 一句话记忆<br>
+<span class="kp-sub">10.2 一句话记忆</span>
 API 管<b>源程序级</b>（编译前），ABI 管<b>机器级</b>（编译后）。<br>
-10.3 易错<br>
+<span class="kp-sub">10.3 易错</span>
 <span class="callout err">别对调：靠"同一份源程序可再编译"的是 API；靠"编好的目标代码直接跑"的是 ABI。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点11</span><span class="kp-name">计算机性能的测试</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10、2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">11.1 两个基本指标<br>
+<div class="kp-detail"><span class="kp-sub">11.1 两个基本指标</span>
 <ul><li><b>吞吐率</b>：单位时间内完成的工作量。</li><li><b>响应时间</b>：从任务开始到任务完成的时间。</li></ul>
-11.2 时间构成<br>
+<span class="kp-sub">11.2 时间构成</span>
 执行时间 = CPU 时间 + 其他时间；CPU 时间 = 用户 CPU 时间 + 系统 CPU 时间。<br>
 <b>CPU 性能 = 用户 CPU 时间</b>——只包含 CPU 运行用户程序代码的时间。<br>
-11.3 三个核心概念（名解常客）<br>
+<span class="kp-sub">11.3 三个核心概念（名解常客）</span>
 <ul><li><b>时钟周期</b>：CPU 里最小的时间单位（CPU 主脉冲信号的宽度）。</li><li><b>时钟频率（主频）</b>：CPU 的主频 = 时钟周期的倒数 = CPU 主脉冲信号的时钟频率；如 3.5GHz 即每秒 35 亿个时钟周期。</li><li><b>CPI</b>：执行一条指令所需的时钟周期数；对一条特定指令是定值，对程序或机器是所有指令的平均值。</li></ul>
-11.4 真题<br>
+<span class="kp-sub">11.4 真题</span>
 <b>【2024.10·名解21】</b> 主频（教材第一章习题）<br>
 <b>答案：</b>CPU 主脉冲信号的时钟频率，是 CPU 时钟周期的倒数（即 CPU 每秒的时钟周期数）。<br>
 <b>【2025.04·名解21】</b> 时钟周期<br>
 <b>答案：</b>计算机执行一条指令的过程被分成若干步骤完成，每一步都要有相应的控制信号进行控制，计算机必须能够产生同步的时钟定时信号，即 CPU 主脉冲信号，其宽度称为时钟周期。<br>
 <b>【2026.04·简答23】</b> 简述计算机系统基本性能指标和 CPU 的性能指标。<br>
 <b>答案：</b>系统级性能指标 = 吞吐率、响应时间、时钟频率等；CPU 级性能指标 = CPI、MIPS、主频等。<br>
-11.5 易错<br>
+<span class="kp-sub">11.5 易错</span>
 <span class="callout err">主频与时钟周期互为倒数——写名解别只写一半。
 CPU 性能只算用户 CPU 时间，不含系统 CPU 时间。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点12</span><span class="kp-name">用指令执行速度进行性能评估</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">12.1 必背公式（考前默写）<br>
+<div class="kp-detail"><span class="kp-sub">12.1 必背公式（考前默写）</span>
 <span class="formula">用户CPU时间 = 程序总时钟周期数 ÷ 时钟频率 = 程序总时钟周期数 × 时钟周期
 程序总时钟周期数 = Σ(CPIᵢ × Cᵢ)     （Cᵢ 为第 i 类指令条数）
 综合CPI = 程序总时钟周期数 ÷ 程序总指令条数 = Σ(CPIᵢ × Fᵢ)   （Fᵢ 为第 i 类指令占比）
 MIPS = 指令总数 ÷ 执行时间 ÷ 10⁶ = 时钟频率 ÷ (CPI × 10⁶)
 MFLOPS = 每秒执行的浮点运算次数 ÷ 10⁶</span>
-12.2 三种典型问法<br>
+<span class="kp-sub">12.2 三种典型问法</span>
 <table><tr><th>问法</th><th>解法</th></tr><tr><td>谁执行快</td><td>比<b>执行时间/总时钟周期数</b>——指令条数少不一定快（2026.04 S2 就是例子）</td></tr><tr><td>综合 CPI</td><td>Σ(CPIᵢ×条数ᵢ) ÷ 总条数</td></tr><tr><td>MIPS</td><td>时钟频率（Hz）÷ (CPI × 10⁶)，先统一单位</td></tr></table>
-12.3 变形要点<br>
+<span class="kp-sub">12.3 变形要点</span>
 <ul><li>优化后<b>指令条数变了</b>，各类指令比例要<b>重新归一化</b>再算综合 CPI（2024.10：优化后 CPI 反而变大，1.5 → 1.67）。</li><li>MIPS 不能跨指令集比较：不同机器一条指令做的事不同（教材简答第 7 题原话）。</li><li>课本数字两版本（第 9 题 8×10⁶ 与 8×10⁸）——按题目给的数字算，别背答案。</li></ul>
-12.4 真题<br>
+<span class="kp-sub">12.4 真题</span>
 <b>【2024.04·计算27】</b> 机器 M 的指令集中 A、B、C、D 四类指令 CPI 分别为 1、2、4、6；程序 P 编译成两个目标代码序列：P1 的 A/B/C/D 条数为 4、2、2、1，P2 为 2、5、3、2。问：哪个序列总指令条数少？哪个执行速度快？各自 CPI 是多少？<br>
 <b>答案：</b>P1 共 9 条、P2 共 12 条 → P1 条数少；P1 总周期数 = 4×1+2×2+2×4+1×6 = 22，P2 = 36，同机器时钟周期相同 → P1 快；CPI₁ = 22/9 ≈ 2.44、CPI₂ = 36/12 = 3.0。<br>
 <b>【2024.10·计算27】</b> 程序 P 编译后 A/B/C/D 四类指令占比 50%、20%、20%、10%，CPI 分别为 1、2、2、2；重新编译优化后 A 类指令条数减少 50%，其他类不变。问：(1) 优化前后程序 CPI 各是多少？(2) 主频 50MHz 时优化前后 MIPS 各是多少？<br>
@@ -951,15 +951,15 @@ MFLOPS = 每秒执行的浮点运算次数 ÷ 10⁶</span>
 <b>答案：</b>(1) M2 快 1 倍（500ms vs 250ms）；(2) M1 上 P1 = 200 MIPS、P2 = 100 MIPS；M2 上 P2 = 70 MIPS，M1 比 M2 快 100/70 ≈ 1.43 倍（快 0.43 倍）；(3) M1 上 P1 CPI = 0.5s×400MHz ÷ 100×10⁶ = 2，M2 上 = 0.25s×600MHz ÷ 75×10⁶ = 2。<br>
 <b>【2026.04·计算28】</b> 编译器对程序编译生成指令序列 S1、S2，在 500MHz 机器 M 上运行；A、B、C、D 四类指令 CPI 为 1、2、3、4，S1 各类条数 = 5、2、2、1，S2 = 1、1、1、5。问：(1) S1、S2 各有多少条指令？(2) CPI 各多少？(3) 时钟周期数各多少？(4) 执行时间各多少？（要求列出计算过程，教材第一章习题第 10 题原题）<br>
 <b>答案：</b>(1) S1 = 10 条、S2 = 8 条；(2) CPI₁ = 19/10 = 1.9、CPI₂ = 26/8 = 3.25；(3) S1 = 19 周期、S2 = 26 周期；(4) S1 = 38ns、S2 = 52ns。<br>
-12.5 易错<br>
+<span class="kp-sub">12.5 易错</span>
 <span class="callout err">主频高的机器不一定快——必须把 CPI 一起算进执行时间再比。
 单位换算：GHz = 10⁹Hz；算 MIPS 除的是 10⁶；ns = 10⁻⁹s。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点13</span><span class="kp-name">用基准程序进行性能评估</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">13.1 是什么<br>
+<div class="kp-detail"><span class="kp-sub">13.1 是什么</span>
 基准程序：专门用来进行性能评价的<b>一组程序</b>；在不同机器上运行相同的基准程序、比较运行时间，从而评测机器性能，能较好地反映运行实际负载时的性能。<br>
-13.2 易错<br>
+<span class="kp-sub">13.2 易错</span>
 <span class="callout err">基准程序是"一组程序"不是"一个指标"；与 MIPS 的区别是它直接测运行时间。</span></div>
 </div>
 </div>
@@ -974,13 +974,13 @@ MFLOPS = 每秒执行的浮点运算次数 ÷ 10⁶</span>
 <span class="callout tip">【做题】先确定位宽、编码方式和有无符号 → 计算位串 → 转回真值或判断标志位。浮点题先分清阶码与真实指数，再按步骤运算。</span></div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点14</span><span class="kp-name">信息的二进制编码与 BCD</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">14.1 是什么<br>
+<div class="kp-detail"><span class="kp-sub">14.1 是什么</span>
 计算机内部<b>所有信息都用二进制数字表示</b>。指令所处理的基本数据类型分两种：<br>
 <ul><li><b>数值数据</b>：表示数量的多少、可比较大小——分整数和实数；整数又分无符号整数和带符号整数。</li><li><b>非数值数据</b>：没有大小之分、不表示数量的多少——主要包括字符数据和逻辑数据。</li></ul>
-14.2 8421BCD 码（必背）<br>
+<span class="kp-sub">14.2 8421BCD 码（必背）</span>
 BCD（Binary Coded Decimal Number）：用二进制编码的十进制数。<b>每 4 位代表一个十进制数字</b>，不足位时在<b>高位（左侧）补零</b>。<br>
 例：(1010001)BCD → 补零成 01010001 → 分组 0101(5)、0001(1) → 真值 51。<br>
-14.3 真题<br>
+<span class="kp-sub">14.3 真题</span>
 <b>【2024.04·单选2】</b> 某数在计算机中用 8421BCD 码表示为 011110001001，其真值为（　）<br>
 <ul><li>A. 789</li><li>B. 789H</li><li>C. 1929</li><li>D. 11110001001B</li></ul>
 <b>答案：A</b>（每四位一组：0111=7、1000=8、1001=9）<br>
@@ -989,24 +989,24 @@ BCD（Binary Coded Decimal Number）：用二进制编码的十进制数。<b>�
 <b>答案：A</b>（整题见考点15）<br>
 <b>【2025.10·简答24】</b> 简述指令所处理的基本数据类型的数值数据和非数值数据。<br>
 <b>答案：</b>（见 14.1）数值数据：表示数量的多少、可比较大小，分整数（无符号/带符号）和实数；非数值数据：没有大小之分，不表示数量多少，主要包括字符数据和逻辑数据。<br>
-14.4 易错<br>
+<span class="kp-sub">14.4 易错</span>
 <span class="callout err">BCD 不是二进制！(10011001)₂ = 153，而 (10011001)BCD = 99——数制比较题先把 BCD 项按四位分组。
 BCD 补零在左侧（高位），别补右边。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点15</span><span class="kp-name">数制与相互转换</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
 <div class="kp-detail">（合并课件考点 2—5：记数制、R→十、十→R、二八十互转）<br>
-15.1 记数制与后缀字母<br>
+<span class="kp-sub">15.1 记数制与后缀字母</span>
 <table><tr><th>进制</th><th>基数 R</th><th>基本符号</th><th>后缀字母</th></tr><tr><td>二进制</td><td>2</td><td>0、1</td><td>B</td></tr><tr><td>八进制</td><td>8</td><td>0～7</td><td>O</td></tr><tr><td>十进制</td><td>10</td><td>0～9</td><td>D（可省略）</td></tr><tr><td>十六进制</td><td>16</td><td>0～9、A～F</td><td>H（或 0x 前缀，如 0x308F）</td></tr></table>
-15.2 三类转换方法（必背）<br>
+<span class="kp-sub">15.2 三类转换方法（必背）</span>
 <ul><li>R 进制 → 十进制：<b>按权展开</b>（各位数字×基数的幂次，幂次从 0 递减、小数点后为负幂）。</li><li>十进制 → R 进制：整数部分<b>除基商 0、逆向取余</b>；小数部分<b>乘基积 0、正向取整</b>。</li><li>二 / 八 / 十六互转：<b>一拆三</b>（八→二）、<b>一拆四</b>（十六→二）、<b>三合一</b>（二→八）、<b>四合一</b>（二→十六）；小数点左边低位起合、右边高位起合，不够位补 0。</li></ul>
-15.3 常用计算<br>
+<span class="kp-sub">15.3 常用计算</span>
 <span class="formula">(10101.01)₂ = 1×2⁴+0×2³+1×2²+0×2¹+1×2⁰+0×2⁻¹+1×2⁻² = (21.25)₁₀
 (307.6)₈ = 3×8²+0×8¹+7×8⁰+6×8⁻¹ = (199.75)₁₀
 (3A.C)₁₆ = 3×16¹+10×16⁰+12×16⁻¹ = (58.75)₁₀
 (135.6875)₁₀ = (1000 0111.1011)₂ = (207.54)₈</span>
 十进制小数转换可能"乘基积 0"永不出现——按题目要求位数为准，此时为<b>近似值</b>。<br>
-15.4 真题<br>
+<span class="kp-sub">15.4 真题</span>
 <b>【2024.10·单选1】</b> 下列数中最大的是（　）<br>
 <ul><li>A. (98)₁₆ = 152</li><li>B. (227)₈ = 151</li><li>C. (10011001)₂ = 153</li><li>D. (152)₁₀ = 152</li></ul>
 <b>答案：C</b><br>
@@ -1024,52 +1024,52 @@ BCD 补零在左侧（高位），别补右边。</span></div>
 <b>【2024.10·简答24】</b> 简述计算机内部和外部需要进行数制转换的原因。（教材第二章习题简答题第 2 题的变形题）<br>
 <b>答案：</b>计算机内部所有信息都采用二进制编码表示，而外部大都采用八、十或十六进制表示形式；因此计算机在数据输入后或输出前都必须实现这些进制数和二进制数之间的转换。<br>
 <b>【教材·第二章习题3】</b> 多种进制的互相转换。<br>
-15.5 易错<br>
+<span class="kp-sub">15.5 易错</span>
 <span class="callout err">数制比较题一律化成十进制再比——按权展开最稳，别在两个非十进制数之间"目测"。
 十六进制后缀是 H、八进制是 O（不是 B/D）；0x 前缀也是十六进制。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点16</span><span class="kp-name">定点数编码总览：机器数与真值</span><span class="kp-level lv-A">A</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">16.1 两个名解（必背原文）<br>
+<div class="kp-detail"><span class="kp-sub">16.1 两个名解（必背原文）</span>
 <ul><li><b>机器数</b>：数值数据在计算机内部编码表示的数（如 0000 0101）。</li><li><b>真值</b>：机器数真正的值，即现实世界中带有正负号的数（如 5）。</li></ul>
-16.2 定点数编码的四种方法<br>
+<span class="kp-sub">16.2 定点数编码的四种方法</span>
 1. 原码；2. 补码；3. 反码；4. <b>移码：等于补码符号位取反</b>。<br>
-16.3 真题<br>
+<span class="kp-sub">16.3 真题</span>
 <b>【2026.04·名解21】</b> 机器数（教材第二章）<br>
 <b>答案：</b>计算机内部编码表示的数。<br>
 <b>【教材·第二章名解1/2】</b> 真值、机器数。<br>
-16.4 易错<br>
+<span class="kp-sub">16.4 易错</span>
 <span class="callout err">"机器数"答"计算机中的数"太糙——要点是"编码形式"；名解要带例子（0000 0101 是机器数、5 是真值）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点17</span><span class="kp-name">原码和反码表示法</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">17.1 原码（符号-数值表示法）<br>
+<div class="kp-detail"><span class="kp-sub">17.1 原码（符号-数值表示法）</span>
 <ul><li>最高位为符号位：<b>0 正、1 负</b>，其余位为数值绝对值。</li><li>原码 0 有<b>两种</b>表示：[+0]原 = 0 00…0；[−0]原 = 1 00…0。</li><li>例：真值 −10（−1010B）的 8 位原码 = 1000 1010B = 8AH；真值 −0.625（−0.101B）的 8 位原码 = 1101 0000B = D0H。</li></ul>
-17.2 反码<br>
+<span class="kp-sub">17.2 反码</span>
 <ul><li>正数反码 = 原码；负数反码 = 原码符号位不变、数值位<b>逐位取反</b>（1→0、0→1）。</li></ul>
-17.3 真题<br>
+<span class="kp-sub">17.3 真题</span>
 <b>【2025.10·单选4】</b> 负零的原码表示为（　）<br>
 <ul><li>A. 1 00…0</li><li>B. 000…0</li><li>C. 111…1</li><li>D. 0111</li></ul>
 <b>答案：A</b>（负零：符号位 1 + 全零数值部分 → 1000…0；原码 0 有两种表示：[+0]原 = 000…0、[−0]原 = 100…0）<br>
-17.4 易错<br>
+<span class="kp-sub">17.4 易错</span>
 <span class="callout err">原码有 ±0 两种、补码 0 唯一——考"负零"的只有原码有戏。
 原码表示范围比补码少一个数（负端少 −2^(n−1)）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点18</span><span class="kp-name">补码表示法与模运算</span><span class="kp-level lv-S">S</span><span class="kp-freq">2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">18.1 为什么用补码（简答/单选必背）<br>
+<div class="kp-detail"><span class="kp-sub">18.1 为什么用补码（简答/单选必背）</span>
 补码实现<b>加减法统一</b>——用加法来实现减法运算：允许加法和减法使用相同的硬件电路，<b>简化计算机的设计</b>（无需单独的减法电路）。<br>
-18.2 模运算模型（钟表）<br>
+<span class="kp-sub">18.2 模运算模型（钟表）</span>
 模 12 系统中：10 − 4 ≡ 10 + (12 − 4) ≡ 10 + 8 ≡ 6 (mod 12)，即 −4 ≡ 8 (mod 12)。<br>
 算盘例（模 10⁴）：9828 − 1928 ≡ 9828 + 8072 = 17900 → 丢最高位得 7900。<br>
-18.3 求补码（必背）<br>
+<span class="kp-sub">18.3 求补码（必背）</span>
 <span class="formula">负数补码 = 模 − |X|          （模 = 2ⁿ，n 为补码位数）
 [X]补 = M + X (mod M)        （正负数通用公式）</span>
 简便方法（真值求补码）：<br>
 <ul><li>正数：符号位取 0，数值部分不变。</li><li>负数：符号位取 1，数值部分<b>各位取反、末位加 1</b>。</li></ul>
 例：[−1100011]补：真值 1100011 → 取反 0011100 → 加 1 得 0011101 → 补上符号位 = 1001 1101。<br>
 结论：[+0]补 = [−0]补 = 全 0——<b>0 的补码唯一</b>。[−1]补 = 全 1（n 个 1）。<br>
-18.4 真题<br>
+<span class="kp-sub">18.4 真题</span>
 <b>【2025.04·单选2】</b> 计算机系统中采用补码运算的目的是（　）<br>
 <ul><li>A. 与手工运算方式保持一致</li><li>B. 提高运算速度</li><li>C. 提高运算的精度</li><li>D. 简化计算机的设计</li></ul>
 <b>答案：D</b>（加法和减法可用同一硬件电路实现，无需单独的减法电路）<br>
@@ -1077,49 +1077,49 @@ BCD 补零在左侧（高位），别补右边。</span></div>
 <b>答案：</b>模、差<br>
 <b>【2026.04·填空12】</b> 补码运算系统是一种模运算系统，可用加法实现＿＿运算，且符号位可以和＿＿一起参加运算。<br>
 <b>答案：</b>减法、数值位<br>
-18.5 易错<br>
+<span class="kp-sub">18.5 易错</span>
 <span class="callout err">"负数补码 = 模 − 绝对值"，填"模"别填"2ⁿ−1"；写公式时模随位数变化：8 位模 2⁸。
 补码符号位与数值位"同参与运算"，不能像原码那样把符号位单拎出来。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点19</span><span class="kp-name">补码求真值、补码求相反数</span><span class="kp-level lv-A">A</span><span class="kp-freq">未单独出题（支撑考点28/29/30 的计算）</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">19.1 补码求真值（课件考点10）<br>
+<div class="kp-detail"><span class="kp-sub">19.1 补码求真值（课件考点10）</span>
 符号位 0：真值为正、数值部分不变；符号位 1：真值为负、数值部分<b>取反加 1</b>。<br>
 例：[X]补 = 1 011 0100 → 数值位取反 100 1011 → 加 1 得 100 1100 → X = −100 1100。<br>
-19.2 求相反数的补码（课件考点11）<br>
+<span class="kp-sub">19.2 求相反数的补码（课件考点11）</span>
 方法：<b>符号位和数值位一起</b>各位取反、末位加 1。<br>
 例：[X]补 = 1 011 0100 → 全部取反 0100 1011 → 加 1 → [−X]补 = 0 100 1100。<br>
 特例：[X]补 = 1000 0000（−128）→ [−X]补 = 0111 1111 + 1 = 1000 0000（溢出，仍为 1000 0000）。<br>
-19.3 三条求法对照（易混）<br>
+<span class="kp-sub">19.3 三条求法对照（易混）</span>
 <table><tr><th>操作</th><th>取反范围</th></tr><tr><td>真值求补码</td><td>只对<b>数值位</b>取反加 1，符号位另写</td></tr><tr><td>补码求真值</td><td>只对<b>数值位</b>取反加 1，再加负号</td></tr><tr><td>求相反数的补码</td><td><b>符号位+数值位</b>全部取反加 1</td></tr></table>
-19.4 易错<br>
+<span class="kp-sub">19.4 易错</span>
 <span class="callout err">三个"取反加 1"的取反范围不同——求相反数时连符号位一起取反，别只反数值位。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点20</span><span class="kp-name">二进制整数的表示范围与溢出</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">20.1 两种整数的范围（必背）<br>
+<div class="kp-detail"><span class="kp-sub">20.1 两种整数的范围（必背）</span>
 <span class="formula">n 位无符号整数：0 ～ 2ⁿ − 1        （8 位：0～255）
 n 位带符号整数（补码）：−2^(n−1) ～ 2^(n−1) − 1   （8 位：−128～+127）</span>
-20.2 溢出（必背定义）<br>
+<span class="kp-sub">20.2 溢出（必背定义）</span>
 <b>同号两数相加</b>，当相加得到的<b>和（结果）超出了 n 位可表示的范围</b>时，发生<b>溢出</b>现象。<br>
 规则：同号相加才可能溢出；溢出时结果的符号与被加数符号相反。<br>
-20.3 真题<br>
+<span class="kp-sub">20.3 真题</span>
 <b>【2024.04·填空14】</b> 整数加减运算中，同号相加时，若结果的符号不同于＿＿的符号，则会发生＿＿。<br>
 <b>答案：</b>加数、溢出（有符号数可能溢出；无符号数可能进位）<br>
 <b>【2024.10·填空15】</b> 在两个同号数相加时，当相加得到的＿＿超出了 n 位数可表示的范围时出现这种情况，此时发生了＿＿现象。<br>
 <b>答案：</b>和（或结果）、溢出<br>
 <b>【2026.04·填空13】</b> 指令所处理的基本数据类型分为＿＿和＿＿两种。<br>
 <b>答案：</b>数值数据、非数值数据（顺序可对调）（范围知识联动）<br>
-20.4 易错<br>
+<span class="kp-sub">20.4 易错</span>
 <span class="callout err">8 位带符号范围是 −128～+127——负数端多一个数，别写成 −127；判断溢出先看是否同号。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点21</span><span class="kp-name">IEEE754 浮点数标准</span><span class="kp-level lv-S">S</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">21.1 两种基本格式（必背）<br>
+<div class="kp-detail"><span class="kp-sub">21.1 两种基本格式（必背）</span>
 <table><tr><th>格式</th><th>总位数</th><th>结构</th></tr><tr><td>单精度 float</td><td>32 位</td><td>1 位符号 + 8 位阶码 + 23 位尾数</td></tr><tr><td>双精度 double</td><td>64 位</td><td>1 位符号 + 11 位阶码 + 52 位尾数</td></tr></table>
 三要素观念：符号定正负、<b>阶码决定范围</b>、<b>尾数决定精度</b>。<br>
 特殊值（看阶码 E 是否全 0/全 1）：E 全 0、F=0 → ±0；E 全 0、F≠0 → 非规格化数（隐含整数位按 0 处理）；E 全 1、F=0 → ±∞；E 全 1、F≠0 → NaN。<br>
-21.2 十进制 → IEEE754 单精度（七步法）<br>
+<span class="kp-sub">21.2 十进制 → IEEE754 单精度（七步法）</span>
 1. 十进制数转二进制（指数助记：<b>左移正、右移负</b>）。<br>
 2. 转科学计数法：1.F × 2ⁿ（隐含整数位 1）。<br>
 3. 符号位（1 位）：0 正 1 负。<br>
@@ -1127,193 +1127,193 @@ n 位带符号整数（补码）：−2^(n−1) ～ 2^(n−1) − 1   （8 位�
 5. 尾数（23 位）：F 后补 0 补足 23 位。<br>
 6. 拼接成机器数。<br>
 7. 四合一转十六进制（题目要求时）。<br>
-21.3 例题<br>
+<span class="kp-sub">21.3 例题</span>
 <span class="formula">例：−0.75 → −0.11₂ → −1.1 × 2⁻¹
 符号 1；阶码 = −1+127 = 126 = 0111 1110；尾数 100 0000…
 机器数 = 1 01111110 10000000000000000000000 = BF40 0000H</span>
-21.4 真题<br>
+<span class="kp-sub">21.4 真题</span>
 <b>【教材·第二章题11】</b> 用 IEEE754 单精度表示 +1.625、−9/16、+1.75、+19、−1/8、258。<br>
 <b>【教材·第二章题12】</b> 4098 的两种表示对照（见考点24 的"隐藏位"结论）。<br>
 <b>【教材·第二章题13】</b> −2147483647 的补码精确、IEEE754 近似。<br>
-21.5 易错<br>
+<span class="kp-sub">21.5 易错</span>
 <span class="callout err">阶码 = 指数 + 127（单精度）——别忘加偏置；尾数是 23 位，补 0 别补错方向。
 1.F 的"1"隐含不写——只有非规格化数才没有这个隐含 1。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点22</span><span class="kp-name">机器数的 IEEE754 浮点数转真值</span><span class="kp-level lv-A">A</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">22.1 逆运算五步<br>
+<div class="kp-detail"><span class="kp-sub">22.1 逆运算五步</span>
 1. 机器数转二进制（四合一逆用"一拆四"）。<br>
 2. 符号位：0 正 1 负。<br>
 3. 阶码：8 位二进制转十进制，再 <b>−127</b> 得指数。<br>
 4. 尾数：23 位转 0.F 形式。<br>
 5. 真值 = ± 1.F × 2^指数。<br>
-22.2 例题<br>
+<span class="kp-sub">22.2 例题</span>
 <span class="formula">例：C0A0 0000H → 11000000101000000000000000000000
 符号 1（负）；阶码 10000001 = 129 → 指数 2；尾数 0.25
 真值 = −1.25 × 2² = −5.0</span>
 教材题2：41A50000H → 阶码 131 → 指数 4 → 1.0100101×2⁴ → 20.625。<br>
-22.3 易错<br>
+<span class="kp-sub">22.3 易错</span>
 <span class="callout err">指数 = 阶码 − 127，不是阶码本身；尾数还原是 1.F（要补回隐含的 1）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点23</span><span class="kp-name">C 语言中的浮点数类型</span><span class="kp-level lv-B">B</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">23.1 三种类型的范围与精度<br>
+<div class="kp-detail"><span class="kp-sub">23.1 三种类型的范围与精度</span>
 <table><tr><th>类型</th><th>范围</th><th>精度</th></tr><tr><td>int</td><td>−2³¹ ～ 2³¹−1</td><td>精确</td></tr><tr><td>float</td><td>±3.4×10³⁸</td><td>约 6–7 位有效数字</td></tr><tr><td>double</td><td>±1.7×10³⁰⁸</td><td>约 15–16 位有效数字</td></tr></table>
-23.2 转换规则（必背）<br>
+<span class="kp-sub">23.2 转换规则（必背）</span>
 <ul><li><b>小 → 大</b>（int→float、int→double）：不会溢出，可能舍入（float 有效位少）。</li><li><b>大 → 小</b>（double→float）：可能溢出、可能舍入。</li><li><b>float/double → int</b>：可能截断（小数部分丢掉，如 1.999→1），超出范围则溢出。</li></ul>
 例：int 123456789 → float 123456792.000000（舍入丢失精度）；double 1.999 → int 1（截断）。<br>
-23.3 易错<br>
+<span class="kp-sub">23.3 易错</span>
 <span class="callout err">"int→double 无舍入"对，"int→float 无舍入"错——float 只有 6–7 位有效数字。
 float→int 是"截断"，不是"四舍五入"（1.999 变 1）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点24</span><span class="kp-name">非数值数据的编码表示</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">24.1 三类非数值数据<br>
+<div class="kp-detail"><span class="kp-sub">24.1 三类非数值数据</span>
 1. <b>逻辑值</b>：只有真（1）和假（0）两个值，按位进行运算。<br>
 2. <b>西文字符</b>：ASCII 码——每个字符由 <b>7 个二进位</b> b₆…b₀ 表示。如 0110111。<br>
 3. <b>汉字字符</b>：涉及三种编码——① 汉字的输入码（外码，如拼音、五笔）；② 字符集与汉字内码（如 GB2312）；③ 字模点阵码和轮廓描述。<br>
-24.2 真题<br>
+<span class="kp-sub">24.2 真题</span>
 <b>【2024.10·填空11】</b> 指令所处理的非数值数据主要包括＿＿数据和＿＿数据。<br>
 <b>答案：</b>字符、逻辑值（顺序可对调）<br>
 <b>【2026.04·单选4】</b> 目前计算机中使用最广泛的西文字符集及其编码是（　）<br>
 <ul><li>A. ASCII 码</li><li>B. 国标码</li><li>C. 外码</li><li>D. BCD 码</li></ul>
 <b>答案：A</b><br>
 <b>【教材·第二章简答5】</b> 汉字输入码、内码、字模码的二进制性质。<br>
-24.3 易错<br>
+<span class="kp-sub">24.3 易错</span>
 <span class="callout err">非数值数据的两大项是"字符+逻辑"——不含图像/声音（那是媒体数据，不在本课口径）。
 ASCII 是 7 位编码（存成 1 字节时最高位为 0）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点25</span><span class="kp-name">数据的宽度和单位</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">25.1 必背定义<br>
+<div class="kp-detail"><span class="kp-sub">25.1 必背定义</span>
 <ul><li><b>比特（位）</b>：b；<b>字节</b>：B，1B = 8b。</li><li><b>字</b>：一般情况下可理解为双字节、16 位。</li><li><b>字长</b>：CPU 内部用于<b>整数运算的数据通路的宽度</b>——平常说"32 位/64 位机器"指的就是字长。</li><li>字与字长的区别（简答原文）：<b>字用来表示被处理信息的单位，用于度量各种数据类型的宽度</b>；字长是 CPU 内部用于整数运算的数据通路的宽度。</li></ul>
-25.2 存储容量单位（2 的幂）<br>
+<span class="kp-sub">25.2 存储容量单位（2 的幂）</span>
 <span class="formula">1KB = 2¹⁰B = 1024B；1MB = 2¹⁰KB；1GB = 2¹⁰MB；1TB = 2¹⁰GB</span>
-25.3 真题<br>
+<span class="kp-sub">25.3 真题</span>
 <b>【2025.04·简答23】</b> 简述字和字长概念。<br>
 <b>答案：</b>（原文答案见 25.1）字：用来表示被处理信息的单位，用于度量各种数据类型的宽度；字长：CPU 内部用于整数运算的数据通路的宽度。<br>
-25.4 易错<br>
+<span class="kp-sub">25.4 易错</span>
 <span class="callout err">容量按 2¹⁰ 进（1024 进制）；传输速率才用 1000 进制——别混。
 字长≠字：字是"信息的单位"，字长是"数据通路的宽度"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点26</span><span class="kp-name">数据的存储和排列顺序</span><span class="kp-level lv-A">A</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">26.1 大端 vs 小端（必背）<br>
+<div class="kp-detail"><span class="kp-sub">26.1 大端 vs 小端（必背）</span>
 设 int 型变量 i 的地址为 0800H，机器数为 01234567H（01H 是最高有效字节 MSB、67H 是最低有效字节 LSB）：<br>
 <table><tr><th>地址</th><th>0800H</th><th>0801H</th><th>0802H</th><th>0803H</th></tr><tr><td>大端方式</td><td>01H</td><td>23H</td><td>45H</td><td>67H</td></tr><tr><td>小端方式</td><td>67H</td><td>45H</td><td>23H</td><td>01H</td></tr></table>
 <ul><li><b>大端方式</b>：高位字节存低地址——<b>"高大"</b>。</li><li><b>小端方式</b>：低位字节存低地址——<b>"低小"</b>。</li></ul>
-26.2 易错<br>
+<span class="kp-sub">26.2 易错</span>
 <span class="callout err">口诀：高大（高字节对低地址=大端）。地址栏永远从左到右递增，别把表看反。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点27</span><span class="kp-name">加法器和算术逻辑部件</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2024.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">27.1 全加器（必背）<br>
+<div class="kp-detail"><span class="kp-sub">27.1 全加器（必背）</span>
 全加器三个输入：加数 A、加数 B、低位进位 Cin；两个输出：和 F、向高位的进位 Cout。<br>
 <table><tr><th>A</th><th>B</th><th>Cin</th><th>F</th><th>Cout</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></table>
 <ul><li>加法器实际上是个<b>无符号数加法器</b>。</li><li>ALU 用来完成基本的<b>逻辑运算和定点数加减运算</b>；各类定点乘除运算和浮点数运算可利用<b>加法器、ALU 和移位器</b>来实现——因此基本运算部分是加法器、ALU 和移位器，<b>ALU 的核心部件是加法器</b>。</li></ul>
-27.2 真题<br>
+<span class="kp-sub">27.2 真题</span>
 <b>【2024.04·简答24】</b> 简述算术逻辑部件的工作原理。（教材 P68 第二章 2.6 原文）<br>
 <b>答案：</b>（原文答案见 27.1 后半）算术逻辑部件（ALU）用来完成基本的逻辑运算和定点数加减运算；各类定点乘除运算和浮点数运算可利用加法器、ALU 和移位器来实现；其中 ALU 的核心部件是加法器。<br>
 <b>【2024.10·单选3】</b> 运算器的核心部件是（　）<br>
 <ul><li>A. 数据总线</li><li>B. 通用寄存器</li><li>C. 多路开关</li><li>D. 算术逻辑运算单元</li></ul>
 <b>答案：D</b><br>
-27.3 易错<br>
+<span class="kp-sub">27.3 易错</span>
 <span class="callout err">"ALU 的核心是加法器"是简答得分点——乘除也是用加法器+移位器迭代出来的，别答"ALU 核心是乘法器"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点28</span><span class="kp-name">带标志加法器与四个标志位</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">28.1 四个标志位（必背）<br>
+<div class="kp-detail"><span class="kp-sub">28.1 四个标志位（必背）</span>
 <span class="formula">OF（溢出标志）= Cn ⊕ Cn−1     （最高位进位与次高位进位的异或）
 SF（符号标志）= Fn−1          （结果的最高位）
 ZF（零标志）= 1 当结果为 0，否则 0
 CF（进位/借位标志）= Cout（加法时）；= ¬Cout（减法时，运算按加负数处理）</span>
-28.2 记忆口径<br>
+<span class="kp-sub">28.2 记忆口径</span>
 <ul><li>OF 管<b>有符号数</b>溢出；CF 管<b>无符号数</b>进位/借位。</li><li>判断法：两个正数相加得负、两个负数相加得正 = OF 溢出。</li></ul>
-28.3 真题<br>
+<span class="kp-sub">28.3 真题</span>
 溢出定义类填空（2024.04 填空14、2024.10 填空15）主页在考点20。<br>
 <b>【2024.10·分析设计29】</b> 假设 R[ax]=FFFAH、R[bx]=FFF0H，执行 Intel 格式指令"add ax, bx"后，AX、BX 中的内容各是什么？标志寄存器 CF、OF、ZF、SF 各是多少？要求分别将操作数作为无符号整数和带符号整数来解释并验证指令执行结果。<br>
 <b>答案：</b>R[ax] = FFFAH + FFF0H = FFEAH（BX 不变）；CF=1、OF=0、ZF=0、SF=1。按无符号解释：CF=1 → 结果溢出（65530+65520=131050 &gt; 65535）；按带符号解释：OF=0 → 结果不溢出，和为 −22（−6 + −16）。<br>
 <b>【2025.10·计算28】</b> 某字长为 8 位的计算机中，x=75、y=84 为无符号整型变量，分别存放在寄存器 A、B 中。问：(1) 寄存器 A、B 中的内容是什么？(2) x 和 y 相加后的结果存放在寄存器 C 中，C 的内容是什么？运算结果是否正确？加法器最高位进位 Cout、零标志 ZF、进位标志 CF 各是什么？（要求最终用十六进制表示）<br>
 <b>答案：</b>(1) A = 4BH、B = 54H；(2) C = 9FH（159，在 0~255 范围内，结果正确）；最高位无进位 → Cout = 0，结果不为 0 → ZF = 0，CF = Cout = 0。<br>
 <b>【2026.04·简答24】</b>（原码乘法题，完整题干见考点30）原码乘法中符号位单独处理（异或）——标志位上下文。<br>
-28.4 易错<br>
+<span class="kp-sub">28.4 易错</span>
 <span class="callout err">OF 与 CF 分工固定：OF 看有符号、CF 看无符号；减法时 CF = ¬Cout（取反！）。
 SF = 结果最高位（符号位），别与 CF、OF 的位置记混。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点29</span><span class="kp-name">补码加减运算器</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">29.1 运算公式（必背）<br>
+<div class="kp-detail"><span class="kp-sub">29.1 运算公式（必背）</span>
 <span class="formula">[x + y]补 = [x]补 + [y]补        (mod 2ⁿ)
 [x − y]补 = [x]补 + [−y]补       (mod 2ⁿ)   ← 减法统一成加法</span>
-29.2 溢出判定（例题）<br>
+<span class="kp-sub">29.2 溢出判定（例题）</span>
 例：4 位补码（范围 −8～+7）计算 −7−6 与 −3−5：<br>
 <span class="formula">[−7−6]补 = 1001 + 1010 = 0011(+3)  → −13 &lt; −8，溢出，结果错误
 [−3−5]补 = 1101 + 1011 = 1000(−8)  → −8 恰在范围，未溢出，结果正确</span>
-29.3 真题<br>
+<span class="kp-sub">29.3 真题</span>
 <b>【2024.10·分析设计29】</b> add ax, bx 综合题（完整题干见考点28）。<br>
 <b>【2025.10·计算28】</b> 8 位无符号运算与标志判断（完整题干见考点28）。<br>
 <b>【2025.04·分析设计29】</b> mulb %cl / imulb %cl 的结果与标志（完整题干见考点30）。<br>
-29.4 易错<br>
+<span class="kp-sub">29.4 易错</span>
 <span class="callout err">判溢出不看"有没有进位"、要看范围或 OF；求 [−y]补 用"全部取反+1"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点30</span><span class="kp-name">定点数乘除运算</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">30.1 原码乘法（简答必背）<br>
+<div class="kp-detail"><span class="kp-sub">30.1 原码乘法（简答必背）</span>
 原码乘法两步：<br>
 1. <b>符号位单独处理</b>：结果符号 = 两数符号的<b>异或</b>。<br>
 2. <b>数值部分</b>：按<b>无符号乘法</b>做（移位相加——即"部分积+移位"迭代）。<br>
-30.2 乘法与标志位<br>
+<span class="kp-sub">30.2 乘法与标志位</span>
 <ul><li>mulb（无符号）/ imulb（带符号）：结果是双倍宽度，存入 ax。</li><li>乘法后 CF 与 OF 的判定：结果<b>低半部分（低 8/16 位）能否完整表示乘积</b>——表示不了（高半部分非全 0/全符号位）则 CF = OF = 1。</li></ul>
-30.3 真题<br>
+<span class="kp-sub">30.3 真题</span>
 <b>【2026.04·简答24】</b> 简述原码乘法运算过程。<br>
 <b>答案：</b>（见 30.1）<br>
 <b>【2025.04·分析设计29】</b> 假设 R[eax] = 0000 00A0H、R[ecx] = 0000 0003H，执行指令"mulb %cl"后，哪些寄存器的内容会发生变化？与执行"imulb %cl"指令所发生的变化是否一样？为什么？两条指令得到的 CF 和 OF 标志各是什么？请用该例给出的数据验证你的结论。（教材第三章例 3.5 原题换数据）<br>
 <b>答案：</b>mulb：R[ax] ← R[al]×R[cl] = A0H×03H = 01E0H（480），高 8 位非全 0 → CF=OF=1；imulb：−96×3 = −288 = FEE0H，高 9 位非全 0/全 1 → CF=OF=1。两条指令都只改变 AX，区别在按无符号/带符号解释。<br>
 <b>【2024.04·简答24】</b>（主页在考点27）定点乘除运算用加法器、ALU 和移位器实现。<br>
-30.4 易错<br>
+<span class="kp-sub">30.4 易错</span>
 <span class="callout err">原码乘法"符号位异或 + 数值无符号乘"两条都要写；别把移码/补码乘法规则套进来。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点31</span><span class="kp-name">浮点数加减运算</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">31.1 五个步骤（必背）<br>
+<div class="kp-detail"><span class="kp-sub">31.1 五个步骤（必背）</span>
 1. <b>对阶</b>：<b>小阶向大阶看齐</b>——阶小的数尾数右移，右移位数 = 两阶差的绝对值。<br>
 2. <b>尾数加减</b>（符号参与运算）。<br>
 3. <b>规格化</b>：尾数调成 1.F 形式（不足则左移、指数相应减）。<br>
 4. <b>舍入</b>。<br>
 5. <b>溢出判断和溢出处理</b>。<br>
 阶差计算：[Ex − Ey]补 = [Ex]补 + [−[Ey]补]补 (mod 2ⁿ)。<br>
-31.2 例题（0.5 + (−0.4375)）<br>
+<span class="kp-sub">31.2 例题（0.5 + (−0.4375)）</span>
 <span class="formula">0.5 = 1.0×2⁻¹（阶码 126）；−0.4375 = −1.11×2⁻²（阶码 125）
 对阶：小阶向大阶，−1.11×2⁻² 右移 1 位 → −0.111×2⁻¹
 尾数加减（统一以 ×2⁻¹ 为基准）：1.000 + (−0.111) = 0.001
 规格化：0.001 左移 3 位 → 1.000×2⁻³，阶码 126−3 = 123
 结果 = 1.0 × 2^(123−127) = 2⁻⁴ = 0.0625</span>
-31.3 真题<br>
+<span class="kp-sub">31.3 真题</span>
 <b>【2024.04·填空15】</b> 对阶时，使小阶向大阶看齐，使小阶的＿＿向右移位，移位的位数等于两个阶的＿＿的绝对值。<br>
 <b>答案：</b>尾数、差<br>
 <b>【2024.10·填空14】</b> 浮点数加减运算过程中，需要经过＿＿、尾数加减、＿＿和舍入 4 个步骤。<br>
 <b>答案：</b>对阶、规格化<br>
 <b>【2025.04·填空13】</b> 浮点数加减运算过程中，需要经过对阶、＿＿加减、＿＿和舍入 4 个步骤。<br>
 <b>答案：</b>尾数、规格化<br>
-31.4 易错<br>
+<span class="kp-sub">31.4 易错</span>
 <span class="callout err">对阶方向只准"小向大"——反着移 4 卷真题都没这么考过，但教材细节题会钓。
 规格化左移尾数时指数要减，右移（尾数溢出）时指数加——方向别记反。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点32</span><span class="kp-name">浮点数乘除运算</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">32.1 四个步骤<br>
+<div class="kp-detail"><span class="kp-sub">32.1 四个步骤</span>
 1. <b>尾数乘除、阶码加减</b>（尾数相乘、阶码相加；尾数相除、阶码相减）。<br>
 2. 尾数规格化。<br>
 3. 尾数舍入处理。<br>
 4. 阶码溢出判断。<br>
 示例：0.123×10⁵ × 0.456×10² = 0.123×0.456×10^(5+2)。<br>
-32.2 浮点运算器部件分工（必背）<br>
+<span class="kp-sub">32.2 浮点运算器部件分工（必背）</span>
 <ul><li>阶码部件：只做阶码的<b>相加、相减和比较</b>（定范围）。</li><li>尾数部件：做加、减、乘、除<b>四种基本算术运算</b>（定精度）。</li></ul>
-32.3 真题<br>
+<span class="kp-sub">32.3 真题</span>
 <b>【2024.10·单选4】</b> 下列关于浮点运算器的描述，正确的是（　）<br>
 <ul><li>A. 浮点运算器可用阶码部件和尾数部件来实现</li><li>B. 阶码部件可实现加、减、乘、除四种运算</li><li>C. 阶码部件可进行阶码相加、相减和相乘操作</li><li>D. 尾数部件只进行乘法和除法运算</li></ul>
 <b>答案：A</b>（阶码部件只进行阶码相加、相减和比较；尾数部件能实现加、减、乘、除四种基本算术运算）<br>
-32.4 易错<br>
+<span class="kp-sub">32.4 易错</span>
 <span class="callout err">"阶码部件能做乘除"是高频陷阱——阶码只加减和比较；尾数才是四则运算。</span></div>
 </div>
 </div>
@@ -1329,139 +1329,139 @@ SF = 结果最高位（符号位），别与 CF、OF 的位置记混。</span></
 <div class="tree speedmap"><ul class="troot"><li><span class="tnode troot-l">汇编阅读</span><ul><li><span class="tnode">先确认 Intel 还是 AT&amp;T</span></li><li><span class="tnode">再确认源、目的与操作数宽度</span></li><li><span class="tnode">计算有效地址，区分寄存器值和内存值</span></li><li><span class="tnode">跟踪标志位，再判断条件跳转</span></li><li><span class="tnode">遇到 call/ret，按栈的后进先出追踪</span></li></ul></li></ul></div></div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点33</span><span class="kp-name">指令与指令格式</span><span class="kp-level lv-C">C</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">33.1 定长指令字格式（教材图1.2）<br>
+<div class="kp-detail"><span class="kp-sub">33.1 定长指令字格式（教材图1.2）</span>
 课件用 <b>8 位</b>定长指令字说明指令格式（与考点4 一致）：op（4 位操作码）+ 寄存器/地址码（其余 4 位；R 型为 rt(2位)+rs(2位)，M 型为 addr(4位)）。<br>
 <table><tr><th>格式</th><th>组成</th><th>功能</th></tr><tr><td>R 型</td><td>op + rt + rs</td><td>R[rt] ← R[rt] op R[rs]（如 mov、add）</td></tr><tr><td>M 型</td><td>op + addr</td><td>R[0] ← M[addr]（load）或 M[addr] ← R[0]（store）</td></tr></table>
 <ul><li>op=0000 传送（mov）、op=0001 加（add）；op=1110 取数（load）、op=1111 存数（store）。</li><li>例：0001 0001 → R[0]←R[0]+R[1]；1110 0110 → R[0]←M[0110]。</li></ul>
-33.2 一条机器指令的四种字段（教材简答）<br>
+<span class="kp-sub">33.2 一条机器指令的四种字段（教材简答）</span>
 一条机器指令通常由以下字段组成：操作码（指示操作类型）、操作数（要操作的数据或存储地址）、寻址方式（如何取得操作数地址）、操作数长度。<br></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点34</span><span class="kp-name">寄存器传送语言（RTL）</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题（支撑考点37/41/44）</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">34.1 基本记号<br>
+<div class="kp-detail"><span class="kp-sub">34.1 基本记号</span>
 <ul><li>R[r]：寄存器 r 的内容；M[addr]：存储单元 addr 的内容。</li><li>M[PC]：PC 所指存储单元的内容（取指）；M[R[r]]：以寄存器 r 的内容为地址的存储单元内容。</li><li>← 的右边是传送源、左边是传送目的。</li></ul>
-34.2 两种汇编格式的读写顺序<br>
+<span class="kp-sub">34.2 两种汇编格式的读写顺序</span>
 <ul><li>AT&amp;T 格式（本教材使用）："op 源，目的"——如 movw 4(%ebp), %ax 的功能为 R[ax]←M[R[ebp]+4]。</li><li>Intel 格式："op 目的，源"——与 AT&amp;T 正好相反。</li></ul></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点35</span><span class="kp-name">指令系统设计风格（CISC 与 RISC）</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">35.1 两种风格（必背）<br>
+<div class="kp-detail"><span class="kp-sub">35.1 两种风格（必背）</span>
 <ul><li><span class="em">CISC</span>（复杂指令集计算机）：指令多而复杂，Intel x86（IA-32）是典型 CISC 架构。</li><li><span class="em">RISC</span>（精简指令集计算机，Reduced Instruction Set Computer）四特点：①指令数目少；②指令格式规整，采用定长指令字方式，操作码和操作数地址等字段长度固定；③只有 Load/Store 指令中的数据需要访存（Load/Store 型指令风格）；④采用大量通用寄存器。</li></ul>
-35.2 操作数与指令类型<br>
+<span class="kp-sub">35.2 操作数与指令类型</span>
 <ul><li>操作数三种：立即数（I）、通用寄存器（R）、存储单元（S）。</li><li>指令类型：RR（寄存器-寄存器）、RS（寄存器-存储）、SI、SS 等。</li></ul>
-35.3 真题<br>
+<span class="kp-sub">35.3 真题</span>
 <b>【2025.10·简答25】</b> 简述 RISC 指令集的主要特点，并写出它的全称。（教材 P93）<br>
 <b>答案：</b>RISC = 精简指令集计算机。主要特点：①指令数目少；②指令格式规整，采用定长指令字方式，操作码和操作数地址字段的长度固定；③只有 Load/Store 指令中的数据需要访存（Load/Store 型指令风格）；④采用大量通用寄存器。<br>
-35.4 易错<br>
+<span class="kp-sub">35.4 易错</span>
 <span class="callout err">ISA 设计目标（提速、短指令、灵活）是第一章考点8 的内容——别和 RISC 的四个特点串题。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点36</span><span class="kp-name">生成机器代码的过程</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">36.1 四步与 GCC 命令<br>
+<div class="kp-detail"><span class="kp-sub">36.1 四步与 GCC 命令</span>
 <span class="formula">预处理  gcc -E  prog1.c -o prog1.i       （cpp：处理 "#" 命令）
 编译    gcc -S  prog1.i -o prog1.s       （ccl：生成汇编语言源程序）
 汇编    gcc -c  prog1.s -o prog1.o       （as ：生成可重定位目标文件）
 链接    gcc     prog1.o main.o -o prog   （ld ：生成可执行目标文件）
 一步到位：gcc -O1 prog1.c prog2.c -o prog</span>
-36.2 例3.1 的结论（必背）<br>
+<span class="kp-sub">36.2 例3.1 的结论（必背）</span>
 <ul><li>汇编代码文件 test.s 是<b>可显示文本文件</b>——.i、.s 都是文本；.o 与可执行文件是<b>二进制</b>，不能直接显示。</li><li>objdump -d test.o：可重定位目标文件的目标代码从<b>相对地址 0</b> 开始（add 的起始地址为 00000000）。</li><li>objdump -d test：可执行文件中 add 的起始地址为 0x80483d4——链接后地址已确定（可重定位 vs 可执行的差别见第四章考点56）。</li></ul>
-36.3 真题<br>
+<span class="kp-sub">36.3 真题</span>
 四步转换相关真题（完整题干见第一章考点7）：2024.10 单选6（第一步 = 预处理）、2025.04 填空16（四步名称）、2025.10 填空17（预处理是第一步）、2026.04 单选6（汇编阶段的职责）。<br>
 可执行文件生成（链接）的名解见第四章考点55。<br>
-36.4 易错<br>
+<span class="kp-sub">36.4 易错</span>
 <span class="callout err">"把高级语言翻译成机器语言"是编译的活；汇编只把汇编语言源程序变成机器语言（2026.04 单选原题）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点37</span><span class="kp-name">Intel 格式与 AT&amp;T 格式的区别</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">37.1 对照表（必背）<br>
+<div class="kp-detail"><span class="kp-sub">37.1 对照表（必背）</span>
 <table><tr><th>特性</th><th>Intel 格式</th><th>AT&amp;T 格式</th></tr><tr><td>操作数顺序</td><td>目的，源</td><td>源，目的</td></tr><tr><td>立即数</td><td>直接写数字</td><td>加 $：$255</td></tr><tr><td>寄存器</td><td>直接写 ax</td><td>加 %：%ax</td></tr><tr><td>存储单元</td><td>[基址+变址*比例+偏移]</td><td>偏移(基址,变址,比例)</td></tr><tr><td>例子</td><td>mov ax, [ebp+edx*4+8]</td><td>movw 8(%ebp,%edx,4), %ax</td></tr><tr><td>RTL</td><td>R[ax] ← M[R[ebp]+R[edx]×4+8]</td><td>同左</td></tr></table>
 <ul><li>Intel "add ax, bx" 的功能：R[ax] ← R[ax] + R[bx]。</li><li>AT&amp;T "addl (,%ebx,2),%eax" 的功能：R[eax] ← R[eax] + M[R[ebx]×2]。</li><li>长度后缀 b/w/l 对应操作数 8/16/32 位（见考点38）。</li></ul>
-37.2 真题<br>
+<span class="kp-sub">37.2 真题</span>
 <b>【2024.04·分析设计29】</b> 将以下 Intel 格式的汇编指令转换为 GCC 默认的 AT&amp;T 格式汇编指令，并说明每条指令的含义。（10 分）<br>
 <span class="formula">push ebp                    → pushl %ebp            # R[esp]←R[esp]-4；M[R[esp]]←R[ebp]
 mov edx, DWORD PTR [esp+8]  → movl 8(%esp), %edx    # R[edx]←M[R[esp]+8]
 mov al, 255                 → movb $255, %al        # R[al]←255
 mov WORD PTR [ebp+20], cx   → movw %cx, 20(%ebp)    # M[R[ebp]+20]←R[cx]
 lea eax, [ecx+edx*2+4]      → leal 4(%ecx,%edx,2), %eax  # R[eax]←R[ecx]+R[edx]×2+4</span>
-37.3 易错<br>
+<span class="kp-sub">37.3 易错</span>
 <span class="callout err">转换题三个坑：操作数方向对调（源,目的）、丢 $ 和 %、地址形式括号位置（8(%ebp,%edx,4) 不是 (%ebp,%edx,4,8)）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点38</span><span class="kp-name">数据类型及指令长度后缀</span><span class="kp-level lv-A">A</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">38.1 C 类型与后缀（表3.1）<br>
+<div class="kp-detail"><span class="kp-sub">38.1 C 类型与后缀（表3.1）</span>
 <table><tr><th>C 语言声明</th><th>操作数类型</th><th>后缀</th><th>存储位数</th></tr><tr><td>(unsigned) char</td><td>字节</td><td>b</td><td>8</td></tr><tr><td>(unsigned) short</td><td>字</td><td>w</td><td>16</td></tr><tr><td>(unsigned) int / long int / char*</td><td>双字</td><td>l</td><td>32</td></tr><tr><td>long long int</td><td>—</td><td>—</td><td>2×32</td></tr><tr><td>float</td><td>单精度浮点</td><td>s</td><td>32</td></tr><tr><td>double</td><td>双精度浮点</td><td>l</td><td>64</td></tr></table>
 <ul><li>判断口诀：<span class="em">后缀由寄存器决定，与源/目的无关</span>——mov 8(%ebp, %ebx, 4), %ax 的后缀是 w（%ax 是 16 位）。</li></ul>
-38.2 后缀判定练习（教材题3）<br>
+<span class="kp-sub">38.2 后缀判定练习（教材题3）</span>
 <table><tr><th>指令</th><th>后缀</th><th>寻址方式速记</th></tr><tr><td>mov %al, 12(%ebp)</td><td>b</td><td>源寄存器、目的基址+偏移</td></tr><tr><td>add (, %ebx, 4), %ebx</td><td>l</td><td>源比例变址、目寄存器</td></tr><tr><td>or (%ebx), %dh</td><td>b</td><td>源基址、目寄存器</td></tr><tr><td>lea 8(%ebx, %esi), %eax</td><td>l</td><td>源基址+变址+偏移（传地址）</td></tr></table>
-38.3 易错<br>
+<span class="kp-sub">38.3 易错</span>
 <span class="callout err">"根据寄存器判断后缀"必须真的看寄存器——内存操作数没有独立长度。
 立即数长度可以坑你：orw $0xFFFF0, (%ebx) 的立即数超过 16 位，与后缀 w 不符→错（教材题4）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点39</span><span class="kp-name">定点寄存器组</span><span class="kp-level lv-B">B</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">39.1 寄存器清单（必背）<br>
+<div class="kp-detail"><span class="kp-sub">39.1 寄存器清单（必背）</span>
 <ul><li>8 个通用寄存器：EAX、EBX、ECX、EDX 主要存放<b>操作数</b>；ESP、EBP、ESI、EDI 主要存放<b>变址值或指针</b>。</li><li>ESP：栈指针寄存器（指向栈顶）；EBP：基址指针寄存器（指向栈帧底部）。</li><li>2 个专用寄存器：EIP（指令指针，指向下条要执行的指令）、EFLAGS（标志寄存器，存放程序运行状态标志）。</li><li>6 个段寄存器。</li></ul>
-39.2 长度记忆法<br>
+<span class="kp-sub">39.2 长度记忆法</span>
 2 个字母=16 位（AX）、3 个字母=32 位（EAX）、末尾是 L/H=8 位（AL、AH）。<br>
-39.3 名解备选<br>
+<span class="kp-sub">39.3 名解备选</span>
 <ul><li>通用寄存器：用于临时存放从主存取来的数据或运算结果的寄存器。</li><li>变址寄存器 / 基址寄存器：用于地址计算（偏移量、基址）的寄存器。</li><li>栈指针寄存器：存放栈顶地址；指令指针寄存器：存放<b>下一条</b>将要执行指令的地址（同 39.1 的 EIP）。</li><li>标志寄存器：存储程序运行状态标志（零标志、进位标志等）。</li></ul></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点40</span><span class="kp-name">定点算术运算指令与条件标志</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10、2025.04、2025.10</span><span class="kp-arrow">▼</span></div>
 <div class="kp-detail">（合并课件考点 8 的两次出现：条件标志 + 定点算术运算指令）<br>
-40.1 四个条件标志（指令系统视角）<br>
+<span class="kp-sub">40.1 四个条件标志（指令系统视角）</span>
 <ul><li>OF：带符号数运算结果<b>超出相应数值范围</b>（如 8 位 −128～127）时 OF=1。</li><li>SF：带符号数运算结果为<b>负数</b>时 SF=1（0 正 1 负）。</li><li>ZF：运算结果为 <b>0</b> 时 ZF=1。</li><li>CF：无符号整数加（减）产生<b>进位（借位）</b>时 CF=1。</li><li>位级计算公式（OF=Cn⊕Cn−1 等）见第二章考点28。</li></ul>
-40.2 定点算术运算指令总表（表3.5 精简）<br>
+<span class="kp-sub">40.2 定点算术运算指令总表（表3.5 精简）</span>
 <table><tr><th>类型</th><th>指令</th><th>影响标志</th><th>对应 C 运算</th></tr><tr><td>加/减</td><td>ADD / SUB</td><td>OF、ZF、SF、CF</td><td>+ −</td></tr><tr><td>增/减</td><td>INC / DEC</td><td>OF、ZF、SF（<span class="em">不含 CF</span>）</td><td>++ −−</td></tr><tr><td>取负</td><td>NEG</td><td>OF、ZF、SF、CF</td><td>负号</td></tr><tr><td>比较</td><td>CMP</td><td>OF、ZF、SF、CF（做减法但不保存结果）</td><td>&lt; &lt;= &gt; &gt;=</td></tr><tr><td>乘</td><td>MUL / IMUL</td><td>只影响 OF、CF</td><td>* （无/带符号）</td></tr><tr><td>除</td><td>DIV / IDIV</td><td>不影响任何标志</td><td>/ % （无/带符号）</td></tr></table>
 <ul><li>后缀 b/w/l 对应 8/16/32 位（mulb、imull 等）。</li><li>乘法结果是<b>双倍宽度</b>存进 AX/EDX:EAX；CF、OF 由结果的高半部分判定（卡：高半部分非全 0/全符号位 → CF=OF=1）。</li></ul>
-40.3 两个课本题的解法（例3.4、例3.5）<br>
+<span class="kp-sub">40.3 两个课本题的解法（例3.4、例3.5）</span>
 <ul><li>例3.4 "add ax,bx"（R[ax]=FFFAH、R[bx]=FFF0H）：先按机器算得 1FFEAH、取低 16 位 AX=FFEAH；再<b>分别按无符号/带符号解释</b>——无符号 131050&gt;65535 → CF=1；带符号 −6+(−16)=−22 在范围内 → OF=0；结果非 0 → ZF=0；结果为负 → SF=1。</li><li>例3.5 "mulb %bl"/"imulb %bl"：8 位乘法的 16 位积放 AX；无符号积高 8 位非全 0 → CF=OF=1；带符号积高 9 位非全 0 或全 1 → CF=OF=1。</li><li>两个例子的完整数值计算见第二章考点28、考点30（分别对应 2024.10、2025.04 两卷分析设计原题）。</li></ul>
-40.4 真题<br>
+<span class="kp-sub">40.4 真题</span>
 <b>【2025.10·单选5】</b> 下列不属于 IA-32 定点算术运算指令的是（　）<br>
 <ul><li>A. ADD/SUB</li><li>B. IN/OUT</li><li>C. MUL/IMUL</li><li>D. INC/DEC</li></ul>
 <b>答案：B</b>（IN/OUT 是 I/O 指令）<br>
 <b>【2024.10·分析设计29】</b> add ax, bx 的标志计算（完整题干见考点28）。<br>
 <b>【2025.04·分析设计29】</b> mulb %cl / imulb %cl 的结果与标志（教材例 3.5 原题换数据，完整题干见考点30）。<br>
-40.5 易错<br>
+<span class="kp-sub">40.5 易错</span>
 <span class="callout err">三组标志特例是送分点也是送命点：INC/DEC 不碰 CF；MUL/IMUL 只碰 CF、OF；DIV/IDIV 什么标志都不碰。
 CMP 只设标志不存结果——"比较 x 与 y"用 cmpl，别用 subl。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点41</span><span class="kp-name">寻址方式</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">41.1 三类寻址<br>
+<div class="kp-detail"><span class="kp-sub">41.1 三类寻址</span>
 <ul><li>立即寻址：操作数直接写在指令中。</li><li>寄存器寻址：操作数在某寄存器中。</li><li>存储器寻址：分实地址模式与保护模式两种工作模式。</li></ul>
 IA-32 采用<b>段页式虚拟存储管理方式</b>。<br>
-41.2 有效地址形式（必背）<br>
+<span class="kp-sub">41.2 有效地址形式（必背）</span>
 <span class="formula">有效地址 EA = R[基址] + R[变址]×比例因子 + 偏移量
 书写形式：偏移量(基址, 变址, 比例因子)
 例：8(%ebp, %edx, 4) → EA = R[ebp] + R[edx]×4 + 8</span>
 <ul><li>只写"偏移量(基址)"是相对寻址的用法（相对 EBP/ESP 访问栈帧）。</li><li>比例变址（带比例因子）vs 非比例变址（只有变址寄存器）；比例因子常用 1/2/4/8。</li></ul>
-41.3 名解备选<br>
+<span class="kp-sub">41.3 名解备选</span>
 <ul><li>有效地址：执行指令时计算出的操作数在内存中的真实地址。</li><li>相对寻址：使用相对于某个基址的偏移量来寻址。</li><li>比例系数（比例因子）：用于比例变址计算的一个数值。</li><li>实地址模式：CPU 直接使用物理地址访问内存；保护模式：操作系统可对内存等资源进行保护和管理的工作模式。</li></ul>
-41.4 真题<br>
+<span class="kp-sub">41.4 真题</span>
 <b>【2024.10·单选5】</b> 指令系统中采用不同寻址方式的目的主要是（　）<br>
 <ul><li>A. 实现存储程序和程序控制</li><li>B. 缩短指令长度，扩大寻址空间，提高编程灵活性</li><li>C. 可以直接访问外存</li><li>D. 提供扩展操作码的可能并降低指令译码难度</li></ul>
 <b>答案：B</b><br>
-41.5 易错<br>
+<span class="kp-sub">41.5 易错</span>
 <span class="callout err">"寻址方式多样化提高灵活性"的题常拿"直接访问外存"当干扰项——存储器寻址访问的是主存，不是外存。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点42</span><span class="kp-name">浮点寄存器栈和多媒体扩展寄存器组</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">42.1 两种浮点处理架构<br>
+<div class="kp-detail"><span class="kp-sub">42.1 两种浮点处理架构</span>
 <ul><li>x87 浮点协处理器架构：<span class="em">栈结构</span>。</li><li>由 MMX 发展而来的 SSE 架构：采用<b>SIMD</b>（单指令多数据）技术。</li></ul>
-42.2 名解备选<br>
+<span class="kp-sub">42.2 名解备选</span>
 <ul><li>MMX 指令：Intel 处理器中用于多媒体处理的指令集。</li><li>SSE 指令集：实现 SIMD 操作的扩展指令集。</li><li>SIMD：单指令多数据，一种同时处理多个数据的并行技术。</li><li>多媒体扩展通用寄存器：用于 SIMD 指令集操作的寄存器。</li></ul></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点43</span><span class="kp-name">通用数据传送指令</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">43.1 传送指令家族<br>
+<div class="kp-detail"><span class="kp-sub">43.1 传送指令家族</span>
 <table><tr><th>指令</th><th>具体形式</th><th>功能</th></tr><tr><td>MOV</td><td>movb / movw / movl</td><td>一般传送</td></tr><tr><td>MOVS</td><td>movsbw、movsbl…</td><td><b>符号扩展</b>传送【短的源数据，带符号】</td></tr><tr><td>MOVZ</td><td>movzbl、movzwl…</td><td><b>零扩展</b>传送【短的源数据，无符号】</td></tr><tr><td>XCHG</td><td>xchgb…</td><td>两个寄存器内容互换</td></tr></table>
 <ul><li>movsbw %al, %ax：把一个字节符号扩展后送到 16 位寄存器。</li><li>注意：MOVS、MOVZ 的目的地址<b>只能是寄存器编号</b>。</li></ul>
-43.2 进栈 PUSH 与出栈 POP（必背）<br>
+<span class="kp-sub">43.2 进栈 PUSH 与出栈 POP（必背）</span>
 <ul><li>PUSH：先 R[esp]←R[esp]−4（或 sp−2），<b>再</b>把寄存器内容写入栈单元；pushw 压字、pushl 压双字。</li><li>POP：<b>先</b>读出栈顶内容，再 R[esp]←R[esp]+4；popw、popl。</li><li>栈：采用<span class="em">先进后出</span>方式访问的存储区，大多数情况下从高地址向低地址增长。</li><li>SP/ESP 存的是<b>栈顶单元的地址</b>（不是栈内数据个数！）。</li></ul>
-43.3 扩展与截断（例3.3 方法）<br>
+<span class="kp-sub">43.3 扩展与截断（例3.3 方法）</span>
 <ul><li>小→大（扩展）：源是<b>无符号</b> → movz 零扩展；源是<b>带符号</b> → movs 符号扩展。</li><li>大→小（截断）：直接用 movb / movw 取低位。</li><li>例：int→char 用 movb %al, (%edx)；unsigned short→int 用 movzwl %ax, %eax 再接 movl %eax, (%edx)。</li></ul>
-43.4 真题<br>
+<span class="kp-sub">43.4 真题</span>
 <b>【2025.04·单选3】</b> 下列说法不正确的是（　）<br>
 <ul><li>A. 变址寻址时，有效数据存放在内存中</li><li>B. 数据交换指令，将两个寄存器内容互换</li><li>C. 堆栈指针 SP 的内容表示当前堆栈内所存储的数据的个数</li><li>D. 内存中指令的寻址和数据的寻址是交替进行的</li></ul>
 <b>答案：C</b>（SP 是栈顶指针，指向栈顶的地址，不是数据个数）<br>
@@ -1469,17 +1469,17 @@ IA-32 采用<b>段页式虚拟存储管理方式</b>。<br>
 <b>答案：</b>先进后出、数据<br>
 <b>【2025.04·简答24】</b> 简述栈在处理过程调用时的作用，并列举 16 位架构下可用的栈相关指令。<br>
 <b>答案：</b>栈采用"先进后出"方式访问，在处理过程调用时非常有用（存放返回地址等）；16 位架构下有 pushw 和 popw 指令分别表示进栈和出栈。<br>
-43.5 易错<br>
+<span class="kp-sub">43.5 易错</span>
 <span class="callout err">"SP 的内容 = 栈内数据个数"是高频陷阱选项——SP 永远是地址；要算个数用 (栈底−SP)÷单元长度。
 PUSH 先减指针再存数、POP 先取数再加指针——过程描述别写反。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点44</span><span class="kp-name">地址传送指令 LEA</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">44.1 传地址 vs 传值（必背）<br>
+<div class="kp-detail"><span class="kp-sub">44.1 传地址 vs 传值（必背）</span>
 <span class="formula">leal 8(%ecx, %edx, 4), %eax   # R[eax] ← R[ecx]+R[edx]×4+8    传地址
 movl 8(%ecx, %edx, 4), %eax   # R[eax] ← M[R[ecx]+R[edx]×4+8]  传值</span>
 LEA（Load Effective Address）加载<b>有效地址</b>，不访问内存——编译器常用它来完成加法/乘法。<br>
-44.2 教材题7 的算法<br>
+<span class="kp-sub">44.2 教材题7 的算法</span>
 已知 x 在 EAX、y 在 ECX：<br>
 <span class="formula">leal (%eax), %edx             → R[edx] = x
 leal 4(%eax, %ecx), %edx      → R[edx] = x + y + 4
@@ -1487,135 +1487,135 @@ leal (%eax, %ecx, 8), %edx    → R[edx] = x + 8y
 leal 0xc(%ecx, %eax, 2), %edx → R[edx] = y + 2x + 12
 leal (, %eax, 4), %edx        → R[edx] = 4x
 leal (%eax, %ecx), %edx       → R[edx] = x + y</span>
-44.3 真题<br>
+<span class="kp-sub">44.3 真题</span>
 <b>【2024.04·分析设计29·第5条】</b> lea eax, [ecx+edx*2+4] → leal 4(%ecx,%edx,2), %eax（完整题干见考点37）；功能：R[eax] ← R[ecx] + R[edx]×2 + 4。<br>
-44.4 易错<br>
+<span class="kp-sub">44.4 易错</span>
 <span class="callout err">LEA 不访存！leal 与 movl 写同一个地址形式时：LEA 取"算出来的地址"，MOV 取"该地址里的内容"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点45</span><span class="kp-name">移位指令</span><span class="kp-level lv-B">B</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">45.1 四条移位指令（必背）<br>
+<div class="kp-detail"><span class="kp-sub">45.1 四条移位指令（必背）</span>
 <table><tr><th>指令</th><th>方向</th><th>补位规则</th><th>系数含义</th><th>标志</th></tr><tr><td>SHL</td><td>左移</td><td>低位补 0</td><td>无符号 ×2ⁿ</td><td>最高位→CF</td></tr><tr><td>SAL</td><td>左移</td><td>低位补 0</td><td>带符号 ×2ⁿ</td><td>最高位→CF；符号位变化→OF=1</td></tr><tr><td>SHR</td><td>右移</td><td>高位补 0</td><td>无符号 ÷2ⁿ</td><td>最低位→CF</td></tr><tr><td>SAR</td><td>右移</td><td>高位补<b>符号位</b></td><td>带符号 ÷2ⁿ（向下取整）</td><td>最低位→CF</td></tr></table>
-45.2 例3.6 推导<br>
+<span class="kp-sub">45.2 例3.6 推导</span>
 <span class="formula">salw $2, %ax    →  R[ax] = 4x
 addw %dx, %ax   →  R[ax] = 5x        （设 R[dx] = x）
 sarw $1, %ax    →  R[ax] = 5x÷2</span>
 x = −128（FF80H）→ 最终 R[ax] = FEC0H = −320（= 5×(−128)÷2）；移位前后符号位未变，OF=0 不溢出。<br>
-45.3 教材简答（3）<br>
+<span class="kp-sub">45.3 教材简答（3）</span>
 逻辑运算指令（AND / OR / XOR）按运算结果生成条件标志（ZF、SF；CF=OF=0）；移位指令可能改变 CF、ZF、OF（及 SF）。<br>
-45.4 易错<br>
+<span class="kp-sub">45.4 易错</span>
 <span class="callout err">移位 n 位 = ×2ⁿ 或 ÷2ⁿ；带符号右移是"向下取整"（−45÷2 = −23），别按绝对值直接除。
 SAR 高位补符号位（负数补 1），SHR 才补 0——两条右移别混。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点46</span><span class="kp-name">程序执行流控制指令</span><span class="kp-level lv-A">A</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">46.1 六类指令<br>
+<div class="kp-detail"><span class="kp-sub">46.1 六类指令</span>
 <ul><li>无条件跳转：JMP——直接跳转到目标地址执行（改 EIP 值）。</li><li>条件跳转：以标志位或标志组合作为跳转依据。</li><li>条件设置 SETcc：把条件值（0/1）设置到一个 8 位通用寄存器，如 setc %dl：CF=1 则 R[dl]=1。</li><li>条件传送 CMOVcc：符合条件才传送；AT&amp;T 格式 CMOVcc SRC, DST，如 cmovc %eax, %edx：CF=1 则 R[edx]←R[eax]。</li><li>调用和返回：CALL / RET。</li><li>陷阱指令：重要作用之一是系统调用。</li></ul>
-46.2 条件跳转组合速记（表3.6 精简）<br>
+<span class="kp-sub">46.2 条件跳转组合速记（表3.6 精简）</span>
 <table><tr><th>类别</th><th>指令</th><th>条件</th></tr><tr><td>相等</td><td>je/jz；jne/jnz</td><td>ZF=1；ZF=0</td></tr><tr><td>符号</td><td>js；jns</td><td>SF=1；SF=0</td></tr><tr><td>溢出</td><td>jo；jno</td><td>OF=1；OF=0</td></tr><tr><td>进位</td><td>jc；jnc</td><td>CF=1；CF=0</td></tr><tr><td>无符号</td><td>ja/jae/jb/jbe</td><td>CF、ZF 组合（A&gt;、A≥、A&lt;、A≤）</td></tr><tr><td>带符号</td><td>jg/jge/jl/jle</td><td>SF、OF、ZF 组合（&gt;、≥、&lt;、≤）</td></tr></table>
 记忆：无符号比较记 <b>a</b>bove/<b>b</b>elow（看 CF）；带符号比较记 <b>g</b>reater/<b>l</b>ess（看 SF⊕OF）。<br>
-46.3 例3.7、例3.8 的判定方法（题型）<br>
+<span class="kp-sub">46.3 例3.7、例3.8 的判定方法（题型）</span>
 <ul><li>CMP + SETcc：无符号小于→setb（x、y 为无符号或指针型）；带符号小于→setl（x、y 为 short）；位串相等/不等→sete/setne（任意整型）。</li><li>TEST + SETcc：TEST 执行后 OF=CF=0，ZF、SF 按两操作数"与"的结果设置——常用它判断是否为 0、是否非负、低若干位是否为 0。</li></ul>
-46.4 教材简答<br>
+<span class="kp-sub">46.4 教材简答</span>
 教材第三章简答（4）：条件跳转用到的标志信息来自<b>上一条影响标志的指令</b>。<br>
 教材第三章简答（5）：JMP 与 CALL 都改变执行流程；不同点是 CALL 还会把返回地址保存到栈中，以便返回。<br>
-46.5 易错<br>
+<span class="kp-sub">46.5 易错</span>
 <span class="callout err">无符号用 a/b、带符号用 g/l，两套助记符写反 = 直接丢分。
 cmpl %eax, %edx 在 AT&amp;T 里算的是 R[edx]−R[eax]——谁减谁看操作数顺序。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点47</span><span class="kp-name">过程调用</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">47.1 过程调用六步（必背）<br>
+<div class="kp-detail"><span class="kp-sub">47.1 过程调用六步（必背）</span>
 1. P 将入口参数（实参）放到 Q 能访问到的地方。<br>
 2. P 将返回地址存到特定地方，然后将控制转移到 Q。<br>
 3. Q 保存 P 的现场，并为自己的非静态局部变量分配空间。<br>
 4. 执行 Q 的过程体（函数体）。<br>
 5. Q 恢复 P 的现场，并释放局部变量所占空间。<br>
 6. Q 取出返回地址，将控制转移到 P。<br>
-47.2 栈与栈帧<br>
+<span class="kp-sub">47.2 栈与栈帧</span>
 <ul><li>调用过程与被调过程各有一个栈区（栈帧）；EBP（帧指针寄存器）指向当前栈帧底部。</li><li>汇编视角：call 指令把返回地址压栈并转移控制；被调过程保存现场、为局部变量分配栈帧；ret 取出返回地址回到调用点。</li><li>名解备选：当前栈帧、帧指针寄存器、嵌套调用（函数内调函数）、递归调用（函数调自身）、调用者保存寄存器、被调用者保存寄存器。</li></ul>
-47.3 真题<br>
+<span class="kp-sub">47.3 真题</span>
 <b>【2024.10·简答23】</b> 简述在递归深度较深时，递归调用的时间开销和空间开销都会较大的原因。（教材第三章习题第 7 题原题）<br>
 <b>答案：</b>每个过程包含准备阶段和结束阶段，并在栈中新增一个栈帧；每增加一次过程调用，就要增加许多条包含在准备阶段和结束阶段的额外指令，并增加一个栈帧的空间。递归调用深度较深时，这些额外指令的执行时间开销和栈帧的空间开销就会很大，有些情况下甚至发生栈溢出。<br>
-47.4 易错<br>
+<span class="kp-sub">47.4 易错</span>
 <span class="callout err">递归开销答题要两个点：时间（每次调用多一组准备/结束指令）+空间（每层多一个栈帧）——只答一个只拿一半分。
 栈是"先进后出"访问、从高地址向低地址增长——方向别答反。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点48</span><span class="kp-name">值传递和地址传递</span><span class="kp-level lv-B">B</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">48.1 两种参数传递（对比）<br>
+<div class="kp-detail"><span class="kp-sub">48.1 两种参数传递（对比）</span>
 <table><tr><th></th><th>按值传递</th><th>按地址传递</th></tr><tr><td>传递内容</td><td>实参的值（复制一份给形参）</td><td>实参的地址（指针）</td></tr><tr><td>形参修改的影响</td><td><span class="em">不影响实参</span></td><td><span class="em">会修改实参所指向的数据</span></td></tr><tr><td>典型用途</td><td>普通函数参数</td><td>swap 交换、需要"带回"结果时</td></tr></table>
-48.2 教材简答（6）<br>
+<span class="kp-sub">48.2 教材简答（6）</span>
 值传递把参数的值复制给形参，函数内修改形参不影响实参；地址传递把参数的地址传给函数，函数内对形参（指针所指内容）的修改会影响实参。<br>
-48.3 名解备选<br>
+<span class="kp-sub">48.3 名解备选</span>
 <ul><li>按值传递参数：将参数的值传递给函数。</li><li>按地址传递参数：将参数的地址传递给函数，函数可以直接访问参数的值。</li></ul></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点49</span><span class="kp-name">循环语句</span><span class="kp-level lv-B">B</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">49.1 三种循环<br>
+<div class="kp-detail"><span class="kp-sub">49.1 三种循环</span>
 C 语言中循环结构有三种：do~while 语句、while 语句和 for 语句（<span class="em">2026.04 填空14 原题</span>）。<br>
 <span class="formula">for (begin_expr; cond_expr; update_expr) loop_body_statement</span>
 先执行初始化表达式，再判断条件表达式，循环体执行后做更新表达式，如此往复。<br>
-49.2 循环的机器级实现（例3.10）<br>
+<span class="kp-sub">49.2 循环的机器级实现（例3.10）</span>
 <span class="formula">初始化：result = 0；i = 0
 .L12:                          # 循环头
   循环体：R[edx] = result&lt;&lt;1；R[eax] = x &amp; 1；result = R[edx] | R[eax]；x &gt;&gt;= 1
   i++（addl $1, %ecx）；cmpl $32, %ecx；jne .L12   # i≠32 就跳回循环头</span>
 要点：循环 = "初始化 + 循环体 + 条件判断 + 条件跳转回跳"；循环 32 次对应 32 位整数逐位处理。<br>
-49.3 易错<br>
+<span class="kp-sub">49.3 易错</span>
 <span class="callout err">三种循环别数错：for、while、do~while（给两个空的题按题干语序填，别主动排序）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点50</span><span class="kp-name">数组</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">50.1 四种存储类型（必背）<br>
+<div class="kp-detail"><span class="kp-sub">50.1 四种存储类型（必背）</span>
 <table><tr><th>存储类型</th><th>声明方式</th><th>分配位置</th></tr><tr><td>静态存储型</td><td>static</td><td>静态数据区</td></tr><tr><td>外部存储型</td><td>extern</td><td>静态数据区</td></tr><tr><td>自动存储型</td><td>auto</td><td>栈中</td></tr><tr><td>全局静态区数组</td><td>全局声明</td><td>静态数据区</td></tr></table>
-50.2 首地址与元素地址<br>
+<span class="kp-sub">50.2 首地址与元素地址</span>
 <ul><li>数组名 = 数组首地址 = <b>第一个元素 A[0] 的地址</b>。</li><li>A[i] 的地址 = 首地址 + i × 元素长度（如 short A[4]：A[3] 地址 = 首址 + 6 字节）。</li></ul>
-50.3 真题<br>
+<span class="kp-sub">50.3 真题</span>
 <b>【2025.10·填空15】</b> 数组可以定义为＿＿、＿＿、自动存储型或者定义为全局静态区数组。<br>
 <b>答案：</b>静态存储型、外部存储型（顺序可对调）<br>
 <b>【2026.04·填空15】</b> "static short A[4];" 语句是指定义一个具有 4 个元素的＿＿short 数据类型数组 A，其首地址就是第一个元素＿＿的地址。<br>
 <b>答案：</b>静态存储型、A[0]<br>
-50.4 易错<br>
+<span class="kp-sub">50.4 易错</span>
 <span class="callout err">"首地址 = A[0] 的地址"——两卷填空连考（2025.10、2026.04），别写成 A[1] 或数组长度。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点51</span><span class="kp-name">数据的对齐方式</span><span class="kp-level lv-B">B</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">51.1 两条对齐规则（必背）<br>
+<div class="kp-detail"><span class="kp-sub">51.1 两条对齐规则（必背）</span>
 1. <b>成员对齐</b>：结构体中每个成员的偏移量必须是该成员自身大小的整数倍（short→偏移为 2 的倍数；int→偏移为 4 的倍数）。<br>
 2. <b>整体对齐</b>：结构体总大小必须是其内部最大成员大小的整数倍（保证数组存储时每个元素都对齐）。<br>
-51.2 例3.11（空间优化实操）<br>
+<span class="kp-sub">51.2 例3.11（空间优化实操）</span>
 <span class="formula">struct { char a; int b; char c; short d; } record[100];
 原布局：a@0   b@4~7   c@8   d@10~11   元素 12 字节 → 数组 1200 字节
 调序（短→长）：d@0~1  c@2  a@3  b@4~7  元素 8 字节  → 数组 800 字节</span>
 <ul><li>结论：<span class="em">调整成员声明顺序使占用空间最少</span>（短→长或长→短均可），本例省 400 字节。</li></ul>
-51.3 教材简答（8）<br>
+<span class="kp-sub">51.3 教材简答（8）</span>
 为什么数据最好按对齐方式存放——许多体系结构对数据访问有对齐要求；若存放不对齐，可能导致额外的内存访问、降低访问效率。<br>
-51.4 易错<br>
+<span class="kp-sub">51.4 易错</span>
 <span class="callout err">对齐题先画"地址尺"：从偏移 0 开始逐成员试放，不够倍数就补空——别心算跳步。
 调序后 8 字节的构成要写全：2（short）+1（char）+1（char）+4（int）= 8。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点52</span><span class="kp-name">x86-64 的基本特点</span><span class="kp-level lv-B">B</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">52.1 六条特点（必背）<br>
+<div class="kp-detail"><span class="kp-sub">52.1 六条特点（必背）</span>
 <ul><li>通用寄存器个数比 IA-32 更多。</li><li>通用寄存器位数从 32 位扩展到 <b>64 位</b>；字长 64 位，逻辑地址 64 位。</li><li>long double 仍用 80 位扩展精度格式，但分配空间从 IA-32 的 12 字节增至 <b>16 字节</b>。</li><li>过程调用时，整型入口参数在 6 个以内<b>用通用寄存器传递</b>（不用栈）——很多过程可不访问栈、执行时间更短。</li><li>128 位的 <b>XMM 寄存器从 8 个增加到 16 个</b>，浮点操作基于 SSE、操作数放 XMM 寄存器。</li></ul>
-52.2 易错<br>
+<span class="kp-sub">52.2 易错</span>
 <span class="callout err">"x86-64 参数还是走栈"是错的——前 6 个整型参数走寄存器（RDI、RSI…），这是与 IA-32 的关键区别。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点53</span><span class="kp-name">x86-64 的数据传送指令</span><span class="kp-level lv-B">B</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">53.1 "q" 后缀与指令清单<br>
+<div class="kp-detail"><span class="kp-sub">53.1 "q" 后缀与指令清单</span>
 <ul><li>后缀 q = 四字（64 位）。movabsq（64 位立即数→寄存器）、movq、leaq、pushq / popq。</li><li>扩展传送：movsbq、movswq、movslq（符号扩展）；movzbq、movzwq（零扩展）。</li></ul>
-53.2 x86-64 的 movl 陷阱（必背）<br>
+<span class="kp-sub">53.2 x86-64 的 movl 陷阱（必背）</span>
 在 x86-64 中，movl 传送 32 位寄存器内容的同时会把目的寄存器<b>高 32 位自动清零</b>——相当于 movzlq，因而 x86-64 中不再需要 movzlq 指令（<span class="em">movl = movzlq</span>）。<br>
-53.3 例3.12 查表（convert 函数）<br>
+<span class="kp-sub">53.3 例3.12 查表（convert 函数）</span>
 <table><tr><th>源→目的</th><th>汇编指令</th></tr><tr><td>char → long</td><td>movsbq %dil, %rax</td></tr><tr><td>int → long</td><td>movslq %edi, %rax</td></tr><tr><td>long → long</td><td>movq %rdi, %rax</td></tr><tr><td>long → int</td><td>movl %edi, %eax</td></tr><tr><td>unsigned char → unsigned long</td><td>movzbq %dil, %rax</td></tr></table>
-53.4 易错<br>
+<span class="kp-sub">53.4 易错</span>
 <span class="callout err">"movl = movzlq"是 x86-64 专属规则（寄存器 64 位，写低 32 位顺带清高 32 位）——IA-32 没有这个语境，别跨章套用。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点54</span><span class="kp-name">x86-64 的算术逻辑运算指令</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">54.1 题型：从汇编反推数据类型（例3.13）<br>
+<div class="kp-detail"><span class="kp-sub">54.1 题型：从汇编反推数据类型（例3.13）</span>
 例3.13：给出 "x=a\*b+c\*d;" 的 x86-64 汇编代码（x、a、b、c、d 分别在 RAX、RDI、RSI、RDX、RCX 对应宽度的寄存器中），反推五个变量的数据类型。<br>
 判读两步：<br>
 <ul><li>看运算指令后缀定宽度：l = 32 位（int）、q = 64 位（long）。</li><li>看扩展指令定符号性：movslq = 有符号 int 扩展、movzbq = 无符号 char 扩展。</li></ul></div>
@@ -1633,31 +1633,31 @@ C 语言中循环结构有三种：do~while 语句、while 语句和 for 语句�
 <span class="callout tip">【做题】流水线计算：找出最慢段作为 T，确定段数 M 与指令数 N，代入 (M − 1 + N) × T；若各指令执行阶段不同，先按题目要求确定流水线段划分。</span></div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点55</span><span class="kp-name">可执行文件生成</span><span class="kp-level lv-B">B</span><span class="kp-freq">2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">55.1 四步与命令<br>
+<div class="kp-detail"><span class="kp-sub">55.1 四步与命令</span>
 <table><tr><th>阶段</th><th>命令</th><th>产物</th></tr><tr><td>预处理</td><td>gcc -E main.c -o main.i（cpp）</td><td>main.i（文本）</td></tr><tr><td>编译</td><td>gcc -S main.i -o main.s（ccl）</td><td>main.s（汇编源程序）</td></tr><tr><td>汇编</td><td>gcc -c main.s -o main.o（as）</td><td>main.o（可重定位目标文件）</td></tr><tr><td>链接</td><td>gcc -o test main.o test.o（ld）</td><td>test（可执行文件）</td></tr></table>
-55.2 链接的定义（名解候选）<br>
+<span class="kp-sub">55.2 链接的定义（名解候选）</span>
 将一个程序的所有关联模块对应的目标代码文件结合在一起、以形成一个可执行文件的过程称为<b>链接</b>，由链接器（Linker）实现。<br>
-55.3 真题<br>
+<span class="kp-sub">55.3 真题</span>
 四步与"预处理是第一步"的真题（完整题干见第一章考点7）：2024.10 单选6、2025.04 填空16、2025.10 填空17、2026.04 单选6。<br>
 链接定义类真题（2024.04 单选6：组合可重定位目标文件 → 可执行，完整题干见考点57）。<br>
-55.4 易错<br>
+<span class="kp-sub">55.4 易错</span>
 <span class="callout err">本考点是考点7（第一章）的命令行版：考"哪个命令 / 哪个阶段"时必须对号入座，别混 gcc -E 与 -S。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点56</span><span class="kp-name">可重定位目标文件和可执行文件不同</span><span class="kp-level lv-B">B</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">56.1 核心差别<br>
+<div class="kp-detail"><span class="kp-sub">56.1 核心差别</span>
 <table><tr><th></th><th>可重定位目标文件</th><th>可执行目标文件</th></tr><tr><td>来源</td><td>单个模块编译汇编生成</td><td>多个模块（含库）链接生成</td></tr><tr><td>地址</td><td>代码总是从 0 开始（未分配）</td><td>在 ABI 规定的虚拟地址空间中分配（如 add 函数的起始地址为 0x80483d4）</td></tr><tr><td>视图</td><td>由"节"组成（链接视图）</td><td>由"段"组成（执行视图）</td></tr></table>
-56.2 真题<br>
+<span class="kp-sub">56.2 真题</span>
 <b>【教材·第四章简答2】</b> 可重定位目标文件和可执行目标文件的主要差别。<br></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点57</span><span class="kp-name">链接器</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">57.1 链接器的两大任务（必背）<br>
+<div class="kp-detail"><span class="kp-sub">57.1 链接器的两大任务（必背）</span>
 1. <b>符号解析</b>：将每个符号的引用与一个确定的符号定义建立关联。<br>
 2. <b>重定位</b>：重新确定代码和数据的地址、并更新指令中被引用符号地址的操作。<br>
-57.2 关键口径<br>
+<span class="kp-sub">57.2 关键口径</span>
 <ul><li>符号包括<b>全局静态变量名和函数名</b>；<b>非静态局部变量名不是符号</b>。</li><li>可重定位文件中代码区和数据区都从地址 0 开始；链接器把不同模块中相同的节合并成新节，按 ABI 规范确定的虚拟地址空间划分重新确定位置——这一步就是重定位。</li><li>名解"重定位"：重新确定代码和数据的地址、更新指令中被引用符号地址的操作。</li></ul>
-57.3 真题<br>
+<span class="kp-sub">57.3 真题</span>
 <b>【2024.04·单选6】</b> 用来将若干可重定位目标文件组合起来、生成一个可执行目标文件的过程称为（　）<br>
 <ul><li>A. 预处理</li><li>B. 编译</li><li>C. 汇编</li><li>D. 链接</li></ul>
 <b>答案：D</b><br>
@@ -1667,91 +1667,91 @@ C 语言中循环结构有三种：do~while 语句、while 语句和 for 语句�
 <b>答案：</b>重新确定代码和数据的地址，并更新指令中被引用符号地址的操作。<br>
 <b>【教材·第四章简答3】</b> 链接器主要完成哪两方面工作。<br>
 <b>【教材·第四章名解2/3/4/5】</b> 可重定位文件、可执行文件、符号解析、重定位。<br>
-57.4 易错<br>
+<span class="kp-sub">57.4 易错</span>
 <span class="callout err">"符号"只算全局静态变量名和函数名——局部变量不是符号、不进符号表（本章反复考）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点58</span><span class="kp-name">ELF 目标文件格式</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">58.1 三种目标文件格式<br>
+<div class="kp-detail"><span class="kp-sub">58.1 三种目标文件格式</span>
 <ul><li>COFF：System V UNIX 早期版本使用的通用目标文件格式。</li><li>PE：Windows 使用（COFF 的一个变种）。</li><li><b>ELF</b>：可执行可链接格式（Executable and Linkable Format），本教材使用。</li></ul>
-58.2 两种视图（必背）<br>
+<span class="kp-sub">58.2 两种视图（必背）</span>
 <ul><li>链接视图（可重定位目标文件）：主要由不同的<b>节（section）</b>组成 + 节头表（程序头表可选）。</li><li>执行视图（可执行目标文件）：主要由不同的<b>段（segment）</b>组成 + 程序头表（节头表可选）。</li></ul>
-58.3 可重定位目标文件的主要节<br>
+<span class="kp-sub">58.3 可重定位目标文件的主要节</span>
 <table><tr><th>节</th><th>内容</th></tr><tr><td>ELF 头</td><td>文件结构说明信息（起始位置）</td></tr><tr><td>.text</td><td>目标代码</td></tr><tr><td>.rodata</td><td>只读数据（如常量字符串）</td></tr><tr><td>.data</td><td>已初始化且初值<b>不为 0</b> 的全局变量和静态变量（如 int x=10;）</td></tr><tr><td>.bss</td><td>未初始化或初始化为 0 的全局变量和静态变量（如 int y; int z=0;）</td></tr><tr><td>.symtab</td><td>符号表（函数名、全局静态变量名等信息）</td></tr></table>
 auto 型局部变量运行时分配在栈中，<b>既不出现在 .data、也不出现在 .bss</b>。<br>
 符号解析题口径：未初始化的全局变量（int y;）实际落 <b>COMMON 伪节</b>（弱符号）；只有显式初始化为 0（int z=0;）才归 .bss 强符号——见考点61/62。<br>
-58.4 可执行目标文件要点<br>
+<span class="kp-sub">58.4 可执行目标文件要点</span>
 <ul><li>程序头表（段头表）：结构数组，加载器按它对可装入段进行映射。</li><li>.init 节：进程进入 main 之前先执行的初始化指令。</li><li>.fini 节：进程终止时执行的指令。</li><li>只读代码段 = .text + .rodata；可读/写数据段 = .data + .bss。</li></ul>
-58.5 真题<br>
+<span class="kp-sub">58.5 真题</span>
 <b>【2025.10·单选6】</b> ELF 文件中的主体信息是（　）<br>
 <ul><li>A. 节</li><li>B. 节头表</li><li>C. 段</li><li>D. 地址</li></ul>
 <b>答案：A</b>（教材 P166）<br>
 <b>【教材·第四章简答4】</b> .text/.rodata/.data/.bss 各含什么。<br>
 <b>【教材·第四章简答5】</b> 两种可装入段与节的组合。<br>
 <b>【教材·第四章简答6】</b> 加载器根据程序头表映射可装入段。<br>
-58.6 易错<br>
+<span class="kp-sub">58.6 易错</span>
 <span class="callout err">.data 与 .bss 的分界是"初值是否为 0"：int z=0; 进 .bss，不是 .data。
 "节"对可重定位文件、"段"对可执行文件——option 题常对调。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点59</span><span class="kp-name">堆栈内存</span><span class="kp-level lv-C">C</span><span class="kp-freq">未单独出题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">59.1 两个方向<br>
+<div class="kp-detail"><span class="kp-sub">59.1 两个方向</span>
 <ul><li>运行时堆（堆内存）：从<b>低地址向高地址</b>增长（malloc()、Java 的 new）。</li><li>用户栈（栈内存）：从<b>高地址向低地址</b>增长。</li></ul>
-59.2 易错<br>
+<span class="kp-sub">59.2 易错</span>
 <span class="callout err">auto 型局部变量运行时分配在栈中——既不在 .data、也不在 .bss（与考点58 联动）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点60</span><span class="kp-name">符号解析：符号分类</span><span class="kp-level lv-A">A</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">60.1 三类符号（必背）<br>
+<div class="kp-detail"><span class="kp-sub">60.1 三类符号（必背）</span>
 <ul><li><b>全局符号</b>：非静态函数名和全局变量名。例：main.c 的 buf、main；swap.c 的 bufp0、bufp1、swap。</li><li><b>外部符号（extern）</b>：引用在其他模块定义的外部函数名和外部变量。</li><li><b>本地符号</b>：带 static 属性的函数名和全局变量名。</li></ul>
 局部变量<b>不是符号</b>、不在符号表中（swap.c 中 temp 是局部变量，运行时动态分配）。<br>
-60.2 真题<br>
+<span class="kp-sub">60.2 真题</span>
 <b>【2026.04·分析设计30】</b> 假设一个 C 语言程序有两个源文件 main.c 和 swap.c，对其编译生成可重定位目标文件 main.o 和 swap.o，请回答：(1) main.o 符号表中哪些是全局符号和外部符号？(2) swap.o 符号表中哪些是全局符号和外部符号？<br>
 <b>答案：</b>main.o：全局符号 = buf、main，外部符号 = swap；swap.o：全局符号 = bufp0、bufp1、swap，外部符号 = buf。<br>
 <b>【教材·第四章题3/题4】</b> 填写 test.o / swap.o 符号表（含符号类型与所在节）。<br>
-60.3 易错<br>
+<span class="kp-sub">60.3 易错</span>
 <span class="callout err">static 的函数名是"本地符号"（仍在符号表中）——"本地"≠"不是符号"；只有局部变量才不在符号表。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点61</span><span class="kp-name">符号类型、绑定属性和特殊伪节</span><span class="kp-level lv-B">B</span><span class="kp-freq">未单独出题（支撑考点60/62）</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">61.1 符号类型与绑定属性<br>
+<div class="kp-detail"><span class="kp-sub">61.1 符号类型与绑定属性</span>
 <ul><li>类型：未指定→NOTYPE；变量→OBJECT；函数→FUNC；节→SECTION。</li><li>绑定：本地→LOCAL；全局→GLOBAL；弱→WEAK。</li></ul>
-61.2 特殊伪节（必背）<br>
+<span class="kp-sub">61.2 特殊伪节（必背）</span>
 <table><tr><th>伪节</th><th>含义</th></tr><tr><td>ABS</td><td>该符号不会被重定位</td></tr><tr><td>UNDEF</td><td>未定义符号（本模块引用、别处定义）</td></tr><tr><td>COMMON</td><td>未分配位置的未初始化变量（COMMON 符号）</td></tr></table>
-61.3 .bss 与 COMMON 的区别（易考）<br>
+<span class="kp-sub">61.3 .bss 与 COMMON 的区别（易考）</span>
 <ul><li>.bss：初始化为 0 的变量是<b>强符号</b>，多处定义链接时报错。</li><li>COMMON：未初始化的全局变量是<b>弱符号</b>，允许多重定义，直到链接时才解决——避免编译阶段报错。</li></ul>
-61.4 易错<br>
+<span class="kp-sub">61.4 易错</span>
 <span class="callout err">未初始化的全局变量 int c; 落在 COMMON 伪节；初始化为 0 的 int b=0; 落在 .bss——两者只差"有没有初值"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点62</span><span class="kp-name">符号解析规则</span><span class="kp-level lv-S">S</span><span class="kp-freq">2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">62.1 强符号与弱符号（必背）<br>
+<div class="kp-detail"><span class="kp-sub">62.1 强符号与弱符号（必背）</span>
 <b>强符号</b>：函数、.data 节中的全局变量、.bss 节中初始化为 0 的全局变量。<br>
 <b>弱符号</b>：COMMON 符号（未初始化全局变量）、弱属性符号。<br>
-62.2 GCC 链接器处理多重定义同名全局符号的规则（简答必背）<br>
+<span class="kp-sub">62.2 GCC 链接器处理多重定义同名全局符号的规则（简答必背）</span>
 1. 强符号不能多次定义，否则链接错误。<br>
 2. 一次强符号定义 + 多次弱符号/COMMON 定义 → 按<b>强符号</b>为准。<br>
 3. 同时出现 COMMON 和弱符号定义 → 按 <b>COMMON</b> 为准。<br>
 4. COMMON 符号多次定义 → 以占空间<b>最大</b>的一个为准。<br>
 5. 用编译选项 -fno-common → 不考虑 COMMON，相当于把 COMMON 当强符号处理。<br>
-62.3 避免同名全局符号问题的三条做法<br>
+<span class="kp-sub">62.3 避免同名全局符号问题的三条做法</span>
 <ul><li>定义成 static 属性的静态变量。</li><li>给全局变量赋初值,使其成为强符号。</li><li>引用外部全局变量时尽量用 extern 声明。</li></ul>
-62.4 真题<br>
+<span class="kp-sub">62.4 真题</span>
 <b>【2026.04·分析设计30】</b> 写出 main.o、swap.o 的全局符号与外部符号（完整题干见考点60）。<br>
 <b>【教材·第四章题3/4】</b> 填符号表（符号 → 定义模块/类型/节）。<br>
 <b>【教材·第四章题6】</b> REF/DEF 配对——强 + COMMON 按强为准；双 COMMON 按占空间大者（大小相同则二选一）；局部变量不存在关联；双强定义则链接错误。<br>
 <b>【教材·第四章简答】</b> 链接器处理多重定义同名全局符号的规则。<br>
-62.5 易错<br>
+<span class="kp-sub">62.5 易错</span>
 <span class="callout err">"两个 COMMON"不是报错——按规则 4 取占空间最大者（教材题6 的 y 就是这种情形）。
 "强+强"才报链接错误——多选题常把"强+COMMON"混进来钓。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点63</span><span class="kp-name">静态链接和动态链接</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">63.1 定义与扩展名<br>
+<div class="kp-detail"><span class="kp-sub">63.1 定义与扩展名</span>
 <ul><li>静态链接：将多个目标模块打包成静态库文件的机制；类 UNIX 中静态库扩展名为 <b>.a</b>。</li><li>动态链接：在可执行文件<b>装入或运行</b>时动态装入内存并自动链接；类 UNIX 中共享库扩展名 <b>.so</b>，Windows 中共享库扩展名 <b>.dll</b>。</li></ul>
-63.2 三点区别（简答模板）<br>
+<span class="kp-sub">63.2 三点区别（简答模板）</span>
 <table><tr><th>维度</th><th>静态链接</th><th>动态链接</th></tr><tr><td>链接时机</td><td>形成可执行程序之前（编译过程中）完成</td><td>程序运行时（装入或执行时）动态加载</td></tr><tr><td>空间资源</td><td>依赖的目标文件全部包含进可执行文件→多个副本浪费空间</td><td>多个程序共享内存中同一份库文件→节省资源</td></tr><tr><td>更新升级</td><td>库更新后所有程序需重新编译链接</td><td>只需替换动态库文件，再次运行自动加载新版本</td></tr></table>
-63.3 真题<br>
+<span class="kp-sub">63.3 真题</span>
 <b>【2024.04·简答25】</b> 简述静态链接存在的缺点和原因。（6 分）<br>
 <b>答案：</b>库函数代码被合并在可执行文件中 → 造成盘空间和主存空间的浪费；需要定期维护和更新静态库 → 存在更新困难，使用不便。<br>
 <b>【2024.10·简答25】</b> 简述动态链接的共享性和动态性。<br>
@@ -1766,23 +1766,23 @@ auto 型局部变量运行时分配在栈中，<b>既不出现在 .data、也不
 <b>答案：B</b><br>
 <b>【2026.04·简答26】</b> 简述静态链接和动态链接的差别。<br>
 <b>答案：</b>静态链接在生成可执行文件时就把库代码合并进去（运行时不再依赖库文件，但体积大、更新困难、浪费盘空间和主存空间）；动态链接在程序加载或执行时才加载共享库并完成符号解析（多个程序共享库代码的内存副本，节省空间、便于更新）。<br>
-63.4 易错<br>
+<span class="kp-sub">63.4 易错</span>
 <span class="callout err">静态库=.a、动态/共享库=.so（UNIX）和 .dll（Windows）——扩展名对应别写反。
 动态链接"两种方式"=装入时 + 运行时（执行时）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点64</span><span class="kp-name">程序和进程</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">64.1 程序 vs 进程（必背）<br>
+<div class="kp-detail"><span class="kp-sub">64.1 程序 vs 进程（必背）</span>
 <ul><li><b>程序</b>：代码和数据的集合，是<b>静态</b>的。</li><li><b>进程</b>：程序的一次运行过程，是<b>动态</b>的，用正整数表示（PID）。</li><li>一个程序可能对应多个不同的进程。</li></ul>
-64.2 两个关键函数<br>
+<span class="kp-sub">64.2 两个关键函数</span>
 <ul><li><b>fork()</b>：在父进程中创建一个子进程。</li><li><b>execve(char *filename, char *argv[], char *envp[])</b>：在当前进程的上下文中<b>加载并运行一个新程序</b>（加载可执行目标文件 filename）。</li></ul>
-64.3 shell 加载过程（简答模板）<br>
+<span class="kp-sub">64.3 shell 加载过程（简答模板）</span>
 1. shell 命令行解释程序输出提示符，接受用户输入。<br>
 2. 用户输入 ./a.out 回车后，shell 解析命令行，构造 argv（参数列表）和 argc（参数个数）。<br>
 3. 调用 fork 创建子进程。<br>
 4. 以 argc、argv、environ 为参数调用 execve，在子进程上下文中加载并运行 a.out；execve 通过启动加载器完成任务（依据 ELF 头、程序头表）。<br>
 "加载"并不是把文件从硬盘读入主存，而是根据程序头表对当前进程描述符中的数据结构（如 vm_area_struct）进行初始化。<br>
-64.4 真题<br>
+<span class="kp-sub">64.4 真题</span>
 <b>【2024.04·名解22】</b> 进程（教材第四章习题原题）<br>
 <b>答案：</b>一个具有一定独立功能的程序关于某个数据集合的一次运行活动。<br>
 <b>【2024.04·单选7】</b> 在当前进程的上下文中加载并运行一个新程序，用到的函数是（　）<br>
@@ -1798,61 +1798,61 @@ auto 型局部变量运行时分配在栈中，<b>既不出现在 .data、也不
 <b>【2026.04·单选7】</b> 用一个唯一的正整数标识一个进程，简写为（　）<br>
 <ul><li>A. UID</li><li>B. GID</li><li>C. PID</li><li>D. NID</li></ul>
 <b>答案：C</b><br>
-64.5 易错<br>
+<span class="kp-sub">64.5 易错</span>
 <span class="callout err">fork=复制当前进程（创建子进程）；execve=换新程序继续跑——两个函数别对调（2024.04 单选原题）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点65</span><span class="kp-name">CPU 执行指令及功能</span><span class="kp-level lv-B">B</span><span class="kp-freq">2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">65.1 名解与方法<br>
+<div class="kp-detail"><span class="kp-sub">65.1 名解与方法</span>
 <ul><li><b>指令周期</b>：CPU 取出并执行一条指令的时间。</li><li><b>数据通路</b>：指令执行过程中数据经过的路径（含路径上的部件）。</li><li>一条指令的六步：取指令→指令译码→计算源操作数地址并取操作数→执行数据操作→计算目的操作数地址并存结果→计算下条指令地址。</li></ul>
-65.2 指令功能的基本操作（4 条）<br>
+<span class="kp-sub">65.2 指令功能的基本操作（4 条）</span>
 <ul><li>读取某存储单元内容，装入某寄存器（读内存）。</li><li>把某寄存器中的数据存储到给定存储单元（写内存）。</li><li>把一个数据从某寄存器传送到另一寄存器或 ALU 输入端（传送）。</li><li>在 ALU 中算术/逻辑运算，并将结果传送到某寄存器（运算写结果）。</li></ul>
-65.3 真题<br>
+<span class="kp-sub">65.3 真题</span>
 <b>【2025.04·名解22】</b> 数据通路<br>
 <b>答案：</b>通常将指令执行过程中数据所经过的路径（包括路径上的部件）称为数据通路。<br>
 <b>【2026.04·填空16】</b> 通常把数据通路中专门进行数据运算的部件称为＿＿元件或＿＿元件。<br>
 <b>答案：</b>执行、功能<br>
-65.4 易错<br>
+<span class="kp-sub">65.4 易错</span>
 <span class="callout err">"执行部件/功能部件"按教材原文作答——不要写成"运算器"（教材口径不同）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点66</span><span class="kp-name">中断和异常</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">66.1 是什么<br>
+<div class="kp-detail"><span class="kp-sub">66.1 是什么</span>
 异常控制（中断机制）：CPU 除正常执行指令外，还必须具有程序正常执行被打断时的处理机制。<br>
 打断程序正常执行的事件包括：非法操作码、页故障、运算结果溢出或除 0 错误、外部中断请求信号。<br>
-66.2 两大类（必背）<br>
+<span class="kp-sub">66.2 两大类（必背）</span>
 <table><tr><th>类别</th><th>触发来源</th><th>例子</th></tr><tr><td>内部异常</td><td>CPU 内部事件</td><td>算术溢出（又称结果异常）、除 0、非法操作码</td></tr><tr><td>外部中断</td><td>CPU 外部设备</td><td>采样计时时间到、网络数据包到达</td></tr></table>
-66.3 响应过程（3 步简答模板）<br>
+<span class="kp-sub">66.3 响应过程（3 步简答模板）</span>
 1. 保护断点和程序状态（通过程序状态字 PSW 保存运行程序的现场信息）。<br>
 2. 关中断（响应时由 CPU 将中断使能位清 0；置 1 才是开中断、允许响应）。<br>
 3. 识别异常和中断事件，转入相应处理程序。<br>
 （注：教材 4.5.4 节写作“保护断点→关中断→识别”，6.4 节写作“关中断→保存断点”，顺序略有出入；考试三步写全即可，见考点93.1。）<br>
-66.4 真题<br>
+<span class="kp-sub">66.4 真题</span>
 <b>【2025.04·单选7】</b> 属于内部异常的是（　）<br>
 <ul><li>A. 采样计时时间到</li><li>B. 网络数据包到达</li><li>C. 非法操作码</li><li>D. 用户按下（Ctrl + C）键</li></ul>
 <b>答案：C</b>（内部异常由 CPU 内部事件引起，其余为外部中断）<br>
-66.5 易错<br>
+<span class="kp-sub">66.5 易错</span>
 <span class="callout err">非法操作码、除 0、溢出、页故障都是"内部异常"；时钟、网络包、外设请求是"外部中断"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点67</span><span class="kp-name">指令流水线</span><span class="kp-level lv-S">S</span><span class="kp-freq">2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">67.1 四阶段<br>
+<div class="kp-detail"><span class="kp-sub">67.1 四阶段</span>
 取指令并 PC 加 1（IF）→ 译码并读寄存器（ID）→ 运算或读存储器（EX）→ 结果写回（WB）。<br>
 <table><tr><th>指令</th><th>经过阶段</th><th>耗时</th></tr><tr><td>add</td><td>IF+ID+EX+WB</td><td>200+60+100+50 = 410ps</td></tr><tr><td>load</td><td>IF+ID+EX+WB</td><td>200+60+200+50 = 510ps</td></tr><tr><td>mov</td><td>IF+ID+WB</td><td>200+60+50 = 310ps</td></tr><tr><td>store</td><td>IF+ID+WB</td><td>200+60+200 = 460ps</td></tr><tr><td>串行合计</td><td></td><td>1690ps</td></tr></table>
 各阶段时间：取指 200ps、译码 60ps、ALU 100ps、访存/写存 200ps、寄存器写 50ps。<br>
-67.2 流水线总时间公式（必背）<br>
+<span class="kp-sub">67.2 流水线总时间公式（必背）</span>
 <span class="formula">总时间 = (M − 1 + N) × T
 M = 流水段数，T = 每个流水段执行时间，N = 指令条数</span>
 例：4 段流水线、每段 200ps、4 条指令 → (4−1+4)×200 = 1400ps。<br>
-67.3 设计原则（必背两条）<br>
+<span class="kp-sub">67.3 设计原则（必背两条）</span>
 1. 指令流水段个数以<b>最复杂指令</b>所用的阶段数为准（最复杂的 load 用了 4 个阶段，M=4）。<br>
 2. 流水段执行时间以<b>最复杂操作</b>所用时间为准（最复杂操作访存 200ps，T=200ps）。<br>
-67.4 核心结论（易考简答）<br>
+<span class="kp-sub">67.4 核心结论（易考简答）</span>
 <ul><li>流水线中每条指令的执行时间为 4×200=800ps，比串行最长的 510ps 还长——<b>流水线并不能缩短一条指令的执行时间</b>。</li><li>但对整个程序而言，流水线可大大增加指令执行的<b>吞吐率</b>（总时间由 (3+N)×200ps 给出，N 越大收益越大）。</li><li>瓶颈段决定流水线的加速：只有缩短最慢段才能加快流水线。</li></ul>
-67.5 真题<br>
+<span class="kp-sub">67.5 真题</span>
 <b>【2025.10·分析设计29】</b> 4 段指令流水线中各功能部件操作时间：指令译码 60ps、PC 加 1 需 50ps、存储器读或写需 250ps、ALU 需 180ps、寄存器读或写需 70ps。请回答：(1) 若执行 EX 阶段所用的 ALU 操作时间缩短 20%，能否加快流水线执行速度？为什么？(2) 若 ALU 操作时间增加 20%，对流水线的性能有何影响？<br>
 <b>答案：</b>(1) 缩短后 ALU = 144ps &lt; 250ps，不能加快——流水线执行速度取决于最慢的功能部件（存储器 250ps）；(2) 增加后 = 216ps &lt; 250ps，对流水线性能没有影响。<br>
-67.6 易错<br>
+<span class="kp-sub">67.6 易错</span>
 <span class="callout err">教材习题解答说流水线"一条指令的执行时间缩短了"——与课件口径矛盾，考试按课件：单条指令时间不缩短、程序吞吐率提高。
 总时间公式别写成 N×T（那是理想满载稳态）；启动阶段 (M−1)×T 别漏。</span></div>
 </div>
@@ -1870,13 +1870,13 @@ Cache 大题统一解法：<br>
 <span class="callout tip">【易错】题目问 Cache 总容量时，除数据区外可能还要加标记位、有效位、修改位和替换状态位——必须按题目规定的口径计算。</span></div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点68</span><span class="kp-name">存储器分类</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2024.10、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">68.1 两种分类维度（必背）<br>
+<div class="kp-detail"><span class="kp-sub">68.1 两种分类维度（必背）</span>
 <ul><li>按信息的<b>可更改性</b>：读/写存储器（信息可读出和写入，RAM 芯片）；只读存储器（ROM，一旦确定通常只读不写）。</li><li>按<b>断电后信息的可保存性</b>：</li><li><b>非易失（不挥发）性存储器</b>：信息可一直保留、不需电源维持——ROM、磁表面存储器（磁盘）、光存储器（光盘）。</li><li><b>易失（挥发）性存储器</b>：电源关闭时信息自动丢失——<b>主存和 cache</b>。</li></ul>
-68.2 存储元件与存储器（必背）<br>
+<span class="kp-sub">68.2 存储元件与存储器（必背）</span>
 <ul><li>存储元件必须具有两个截然不同的物理状态（表示 0/1），目前主要有三类：<b>半导体器件、磁性材料和光介质</b>。</li><li>半导体存储器属于<b>随机存取存储器</b>：通过地址译码访问存储单元，每单元访问时间与地址无关（不考虑芯片内缓冲）。</li><li><b>主存由 DRAM 芯片组成</b>；<b>cache 由 SRAM 芯片组成</b>，位于主存和 CPU 之间，存取速度接近 CPU 工作速度，存放当前经常使用的指令和数据。</li><li><b>指令直接面向的存储器是主存</b>（CPU 执行指令时给出的存储器地址是主存地址）。</li></ul>
-68.3 名解候选（教材第五章习题第1题）<br>
+<span class="kp-sub">68.3 名解候选（教材第五章习题第1题）</span>
 <ul><li><b>随机存取存储器(RAM)</b>：临时存储设备，可快速读/写，断电后信息丢失（易失）。</li><li><b>只读存储器(ROM)</b>：数据写入后一般不能修改删除，通常存放基本启动指令或固件。</li><li><b>易失性存储器</b>：电源关闭后数据会丢失的存储设备（主存、cache）。</li><li><b>静态 RAM(SRAM)</b>：存储单元用双稳态电路，不需刷新，速度快但功耗较高。</li><li><b>动态 RAM(DRAM)</b>：存储单元用电容，会漏电、需定期刷新，集成度高、用于主存。</li><li><b>闪存(Flash 存储器)</b>：非易失，浮栅晶体管存储；U 盘、SSD 采用（写前先整块擦除）。</li><li><b>SDRAM</b>：同步 DRAM，内部命令的发送与接收采用时钟同步方式。</li><li><b>RAS/CAS</b>：行地址选通信号/列地址选通信号，DRAM 行、列地址分时送入芯片。</li></ul>
-68.4 真题<br>
+<span class="kp-sub">68.4 真题</span>
 <b>【2024.04·单选8】</b> 属于易失性存储器的是（　）<br>
 <ul><li>A. 随机存取存储器</li><li>B. 只读存储器</li><li>C. 磁表面存储器</li><li>D. 光存储器</li></ul>
 <b>答案：A</b>（随机存取存储器 RAM 断电后数据会丢失）<br>
@@ -1893,22 +1893,22 @@ Cache 大题统一解法：<br>
 <b>答案：</b>半导体、磁性<br>
 <b>【2026.04·名解22】</b> 易失性存储器（教材第五章习题原题）<br>
 <b>答案：</b>断电后所存信息立即丢失的存储器（如主存和 cache）。<br>
-68.5 易错<br>
+<span class="kp-sub">68.5 易错</span>
 <span class="callout err">易失性存储器的标准组合只有"主存 + cache"——磁盘、SSD、ROM、闪存都是非易失。
 cache↔主存交换单位是"块"；主存↔外存（磁盘）交换单位是"页"；"段"是段式虚存单位——四选一别写反（2026.04 原题）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点69</span><span class="kp-name">存储器的层次化结构</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2024.10、2025.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">69.1 为什么分层（简答模板）<br>
+<div class="kp-detail"><span class="kp-sub">69.1 为什么分层（简答模板）</span>
 <ul><li>单一元件制造的存储器难以同时满足大容量、高速度、低成本——把不同容量、不同存取速度的存储器按结构有机结合，使整个存储系统在<b>速度、容量和价格</b>方面具有较好的综合指标。</li><li>两个目的（教材简答）：解决快速 CPU 与慢速主存之间的<b>速度差异</b>；解决主存<b>容量不够大</b>的问题。</li></ul>
-69.2 层次金字塔（必背）<br>
+<span class="kp-sub">69.2 层次金字塔（必背）</span>
 <table><tr><th>层次</th><th>典型存取时间</th><th>典型容量</th><th>内部/外部</th></tr><tr><td>寄存器</td><td>1ns</td><td>&lt;1KB</td><td>内部</td></tr><tr><td>高速缓存 cache</td><td>2ns</td><td>4MB</td><td>内部</td></tr><tr><td>主存储器</td><td>10ns</td><td>4~256GB</td><td>内部</td></tr><tr><td>辅助存储器（硬盘）</td><td>10ms</td><td>500GB~1TB</td><td>外部</td></tr><tr><td>海量后备存储器（磁带库、光盘库）</td><td>10s</td><td>10~100TB</td><td>外部</td></tr></table>
 <ul><li>速度：寄存器 &gt; cache &gt; 主存 &gt; 硬盘（2025.04 单选8）；越靠近 CPU 速度越快、容量越小、价格越贵。</li></ul>
-69.3 三条关键规则（必背）<br>
+<span class="kp-sub">69.3 三条关键规则（必背）</span>
 <ul><li>数据只能在<b>相邻两层</b>之间传送；读数据总是从慢速存储器按<b>固定单位</b>传送到快速存储器。</li><li>传送单位：cache-主存 = 主存块（几十字节）；主存-硬盘 = 页（几千字节以上）。</li><li>访存次序：先访问 cache → 不在则访问主存 → 不在主存则访问硬盘（硬盘→主存→cache→CPU）。</li><li><b>主存是层次结构中的核心存储器</b>，存放被启动运行的程序代码及其数据。</li></ul>
-69.4 两个层次的对比（教材简答）<br>
+<span class="kp-sub">69.4 两个层次的对比（教材简答）</span>
 <table><tr><th></th><th>cache-主存层次</th><th>主存-外存层次</th></tr><tr><td>解决的问题</td><td>主存速度不快</td><td>主存容量不足</td></tr><tr><td>处理者</td><td><b>硬件</b>（自动完成）</td><td>硬件 + <b>操作系统软件</b>（缺页处理）</td></tr><tr><td>数据特点</td><td>当前频繁访问的热点数据</td><td>长期保存、访问频率低</td></tr></table>
-69.5 真题<br>
+<span class="kp-sub">69.5 真题</span>
 <b>【2024.04·填空18】</b> 主存是存储器层次结构中的＿＿存储器，用来存放系统中被启动的＿＿和数据。<br>
 <b>答案：</b>核心、程序代码<br>
 <b>【2024.10·填空18】</b> 层次结构存储系统可以在＿＿、＿＿和价格方面达到较好的综合指标。<br>
@@ -1920,247 +1920,247 @@ cache↔主存交换单位是"块"；主存↔外存（磁盘）交换单位是"
 <b>答案：</b>硬件、软件（缺页由操作系统缺页异常处理程序处理）<br>
 <b>【教材·第五章简答1】</b> 为什么要采用层次结构存储体系？如何构成？<br>
 <b>【教材·第五章简答7】</b> "cache-主存""主存-外存"两个层次有哪些不同？<br>
-69.6 易错<br>
+<span class="kp-sub">69.6 易错</span>
 <span class="callout err">"层次越多速度越快"不对——速度只取决于当前访问命中在哪一层；靠局部性才能生效。
 cache 缺失 = cache 没有但主存有（硬件自动补）；缺页 = 主存也没有（软件处理）——并列填空的固定搭配。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点70</span><span class="kp-name">程序访问的局部性</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">70.1 定义与两种局部性（必背）<br>
+<div class="kp-detail"><span class="kp-sub">70.1 定义与两种局部性（必背）</span>
 <ul><li><b>定义</b>：程序产生的访存地址往往集中在很小的范围——程序访问的局部性。</li><li><b>时间局部性</b>：被访问的存储单元在较短时间内很可能被<b>重复访问</b>。</li><li><b>空间局部性</b>：被访问的存储单元的<b>临近单元</b>在较短时间内很可能被访问。</li><li>原因：指令在主存连续存放、循环/子程序常被重复执行；数据（如数组元素）在主存连续存放、常被按序重复访问。</li></ul>
-70.2 例5.1 三种对象的结论（必背口径）<br>
+<span class="kp-sub">70.2 例5.1 三种对象的结论（必背口径）</span>
 数组元素按行优先存放，程序段 A 行优先遍历、程序段 B 列优先遍历：<br>
 <table><tr><th>对象</th><th>程序段 A</th><th>程序段 B</th></tr><tr><td>数组 a</td><td><b>空间局部性好</b>（访问顺序与存放顺序一致）；时间局部性差（每个元素只访问一次）</td><td><b>无空间局部性</b>（每次跳过 M 个元素）；时间局部性差</td></tr><tr><td>变量 sum</td><td>空间局部性对单个变量没有意义；<b>时间局部性好</b>（每次循环都访问）</td><td>同 A</td></tr><tr><td>for 循环体</td><td>空间局部性好（指令按序连续存放）；时间局部性好（反复执行）</td><td>同 A</td></tr></table>
 <ul><li>结论：A、B 功能相同，但因数组访问顺序不同，在 2GHz Pentium 4 上 A 的执行速率约是 B 的 <b>21.5 倍</b>。</li></ul>
-70.3 教材题组<br>
+<span class="kp-sub">70.3 教材题组</span>
 <ul><li>教材题7：给出"几乎没有/很好局部性"的四种程序段示例。</li><li>教材题10：调整循环顺序使数组访问与排列顺序一致 → N 较大时程序执行时间更短。</li><li>教材题12：向量点积程序（x、y 顺序连续访问）的局部性分析与命中率计算。</li><li>教材题13：矩阵转置的 cache 行映射与命中/缺失表（直接映射、回写、初始为空）。</li></ul>
-70.4 真题<br>
+<span class="kp-sub">70.4 真题</span>
 <b>【2025.04·填空18】</b> 程序访问的局部性包括＿＿局部性和＿＿局部性。<br>
 <b>答案：</b>时间、空间（顺序可对调）<br>
-70.5 易错<br>
+<span class="kp-sub">70.5 易错</span>
 <span class="callout err">"每个元素只访问一次" = 时间局部性差（例5.1 标准答案）；不要因为"循环访问数组"就写时间局部性好。
 单变量谈空间局部性没有意义——例5.1(2) 的评分点。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点71</span><span class="kp-name">cache 的基本工作原理</span><span class="kp-level lv-S">S</span><span class="kp-freq">2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">71.1 访存过程与有效位<br>
+<div class="kp-detail"><span class="kp-sub">71.1 访存过程与有效位</span>
 <ul><li>整个访存过程：判断信息是否在 cache → 在：直接从 cache 取信息；不在：从主存取一个主存块装入 cache（对应行已满则先替换）。</li><li>cache 中的内容是主存中<b>部分内容的副本</b>；每个 cache 行有一个<b>有效位</b>：淘汰行中主存块时清 0，装入新主存块时置 1。</li></ul>
-71.2 命中/缺失与两个时间量（必背）<br>
+<span class="kp-sub">71.2 命中/缺失与两个时间量（必背）</span>
 <ul><li>访问单元所在块在 cache 中 → <b>cache 命中</b>；命中概率 = <b>命中率 p</b> = 命中次数/访问总次数；命中时访问时间 = cache 访问时间 <b>Tc（命中时间）</b>。</li><li>不在 cache 中 → <b>缺失（不命中）</b>；缺失率 = 不命中次数/访问总次数；缺失时需从主存读主存块送 cache、并同时将所需信息送 CPU——所用时间为 <b>Tm（主存访问时间）+ Tc</b>；通常把 <b>Tm 称为缺失损失</b>。</li></ul>
-71.3 平均访问时间公式（必背）<br>
+<span class="kp-sub">71.3 平均访问时间公式（必背）</span>
 <span class="formula">Ta = p × Tc + (1 − p) × (Tm + Tc) = Tc + (1 − p) × Tm
 p = 命中率，Tc = 命中时间，Tm = 缺失损失（主存访问时间）</span>
-71.4 例5.2（模板：先数次数再代公式）<br>
+<span class="kp-sub">71.4 例5.2（模板：先数次数再代公式）</span>
 <ul><li>时钟周期 2ns；3000 条指令每条执行一次、其中 4 条取指缺失；执行中 1000 次数据访问、其中 6 次缺失。</li><li>访问总次数 = 取指 3000 + 数据 1000 = 4000；缺失数 = 4 + 6 = 10。</li><li>① 命中率 = (4000−10)/4000 = <b>99.75%</b>。</li><li>② 题干给出 Tc = 1、Tm = 10（单位：时钟周期）→ Ta = 1 + (1−99.75%)×10 = <b>1.025 个时钟周期</b> = 1.025×2 = 2.05ns。</li></ul>
-71.5 名解候选（教材第五章习题第1题）<br>
+<span class="kp-sub">71.5 名解候选（教材第五章习题第1题）</span>
 <ul><li><b>主存块</b>：主存中可以被作为一个单元整体传输到 cache 中的一组数据。</li><li><b>cache 行（槽）</b>：cache 中用于存储数据的基本单元。</li><li><b>命中率</b>：cache 访问成功的次数与总访问次数的比例。</li><li><b>命中时间</b>：cache 命中时，从发出数据请求到数据实际可用所需的时间。</li><li><b>缺失损失</b>：cache 未命中时，从慢速存储器（主存）获取数据所需的额外时间和开销。</li></ul>
-71.6 真题<br>
+<span class="kp-sub">71.6 真题</span>
 <b>【2025.04·填空19】</b> cache 缺失由硬件处理（完整题干见考点69）。<br>
 <b>【2026.04·单选8】</b> cache 与主存之间的信息交换单位 = 块（完整题干见考点68；大题证据见考点72—74）。<br>
-71.7 易错<br>
+<span class="kp-sub">71.7 易错</span>
 <span class="callout err">缺失时的时间 = Tm + Tc（要先把 cache 查一遍）——Ta 的两种写法别推错。
 访问总次数 = 取指次数 + 数据访问次数——例5.2 两类都给了缺失数，一类都不能漏。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点72</span><span class="kp-name">直接映射</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">72.1 映射规则（必背）<br>
+<div class="kp-detail"><span class="kp-sub">72.1 映射规则（必背）</span>
 每个主存块映射到 cache 的<b>固定行</b>中，也叫模映射：<br>
 <span class="formula">cache 行号 = 主存块号 mod cache 行数</span>
 <ul><li>例：cache 有 16 行，100 mod 16 = 4 → 主存第 100 块映射到 cache 第 4 行。</li></ul>
-72.2 地址划分四步法（大题模板）<br>
+<span class="kp-sub">72.2 地址划分四步法（大题模板）</span>
 以例5.3 为例（主存 256KB、块 64B、cache 数据区 1KB）：<br>
 1. <b>主存地址位数</b> = log₂(主存空间) = log₂(256×1024) = <b>18 位</b>；<br>
 2. <b>块内地址位数</b> = log₂(块大小) = log₂64 = <b>6 位</b>；<br>
 3. <b>cache 行号位数</b> = log₂(cache 数据区 ÷ 块大小) = log₂(1KB/64B = 16 行) = <b>4 位</b>；<br>
 4. <b>标记位数</b> = ①−②−③ = <b>8 位</b>。<br>
 地址格式 = <b>标记(8) | cache 行号(4) | 块内地址(6)</b>；前 12 位（标记+行号）= 主存块号；<b>标记即"块群"号</b>：主存 4096 块分成 256 个块群（每群 16 块），第 i 块群的第 x 块固定映射到 cache 第 x 行。<br>
-72.3 访问过程（例5.3 标准写法）<br>
+<span class="kp-sub">72.3 访问过程（例5.3 标准写法）</span>
 <ul><li>0240CH = 0000 0010 0100 0000 1100 → 按 18 位（8|4|6）截取：<b>00001001 | 0000 | 001100</b>；</li><li>主存块号 = 前 12 位 = 000010010000 = <b>144</b>（第 9 块群第 0 块）→ cache 行号 = <b>0</b>；</li><li>cache 当前为空（各行有效位为 0）：不管第 0 行标记是否等于 00001001 都<b>不命中</b> → 将第 144 块复制到 cache 第 0 行，<b>置有效位 1、置标记 00001001</b>。</li></ul>
 <span class="callout tip">助记：cache 空不命中 → 读数 → 装 cache → 置 1 置标记。</span>
-72.4 真题<br>
+<span class="kp-sub">72.4 真题</span>
 <b>【2024.04·分析设计30】</b> 假定 cache 采用直接映射方式，主存块大小为 64B，按字节编址；cache 数据区大小为 2KB，主存空间大小为 256KB。试回答：(1) 主存地址如何划分？(2) 假定 cache 当前为空，说明 CPU 对主存单元 0240CH 的访问过程。（教材例 5.3 变型：数据区 1KB→2KB）<br>
 <b>答案：</b><br>
 <ul><li>地址划分：18 位总；6 位块内；2KB/64B = 32 行 → <b>5 位行号</b>；标记 = 18−6−5 = <b>7 位</b>；</li><li>0240CH → 7|5|6 = <b>0000100 | 10000 | 001100</b>：块号 144、行号（144 mod 32）= <b>16</b>、标记 0000100；</li><li>访问：cache 空 → 不命中 → 将 0240CH 所在块装入 <b>cache 第 16 行</b>，置有效位 1、标记 0000100。</li></ul>
-72.5 易错<br>
+<span class="kp-sub">72.5 易错</span>
 <span class="callout err">行数一变，行号位数就变：1KB/64B=16 行→4 位；2KB/64B=32 行→5 位——标记位数随之反向变化（18 位总数不变）。
 "标记 = 块群号"，别把标记写成块号（块号 = 标记+行号，共 12 位）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点73</span><span class="kp-name">全相联映射</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">73.1 映射规则与地址格式<br>
+<div class="kp-detail"><span class="kp-sub">73.1 映射规则与地址格式</span>
 <ul><li>每个主存块可映射到 cache 的<b>任意行</b>中——地址没有行号/组号字段。</li><li>地址划分三步：① 主存地址位数；② 块内地址位数；③ <b>标记位数 = ①−②</b>（标记即主存块号）。</li></ul>
-73.2 例5.4 地址划分<br>
+<span class="kp-sub">73.2 例5.4 地址划分</span>
 256KB、块 64B、cache 数据区 1KB（16 行）：18 位总；6 位块内；<b>标记 = 12 位</b> = 主存块号（共 4096 块）。<br>
 地址格式 = <b>标记(12) | 块内地址(6)</b>。<br>
-73.3 访问过程（标准写法）<br>
+<span class="kp-sub">73.3 访问过程（标准写法）</span>
 <ul><li>0240CH → 按 12|6 截取：<b>000010010000 | 001100</b> → 标记 = 000010010000 = 144（第 144 块）。</li><li>将高 12 位标记与<b>每个 cache 行</b>的标记比较：</li><li>有一个相等且有效位为 1 → <b>命中</b>，按块内地址 001100 从该行取出信息；</li><li>都不相等 → <b>不命中</b>：将主存第 144 块读出，装入<b>任意一个空闲行</b>，置有效位 1、置标记 000010010000。</li></ul>
 <span class="callout tip">助记：比较 → 相等且有效位 1 才命中 → 否则读数、装 cache、置 1 置标记。</span>
-73.4 真题<br>
+<span class="kp-sub">73.4 真题</span>
 <b>【2024.10·分析设计30】</b> 假定 cache 采用全相联方式，主存块大小为 64B，按字节编址；cache 数据区大小为 1KB，主存空间大小为 256KB。试回答：(1) 主存地址如何划分？(2) 说明 CPU 对主存单元 0240CH 的访问过程。（教材例 5.4 原题）<br>
 <b>答案：</b><br>
 <ul><li>地址划分 = <b>12 位标记 + 6 位块内</b>（共 18 位）；</li><li>0240CH 的高 12 位标记 = <b>144</b> 号主存块；访问 = 与所有行标记逐一比较 → 命中取数 / 缺失装入任意空闲行。</li></ul>
-73.5 易错<br>
+<span class="kp-sub">73.5 易错</span>
 <span class="callout err">全相联地址只有"标记+块内"两段——画出"行号/组号"必错。
 "比较所有 cache 行"是全相联的过程标志；直接映射只比 1 行、组相联只比对应组内各行。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点74</span><span class="kp-name">组相联映射</span><span class="kp-level lv-S">S</span><span class="kp-freq">2025.04、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">74.1 映射规则（必背）<br>
+<div class="kp-detail"><span class="kp-sub">74.1 映射规则（必背）</span>
 每个主存块映射到 cache 的<b>固定组的任意行</b>中：<br>
 <span class="formula">cache 组号 = 主存块号 mod cache 组数</span>
 <ul><li>例：1KB cache = 2³ 组 × 2 行/组 × 64B/行；主存第 100 块 → 100 mod 2³ = <b>4</b> → 第 4 组的任意行中。</li></ul>
-74.2 例5.5 地址划分（2 路组相联）<br>
+<span class="kp-sub">74.2 例5.5 地址划分（2 路组相联）</span>
 256KB、块 64B、cache 数据区 1KB：18 位总；6 位块内；1KB/64B = 16 行 ÷ 2 路 = <b>8 组</b> → 3 位组号；标记 = 18−6−3 = <b>9 位</b>。<br>
 地址格式 = <b>标记(9) | 组号(3) | 块内地址(6)</b>；主存 4096 块 = 512 个"组群"（每群 8 块），同一组群的块可装入对应组的任意行。<br>
-74.3 访问过程（标准写法）<br>
+<span class="kp-sub">74.3 访问过程（标准写法）</span>
 <ul><li>0240CH → 按 9|3|6 截取：<b>000010010 | 000 | 001100</b> → 块号 144、组号 <b>0</b>、标记 000010010（第 18 组群）。</li><li>按组号找到 cache 第 0 组：将标记与组内各行的标记比较——有一个相等且有效位为 1 → 命中取数；都不相等 → 不命中：将第 144 块装入该组<b>任意空行</b>，置有效位 1、置标记 000010010。</li></ul>
 <span class="callout tip">助记：先定位到组 → 再在组内比较（2 路就比 2 行）。</span>
-74.4 总容量计算模板（必背）<br>
+<span class="kp-sub">74.4 总容量计算模板（必背）</span>
 <b>每行总位数 = 数据部分位数（块大小×8） + 标记位数 + 1 位有效位 + 修改位（回写才有） + 使用位（LRU 位数 = log₂路数）</b><br>
 2025.04 分析设计30（主存 512MB、两种 cache 各 16 行、块 128B、数据 cache 2 路组相联+通写+LRU；数组 a[128][128] 行优先、首地址 640）：<br>
 <ul><li>地址：29 位总（512MB）；7 位块内（128B）；16 行÷2 = 8 组 → 3 位组号；标记 = 29−7−3 = <b>19 位</b>；</li><li>cache 总容量 = (128×8 + 19 + 1 + 1) × 16 = 1045 × 16 = <b>16720 位 = 2090B</b>（通写无修改位；2 路 LRU 用 1 位）；</li><li>命中率：块 128B = 32 个 int；首地址 640 = 128×5 恰为块首 → 每块第 1 个元素缺失、其余 31 个命中 → (32−1)/32 = <b>96.875%</b>。</li></ul>
 2026.04 计算27（教材第五章习题14 前两问原题：主存 64MB、cache 数据区 4KB、4 路组相联+LRU+回写、块 64B）：<br>
 <ul><li>地址：26 位总（64MB）；6 位块内；4KB/64B = 64 行 ÷ 4 路 = 16 组 → 4 位组号；标记 = 26−6−4 = <b>16 位</b>；</li><li>总容量 = 64 行 × (64×8 + 16 + 1 + 1 + 2) = 64 × 532 = <b>34048 位 = 4256B</b>（回写加修改位；4 路 LRU 用 2 位）。</li></ul>
-74.5 易错<br>
+<span class="kp-sub">74.5 易错</span>
 <span class="callout err">组数 = 行数 ÷ 路数——2 路 16 行是 8 组、不是 16 组。
 通写→无修改位；回写→加 1 位修改位；使用位 = log₂(路数)——总容量计算三连坑。
 数据部分别忘乘 8 换成位（128B = 1024 位），最后答案注意"位/字节"单位。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点75</span><span class="kp-name">三种映射方式的优缺点</span><span class="kp-level lv-B">B</span><span class="kp-freq">2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">75.1 优缺点对照（必背）<br>
+<div class="kp-detail"><span class="kp-sub">75.1 优缺点对照（必背）</span>
 <table><tr><th>方式</th><th>优点</th><th>缺点</th></tr><tr><td>直接映射</td><td>容易实现（命中时间短）</td><td>多个主存块映射同一行 → 冲突频繁调进调出，其他行空闲也用不上（如第 0、16 块都只能进 cache 第 0 行）</td></tr><tr><td>全相联映射</td><td>只要有空闲行就不发生冲突，块冲突概率低</td><td>时间开销和元件开销都较大，不适合容量较大的 cache</td></tr><tr><td>组相联映射</td><td>结合直接映射和全相联映射的优点（折中）</td><td>——</td></tr></table>
-75.2 教材简答：为什么直接映射不需要替换策略？<br>
+<span class="kp-sub">75.2 教材简答：为什么直接映射不需要替换策略？</span>
 <ul><li>每个主存块只有一个<b>唯一确定的 cache 行</b>可放——没有选择余地，自然不需要替换算法。</li><li>对照：全相联/组相联的块可以进多个行，行满时必须选一个淘汰 → 才需要替换算法。</li></ul>
-75.3 真题<br>
+<span class="kp-sub">75.3 真题</span>
 <b>【2025.10·填空18】</b> cache 行和主存块之间的映射方式有直接映射、＿＿映射和＿＿映射。<br>
 <b>答案：</b>全相联、组相联（顺序可对调）<br>
-75.4 易错<br>
+<span class="kp-sub">75.4 易错</span>
 <span class="callout err">"直接映射命中时间短"是优点——课件原文排版把它排进了缺点栏，理解上按语义归"优点"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点76</span><span class="kp-name">cache 中主存块的替换算法</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">76.1 为什么需要替换<br>
+<div class="kp-detail"><span class="kp-sub">76.1 为什么需要替换</span>
 cache 行数比主存块数少得多，多个主存块会映射到同一个 cache 行：新主存块复制到 cache 时若对应行已被占满，必须选择淘汰一个——选择方法即<b>替换算法</b>。<br>
-76.2 四种算法（必背）<br>
+<span class="kp-sub">76.2 四种算法（必背）</span>
 <table><tr><th>算法</th><th>选择被替换的行</th><th>说明</th></tr><tr><td>先进先出（FIFO）</td><td><b>最早装入</b> cache 的主存块</td><td>不能正确反映程序的访问局部性</td></tr><tr><td>最近最少使用（LRU）</td><td><b>近期最少使用</b>的主存块</td><td>能正确反映程序的访问局部性</td></tr><tr><td>最不经常使用（LFU）</td><td>cache 中<b>引用次数最少</b>的块</td><td>——</td></tr><tr><td>随机替换</td><td>随机选择一个</td><td>实现简单</td></tr></table>
-76.3 名解候选（教材第五章习题第1题）<br>
+<span class="kp-sub">76.3 名解候选（教材第五章习题第1题）</span>
 <ul><li><b>FIFO 算法</b>：最早进入缓存的数据项最先被移出——"总是选择最早装入 cache 的主存块被替换"。</li><li><b>LRU 算法</b>：最近最少使用的数据项未来被访问的可能性最小 → 替换最久未使用的。</li><li><b>LRU 位</b>：跟踪缓存中数据项使用情况、以便实现 LRU 算法的位。</li><li><b>替换策略</b>：决定缓存满时如何选择数据项进行替换。</li></ul>
-76.4 真题<br>
+<span class="kp-sub">76.4 真题</span>
 <b>【2025.10·名解22】</b> FIFO（First In First Out）算法（教材 P221）<br>
 <b>答案：</b>先进先出算法：总是选择最早装入 cache 的主存块被替换掉。<br>
 （相关：直接映射无需替换——见考点75；总容量计算中 LRU 位数——见考点74。）<br>
-76.5 易错<br>
+<span class="kp-sub">76.5 易错</span>
 <span class="callout err">FIFO 名解直接背教材原句"总是选择最早装入 cache 的主存块被替换"——别用"先进先出"四个字敷衍。
 LRU 能反映局部性、FIFO 不能——对比选择题高频。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点77</span><span class="kp-name">cache 的写策略</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">77.1 为什么有写策略问题<br>
+<div class="kp-detail"><span class="kp-sub">77.1 为什么有写策略问题</span>
 <ul><li>cache 中的内容是主存块的<b>副本</b>：当 CPU 更新 cache 中内容时，需要考虑何时更新主存中的相应内容、使两者保持一致——这就是写策略问题。</li><li>教材简答口径：若不对 cache 和主存要修改的内容加以控制，两者内容会变得不一致；需采用适当写策略决定何时、如何将 cache 中数据写回主存。</li></ul>
-77.2 两种写策略（必背）<br>
+<span class="kp-sub">77.2 两种写策略（必背）</span>
 <b>通写法（Write Through）</b>：<br>
 <ul><li>命中：将数据<b>同时写入主存和缓存</b>（保证一致性）。</li><li>不命中：先写入主存，然后两种处理：</li><li><b>写分配法</b>：分配一个 cache 行并装入更新后的主存块（充分利用空间局部性）；</li><li><b>非写分配法</b>：不将主存块装入 cache（没有充分利用空间局部性）。</li></ul>
 <b>回写法（Write Back）</b>：<br>
 <ul><li>命中：<b>只写缓存</b>，不立即写主存；当缓存行<b>被替换时</b>才将数据写回主存。</li><li>写缺失（不命中）：分配一个 cache 行、装入主存块，然后更新该行内容。</li><li>需要<b>修改位（脏位）</b>记录"是否被修改过"；通常与<b>写分配法</b>组合使用。</li></ul>
-77.3 真题<br>
+<span class="kp-sub">77.3 真题</span>
 <b>【2024.04·填空19】</b> cache 的写策略有＿＿法和＿＿法。<br>
 <b>答案：</b>通写、回写<br>
 （对总容量计算的影响：通写无修改位、回写有修改位——见考点74。）<br>
-77.4 易错<br>
+<span class="kp-sub">77.4 易错</span>
 <span class="callout err">通写 = 命中时同时写主存+cache；回写 = 命中时只写 cache、替换时才写回——两句互为镜像，别写反。
 "回写法通常与写分配法组合使用"是教材原文考点。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点78</span><span class="kp-name">cache 和程序性能</span><span class="kp-level lv-A">A</span><span class="kp-freq">教材例5.6；2025.04、2026.04 大题同源</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">78.1 例5.6 ①数据 cache 总容量<br>
+<div class="kp-detail"><span class="kp-sub">78.1 例5.6 ①数据 cache 总容量</span>
 主存 256MB；指令/数据 cache 分离、各 8 行；块 64B；数据 cache 2 路组相联+通写+LRU。<br>
 <ul><li>28 位总；6 位块内；8 行÷2 = 4 组 → 2 位组号；标记 = 20 位；</li><li>每行 = 64×8 + 20 + 1（有效）+ 1（LRU）= 534 位；</li><li>总容量 = 534 × 8 = <b>4272 位</b>（主存块+标记+有效位+使用位；通写无修改位）。</li></ul>
-78.2 例5.6 ②数组元素组号计算<br>
+<span class="kp-sub">78.2 例5.6 ②数组元素组号计算</span>
 地址公式（模板）：<b>地址 = (行号×总列数 + 列号) × 元素字节数 + 起始地址</b>；组号 = 块号 mod 组数，块号 = 地址÷块大小（取整）。<br>
 <table><tr><th>元素</th><th>地址计算</th><th>块号</th><th>组号</th></tr><tr><td>a[0][30]</td><td>(0×256+30)×4+320 = 440</td><td>440/64 = 6</td><td>6 mod 4 = <b>2</b></td></tr><tr><td>a[1][16]</td><td>(256+16)×4+320 = 1408</td><td>1408/64 = 22</td><td>22 mod 4 = <b>2</b></td></tr></table>
-78.3 例5.6 ③命中率对比（行/列优先）<br>
+<span class="kp-sub">78.3 例5.6 ③命中率对比（行/列优先）</span>
 <ul><li>程序 A（行优先，访问顺序=存放顺序）：每块 16 个元素，首次缺失后 15 次命中 → <b>15/16 = 93.75%</b>；</li><li>程序 B（列优先）：a[0][0] 与 a[1][0] 地址相差 256×4 = 1024B = 16 块；16 mod 4 = 0 → 每次都映射到同一组、2 路被轮流替换（颠簸）→ <b>命中率 0</b>；</li><li>结论：A 的命中率远高于 B，执行时间更短。</li></ul>
-78.4 教材题组<br>
+<span class="kp-sub">78.4 教材题组</span>
 <ul><li>教材题9：16 行直接映射、块 1 字 → 命中率 1/16 = 6.25%；块改 4 字（4 行）→ 4/16 = 25%——<b>块变大后空间局部性得到更大发挥</b>。</li><li>教材题16：构造"cache2 缺失率更低但总缺失损失更大"的序列（0,1,4,8：11×3 = 33 &gt; 8×4 = 32）。</li><li>教材题14(3)：0~4344 单元序列重复访问 16 次的平均访存时间（解析稿未收录解答；如遇同题，先数总访问次数与缺失次数，再套考点71 公式现算）。</li></ul>
-78.5 真题同源<br>
+<span class="kp-sub">78.5 真题同源</span>
 <b>【2025.04·分析设计30】</b>（组相联命中率 96.875%）、<b>【2026.04·计算27】</b>（组相联容量）均为教材例 5.6 的变型出题——完整题干与解答见考点74。<br>
-78.6 易错<br>
+<span class="kp-sub">78.6 易错</span>
 <span class="callout err">"只算数组访问的命中率"的前提是 i、j、sum 已分配在寄存器——题干给了才这么算。
 先算块号（地址÷块大小，取整）再 mod 组数；直接用地址 mod 组数必错。
 列优先命中率可能为 0：跨行元素间隔恰好是"组数×块大小"的整数倍 → 同组互替（例5.6③）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点79</span><span class="kp-name">主存芯片与容量扩展（自建）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">79.1 主存的基本概念（名解候选）<br>
+<div class="kp-detail"><span class="kp-sub">79.1 主存的基本概念（名解候选）</span>
 <ul><li><b>记忆单元（Cell，存储元/位元）</b>：具有两种稳态、能表示 0/1 的物理器件，是存储器的核心部分；大量记忆单元构成<b>存储阵列（Bank，存储体/存储矩阵）</b>。</li><li><b>编址方式</b>：对各存储单元进行编号的方式（按字节编址/按字编址）；<b>编址单位</b>：具有相同地址的那些位元构成的单位（现在通用计算机大多按字节编址）。</li><li><b>存储周期</b>：存储器进行连续两次独立操作（读或写）之间所需的最小时间间隔。</li><li>地址线位数决定最大可寻址范围（如 36 位 → 0~2³⁶−1）；CPU 通过 MAR/MDR 与主存交换信息，现代 CPU 先与<b>主存控制器</b>（DRAM 控制器）交互。</li></ul>
-79.2 芯片与连接（必背要点）<br>
+<span class="kp-sub">79.2 芯片与连接（必背要点）</span>
 <ul><li>主存常用 <b>SDRAM</b> 芯片（DDR3 等）：与总线时钟同步、支持突发传输；DDR 在时钟上升沿与下降沿各传一次数据。</li><li>DRAM 芯片内地址分<b>行地址 i 和列地址 j</b>（RAS/CAS 分时送入），同时读写行列交叉点的 8 位数据（8 个位平面）。</li><li>图5.7：8 片 16M×8 位 DRAM 构成 128MB 内存条，行/列地址各 12 位；8 片同时读出 64 位。</li></ul>
-79.3 扩展三型（必背）<br>
+<span class="kp-sub">79.3 扩展三型（必背）</span>
 <ul><li><b>位扩展</b>：位数不够——多片并联，位数相加（8 片 4K×1 位 → 4K×8 位）。</li><li><b>字扩展</b>：容量不够——高位地址用于片选，容量相加（4 片 16K×8 位 → 64K×8 位）。</li><li><b>字位同时扩展</b>：容量和位数都不够（16K×4 位 → 64K×8 位 = 字扩展 4 倍 × 位扩展 2 倍）。</li></ul>
 <span class="formula">芯片数 = (目标容量 ÷ 芯片容量) × (目标字长 ÷ 芯片字长)</span>
-79.4 真题计算<br>
+<span class="kp-sub">79.4 真题计算</span>
 <b>【2024.04·计算28】</b>（教材第五章习题 3）某计算机主存最大寻址空间为 4GB，按字节编址；用 64M×8 位（8 个位平面）的 DRAM 芯片组成容量为 512MB、传输宽度 64 位的内存条。问：(1) 每个内存条需要多少片 DRAM 芯片？(2) 构建容量为 2GB 的主存需要几个内存条？(3) 主存地址共多少位？哪几位用于芯片内地址、哪几位用于选择芯片？<br>
 <b>答案：</b><br>
 <ul><li>每个内存条芯片数 = 512MB ÷ (64M×8 位 = 64MB) = <b>8 片</b>；</li><li>2GB 主存 = 2GB ÷ 512MB = <b>4 个内存条</b>；</li><li>地址划分：2³² = 4GB → 主存地址共 <b>32 位</b>——A25~A0 为<b>芯片内地址</b>（每片 64MB = 2²⁶B）；A26~A28 用于<b>选择芯片</b>（每条 8 片 = 2³）；A29~A31 用于<b>选择内存条</b>（至多 8 条；2GB 时用 A29~A30 选 4 条）。</li></ul>
 <b>【2024.10·计算28】</b>（教材第五章习题 4）某机按字节编址，已配有 0000H~7FFFH 的 ROM 区；再用 16K×4 位 RAM 芯片形成 32K×8 位的存储区，CPU 地址为 A15~A0。问：(1) RAM 区的地址范围是什么？共需多少个 RAM 芯片？哪一位地址线用来区分 ROM 和 RAM 区？(2) 若 CPU 地址线改为 24 根、000000H~007FFFH 为 ROM 区、剩下所有地址空间都用 16K×4 位 RAM 芯片配置，需要多少个 RAM 芯片？<br>
 <b>答案：</b><br>
 <ul><li>RAM 区地址范围 = <b>8000H~FFFFH</b>；芯片数 = (32K/16K)×(8/4) = <b>4 片</b>；<b>A15</b> 用来区分 ROM 区（低 32KB）与 RAM 区（高 32KB）；</li><li>地址线改为 24 根时：其余空间 = 2²⁴ − 2¹⁵ 字节，每片（16K×4 位）= 8KB → 芯片数 = (2²⁴−2¹⁵) ÷ 8KB = 1022×2 = <b>2044 片</b>。</li></ul>
-79.5 地址对齐（教材简答）<br>
+<span class="kp-sub">79.5 地址对齐（教材简答）</span>
 <ul><li>一次同时读出 64 位（8 个单元）：int 数据<b>不对齐</b>（如落在第 6~9 单元）需要访问两次存储器；<b>对齐</b>（起始地址是 4 的倍数）则一次访问即可。</li><li>教材简答：为什么采用地址对齐方式能减少访问 DRAM 中数据的时间——DRAM 访问以块为单位，数据跨块就需多次访问；对齐使数据按块大小组织、一次取完。</li></ul>
-79.6 易错<br>
+<span class="kp-sub">79.6 易错</span>
 <span class="callout err">地址字段的完整分解：32 位 = A31~A29（选条）+ A28~A26（选片）+ A25~A0（片内）＝3+3+26；"64M×8 位"芯片容量 = 64MB。
 2024.10(2)：总空间先扣 ROM 的 32KB 再除"每片 8KB"（16K×4 位 = 8KB）——按"1022×2 = 2044"两步推更稳。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点80</span><span class="kp-name">磁盘存储器（自建）</span><span class="kp-level lv-A">A</span><span class="kp-freq">2024.04、2025.10</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">80.1 结构与术语<br>
+<div class="kp-detail"><span class="kp-sub">80.1 结构与术语</span>
 <ul><li>磁盘存储器 = 磁记录介质 + <b>磁盘驱动器</b> + <b>磁盘控制器</b>。</li><li>磁头与盘片相对运动形成<b>磁道</b>（磁头号=盘面号）；多盘片相同磁道形成<b>柱面</b>（磁道号=柱面号）；磁道分<b>扇区</b>，以扇区为单位读/写；写完一个柱面再移到下一个；磁道从外向里编号（最外为磁道 0）。</li><li>温盘定长记录格式：头空 17B、ID 域、间隙 2、数据域 515B（真正数据区 <b>512B</b>）、尾空 20B。</li></ul>
-80.2 读/写三个步骤（必背）<br>
+<span class="kp-sub">80.2 读/写三个步骤（必背）</span>
 1. <b>寻道</b>：根据磁头号/柱面号把磁头移动到指定磁道；<br>
 2. <b>旋转等待</b>：指定扇区旋转到磁头下方（扇区符合信号）；<br>
 3. <b>读/写</b>：读出放大或写入电流脉冲。<br>
 <ul><li>2024.04 单选9 口径：磁盘读/写操作<b>不包括</b>"读/写申请操作"——请求由操作系统/应用程序发起，磁盘控制器自动执行寻道、寻址、旋转等待等。</li></ul>
-80.3 性能指标（必背四条）<br>
+<span class="kp-sub">80.3 性能指标（必背四条）</span>
 <ul><li><b>记录密度</b>（道密度、位密度）；<b>存储容量</b>（格式化容量 &lt; 未格式化容量；按每扇区 512B 计算实际容量）；<b>数据传输率</b>（内部传输率/外部传输率）；<b>平均存取时间</b>。</li><li><b>平均存取时间 = 平均寻道时间 + 平均旋转等待时间 + 数据传输时间</b>：</li><li>平均寻道 5~10ms；平均等待 = 磁盘转一周时间的一半（6000 r/min → 约 5ms）；</li><li>数据传输时间极短（约 0.01ms/扇区）→ 平均存取时间通常近似 = 寻道 + 等待；即磁头定位到目标扇区后，数据本身的传输几乎没有延迟。</li></ul>
-80.4 时间计算模板（教材第五章习题5）<br>
+<span class="kp-sub">80.4 时间计算模板（教材第五章习题5）</span>
 4KB 数据块"读出—处理—写回"；7200 r/min；平均寻道 10ms；传输率 40MB/s；控制器开销 2ms；处理 20000 周期@500MHz；读写与处理不重叠：<br>
 <ul><li>旋转等待 = 转半圈 = (60/7200)÷2 = 8.33÷2 = <b>4.17ms</b>；</li><li>传输时间 = 4KB ÷ 40MB/s = <b>0.1ms</b>；</li><li>一次磁盘操作 = 10 + 4.17 + 0.1 + 2 = <b>16.27ms</b>；</li><li>处理时间 = 20000 ÷ 500MHz = <b>0.04ms</b>；</li><li>总时间 = 16.27 + 0.04 + 16.27 = <b>32.58ms</b> → 每秒约 1000/32.58 ≈ <b>30.7 次</b>。</li></ul>
-80.5 名解候选（教材第五章习题第1题）<br>
+<span class="kp-sub">80.5 名解候选（教材第五章习题第1题）</span>
 磁盘驱动器、磁盘控制器、寻道时间（磁头移动到指定磁道所需时间）、旋转（等待）时间（指定扇区旋转到磁头下方所需时间）、数据传输率、平均存取时间、固态硬盘（SSD，用 NAND 闪存代替磁盘，随机读写延时比磁盘小两个数量级）。<br>
-80.6 真题<br>
+<span class="kp-sub">80.6 真题</span>
 <b>【2024.04·单选9】</b> 磁盘读/写操作不包括（　）<br>
 <ul><li>A. 寻址操作</li><li>B. 寻道操作</li><li>C. 旋转等待操作</li><li>D. 读/写申请操作</li></ul>
 <b>答案：D</b>（读/写申请是操作系统或应用程序发起的请求，不是磁盘读/写操作本身的过程内容）<br>
 <b>【2025.10·填空19】</b> 磁盘存储器的性能指标包括记录密度、＿＿、数据传输率和＿＿时间等。<br>
 <b>答案：</b>存储容量、平均存取<br>
 <b>【教材·第五章习题5】</b> 读出—处理—写回时间计算（模板见 80.4）。<br>
-80.7 易错<br>
+<span class="kp-sub">80.7 易错</span>
 <span class="callout err">平均存取时间包含三项（寻道+旋转+传输）——比"寻道+等待"多一项传输时间，按题目口径取舍。
 平均旋转等待 = 半圈（不是一圈、不是 0）。
 数据处理时间与磁盘操作"不重叠"时直接相加；重叠时才取大值——读题。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点81</span><span class="kp-name">虚拟存储器（自建）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10、2025.04、2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">81.1 为什么需要（基本概念）<br>
+<div class="kp-detail"><span class="kp-sub">81.1 为什么需要（基本概念）</span>
 <ul><li>解决两个问题：①早期主存容量受限——让编程不受物理内存大小制约；②让多个程序有效而<b>安全</b>地共享主存。</li><li>机制：CPU 通过<b>存储管理部件（MMU）</b>把指令中的<b>逻辑地址（虚拟地址 VA）</b>转换为主存的<b>物理地址（PA）</b>；转换过程中 MMU 还检查：信息是否在主存（不在→通知操作系统从外存调入）、<b>地址是否越界或访问越权</b>（→异常处理）。</li><li>由硬件与操作系统<b>共同协作</b>实现（进程、存储管理、缺页处理）。</li></ul>
-81.2 虚拟地址空间（2026.04 填空19）<br>
+<span class="kp-sub">81.2 虚拟地址空间（2026.04 填空19）</span>
 <ul><li>分两大部分：<b>操作系统内核区（内核空间）</b> + <b>用户存储空间（用户空间）</b>。</li><li>用户空间五个区域：用户栈（从高地址向低增长）、共享库、堆（从低向高增长）、可读/写数据区、只读数据和代码区。</li><li>三个好处：①每个进程有一致的虚拟地址空间（简化存储管理、链接与加载）；②把主存当作硬盘的缓存（仅存活动部分，有限主存高效利用）；③虚拟空间私有独立 → 保护进程互不破坏。</li><li>（可执行文件的存储器映像与区域划分详见第四章考点56、64。）</li></ul>
-81.3 三种实现方式<br>
+<span class="kp-sub">81.3 三种实现方式</span>
 <table><tr><th>类型</th><th>要点</th><th>地位</th></tr><tr><td>段式</td><td>按程序逻辑结构分段；段表记录基址/段长/权限；简单但粒度大、易产生碎片</td><td>现代 OS 通常不用</td></tr><tr><td><b>页式</b></td><td>虚拟空间分<b>页</b>、主存分同样大小的<b>页框</b>；请求分页；缺页异常调入</td><td><b>现代 OS 主要采用</b>（2025.04 单选10）</td></tr><tr><td>段页式</td><td>先分段、段内再分页；两级定位</td><td>x86 等因历史沿用</td></tr></table>
 <ul><li>页的三态：<b>未分配页</b>（空洞）/ <b>缓存页</b>（已调入主存）/ <b>未缓存页</b>（在外存）。</li><li>虚拟存储采用<b>全相联映射</b>（任一虚页可装入任一空闲页框）。</li></ul>
-81.4 页表与页表项（必背）<br>
+<span class="kp-sub">81.4 页表与页表项（必背）</span>
 <ul><li><b>页表</b>：描述虚拟页与主存页框（或外存位置）映射关系的数据结构；每个虚页一个<b>页表项</b>。</li><li>页表项内容：<b>存放位置</b>（实页号或外存地址）、<b>装入位（有效位/存在位）</b>、<b>修改位（脏位）</b>、<b>使用位（替换控制位）</b>、<b>访问权限位</b>、<b>禁止缓存位</b>。</li><li>三态判读：装入位 = 1 → 缓存页（存放位置 = 实页号）；装入位 = 0 且存放位置为 null → 未分配页；装入位 = 0 且有外存地址 → 未缓存页。</li><li>缺页处理：按存放位置从外存读页 → 找空闲页框（无空闲则替换；回写策略下按<b>修改位</b>决定被淘汰页是否写回外存）→ 更新页表 → <b>回到发生缺页的那条指令重新执行</b>。</li><li>页表属进程控制信息、位于内核空间；页表在主存的首地址记录在<b>页表基址寄存器</b>中；页表过大 → 多级页表/倒置页表等方案。</li></ul>
-81.5 地址转换（做题格式）<br>
+<span class="kp-sub">81.5 地址转换（做题格式）</span>
 <ul><li>虚拟地址 = <b>虚页号 | 页内地址</b>；物理地址 = <b>实页号 | 页内地址</b>（页大小相同 → 两者页内地址位数相同）。</li><li>转换：按页表基址寄存器找到页表 → 以虚页号为索引取页表项 → 装入位为 1：实页号拼接页内地址 = 物理地址；装入位为 0：缺页。</li></ul>
 <b>2025.10 分析设计30（完整解题）</b>：逻辑地址 40 位、物理地址 32 位、页大小 16KB；页表项含有效位、修改位各 1 位，使用位、存取方式位各 2 位。<br>
 1. 页内地址 = log₂16K = <b>14 位</b>；逻辑地址 = <b>26 位虚页号 + 14 位页内</b>；物理地址 = (32−14) <b>18 位实页号 + 14 位页内</b>；<br>
 2. 页表项数 = 2²⁶；每个页表项 = 1+1+2+2+18 = <b>24 位</b>；页表大小 = 2²⁶ × 24 位 = 2²⁶ × 3B = <b>192MB</b>。<br>
-81.6 TLB（快表）与三种缺失<br>
+<span class="kp-sub">81.6 TLB（快表）与三种缺失</span>
 <ul><li><b>TLB（快表）</b>：把最活跃的若干页表项复制到高速缓存中；主存中的页表称<b>慢表</b>。查 TLB 命中 → 直接转换；缺失 → 访问慢表（并装入新 TLB 表项，TLB 满时替换，常用随机替换）。</li><li>TLB 大多采用<b>全相联或组相联</b>（关联度高）；TLB 表项 = 页表项 + TLB 标记；存数指令不会将数据写入 TLB → <b>TLB 无须考虑写策略</b>。</li><li>三种缺失：<b>TLB 缺失、cache 缺失、缺页（page miss）</b>。</li><li>组合规律（教材表5.1）：<b>缺页却 TLB/cache 命中 → 不可能</b>（页不在主存，TLB 中不会有该页表项、cache 中更不会有该信息）；TLB 命中则页一定命中；最好情况全命中（不需访主存）；TLB 命中+页命中+cache 缺失需访主存一次（取块）；TLB 缺失+页命中+cache 命中也是访主存一次（查慢表）；TLB 缺失+页命中+cache 缺失为两次（查慢表＋取块）；三种全缺失 → 缺页异常、需访外存。</li><li>处理者：cache 缺失 → <b>硬件</b>；缺页 → <b>软件</b>（操作系统缺页异常处理程序）；TLB 缺失 → 硬件或软件（依 ISA 设计）。</li></ul>
-81.7 存储保护（名解密集区）<br>
+<span class="kp-sub">81.7 存储保护（名解密集区）</span>
 <ul><li>为支持存储保护，ISA/硬件需具备三个基本功能：①部分 CPU 状态只能由内核访问（如页表基址寄存器、TLB 内容，用<b>特权指令</b>访问）；②支持至少两种<b>特权模式</b>（内核态/管态 与 用户态/目态）；③模式切换机制（系统调用/自陷指令进入高特权模式、异常返回指令退回）。</li><li><b>访问权限保护</b>：检查<b>访问越权</b>——实际访问操作与访问权限不符 → 存储保护错（在页表/段表中设访问权限位）。</li><li><b>存储区域保护</b>：检查<b>地址越界</b>——访问了不该访问的区域（如"空洞"区域、超出最大段长）。</li><li>Linux 页故障判断链：VA 不属于任何区域 → <b>段故障</b>；操作与区域权限不符 → <b>访问越权</b>；用户态访问内核区 → <b>访问越级</b>——均导致终止进程；否则为正常缺页 → 调入主存。</li><li>名解候选：物理地址/虚拟地址（逻辑地址）、虚拟页号/物理页号、页框（页帧）、请求分页、页表、页表基址寄存器、快表（TLB）、页故障、有效位（装入位）、修改位（脏位）、未缓存页、未分配页、存储保护、特权指令、特权模式、用户态、内核态、访问权限、地址越界、访问越权（教材第五章习题第1题）。</li></ul>
-81.8 真题<br>
+<span class="kp-sub">81.8 真题</span>
 <b>【2024.10·填空19】</b> 虚拟存储技术既解决了＿＿受限的问题，又解决了多个程序共享＿＿带来的安全等问题。<br>
 <b>答案：</b>内存容量、主存<br>
 <b>【2025.04·单选10】</b> 现代操作系统主要采用的虚拟存储管理方式是（　）<br>
@@ -2171,7 +2171,7 @@ LRU 能反映局部性、FIFO 不能——对比选择题高频。</span></div>
 <b>【2026.04·填空19】</b> 虚拟地址空间分为两大部分：＿＿内核区和＿＿存储空间，分别简称为内核空间和用户空间。<br>
 <b>答案：</b>操作系统、用户<br>
 <b>【教材·第五章简答6】</b> 物理地址/逻辑地址的定义与转换由硬件还是软件实现（硬件为主、速度快；软件也可实现但慢）。<br>
-81.9 易错<br>
+<span class="kp-sub">81.9 易错</span>
 <span class="callout err">"缺页但 TLB 命中"不可能（表5.1 的陷阱组合）——页不在主存，其页表项不会在 TLB 中。
 逻辑/物理地址的"页内地址位数相同"（页大小一致），转换只换页号部分。
 越权（操作与权限不符）≠ 越界（访问空洞）≠ 越级（用户访问内核）——三个名词定义别互换。</span></div>
@@ -2183,21 +2183,38 @@ LRU 能反映局部性、FIFO 不能——对比选择题高频。</span></div>
 <div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">第六章 程序中I/O操作的实现<span class="badge">13考点</span></span><span class="arrow">▼</span></div>
 <div class="ch-body">
 <div class="ch-intro">本章是"I/O 软硬件协作"章：概念题（设备分类、控制方式、编址、缓冲区属性）以单选/填空为主，每卷 3—6 题；简答题几乎全部出自教材课后习题原题（系统调用开销、中断控制 I/O、程序直接控制 I/O、文件系统功能、I/O 子系统层次结构）；计算从 2025.04 起纳入总线带宽（FSB/QPI），2026.04 起分析设计考中断主机占用率——本章分值从 9 分（2024.04）升到 19 分（2025.04、2026.04）。课件考点 1—10 依次对应考点 82—91；考点 92（总线性能计算）、93（中断服务程序与多重中断）、94（中断/DMA 开销计算）为据大纲与真题自建补充。<br>
+本节全文的骨架：<span class="em">程序如何提出请求 → 操作系统如何管理 → 硬件如何传输 → 如何计算性能</span>。<br>
+全章核心联系：<span class="em">应用程序 → I/O 函数 → 系统调用 → 设备无关层 → 驱动程序 → 控制器/总线 → 外设</span>——设备完成工作后可通过中断通知 CPU，批量数据传输可使用 DMA；文件系统和缓存层负责把文件操作转化为具体的设备访问。<br>
 本章速记图：<br>
-<div class="tree speedmap"><ul class="troot"><li><span class="tnode troot-l">第六章 程序中 I/O 操作的实现（考点 82—94）</span><ul><li><span class="tnode">主线：I/O 软件栈 → 系统调用 → 文件 → 设备控制 → 总线/中断/DMA</span></li><li><span class="tnode">82. I/O 子系统<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">I/O 软件：用户 I/O 软件 + 系统 I/O 软件</span></li><li><span class="tnode">系统层次：设备无关 I/O 软件 → 设备驱动 → 中断服务程序</span></li><li><span class="tnode">特点：共享性、复杂性、异步性</span></li></ul></li><li><span class="tnode">83. write 系统调用<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">用户程序 printf → 库函数 → write 系统调用</span></li><li><span class="tnode">陷阱/系统调用入口 → 内核处理 → 返回用户态</span></li><li><span class="tnode terr">易错：系统调用涉及用户态/内核态切换，有额外开销</span></li></ul></li><li><span class="tnode">84. 用户空间 I/O 函数<span class="kp-level lv-A">A</span></span><ul><li><span class="tnode">标准库：fopen / fread / fwrite / fclose 等</span></li><li><span class="tnode">系统级接口：open / read / write / close 等</span></li><li><span class="tnode">标准库常用缓冲区减少系统调用次数</span></li><li><span class="tnode terr">易错：库函数不一定每调用一次就触发一次系统调用</span></li></ul></li><li><span class="tnode">85. 系统级 I/O 与文件<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">一切皆文件：设备、普通文件、部分通信对象可用统一接口</span></li><li><span class="tnode">fd：0 = stdin，1 = stdout，2 = stderr；新打开文件通常从 3 起</span></li><li><span class="tnode">open/creat：创建或打开；read/write：读写字节</span></li><li><span class="tnode">lseek：调整文件读写位置；stat/fstat：取文件元数据</span></li><li><span class="tnode">close：关闭文件描述符</span></li><li><span class="tnode">read：返回实际读取字节数；到 EOF 通常返回 0</span></li><li><span class="tnode">缓冲区</span><ul><li><span class="tnode">普通文件：全缓冲</span></li><li><span class="tnode">终端 stdout：通常行缓冲</span></li><li><span class="tnode">stderr：通常非缓冲</span></li></ul></li></ul></li><li><span class="tnode">86. 内核中的文件结构<span class="kp-level lv-B">B</span></span><ul><li><span class="tnode">文件描述符表：进程内 fd → 打开文件表项</span></li><li><span class="tnode">系统打开文件表：打开状态、文件位置等</span></li><li><span class="tnode">inode：文件静态元数据</span></li><li><span class="tnode">两次独立 open 通常得到独立文件位置</span></li><li><span class="tnode terr">易错：dup/继承等共享同一打开文件描述时，文件位置可能共享</span></li></ul></li><li><span class="tnode">87. 三种 I/O 控制方式<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">程序直接控制/查询</span><ul><li><span class="tnode">CPU 查询设备状态</span></li><li><span class="tnode">忙等待占用 CPU，设备未就绪时也在轮询</span></li></ul></li><li><span class="tnode">中断控制 I/O</span><ul><li><span class="tnode">启动设备 → 等待/执行其他任务 → 设备中断</span></li><li><span class="tnode">中断服务程序处理数据并启动后续操作</span></li></ul></li><li><span class="tnode">DMA</span><ul><li><span class="tnode">数据在设备与主存之间直接传输，不需 CPU 逐字搬运</span></li><li><span class="tnode">CPU 可与 I/O 并行工作</span></li><li><span class="tnode">数据块传完后通常再发完成中断</span></li></ul></li></ul></li><li><span class="tnode">88. 外设与总线<span class="kp-level lv-A">A</span></span><ul><li><span class="tnode">字符设备：字符流；块设备：按可寻址数据块传输</span></li><li><span class="tnode">输入：键盘、鼠标、扫描仪</span></li><li><span class="tnode">输出：显示器、打印机、绘图仪</span></li><li><span class="tnode">总线：处理器总线、存储器总线、I/O 总线</span></li><li><span class="tnode">传统芯片组：北桥 MCH、南桥 ICH（按教材口径）</span></li></ul></li><li><span class="tnode">89. I/O 接口职能<span class="kp-level lv-A">A</span></span><ul><li><span class="tnode">数据缓冲：协调 CPU 与慢速外设速度</span></li><li><span class="tnode">错误/就绪检测：状态寄存器反映设备状态</span></li><li><span class="tnode">控制与定时：控制寄存器存命令</span></li><li><span class="tnode">数据格式转换：如串行/并行转换</span></li></ul></li><li><span class="tnode">90. I/O 端口与编址<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">统一编址：I/O 端口映射进存储器地址空间</span><ul><li><span class="tnode">可用普通访存指令，需区分地址区域</span></li></ul></li><li><span class="tnode">独立编址：I/O 与主存地址空间分离</span><ul><li><span class="tnode">使用专用 I/O 指令，如 x86 的 in/out</span></li></ul></li><li><span class="tnode terr">易错：区分端口地址与内存地址</span></li></ul></li><li><span class="tnode">91. 中断系统<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">设备发中断请求 → 控制器记录/判优 → CPU 响应</span></li><li><span class="tnode">中断响应：保存断点、状态并转入处理程序</span></li><li><span class="tnode">中断服务：保存现场、处理设备、恢复现场</span></li><li><span class="tnode">响应优先级：同时请求时先响应谁</span></li><li><span class="tnode">处理优先级：处理中是否允许被其他中断打断</span></li></ul></li><li><span class="tnode">92. 总线性能计算<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">总带宽 = 每秒传输次数 × 每次有效数据字节数</span></li><li><span class="tnode">FSB：四倍并发时，传输速率 = 时钟频率×4</span><ul><li><span class="tnode">带宽 = 传输速率 × 64/8（若数据宽度为 64 位）</span></li></ul></li><li><span class="tnode">DDR 存储器总线：数据传输率通常为时钟频率×2</span><ul><li><span class="tnode">总带宽 = 单通道带宽 × 通道数</span></li></ul></li><li><span class="tnode">QPI：带宽 = 传输率 × 有效数据字节数 × 双向系数</span></li><li><span class="tnode">PCIe：考虑通道数、双向、编码效率及 bit→Byte 换算</span></li></ul></li><li><span class="tnode">93. 中断服务程序与多重中断<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">中断服务程序三阶段</span><ul><li><span class="tnode">准备：保存现场，必要时设置屏蔽字/开中断</span></li><li><span class="tnode">处理：识别中断源、清请求、执行设备处理</span></li><li><span class="tnode">恢复：关中断、恢复现场/屏蔽字、中断返回</span></li></ul></li><li><span class="tnode">多重中断：较高优先级中断打断当前中断服务</span></li><li><span class="tnode">依靠栈保存断点/状态，按后进先出返回</span></li><li><span class="tnode terr">易错：断点/部分状态由硬件保存，通用寄存器现场通常由软件保存</span></li></ul></li><li><span class="tnode">94. 中断/DMA 开销计算<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">中断间隔 t = 缓冲器容量(B) / 数据传输率(B/s)</span></li><li><span class="tnode">单次中断开销 T = 处理周期数 / CPU 主频</span></li><li><span class="tnode">传输期间 CPU 占用率 = T / t</span></li><li><span class="tnode">平均占用率 = (T/t) × 设备实际工作时间占比</span></li><li><span class="tnode">查询方式：CPU 可能持续忙等待</span></li><li><span class="tnode">中断方式：每次服务有开销，频率过高会拖垮 CPU</span></li><li><span class="tnode">DMA：CPU 主要参与初始化和完成处理，适合成块高速传输</span></li></ul></li></ul></li></ul></div>
+<div class="tree speedmap"><ul class="troot"><li><span class="tnode troot-l">第六章 程序中 I/O 操作的实现（考点 82—94）</span><ul><li><span class="tnode">主线：应用程序 → I/O 函数 → 系统调用 → 设备无关层 → 驱动程序 → 控制器/总线 → 外设</span></li><li><span class="tnode">四大板块：软件接口 82—84 → 文件与内核 85—86 → 硬件控制 87—89 → 编址与性能 90—94</span></li><li><span class="tnode">82. I/O 子系统<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">I/O 软件：用户 I/O 软件 + 系统 I/O 软件</span></li><li><span class="tnode">系统层次：设备无关 I/O 软件 → 设备驱动 → 中断服务程序</span></li><li><span class="tnode">特点：共享性、复杂性、异步性</span></li></ul></li><li><span class="tnode">83. write 系统调用<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">用户程序 printf → 库函数 → write 系统调用</span></li><li><span class="tnode">陷阱/系统调用入口 → 内核处理 → 返回用户态</span></li><li><span class="tnode terr">易错：系统调用涉及用户态/内核态切换，有额外开销</span></li></ul></li><li><span class="tnode">84. 用户空间 I/O 函数<span class="kp-level lv-A">A</span></span><ul><li><span class="tnode">标准库：fopen / fread / fwrite / fclose 等</span></li><li><span class="tnode">系统级接口：open / read / write / close 等</span></li><li><span class="tnode">标准库常用缓冲区减少系统调用次数</span></li><li><span class="tnode terr">易错：库函数不一定每调用一次就触发一次系统调用</span></li></ul></li><li><span class="tnode">85. 系统级 I/O 与文件<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">一切皆文件：设备、普通文件、部分通信对象可用统一接口</span></li><li><span class="tnode">fd：0 = stdin，1 = stdout，2 = stderr；新打开文件通常从 3 起</span></li><li><span class="tnode">open/creat：创建或打开；read/write：读写字节</span></li><li><span class="tnode">lseek：调整文件读写位置；stat/fstat：取文件元数据</span></li><li><span class="tnode">close：关闭文件描述符</span></li><li><span class="tnode">read：返回实际读取字节数；到 EOF 通常返回 0</span></li><li><span class="tnode">缓冲区</span><ul><li><span class="tnode">普通文件：全缓冲</span></li><li><span class="tnode">终端 stdout：通常行缓冲</span></li><li><span class="tnode">stderr：通常非缓冲</span></li></ul></li></ul></li><li><span class="tnode">86. 内核中的文件结构<span class="kp-level lv-B">B</span></span><ul><li><span class="tnode">文件描述符表：进程内 fd → 打开文件表项</span></li><li><span class="tnode">系统打开文件表：打开状态、文件位置等</span></li><li><span class="tnode">inode：文件静态元数据</span></li><li><span class="tnode">两次独立 open 通常得到独立文件位置</span></li><li><span class="tnode terr">易错：dup/继承等共享同一打开文件描述时，文件位置可能共享</span></li></ul></li><li><span class="tnode">87. 三种 I/O 控制方式<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">程序直接控制/查询</span><ul><li><span class="tnode">CPU 查询设备状态</span></li><li><span class="tnode">忙等待占用 CPU，设备未就绪时也在轮询</span></li></ul></li><li><span class="tnode">中断控制 I/O</span><ul><li><span class="tnode">启动设备 → 等待/执行其他任务 → 设备中断</span></li><li><span class="tnode">中断服务程序处理数据并启动后续操作</span></li></ul></li><li><span class="tnode">DMA</span><ul><li><span class="tnode">数据在设备与主存之间直接传输，不需 CPU 逐字搬运</span></li><li><span class="tnode">CPU 可与 I/O 并行工作</span></li><li><span class="tnode">数据块传完后通常再发完成中断</span></li></ul></li></ul></li><li><span class="tnode">88. 外设与总线<span class="kp-level lv-A">A</span></span><ul><li><span class="tnode">字符设备：字符流；块设备：按可寻址数据块传输</span></li><li><span class="tnode">输入：键盘、鼠标、扫描仪</span></li><li><span class="tnode">输出：显示器、打印机、绘图仪</span></li><li><span class="tnode">总线：处理器总线、存储器总线、I/O 总线</span></li><li><span class="tnode">传统芯片组：北桥 MCH、南桥 ICH（按教材口径）</span></li></ul></li><li><span class="tnode">89. I/O 接口职能<span class="kp-level lv-A">A</span></span><ul><li><span class="tnode">数据缓冲：协调 CPU 与慢速外设速度</span></li><li><span class="tnode">错误/就绪检测：状态寄存器反映设备状态</span></li><li><span class="tnode">控制与定时：控制寄存器存命令</span></li><li><span class="tnode">数据格式转换：如串行/并行转换</span></li></ul></li><li><span class="tnode">90. I/O 端口与编址<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">统一编址：I/O 端口映射进存储器地址空间</span><ul><li><span class="tnode">可用普通访存指令，需区分地址区域</span></li></ul></li><li><span class="tnode">独立编址：I/O 与主存地址空间分离</span><ul><li><span class="tnode">使用专用 I/O 指令，如 x86 的 in/out</span></li></ul></li><li><span class="tnode terr">易错：区分端口地址与内存地址</span></li></ul></li><li><span class="tnode">91. 中断系统<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">设备发中断请求 → 控制器记录/判优 → CPU 响应</span></li><li><span class="tnode">中断响应：保存断点、状态并转入处理程序</span></li><li><span class="tnode">中断服务：保存现场、处理设备、恢复现场</span></li><li><span class="tnode">响应优先级：同时请求时先响应谁</span></li><li><span class="tnode">处理优先级：处理中是否允许被其他中断打断</span></li></ul></li><li><span class="tnode">92. 总线性能计算<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">总带宽 = 每秒传输次数 × 每次有效数据字节数</span></li><li><span class="tnode">FSB：四倍并发时，传输速率 = 时钟频率×4</span><ul><li><span class="tnode">带宽 = 传输速率 × 64/8（若数据宽度为 64 位）</span></li></ul></li><li><span class="tnode">DDR 存储器总线：数据传输率通常为时钟频率×2</span><ul><li><span class="tnode">总带宽 = 单通道带宽 × 通道数</span></li></ul></li><li><span class="tnode">QPI：带宽 = 传输率 × 有效数据字节数 × 双向系数</span></li><li><span class="tnode">PCIe：考虑通道数、双向、编码效率及 bit→Byte 换算</span></li></ul></li><li><span class="tnode">93. 中断服务程序与多重中断<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">中断服务程序三阶段</span><ul><li><span class="tnode">准备：保存现场，必要时设置屏蔽字/开中断</span></li><li><span class="tnode">处理：识别中断源、清请求、执行设备处理</span></li><li><span class="tnode">恢复：关中断、恢复现场/屏蔽字、中断返回</span></li></ul></li><li><span class="tnode">多重中断：较高优先级中断打断当前中断服务</span></li><li><span class="tnode">依靠栈保存断点/状态，按后进先出返回</span></li><li><span class="tnode terr">易错：断点/部分状态由硬件保存，通用寄存器现场通常由软件保存</span></li></ul></li><li><span class="tnode">94. 中断/DMA 开销计算<span class="kp-level lv-S">S</span></span><ul><li><span class="tnode">中断间隔 t = 缓冲器容量(B) / 数据传输率(B/s)</span></li><li><span class="tnode">单次中断开销 T = 处理周期数 / CPU 主频</span></li><li><span class="tnode">传输期间 CPU 占用率 = T / t</span></li><li><span class="tnode">平均占用率 = (T/t) × 设备实际工作时间占比</span></li><li><span class="tnode">查询方式：CPU 可能持续忙等待</span></li><li><span class="tnode">中断方式：每次服务有开销，频率过高会拖垮 CPU</span></li><li><span class="tnode">DMA：CPU 主要参与初始化和完成处理，适合成块高速传输</span></li></ul></li></ul></li></ul></div>
 <span class="callout tip">【易错】bit 与 Byte 别混（8 bit = 1 B）；DDR 双边沿已反映在 MT/s 中，不要重复乘 2；QPI 按有效数据位数并计算双向；PCIe 按代际考虑编码效率再换算字节；中断占用率先统一单位，最后乘设备实际工作时间占比。</span></div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点82</span><span class="kp-name">I/O 子系统</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.10、2025.04、2025.10、2026.04、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">82.1 两大部分与层次结构（简答模板）<br>
-<ul><li>I/O 子系统 = <b>I/O 软件 + I/O 硬件</b>。</li><li>I/O 软件包括最上层提出 I/O 请求的<b>用户空间 I/O 软件</b>（用户 I/O 软件）和在底层操作系统中具体管理控制 I/O 的<b>内核空间 I/O 软件</b>（系统 I/O 软件）。</li><li>系统 I/O 软件分<b>三个层次</b>：<b>与设备无关的 I/O 软件层、设备驱动程序层和中断服务程序层</b>；后两部分与 I/O 硬件密切相关。</li><li>I/O 硬件在操作系统内核空间 I/O 软件的控制下完成具体的 I/O 操作。</li><li>名解：<b>用户空间 I/O 软件</b>（运行在用户空间、通过系统调用与内核 I/O 软件交互的程序）、<b>内核空间 I/O 软件</b>（内核中负责 I/O 的部分：驱动管理、中断处理、提供系统调用接口）、<b>运行时系统</b>（实现计算机语言核心行为（如库函数）的支撑软件）。</li></ul>
-82.2 三大特性（易混单选）<br>
-<table><tr><th>特性</th><th>含义</th></tr><tr><td><b>共享性</b></td><td>I/O 子系统被多个进程共享，须由操作系统统一调度管理</td></tr><tr><td><b>复杂性</b></td><td>设备控制细节复杂，需驱动程序屏蔽细节、简化应用开发</td></tr><tr><td><b>异步性</b></td><td>速度较慢且设备间速度差异大，常用异步中断 I/O；中断须在内核态处理</td></tr></table>
-<span class="em">记忆：共、复、异——没有"同步性"</span>（2025.04 单选9 的陷阱选项）。<br>
-82.3 设备无关 I/O 软件层（Linux 视角）<br>
-<ul><li>主要组成：<b>文件系统、缓存层、通用块设备 I/O 层</b>等，完成所有设备公共的 I/O 功能、向上提供统一接口；文件系统本身再细分为虚拟文件系统 VFS、逻辑文件系统等。</li><li>2024.10 单选9 口径：与设备无关的 I/O 软件<b>包括</b>缓存层、文件系统、通用块设备 I/O 层，<b>不含中断服务程序</b>（中断服务程序与设备密切相关，属设备相关层）。</li><li>文件系统承担的两件事（2025.04 简答26 模板，详见考点85）：①为上层用户和应用程序提供<b>文件抽象</b>及创建/打开/读/写/关闭等所有操作接口；②把抽象的文件标识（<b>文件名、文件描述符</b>）与<b>具体硬件设备</b>建立关联，并通过相应的<b>设备驱动程序</b>实现系统调用接口规定的操作。</li></ul>
-82.4 从用户态到内核态的调用路径（大纲"领会"）<br>
-用户程序调用 I/O 函数（C 标准库函数或系统级函数）→ 系统调用封装函数（内含陷阱指令）→ system_call（系统调用处理程序）→ 系统调用服务例程（如 sys_write）→ 需要时调用设备驱动程序 → 外设完成后中断 → 中断服务程序完成数据交换。全过程见考点83、86。<br>
-82.5 真题<br>
+<div class="kp-detail"><span class="kp-sub">82.1 两大部分与层次结构（简答模板）</span>
+<span class="callout ok">必背：I/O 子系统 = I/O 软件 + I/O 硬件；软件分用户空间/内核空间，内核空间再分三层。</span>
+<span class="formula">I/O 子系统 = I/O 软件 + I/O 硬件
+  I/O 软件
+    用户空间 I/O 软件：提出 I/O 请求，经系统调用与内核交互
+    内核空间 I/O 软件：管理控制 I/O
+  I/O 硬件：设备控制器 + 外设及其连接
+内核空间 I/O 软件三层（顺序必背）
+  ① 与设备无关的 I/O 软件层（公共功能、统一接口）
+  ② 设备驱动程序层（与设备相关）
+  ③ 中断服务程序层（与设备/硬件密切相关）</span>
+<ul><li>I/O 硬件在<span class="em">内核空间 I/O 软件</span>的控制下完成具体 I/O 操作。</li><li>后两层（驱动、中断服务）与 I/O 硬件密切相关。</li></ul>
+名解三条（教材口径）：<br>
+<ul><li><b>用户空间 I/O 软件</b>：运行在用户空间、通过系统调用与内核 I/O 软件交互的程序。</li><li><b>内核空间 I/O 软件</b>：内核中负责 I/O 的部分——驱动管理、中断处理、提供系统调用接口。</li><li><b>运行时系统</b>：实现语言核心行为（如库函数）的支撑软件；<span class="em">不属于内核空间 I/O 软件</span>。</li></ul>
+<span class="kp-sub">82.2 三大特性（易混单选）</span>
+<table><tr><th>特性</th><th>含义</th><th>做题关键词</th></tr><tr><td><b>共享性</b></td><td>I/O 子系统被多个进程共享，须由操作系统统一调度管理</td><td>操作系统统一管理</td></tr><tr><td><b>复杂性</b></td><td>设备控制细节复杂，需驱动程序屏蔽细节、简化应用开发</td><td>驱动程序屏蔽差异</td></tr><tr><td><b>异步性</b></td><td>速度较慢且设备间速度差异大，常用异步中断 I/O；中断须在内核态处理</td><td>CPU 与设备可并行工作</td></tr></table>
+<span class="callout tip">【记忆】共、复、异——没有"同步性"（2025.04 单选9 就设的这个坑）。</span>
+<span class="kp-sub">82.3 设备无关 I/O 软件层（Linux 视角）</span>
+<ul><li>主要组成：<b>文件系统 + 缓存层 + 通用块设备 I/O 层</b>。</li><li>作用：<span class="em">把多种设备共有的 I/O 功能抽出来</span>，向上提供统一接口，减少上层对具体设备型号的依赖。</li><li>文件系统内部再分：虚拟文件系统 VFS、逻辑文件系统等。</li><li><span class="em">不含中断服务程序</span>——它与设备密切相关，属设备相关层（2024.10 单选9 口径）。</li><li>文件系统的两件事（2025.04 简答26 完整答案见考点85.2）：①向上提供文件抽象与全部操作接口；②把文件名/文件描述符与具体设备关联，由对应驱动程序实现。</li></ul>
+<span class="kp-sub">82.4 从用户态到内核态的调用路径（大纲"领会"）</span>
+<span class="formula">用户程序调用 I/O 函数 → 系统调用封装函数（含陷阱指令）→ system_call
+→ 系统调用服务例程（如 sys_write）→ 必要时调用设备驱动程序
+→ 设备执行完毕 → 中断服务程序完成数据交换</span>
+<ul><li>这条链是本章主线：82 记结构、83 记系统调用、86 记文件进内核、87 记设备传输、91/93 记中断。</li></ul>
+<span class="kp-sub">82.5 真题</span>
 <b>【2025.04·单选9】</b> 下列不是 I/O 子系统特性的是（　）<br>
 <ul><li>A. 共享性</li><li>B. 同步性</li><li>C. 复杂性</li><li>D. 异步性</li></ul>
 <b>答案：B</b>（I/O 子系统特性 = 共享性、复杂性、异步性）<br>
@@ -2212,65 +2229,78 @@ LRU 能反映局部性、FIFO 不能——对比选择题高频。</span></div>
 <b>【2025.10·简答26】</b> 简述 I/O 子系统的层次结构。<br>
 <b>答案：</b>（见 82.1）I/O 子系统包括 I/O 软件和 I/O 硬件两大部分：I/O 软件分用户 I/O 软件和系统 I/O 软件，系统 I/O 软件又分与设备无关的 I/O 软件层、设备驱动程序层和中断服务程序层；I/O 硬件在操作系统内核空间 I/O 软件的控制下完成具体的 I/O 操作。<br>
 <b>【教材·第六章习题1】</b> I/O 子系统的层次结构。<br>
-82.6 易错<br>
+<span class="kp-sub">82.6 易错</span>
 <span class="callout err">"异步性"不是"同步性"——2025.04 专门设过这个坑。
 运行时系统是用户空间的语言支撑软件（printf 所在层），不是内核空间 I/O 软件。
 "与设备无关的 I/O 软件"不含中断服务程序——中断服务程序与设备/硬件密切相关。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点83</span><span class="kp-name">系统调用的执行过程（以 write 为例）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">83.1 write 的 5 步执行过程（必背）<br>
-1. 假定用户程序中调用了库函数 printf；<br>
-2. printf 中又通过一系列函数调用，最终转到调用 write 函数；<br>
-3. write 函数对应的指令序列中一定有一条用于系统调用的<b>陷阱指令</b>（IA-32 中为 `int $0x80` 或 sysenter），该指令执行后进程<b>从用户态陷入内核态</b>；<br>
-4. Linux 中系统调用的统一入口是<b>系统调用处理程序 system_call</b>——CPU 执行陷阱指令后转到 system_call 第一条指令；在其中根据 <b>EAX 寄存器中的系统调用号</b>跳转到对应的<b>系统调用服务例程 sys_write</b> 执行；<br>
-5. system_call 执行结束时，从内核态返回用户态，在<b>陷阱指令后面一条指令</b>继续执行。<br>
-83.2 封装函数的机器级代码结构<br>
-<ul><li>系统调用封装函数 = <b>若干条传送指令 + 一条陷阱指令</b>：传送指令把 I/O 参数（含系统调用号）送入相应寄存器，陷阱指令使 CPU 陷入内核。</li><li>名解：<b>系统调用处理程序</b>（内核中处理系统调用请求的统一入口，如 system_call）vs <b>系统调用服务例程</b>（system_call 调用的内核函数，实现具体功能，如 sys_write）。</li><li>概念串：系统级 I/O 函数 = 与 I/O 操作相关的<b>系统调用封装函数</b>（creat/open/read/write/lseek/stat/fstat/close）。</li></ul>
-83.3 为什么系统调用开销大（简答模板）<br>
-1. 系统级 I/O 函数的功能通过执行内核中的<b>系统调用服务例程</b>实现——在用户程序中<b>每调用一次系统级 I/O 函数，就是进行一次系统调用</b>；<br>
-2. 每次系统调用都有<b>两次上下文切换</b>：先从用户态切换到内核态，处理结束后再从内核态返回用户态；<br>
-3. 内核态执行需建立/恢复特殊运行环境：IA-32 中系统调用属陷阱类异常，异常响应阶段要访问 IDT、比较特权级检测存储保护错、从用户栈切换到内核栈、把用户栈顶指针/标志寄存器/断点等保存到内核栈，再把处理程序首地址送 CS:EIP。<br>
-<ul><li>结论：能不用系统调用则不用、能减少次数则减少（C 标准库用流缓冲区减少系统调用次数，见考点84）。</li></ul>
-83.4 用户态/内核态判读（教材习题(4)(5)）<br>
-<ul><li><b>C 标准 I/O 库函数</b>（printf、scanf、fopen…）：在<b>用户态</b>执行；</li><li><b>系统调用封装函数</b>（open、read、write…）：本身是用户空间代码（传送指令+陷阱指令），在<b>用户态</b>执行——执行到陷阱指令时转入<b>内核态</b>执行系统调用服务例程，真正完成 I/O 操作。</li><li><span class="em">答题保险写法</span>：封装函数=传送指令+陷阱指令（用户态）；陷阱指令之后由内核执行系统调用服务例程（内核态），功能在内核实现。</li></ul>
-83.5 真题<br>
+<div class="kp-detail"><span class="kp-sub">83.1 write 的 5 步执行过程（必背）</span>
+<span class="callout ok">必背链条：printf → write → 陷阱指令 → system_call → sys_write → 返回陷阱指令的下一条指令。</span>
+<span class="formula">① 用户程序调用库函数 printf
+② printf 内部经一系列函数调用，最终调用 write
+③ write 的指令序列中必有陷阱指令（IA-32：int $0x80 / sysenter）→ 陷入内核态
+④ system_call 按 EAX 中的系统调用号，跳转到服务例程 sys_write 执行
+⑤ system_call 结束返回用户态，从陷阱指令后面的一条指令继续执行</span>
+<ul><li>系统调用封装函数 = <span class="em">若干条传送指令（把 I/O 参数和系统调用号送寄存器）+ 一条陷阱指令</span>。</li><li>Linux 惯例：系统调用号放 <b>EAX</b>；system_call 是统一入口。</li></ul>
+<span class="kp-sub">83.2 封装函数的机器级代码结构</span>
+<table><tr><th>名词</th><th>是什么</th><th>例子</th></tr><tr><td><b>系统调用处理程序</b></td><td>内核中处理系统调用请求的统一入口，按调用号分派</td><td>system_call</td></tr><tr><td><b>系统调用服务例程</b></td><td>被 system_call 调用、实现具体功能的内核函数</td><td>sys_write</td></tr></table>
+<ul><li>系统级 I/O 函数 = 与 I/O 操作相关的<b>系统调用封装函数</b>：creat / open / read / write / lseek / stat / fstat / close。</li></ul>
+<span class="kp-sub">83.3 为什么系统调用开销大（简答模板）</span>
+<ul><li><span class="em">得分点①</span>：系统级 I/O 函数的功能由内核中的<b>系统调用服务例程</b>实现——用户程序每调用一次系统级 I/O 函数，就是进行一次系统调用。</li><li><span class="em">得分点②</span>：每次系统调用都有<b>两次上下文切换</b>——先从用户态切到内核态，处理完再从内核态返回用户态。</li><li>加分细节：IA-32 中系统调用属陷阱类异常——异常响应要查 IDT、做特权级检查、从用户栈切到内核栈、保存用户栈顶指针/标志寄存器/断点，再把处理程序首址送 CS:EIP。</li><li>结论：能不用就不用、能少调就少调 → C 标准库用<b>用户空间流缓冲区</b>减少系统调用次数（见考点84.3）。</li></ul>
+<span class="kp-sub">83.4 用户态/内核态判读</span>
+<table><tr><th>代码</th><th>执行位置</th><th>说明</th></tr><tr><td>C 标准 I/O 库函数：printf、scanf、fopen…</td><td>用户态</td><td>库函数本身在用户空间</td></tr><tr><td>系统调用封装函数：open、read、write…</td><td>用户态</td><td>封装代码 = 传送指令 + 陷阱指令</td></tr><tr><td>系统调用服务例程：sys_write…</td><td>内核态</td><td>陷阱指令之后，真正完成 I/O</td></tr></table>
+<ul><li><span class="em">保险写法</span>：封装函数在用户态执行；陷阱指令之后由内核执行服务例程（内核态），I/O 功能在内核实现。</li></ul>
+<span class="kp-sub">83.5 真题</span>
 <b>【2024.04·简答26】</b> 简述系统调用的开销非常高的原因。（6 分）<br>
 <b>答案：</b>①系统级 I/O 函数的功能通过执行内核中的系统调用服务例程来实现，在用户程序中每调用一次系统级 I/O 函数，就是进行一次系统调用（3 分）；②每次系统调用都有两次上下文切换：先从用户态切换到内核，处理结束后再从内核态返回到用户态（3 分）。<br>
 <b>【教材·第六章习题2/3/4/5】</b> 机器级代码结构；开销大原因；用户态/内核态判读。<br>
-83.6 易错<br>
+<span class="kp-sub">83.6 易错</span>
 <span class="callout err">完整链条背全：printf → write → 陷阱指令 → system_call → sys_write → 返回陷阱指令后一条指令。
 "系统调用处理程序（统一入口 system_call）"≠"系统调用服务例程（具体功能 sys_write）"。
 两次上下文切换 = 去内核 + 回用户，各算一次，答案写"两次"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点84</span><span class="kp-name">用户空间的 I/O 函数</span><span class="kp-level lv-A">A</span><span class="kp-freq">教材习题（大纲领会）</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">84.1 两类 I/O 函数的关系<br>
-<ul><li><b>C 标准 I/O 库函数</b>（文件类 fopen/fread/fwrite/fclose；控制台类 printf/scanf）——抽象层次<b>更高</b>；</li><li><b>系统级 I/O 函数</b>（open/read/write/close 等系统调用封装函数）——标准库<b>基于它实现</b>。</li><li>fopen 的实现思路：检查 mode 合法性 → 在 _iob 数组找空闲 FILE 项 → 按 mode 调 creat/open（"a"追加模式先 open，失败再 creat，然后 lseek 定位到文件尾）→ 填写 fd、cnt、base、flag → 返回 FILE 指针。</li></ul>
-84.2 标准库优缺点（简答模板）<br>
-<ul><li>优点：①程序<b>移植性</b>好（可在不同体系结构和操作系统平台运行）；②文件操作使用内存中的<b>文件缓冲区（流缓冲区）</b>，使系统调用以及 I/O 次数<b>显著减少</b>，提高执行效率。</li><li>缺点：①I/O 为<b>同步</b>操作——程序必须等待 I/O 真正完成后才能继续执行；②一些情况下不适合甚至无法使用（如 C 标准库不提供读取<b>文件元数据</b>的函数）；③网络编程容易造成缓冲区溢出等风险，也不提供文件加锁/解锁功能。</li></ul>
-84.3 流缓冲区的实现要点（getc 为例）<br>
-<ul><li>getc 宏：通常只需修改流缓冲区指针（cnt 减 1、ptr 加 1）并返回当前字符；只有当 cnt 减 1 后为负（缓冲区空）才调用 \_fillbuf 填充。</li><li>\_fillbuf：第一次调用时执行 read 系统调用，一次读入最多 <b>1024 字节</b>（BUFSIZ=1024）到缓冲区。</li><li>例6.1 对比：逐字符复制文件——直接用 read/write 每字符一次 → 共 <b>2n</b> 次系统调用；用 getc/putc（文件 &lt;1024B）→ read/write <b>各 1 次</b>。</li><li>意义：<span class="em">用流缓冲区把"多次小 I/O"合并成"少量大 I/O"，减少系统调用次数</span>（原因是系统调用开销高，见考点83）。</li></ul>
-84.4 真题/教材<br>
+<div class="kp-detail"><span class="kp-sub">84.1 两类 I/O 函数的关系</span>
+<table><tr><th>C 标准 I/O 库函数</th><th>系统级 I/O 函数</th></tr><tr><td>文件类 fopen/fread/fwrite/fclose；控制台类 printf/scanf</td><td>open/read/write/close 等系统调用封装函数</td></tr><tr><td>抽象层次更高，用 FILE 结构指针标识文件</td><td>标准库基于它实现，用文件描述符 fd 标识文件</td></tr></table>
+<ul><li>fopen 的实现思路：</li></ul>
+<span class="formula">检查 mode 合法性 → 在 _iob 数组找空闲 FILE 项 → 按 mode 调 creat/open
+→ 填写 fd、cnt、base、flag 等字段 → 返回 FILE 指针
+（"a" 追加模式：先 open，失败再 creat，然后 lseek 定位到文件尾）</span>
+<span class="kp-sub">84.2 标准库优缺点（简答模板）</span>
+<b>优点</b><br>
+<ul><li>程序<b>移植性</b>好：可在不同体系结构和操作系统平台运行。</li><li>文件操作用内存中的<b>文件缓冲区（流缓冲区）</b>：<span class="em">系统调用次数与 I/O 次数显著减少</span>。</li></ul>
+<b>缺点</b><br>
+<ul><li>I/O 是<b>同步</b>操作：程序必须等 I/O 真正完成才能继续执行。</li><li>覆盖面有限：如 <span class="em">C 标准库不提供读取文件元数据的函数</span>（要用 stat/fstat）。</li><li>网络编程易造成缓冲区溢出等风险；也不提供文件加锁/解锁功能。</li></ul>
+<span class="kp-sub">84.3 流缓冲区的实现要点（getc 为例）</span>
+<ul><li>getc 平时不访盘：只做 <span class="em">cnt 减 1、ptr 加 1</span>，返回当前字符。</li><li>只有当 cnt 减 1 后为负（缓冲区空），才调用 `_fillbuf` 填充。</li><li>`_fillbuf` 第一次调用执行 read 系统调用，一次读入最多 <b>1024 字节</b>（BUFSIZ=1024）。</li></ul>
+例6.1 对比（文件 &lt;1024B，逐字符复制）：<br>
+<table><tr><th>写法</th><th>系统调用次数</th></tr><tr><td>直接用 read/write</td><td>每个字符各一次 → 约 <span class="em">2n 次</span></td></tr><tr><td>用 getc/putc</td><td>read/write <span class="em">各 1 次</span></td></tr></table>
+<ul><li>意义：把"多次小 I/O"合并成"少量大 I/O"——原因是系统调用开销高（见考点83.3）。</li></ul>
+<span class="kp-sub">84.4 真题/教材</span>
 <b>【教材·第六章习题4】</b> C 标准 I/O 库函数在用户态执行（判读见考点83）。<br>
 <b>大纲"领会"</b>：C 标准库与系统级 I/O 函数的关系、fopen/getc 的实现方法、为何要减少系统调用次数。<br>
-84.5 易错<br>
+<span class="kp-sub">84.5 易错</span>
 <span class="callout err">"移植性好"是标准库优点；"减少系统调用"靠的是用户空间的流缓冲区（不是内核磁盘高速缓存）。
 系统级函数的文件标识是 fd（整数）；标准库函数的文件标识是 FILE 结构指针。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点85</span><span class="kp-name">系统级 I/O 函数与文件基本概念</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">85.1 一切皆文件<br>
-<ul><li>Linux/UNIX 中所有 I/O 操作都通过读/写文件实现：键盘=可读字节序列的输入设备文件，显示器=可写字节序列的输出设备文件，网络套接字=可读可写的输入输出设备文件；磁盘上的文件为<b>普通文件</b>。键盘+显示器合称<b>终端</b>，对应标准输入/标准输出文件。</li><li>按字节是否为可读 ASCII 码：<b>ASCII 文件（文本文件）</b>（由正文行组成、行以 '\n' 结束、每个字节一个字符）vs <b>二进制文件</b>（可重定位文件、可执行文件）。</li><li>文件操作：创建、打开、读/写、关闭。</li></ul>
-85.2 文件系统实现的功能（2025.04 简答26 模板）<br>
+<div class="kp-detail"><span class="kp-sub">85.1 一切皆文件</span>
+<ul><li><span class="em">一切皆文件</span>：Linux/UNIX 中所有 I/O 都通过读/写文件实现。</li><li>键盘 = 可读字节序列的输入设备文件；显示器 = 可写字节序列的输出设备文件；网络套接字 = 可读可写的输入输出设备文件。</li><li>磁盘上的文件称<b>普通文件</b>；键盘+显示器合称<b>终端</b>，对应标准输入/标准输出。</li><li><b>文本文件（ASCII 文件）</b>：由正文行组成，行以 '\n' 结束，每个字节一个字符。</li><li><b>二进制文件</b>：如可重定位文件、可执行文件。</li><li>文件基本操作：创建 → 打开 → 读/写 → 关闭。</li></ul>
+<span class="kp-sub">85.2 文件系统实现的功能（2025.04 简答26 模板）</span>
 <ul><li>一方面为上层用户和应用程序提供<b>文件抽象</b>以及文件的创建、打开、读/写和关闭等<b>所有操作接口</b>；</li><li>另一方面将抽象的文件标识（<b>文件名和文件描述符</b>）与<b>具体硬件设备</b>建立关联，并通过相应的<b>设备驱动程序</b>实现系统调用接口规定的操作。</li><li>（内核内部实现 VFS/inode/表结构见考点86。）</li></ul>
-85.3 文件操作五件事（基本概念）<br>
-<ul><li><b>创建 creat(name, perms)</b>：指定文件名与访问权限（9 位权限，如 0755=rwxr-xr-x）；成功返回文件描述符；文件已存在则<b>截断为 0</b>（不报错）。</li><li><b>打开 open(name, flags, perms)</b>：检查文件是否存在、有无访问权限，成功返回文件描述符 fd；每个进程创建时自动打开三个标准文件：<b>标准输入 0（stdin）、标准输出 1（stdout）、标准错误 2（stderr）</b>；flags 常用 O_RDONLY/O_WRONLY/O_RDWR/O_APPEND/O_CREAT/O_TRUNC。</li><li><b>设置读写位置 lseek(fd, offset, whence)</b>：whence 基准=SEEK_SET（文件开头）/SEEK_CUR（当前位置）/SEEK_END（文件末尾）；成功返回新位置相对文件开头的偏移量。</li><li><b>读 read(fd, buf, n)</b>：从当前读写位置 k 起读 n 字节到 buf，读后位置为 k+n；若 k+n&gt;m（文件长 m）实际读 m−k 字节；返回实际读取字节数；k=m（EOF）时返回 0。</li><li><b>写 write(fd, buf, n)</b>：把 buf 中 n 字节写到位置 k，写后位置 k+m（普通硬盘文件实际写入数 m=n）；出错返回 −1。</li><li><b>关闭 close(fd)</b>：通知系统不再操作该文件，释放相关数据结构存储区、回收文件描述符；进程终止时系统会关闭其所有打开文件。</li><li><span class="em">按一个物理块大小读/写可减少系统调用次数</span>（read/write 一次可读/写任意字节数）。</li></ul>
-85.4 系统级 I/O 函数速查表<br>
+<span class="kp-sub">85.3 文件操作五件事（基本概念）</span>
+<table><tr><th>操作</th><th>必背口径</th></tr><tr><td>creat(name, perms)</td><td>建文件并指定 9 位权限（0755=rwxr-xr-x）；成功返回 fd；<span class="em">文件已存在则截断为 0</span>（不报错）</td></tr><tr><td>open(name, flags, perms)</td><td>检查存在与权限，成功返回 fd；进程自动打开 0/1/2（stdin/stdout/stderr）→ 新 open 从 3 起；flags 常用 O_RDONLY/O_WRONLY/O_RDWR/O_APPEND/O_CREAT/O_TRUNC</td></tr><tr><td>lseek(fd, offset, whence)</td><td><span class="em">只调位置、不读不写</span>；基准 SEEK_SET/SEEK_CUR/SEEK_END；返回新位置相对文件开头的偏移量</td></tr><tr><td>read(fd, buf, n)</td><td>从位置 k 起读 n 字节；k+n&gt;m 时实际读 m−k；返回实际读取字节数；<span class="em">到 EOF 返回 0、出错返回 −1</span></td></tr><tr><td>write(fd, buf, n)</td><td>把 buf 中 n 字节写到位置 k；写后位置后移；普通硬盘文件实际写入 m=n；出错返回 −1</td></tr><tr><td>close(fd)</td><td>释放相关数据结构、回收 fd；<span class="em">进程终止时系统自动关闭其所有打开文件</span></td></tr></table>
+<ul><li><span class="em">按一个物理块大小读/写可减少系统调用次数</span>（read/write 一次可读/写任意字节数）。</li></ul>
+<span class="kp-sub">85.4 系统级 I/O 函数速查表</span>
 <table><tr><th>函数</th><th>功能</th></tr><tr><td>creat</td><td>创建文件</td></tr><tr><td>open</td><td>打开文件</td></tr><tr><td>read</td><td>读文件</td></tr><tr><td>write</td><td>写文件</td></tr><tr><td>lseek</td><td>调整文件的当前读/写位置</td></tr><tr><td>stat / fstat</td><td>查看文件元数据（stat 用文件路径，fstat 用文件描述符）</td></tr><tr><td>close</td><td>关闭文件</td></tr></table>
-85.5 缓冲区属性（单选/填空）<br>
-<ul><li><b>全缓冲</b>：即使遇到换行符也不写文件，只有当缓冲区满时才真正写入文件 fd——<span class="em">普通文件的缓冲区属性</span>；</li><li><b>行缓冲</b>：遇到换行符或者缓冲区满就写入 fd——终端设备（stdout）；</li><li><b>非缓冲</b>：直接写到 fd——stderr（每个字符直接写）。</li><li>标准文件属性：stdin 访问模式 _READ；stdout 行缓冲、stderr 非缓冲；三者流缓冲区初始 base/ptr/cnt 均为 0。</li></ul>
-85.6 真题<br>
+<span class="kp-sub">85.5 缓冲区属性（单选/填空）</span>
+<table><tr><th>缓冲类型</th><th>何时真正写入 fd</th><th>典型对象</th></tr><tr><td><b>全缓冲</b></td><td>缓冲区满才写（遇到换行符也不写）</td><td><span class="em">普通文件</span>（2024.10 单选10 答案）</td></tr><tr><td><b>行缓冲</b></td><td>遇到换行符或缓冲区满就写</td><td>终端设备（stdout）</td></tr><tr><td><b>非缓冲</b></td><td>每个字符直接写</td><td>stderr</td></tr></table>
+<ul><li>标准文件属性：stdin 访问模式 `_READ`；stdout 行缓冲、stderr 非缓冲。</li><li>三者流缓冲区初始 base/ptr/cnt 均为 0。</li></ul>
+<span class="kp-sub">85.6 真题</span>
 <b>【2024.04·单选10】</b> 需要调整文件的当前读/写位置，用到的函数是（　）<br>
 <ul><li>A. open</li><li>B. stat</li><li>C. lseek</li><li>D. write</li></ul>
 <b>答案：C</b><br>
@@ -2279,9 +2309,9 @@ LRU 能反映局部性、FIFO 不能——对比选择题高频。</span></div>
 <b>答案：A</b><br>
 <b>【2025.04·简答26】</b> 简述文件系统所实现的功能。<br>
 <b>答案：</b>（见 85.2）文件系统为上层的用户和应用程序提供文件抽象以及文件创建、打开、读/写和关闭等所有操作接口；另一方面，文件系统需要将抽象的文件标识与具体的硬件设备建立关联，并通过相应的设备驱动程序实现系统调用接口规定的操作。<br>
-85.7 名解候选<br>
+<span class="kp-sub">85.7 名解候选</span>
 文件描述符（由无符号整数表示的句柄，进程用于标识打开的文件）、文件元数据（文件名、大小、创建时间等文件属性信息，由操作系统内核维护）、文件系统。<br>
-85.8 易错<br>
+<span class="kp-sub">85.8 易错</span>
 <span class="callout err">fd 0/1/2 已被标准文件占用，open 新文件从 3 开始分配。
 lseek 只调位置不读写；返回"相对文件开头的偏移量"，不是绝对地址。
 EOF = 读写位置到达文件末尾（read 返回 0）的状态，不是文件里存的一个字符。
@@ -2289,34 +2319,59 @@ EOF = 读写位置到达文件末尾（read 返回 0）的状态，不是文件�
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点86</span><span class="kp-name">内核空间的 I/O 函数（例6.2）与文件的内核实现</span><span class="kp-level lv-B">B</span><span class="kp-freq">教材例题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">86.1 例6.2 完整解法<br>
+<div class="kp-detail"><span class="kp-sub">86.1 例6.2 完整解法</span>
 <ul><li>题：test.txt 内容为 4 个 ASCII 字符 "test"；程序两次 open 该文件（fd1、fd2），各 read 1 字节到 c，输出什么？</li><li>解：前 3 个文件描述符 0、1、2 已分配给自动打开的标准设备文件 stdin、stdout、stderr，open 从 3 开始分配 → <b>fd1=3、fd2=4</b>；</li><li>每次打开文件时 VFS 通过路径解析找到该文件的 inode，分配一个<b>系统文件表表项</b>并初始化：填入 inode 指针、打开模式，<b>当前读/写位置设为 0</b>；</li><li>fd1、fd2 对应<b>两个独立的系统文件表表项</b>，读写位置各自为 0，都指向 "test" 的字符 't' → 两次 read 读到的都是 't'。</li><li>输出：`fd1=3,fd2=4,c=t`。</li></ul>
-86.2 文件的内核数据结构（大纲"识记"）<br>
+<span class="kp-sub">86.2 文件的内核数据结构（大纲"识记"）</span>
 <table><tr><th>结构</th><th>内容</th><th>归属</th></tr><tr><td><b>inode 表</b></td><td>文件静态元数据：大小、所有者、权限、类型、数据寻址信息</td><td>所有进程共享</td></tr><tr><td><b>系统打开文件表</b></td><td>打开文件的动态信息：inode 指针、<b>当前读/写位置</b>、打开模式、引用计数</td><td>全系统共享</td></tr><tr><td><b>打开文件描述符表</b></td><td>每进程一张，索引就是 fd，表项指针指向系统打开文件表</td><td>进程私有</td></tr><tr><td>VFS 超级块</td><td>文件系统通用元数据（类型、版本等）</td><td>按文件系统</td></tr><tr><td>目录项</td><td>文件名 + 对应 inode 号</td><td>目录文件内</td></tr></table>
 <ul><li>查文件链条：<b>fd →（打开文件描述符表）→ 系统文件表项 → inode 指针 → inode 表项 → 数据寻址 → 读/写</b>。</li><li><b>虚拟文件系统 VFS</b>：在逻辑文件系统层（FAT/NTFS/Ext4）之上增加的一层抽象，用超级块、目录项、inode 等内存数据结构，为上层提供统一文件操作接口。</li><li><b>路径名</b>：绝对路径名（以 "/" 开头，从根目录查）vs 相对路径名（从当前工作目录查）。</li><li>关闭文件 close：释放本进程 fd 表项，系统文件表项<b>引用计数减 1</b>，减到 0 才真正释放。</li><li>设备文件：主设备号确定设备类型（指定设备驱动程序），次设备号指定具体设备；设备名与文件名形式无差别（统一抽象）。</li><li>名解候选：虚拟文件系统（VFS）、索引节点（inode）、inode 表、系统打开文件表、打开文件描述符表、目录项、目录文件、绝对/相对路径名。</li></ul>
-86.3 缓存层与通用块设备 I/O 层<br>
-<ul><li><b>缓存层（磁盘高速缓存）</b>：内核主存区中缓存最近访问的文件数据（高速缓存 RAM）；VFS 先查缓存，命中直接访问，不命中转逻辑文件系统→通用块设备层；通常采用<b>回写</b>策略（定期真正写入设备）；例：读 80B 数据触发读出所在的一个 4KB 磁盘逻辑块存入缓存。</li><li>read/write 的一次文件读写操作在<b>用户空间—内核空间—外存</b>之间有<b>两次复制传送</b>。</li><li><b>通用块设备 I/O 层</b>：为磁盘、SSD、光盘等块设备提供统一的抽象与统一的<b>逻辑块大小</b>；提供 <b>I/O 请求调度</b>功能（合并相邻请求、重排序降低寻道与旋转等待时间）。</li><li>名解候选：磁盘高速缓存、高速缓存 RAM、流缓冲区（"流"缓冲=FILE 结构描述的用户空间缓冲：base 起始位置、ptr 下一读写位置、cnt 剩余字节数）。</li></ul>
-86.4 打开文件与读文件的完整内核过程<br>
-<ul><li>open 路径：用户调用 open → 陷阱陷入内核 sys_open → VFS 路径解析→目录项→inode 号 → 分配 fd 与系统文件表项 → 返回 fd。</li><li>读文件（fread → read → sys_read）：设备无关层按 fd 找文件描述信息、确定设备驱动程序、按文件指针定位<b>逻辑块号</b>、查高速缓存判断是否需读盘 → 磁盘驱动程序中检查电机、逻辑块号转物理地址、初始化主存空间与 DMA 控制器 I/O 端口、发"启动 DMA 传送"命令 → 挂起当前进程 → DMA 结束中断服务程序解除阻塞、进程入就绪队列。</li></ul>
-86.5 易错<br>
+<span class="kp-sub">86.3 缓存层与通用块设备 I/O 层</span>
+<ul><li><b>缓存层（磁盘高速缓存）</b>：内核主存区中的高速缓存 RAM，缓存最近访问的文件数据。</li><li>访问流程：VFS 先查缓存 → 命中直接访问；不命中转逻辑文件系统 → 通用块设备层。</li><li>通常采用<b>回写</b>策略：数据修改后先留在缓存，之后再真正写入设备。</li><li>例：读 80B 数据 → 可能把包含它的整个 4KB 磁盘逻辑块读入缓存。</li><li>read/write 一次读写操作，在<b>用户空间—内核空间—外存</b>之间有<span class="em">两次复制传送</span>。</li></ul>
+两种"缓冲"别混：<br>
+<table><tr><th>用户空间流缓冲区</th><th>内核磁盘高速缓存</th></tr><tr><td>由 FILE 等用户空间结构管理</td><td>位于内核管理的主存区域</td></tr><tr><td>主要减少系统调用次数</td><td>主要减少实际设备访问、缓存文件数据</td></tr></table>
+<ul><li><b>通用块设备 I/O 层</b>：为磁盘、SSD、光盘等块设备提供统一抽象与统一逻辑块大小。</li><li>提供 <b>I/O 请求调度</b>：合并相邻请求、重排序，降低寻道与旋转等待时间。</li><li>名解候选：磁盘高速缓存、高速缓存 RAM、流缓冲区（base 起始位置、ptr 下一读写位置、cnt 剩余字节数）。</li></ul>
+<span class="kp-sub">86.4 打开文件与读文件的完整内核过程</span>
+<span class="formula">open 路径（用户调用 open → 陷阱陷入内核）
+sys_open → VFS 路径解析 → 查目录项/inode → 分配 fd 与系统文件表项 → 返回 fd</span>
+<span class="formula">读文件（fread → read → sys_read）
+按 fd 找文件描述信息 → 确定设备驱动程序 → 定位逻辑块号 → 查高速缓存
+未命中：磁盘驱动检查电机、逻辑块号转物理地址
+→ 初始化主存空间与 DMA 控制器 I/O 端口、发"启动 DMA 传送"命令
+→ 挂起当前进程 → DMA 结束中断服务程序解除阻塞、进程入就绪队列</span>
+<span class="kp-sub">86.5 易错</span>
 <span class="callout err">两次 open 同一文件 → 两个独立 fd 和两个独立读写位置（例6.2 输出 c=t 的原因）。
 fork 后子进程继承打开文件描述符表：父子栈指向同一系统文件表项（引用计数 2）——共享同一读写位置。
 fd 是"打开文件描述符表"的索引，不是 inode 号；inode 表全进程共享。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点87</span><span class="kp-name">设备驱动程序与三种 I/O 控制方式</span><span class="kp-level lv-S">S</span><span class="kp-freq">2024.04、2024.10、2025.10、2026.04、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">87.1 设备驱动程序 = 与设备相关的 I/O 软件<br>
-<ul><li>每个设备驱动程序只处理一种外设或一类紧密相关的外设；CPU 通过 <b>I/O 指令</b>访问设备控制器中的 I/O 端口（Linux 提供 readb/writeb 等抽象）。</li><li>设备驱动程序的实现方式与设备的 <b>I/O 控制方式</b>相关，主要有三种：<b>程序直接控制、中断控制、DMA 控制</b>（填空高频）。</li><li>设备驱动程序初始化时向操作系统<b>注册中断服务程序</b>，把中断号作为参数绑定（中断号制度见考点91、93）。</li></ul>
-87.2 程序直接控制 I/O 方式（查询/轮询）<br>
-<ul><li>基本思想：<b>直接通过查询程序来控制主机和外设的数据交换</b>（2024.04 填空20、2026.04 简答25 标准答案口径）。</li><li>流程（打印机例）：驱动程序先读打印机<b>状态端口</b>查是否就绪——未就绪则等待重查；就绪后把内核缓冲区一个字符送打印机<b>数据端口</b>，并向<b>控制端口</b>发"启动打印"命令；循环直到全部字符打印完。</li><li>特点：简单、易控制、控制电路简单；但 CPU <b>忙等待</b>（外设未就绪时反复查询），外设速度比 CPU 慢很多时浪费大量处理器时间；驱动程序与外设 I/O 完全串行，用户进程在 I/O 过程中<b>不被阻塞</b>。</li><li>适用：简单的或数据传输要求不高的场景。</li></ul>
-87.3 中断控制 I/O 方式（简答模板）<br>
-<ul><li>基本思想（教材原文口径）：进行 I/O 操作时，<b>先启动外设进行第一个数据的 I/O 操作</b>，然后<b>阻塞</b>请求 I/O 的用户进程，并<b>调度其他进程</b>到 CPU 上执行；期间外设在设备控制器控制下工作（<b>CPU 与外设并行</b>）；外设完成 I/O 后<b>向 CPU 发中断请求</b>；CPU 检测到后进行<b>上下文切换</b>，调出<b>中断服务程序</b>执行；中断服务程序<b>启动后续数据的 I/O 操作</b>，然后返回到被打断的进程继续执行。</li><li>中断服务程序（"字符打印"例）细节：先通知打印机控制器"中断已收到"、清除中断请求；再判断是否所有字符已打印完——是→把用户进程<b>解除阻塞、放入就绪队列</b>；否→向数据端口送下一个字符、启动打印、更新计数；最后返回。</li><li>进程状态常识：运行/就绪/阻塞；等待 I/O 完成的进程处于<b>阻塞态</b>（被挂起），解除阻塞后进入就绪队列。</li><li>适用：对响应速度要求较高且设备速度不是特别快的场景。</li></ul>
-87.4 DMA 控制 I/O 方式<br>
-<ul><li>基本思想：用专门的 <b>DMA 控制器</b>硬件直接控制外设和主存之间交换数据，<b>数据不经过 CPU</b>。</li><li>DMA 控制器寄存器：主存地址寄存器、设备地址寄存器、字计数器、控制寄存器等；传送前先做 <b>DMA 初始化</b>（写入数据个数、设备地址、主存首地址、传送方向）。</li><li>过程：DMA 初始化 → 发"启动 DMA 传送"命令 → CPU 阻塞用户进程、转去执行其他进程 → DMA 控制器控制外设与主存交换数据（每完成一个数据：字计数器减 1、更新主存地址，功能相当于用专用硬件执行 memcpy）→ 字计数器为 0 时向 CPU 发<b>"DMA 结束"中断请求</b> → 中断服务程序中解除用户进程阻塞、放入就绪队列 → 返回。</li><li>适用：高速 I/O 设备进行大规模数据传输（硬盘存取、图像处理）。</li><li>补充口径：DMA 不需要 CPU 执行指令来搬数据，但要占用<b>总线/存储器周期</b>（<b>周期挪用</b>），会与 CPU 访存争带宽（见考点94.7）；cache 命中率高时大部分带宽可让给 DMA。</li></ul>
-87.5 三种方式对比<br>
+<div class="kp-detail"><span class="kp-sub">87.1 设备驱动程序 = 与设备相关的 I/O 软件</span>
+<ul><li>每个设备驱动程序只处理<b>一种外设或一类紧密相关的外设</b>。</li><li>CPU 通过 <b>I/O 指令</b>访问设备控制器中的 I/O 端口（Linux 提供 readb/writeb 等抽象）。</li><li>驱动的实现方式取决于 <b>I/O 控制方式</b>，主要有三种：<b>程序直接控制、中断控制、DMA 控制</b>（填空高频）。</li><li>初始化时向操作系统<b>注册中断服务程序</b>，把中断号作为参数绑定（中断号制度见考点91、93）。</li><li>名解候选：设备驱动程序。</li></ul>
+<span class="kp-sub">87.2 程序直接控制 I/O 方式（查询/轮询）</span>
+<span class="callout ok">必背（真题答案口径）：直接通过查询程序来控制主机和外设的数据交换。</span>
+<span class="formula">读打印机状态端口 → 未就绪则反复查询 → 就绪后把内核缓冲区一个字符送数据端口
+→ 向控制端口发"启动打印"命令 → 循环直到全部字符打印完</span>
+<ul><li>优点：简单、易控制、控制电路简单。</li><li>缺点：<span class="em">CPU 忙等待</span>——外设未就绪时反复查询，外设比 CPU 慢很多时浪费大量处理器时间。</li><li>驱动与外设 I/O <b>完全串行</b>；用户进程在这场 I/O 中<span class="em">不被阻塞</span>。</li><li>适用：简单的、数据传输要求不高的场景。</li></ul>
+<span class="kp-sub">87.3 中断控制 I/O 方式（简答模板）</span>
+<span class="callout ok">必背链条（漏"第一个数据/后续数据"是典型丢分点）：启动第一个数据 → 阻塞进程 → 并行 → 中断 → 服务程序启动后续数据。</span>
+<span class="formula">① 启动外设，先做第一个数据的 I/O 操作
+② 阻塞请求 I/O 的用户进程，调度其他进程到 CPU 上执行
+③ 外设在设备控制器控制下工作，CPU 与外设并行
+④ 外设完成 I/O，向 CPU 发中断请求
+⑤ CPU 响应 → 调出中断服务程序：启动后续数据的 I/O 操作
+⑥ 全部数据完成后，解除用户进程阻塞，放入就绪队列</span>
+<ul><li>服务程序三步（打印机例）：① 通知控制器"中断已收到"、清除中断请求 → ② 判断是否全部完成（未完成：送下一个字符、启动打印、更新计数；完成：解除阻塞、入就绪队列）→ ③ 返回被打断的流程。</li><li>进程状态：等待 I/O 完成的进程处于<b>阻塞态</b>；解除阻塞后进<span class="em">就绪队列</span>（不保证立刻运行）。</li><li>适用：对响应速度要求较高、设备速度不是特别快的场景。</li></ul>
+<span class="kp-sub">87.4 DMA 控制 I/O 方式</span>
+<span class="callout ok">必背：用 DMA 控制器硬件直接控制外设与主存交换数据，<span class="em">数据不经过 CPU</span>。</span>
+<ul><li>DMA 控制器寄存器：主存地址寄存器、设备地址寄存器、字计数器、控制寄存器。</li><li>传送前先做 <b>DMA 初始化</b>：写入数据个数、设备地址、主存首地址、传送方向。</li></ul>
+<span class="formula">DMA 初始化 → 发"启动 DMA 传送"命令 → CPU 阻塞用户进程、转去执行其他进程
+→ DMA 控制器控制外设与主存交换数据（每传一个数据：字计数器−1、更新主存地址）
+→ 字计数器为 0 → 向 CPU 发"DMA 结束"中断请求
+→ 中断服务程序解除用户进程阻塞、放入就绪队列 → 返回</span>
+<ul><li>适用：高速 I/O 设备的大规模数据传输（硬盘存取、图像处理）。</li><li>补充口径：DMA 不执行指令搬数据，但要占<b>总线/存储器周期</b>（<b>周期挪用</b>），与 CPU 访存争带宽（见考点94.7）；cache 命中率高时大部分带宽可让给 DMA。</li></ul>
+<span class="kp-sub">87.5 三种方式对比</span>
 <table><tr><th>方式</th><th>数据通路</th><th>用户进程</th><th>适用场景</th></tr><tr><td>程序直接控制（查询）</td><td>设备↔（经 CPU）↔主存</td><td>不阻塞但 CPU 忙等待</td><td>简单/低速</td></tr><tr><td>中断控制</td><td>设备↔（经 CPU）↔主存</td><td>阻塞后调度其他进程</td><td>响应要求较高、设备不太快</td></tr><tr><td>DMA</td><td>设备↔主存（不经 CPU）</td><td>阻塞后调度其他进程</td><td>高速、大批数据</td></tr></table>
 <ul><li>2025.10 单选10：<b>主要由硬件控制外设和主存之间交换数据</b>的方式 → <b>DMA 方式</b>。</li><li>教材简答(9)：DMA 提高成批数据交换效率的原因——数据直接在设备与主存间传输、无需 CPU 介入，CPU 与 I/O 并行。</li><li>教材简答(10)：DMA 控制器在<b>数据块传输完毕</b>时发中断请求信号。</li></ul>
-87.6 真题<br>
+<span class="kp-sub">87.6 真题</span>
 <b>【2024.04·填空20】</b> 程序直接控制 I/O 方式的基本思想是直接通过＿＿来控制主机与外设的＿＿交换。<br>
 <b>答案：</b>查询程序、数据<br>
 <b>【2024.10·简答26】</b> 简述中断控制 I/O 方式的基本思想。<br>
@@ -2327,95 +2382,98 @@ fd 是"打开文件描述符表"的索引，不是 inode 号；inode 表全进�
 <b>【2026.04·简答25】</b> 简述程序直接控制 I/O 方式的基本思想。<br>
 <b>答案：</b>（见 87.2，与 2024.04 填空20 同源）<br>
 <b>【教材·第六章习题6/8】</b> 程序直接控制/中断控制 I/O 的原理；<b>【教材·第六章习题9/10】</b> DMA。<br>
-87.7 名解候选<br>
+<span class="kp-sub">87.7 名解候选</span>
 设备驱动程序、程序直接控制 I/O、中断控制 I/O、DMA 方式、DMA 控制器、就绪状态、I/O 控制方式。<br>
-87.8 易错<br>
+<span class="kp-sub">87.8 易错</span>
 <span class="callout err">中断控制 I/O 记忆链：启动第一个数据→阻塞进程→并行→中断→服务程序启动后续数据。漏掉"第一个数据""后续数据"是典型丢分点。
 "经过 CPU"三连：查询经过、中断经过、DMA 不经过。
 DMA 在"整个数据块传完"时才发中断，不是每传一个数据发一次。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点88</span><span class="kp-name">外设与总线</span><span class="kp-level lv-A">A</span><span class="kp-freq">2025.10、2026.04</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">88.1 设备的两种分类（填空）<br>
-<ul><li><b>字符设备</b>：以字符为单位向主机发送或接收字符流的设备；传送的字符流不能形成数据块，<b>无法定位和寻址</b>——大多数输入/输出设备（键盘、鼠标、显示器、打印机等）可看作字符设备。</li><li><b>块设备</b>：以一个<b>固定大小的数据块</b>为单位与主机交换信息；块大小通常在 <b>512B 以上</b>，按某种组织方式读/写、各数据块有唯一位置信息因而<b>可寻址</b>——典型：磁盘驱动器、固态硬盘等外部存储器。</li><li>分类目的：便于抽象不同设备的共同特点，尽可能划分出<b>与设备无关的 I/O 软件</b>部分（文件系统只处理抽象块设备，设备相关部分放到设备驱动程序实现）。</li></ul>
-88.2 输入/输出/机-机通信设备（单选高频）<br>
-<ul><li>输入设备：键盘、鼠标、触摸屏、跟踪球、控制杆、数字化仪、扫描仪、手写笔、光学字符阅读机等。</li><li>输出设备：显示器、打印机、绘图仪等。</li><li>机-机通信设备：网络接口、调制解调器、数/模与模/数转换器等（多可看作字符设备）。</li><li>2025.10 单选9：属于输入设备的是 → <b>鼠标</b>（绘图仪/显示器/打印机都是输出设备）。</li><li>2026.04 单选1：属于计算机 I/O 设备的是 → <b>显示器</b>（CPU、算术逻辑部件、内存都不是 I/O 设备）。</li><li>2026.04 单选9：属于输出设备的是 → <b>绘图仪</b>（扫描仪/数字化仪/控制杆都是输入设备）。</li></ul>
-88.3 三种总线（填空）<br>
-<ul><li>通常将总线分成三种：<b>处理器总线、存储器总线、I/O 总线</b>。</li><li>传统互连结构：CPU 与主存经<b>处理器总线（前端总线 FSB）+ 存储器总线</b>相连；各类 I/O 设备经相应设备控制器（USB 控制器、以太网卡、磁盘控制器）连到 <b>I/O 总线</b>；I/O 总线经芯片组与主存和 CPU 连接。</li><li>北桥 = <b>MCH（主存控制器集线器）</b>，本质是一个 DMA 控制器，可直接访问主存和显存；南桥 = <b>ICH（I/O 控制器集线器）</b>，集成 USB/磁盘/以太网控制器等。后期北桥功能集成进 CPU 芯片 → 变为"CPU+PCH"双芯片或"CPU+IOH+ICH"三芯片结构。</li><li>常用总线标准：处理器总线 FSB/QPI、存储器总线（DDR3 等）、I/O 总线 PCI-e（带宽计算见考点92）。</li><li>名解候选：外设、字符设备、块设备、处理器总线、存储器总线、I/O 总线。</li></ul>
-88.4 易错<br>
+<div class="kp-detail"><span class="kp-sub">88.1 设备的两种分类（填空）</span>
+<table><tr><th>类型</th><th>传输特点</th><th>典型设备</th></tr><tr><td><b>字符设备</b></td><td>以字符为单位收发字符流；流不能形成数据块，<span class="em">无法定位和寻址</span></td><td>键盘、鼠标、显示器、打印机</td></tr><tr><td><b>块设备</b></td><td>以固定大小的<b>数据块</b>为单位交换（块通常 ≥512B）；各块有唯一位置、<span class="em">可寻址</span></td><td>磁盘驱动器、固态硬盘</td></tr></table>
+<ul><li>分类目的：抽象不同设备的共同特点，把通用部分划进<b>与设备无关的 I/O 软件</b>（文件系统只处理抽象块设备），设备相关部分放到驱动程序实现。</li></ul>
+<span class="kp-sub">88.2 输入/输出/机-机通信设备（单选高频）</span>
+<table><tr><th>类别</th><th>必记例子</th></tr><tr><td>输入设备</td><td>键盘、鼠标、触摸屏、跟踪球、控制杆、数字化仪、扫描仪、手写笔、光学字符阅读机</td></tr><tr><td>输出设备</td><td>显示器、打印机、绘图仪</td></tr><tr><td>机-机通信设备</td><td>网络接口、调制解调器、数/模与模/数转换器（多可看作字符设备）</td></tr></table>
+真题（一句话答案）：<br>
+<ul><li>2025.10 单选9：属于输入设备的是 → <b>鼠标</b>（绘图仪/显示器/打印机都是输出设备）。</li><li>2026.04 单选1：属于计算机 I/O 设备的是 → <b>显示器</b>（CPU、算术逻辑部件、内存都不是 I/O 设备）。</li><li>2026.04 单选9：属于输出设备的是 → <b>绘图仪</b>（扫描仪/数字化仪/控制杆都是输入设备）。</li></ul>
+<span class="kp-sub">88.3 三种总线（填空）</span>
+<ul><li>总线分三种：<b>处理器总线、存储器总线、I/O 总线</b>。</li><li>传统互连结构：CPU 与主存经<b>处理器总线（前端总线 FSB）+ 存储器总线</b>相连；各类设备经设备控制器（USB 控制器、以太网卡、磁盘控制器）挂到 <b>I/O 总线</b>；I/O 总线经芯片组连回 CPU 和主存。</li><li>北桥 = <b>MCH（主存控制器集线器）</b>，本质是 DMA 控制器，可直接访问主存和显存；南桥 = <b>ICH（I/O 控制器集线器）</b>，集成 USB/磁盘/以太网控制器等。</li><li>后期北桥功能集成进 CPU → 变为"CPU+PCH"双芯片或"CPU+IOH+ICH"三芯片结构。</li><li>常用标准：处理器总线 FSB/QPI、存储器总线 DDR3 等、I/O 总线 PCI-e（带宽计算见考点92）。</li><li>名解候选：外设、字符设备、块设备、处理器总线、存储器总线、I/O 总线。</li></ul>
+<span class="kp-sub">88.4 易错</span>
 <span class="callout err">输入 vs 输出：鼠标/扫描仪/数字化仪/控制杆=输入；绘图仪/打印机/显示器=输出（2025.10、2026.04 连考）。
 北桥=MCH（主存控制器集线器、本质 DMA 控制器）；南桥=ICH（I/O 控制器集线器）——别对调。
 字符设备/块设备是操作系统为统一管理做的抽象，不是按硬件连接方式分。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点89</span><span class="kp-name">I/O 接口的职能与结构</span><span class="kp-level lv-A">A</span><span class="kp-freq">教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">89.1 四大职能（简答模板）<br>
-1. <b>数据缓冲</b>：外设速度低，在设备控制器中引入数据缓冲寄存器后——输出时 CPU 只需把数据送到缓冲寄存器即可，输入时 CPU 只需从缓冲寄存器取数即可；缓冲与外设交换数据期间 CPU 可执行其他任务。<br>
-2. <b>错误和就绪检测</b>：提供错误和就绪检测逻辑，结果保存在<b>状态寄存器</b>供 CPU 查用（如是否打印/显示完成、是否准备好输入数据、是否缺纸、磁盘数据校验是否正确等）。<br>
-3. <b>控制和定时</b>：接收主机侧送来的控制信息和定时信号，根据定时和控制逻辑向外设发送控制信号控制外设工作；控制信息存放在<b>控制（命令）寄存器</b>中。<br>
-4. <b>数据格式的转换</b>：提供数据格式转换部件（如串-并转换移位寄存器），把从外部接口接收的数据转换为内部接口所需格式，或反向转换。<br>
-89.2 名称、结构与位置<br>
-<ul><li>I/O 接口又称<b>设备控制器</b>、I/O 控制器、I/O 控制接口、I/O 模块；介于外设和 I/O 总线之间；可集成在主板上（ICH 芯片内）或以插卡形式插在 I/O 总线扩展槽上。</li><li>通用结构：含数据缓冲寄存器、状态/控制寄存器等若干寄存器（状态与控制信息传送方向相反、CPU 时间上交错访问它们，有些控制器将其合并为一个寄存器）；主机侧连 I/O 总线，外设侧提供连接器插座（USB、PS/2 等）。</li><li>设备控制器是连接外设和主机的"桥梁"：编写底层软件只需了解设备控制器（有哪些可访问寄存器、控制/状态寄存器每位的含义、与外设的通信协议），<b>无须了解外设的机械特性</b>。</li><li>名解候选：设备控制器（I/O 接口）、数据缓冲寄存器、状态寄存器、控制寄存器（命令寄存器）。</li></ul>
-89.3 易错<br>
+<div class="kp-detail"><span class="kp-sub">89.1 四大职能（简答模板）</span>
+<span class="callout tip">【记忆】缓冲、检测、控时、转换——数据缓冲 / 错误和就绪检测 / 控制和定时 / 数据格式转换。</span>
+<table><tr><th>职能</th><th>一句话</th><th>例子</th></tr><tr><td><b>数据缓冲</b></td><td>协调 CPU 与低速外设的速度差</td><td>输出：CPU 只需把数据送缓冲寄存器；输入：CPU 只需从缓冲寄存器取数</td></tr><tr><td><b>错误和就绪检测</b></td><td>结果存<b>状态寄存器</b>，供 CPU 查用</td><td>是否打印/显示完成、输入数据是否准备好、是否缺纸、磁盘校验是否正确</td></tr><tr><td><b>控制和定时</b></td><td>接收控制信息与定时信号，向外设发控制信号</td><td>控制信息存放在<b>控制（命令）寄存器</b></td></tr><tr><td><b>数据格式转换</b></td><td>外部接口格式 ↔ 内部接口格式</td><td>串-并转换移位寄存器</td></tr></table>
+<span class="kp-sub">89.2 名称、结构与位置</span>
+<ul><li>别名：<b>设备控制器</b>、I/O 控制器、I/O 控制接口、I/O 模块。</li><li>位置：<span class="em">介于外设和 I/O 总线之间</span>——可集成在主板上（ICH 芯片内），也可做成插卡插在 I/O 总线扩展槽。</li><li>通用结构：数据缓冲寄存器、状态/控制寄存器等；状态与控制信息传送方向相反、CPU 时间上交错访问（有的控制器合并成一个寄存器）。</li><li>主机侧连 I/O 总线；外设侧提供连接器插座（USB、PS/2 等）。</li><li>地位：连接外设和主机的"桥梁"——写底层软件只需了解控制器有哪些可访问寄存器、控制/状态寄存器每位的含义、与外设的通信协议，<span class="em">无须了解外设的机械特性</span>。</li><li>名解候选：设备控制器（I/O 接口）、数据缓冲寄存器、状态寄存器、控制寄存器（命令寄存器）。</li></ul>
+<span class="kp-sub">89.3 易错</span>
 <span class="callout err">I/O 接口（设备控制器，整体）≠ I/O 端口（控制器中的一个个寄存器）——名解/领会常考差别。
 四职能口诀：缓冲、检测、控时、转换。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点90</span><span class="kp-name">I/O 端口及其编址</span><span class="kp-level lv-S">S</span><span class="kp-freq">2025.04、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">90.1 统一编址（存储器映射）方式<br>
-<ul><li>I/O 端口与主存<b>共享同一地址空间</b>（主存地址空间分出一部分给 I/O 端口编号），按地址范围区分访问的是端口还是主存单元。</li><li><b>无须专门的 I/O 指令</b>——用一般的访存指令即可访问 I/O 端口，编程灵活性大增；保护机制可由<b>虚拟存储管理机制</b>实现。</li><li>缺点：I/O 端口占用一部分地址空间，可用的内存减少。</li><li>大多数 RISC 架构采用（RISC-V、MIPS：用 Load/Store 指令读写 I/O 端口）。</li><li>MIPS32 例：I/O 端口分配在 <b>kseg1</b> 区域（非映射、非缓存——保证 I/O 访问数据一致性；且上电时 MMU/cache 未工作也能访问；最高三位清零即得物理地址）。</li><li><b>2025.04 填空20</b>：因为 I/O 统一编址方式下 I/O 访问和主存访问共用同一组<b>指令</b>，所以其保护机制可由<b>虚拟存储</b>管理机制实现。</li></ul>
-90.2 独立编址方式<br>
-<ul><li>对所有 I/O 端口<b>单独编号</b>，成为与主存地址空间<b>独立</b>的 I/O 地址空间。</li><li>无法从地址码区分访问的是 I/O 端口还是主存单元 → 指令系统中必须有<b>专门的 I/O 指令</b>（地址码部分给出 I/O 端口号）；CPU 执行 I/O 指令产生 I/O 读/写总线事务。</li><li>优点：端口数远少于主存单元、地址译码逻辑较简单；专用 I/O 指令使程序结构清晰、可读性和可维护性好。缺点：I/O 指令往往只提供简单传输操作，编程灵活性差。</li><li>x86：I/O 地址空间共 <b>65536 个 8 位端口</b>（两个连续 8 位端口可看成 16 位端口）；专用指令 <b>in、ins、out、outs</b>；例：把 AL 中字符送到打印机数据缓冲寄存器（端口号 378H）。</li><li>名解候选：I/O 端口、数据端口、状态端口、控制端口、I/O 地址空间、存储器映射 I/O、I/O 指令、统一编址方式、独立编址方式。</li></ul>
-90.3 端口术语<br>
+<div class="kp-detail"><span class="kp-sub">90.1 统一编址（存储器映射）方式</span>
+<ul><li>做法：I/O 端口与主存<b>共享同一地址空间</b>（主存地址空间划出一部分给端口），<span class="em">按地址范围区分</span>访问的是端口还是主存单元。</li><li><b>无须专门的 I/O 指令</b>：用一般访存指令即可访问端口，编程灵活性大增；保护机制可由<b>虚拟存储管理机制</b>实现。</li><li>缺点：端口占用地址空间 → <span class="em">可供主存使用的地址范围减少</span>。</li><li>采用者：大多数 RISC 架构（RISC-V、MIPS 用 Load/Store 指令读写 I/O 端口）。</li><li>MIPS32 例：I/O 端口分配在 <b>kseg1</b> 区域（非映射、非缓存，保证 I/O 访问一致性；上电时 MMU/cache 未工作也能访问；最高三位清零即得物理地址）。</li><li><span class="em">2025.04 填空20</span>：统一编址下 I/O 访问和主存访问共用同一组<b>指令</b>，故其保护机制可由<b>虚拟存储</b>管理机制实现。</li></ul>
+<span class="kp-sub">90.2 独立编址方式</span>
+<ul><li>做法：所有 I/O 端口<b>单独编号</b>，形成与主存地址空间<b>独立</b>的 I/O 地址空间。</li><li>无法从地址码区分访问对象 → 指令系统必须有<b>专门的 I/O 指令</b>（地址码给出端口号）；执行 I/O 指令产生 I/O 读/写总线事务。</li><li>优点：端口数远少于主存单元 → 地址译码逻辑较简单；专用 I/O 指令使程序结构清晰、可读性和可维护性好。</li><li>缺点：I/O 指令往往只提供简单传输操作，编程灵活性差。</li><li>x86 例：I/O 地址空间共 <b>65536 个 8 位端口</b>（两个连续 8 位端口可组成 16 位端口）；专用指令 <b>in、ins、out、outs</b>；把 AL 中的字符送到打印机数据缓冲寄存器（端口号 378H）。</li><li>名解候选：I/O 端口、数据端口、状态端口、控制端口、I/O 地址空间、存储器映射 I/O、I/O 指令、统一编址方式、独立编址方式。</li></ul>
+<span class="kp-sub">90.3 端口术语</span>
 <ul><li>设备控制器中的数据缓冲寄存器简称<b>数据端口</b>；状态/控制寄存器简称<b>状态/控制端口</b>；所有 I/O 端口编号组成的空间称为 <b>I/O 地址空间</b>。</li></ul>
-90.4 真题/教材<br>
+<span class="kp-sub">90.4 真题/教材</span>
 <b>【2025.04·填空20】</b> 因为 I/O 统一编址方式下 I/O 访问和主存访问共用同一组＿＿，所以其保护机制可由＿＿管理机制实现。<br>
 <b>答案：</b>指令、虚拟存储<br>
 <b>【教材·第六章简答11】</b> I/O 端口编址方式有哪两种？各有何特点 → 见 90.1、90.2。<br>
 <b>【教材·第六章题10】</b> 采用独立编址方式必须为处理器设计哪些指令？如何区分访问 I/O 空间还是主存空间 → 设计专门的 I/O 指令（如 in/out）；执行 I/O 指令即访问 I/O 地址空间（产生 I/O 总线事务），否则访问主存空间。<br>
-90.5 易错<br>
+<span class="kp-sub">90.5 易错</span>
 <span class="callout err">"节约主存地址空间"的是独立编址；统一编址反而占用内存地址空间（可用内存减少）。
 统一编址关键词="共用指令→虚拟存储保护"；独立编址关键词="专用 I/O 指令 in/out"。
 I/O 端口在设备控制器里，不在 CPU 里。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点91</span><span class="kp-name">中断系统</span><span class="kp-level lv-S">S</span><span class="kp-freq">2025.10、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">91.1 基本功能（课件 4 项 + 教材第 5 项）<br>
-1. 及时<b>记录</b>各种中断请求——通常用<b>中断请求寄存器</b>记录；<br>
-2. <b>自动响应</b>中断请求——CPU 在"开中断"状态下，执行一条指令后自动检测中断请求引脚，有请求即响应；<br>
-3. 同时有多个中断请求时，能<b>自动选择并响应优先级最高</b>的中断请求；<br>
-4. 保护被打断程序的<b>断点和现场</b>；<br>
-5. （教材补充）通过<b>中断屏蔽</b>实现<b>多重中断的嵌套执行</b>。<br>
-<ul><li><b>断点 vs 现场</b>：断点=被打断程序将要执行的<b>下一条指令的地址</b>，由 <b>CPU</b> 保存；现场=被打断程序在断点处<b>各通用寄存器的内容</b>，由<b>中断服务程序</b>保存。<span class="em">别互换</span>。</li><li><b>中断屏蔽字</b>：每一位对应某个中断源，1=允许中断、0=不允许（屏蔽）；软件可执行指令修改屏蔽字，<b>动态改变中断处理的先后次序</b>；其作用是"暂停对某些中断的响应"（课件填空题口径）。屏蔽字寄存器是中断控制器中的一个 I/O 端口，由 CPU 用 I/O 指令设置。</li><li>开/关中断：中断响应时由硬件<b>关中断</b>（保护断点、现场期间不被打断）；恢复现场后开中断（通常由中断返回指令自动恢复中断使能位）。</li></ul>
-91.2 两种中断优先级（2025.10 填空20）<br>
-<ul><li><b>中断响应优先级</b>：由中断查询程序或中断判优电路决定——多个中断<b>同时请求</b>时<b>先响应</b>哪个；</li><li><b>中断处理优先级</b>：由各自的<b>中断屏蔽字动态设定</b>——决定本中断与其他中断之间的<b>处理</b>优先关系（谁能在处理中被谁打断）。</li><li><span class="em">记忆：响应优先级=硬件排队（谁先被响应）；处理优先级=屏蔽字说了算（谁能打断谁）。</span></li></ul>
-91.3 可编程中断控制器（PIC）与中断号<br>
-<ul><li>中断系统功能一般通过<b>可编程中断控制器 PIC</b> 实现：每个设备控制器一条 IRQ 线连到 PIC；PIC 把有效请求记录在中断请求寄存器对应位、对所有未屏蔽请求按优先级排队，通过 INTR 信号向 CPU 发中断请求；判优电路选出优先级最高的中断源并<b>编码得到中断号</b>（中断类型号）。</li><li>中断号标识中断源；驱动程序向操作系统注册中断服务程序并绑定中断号，CPU 响应后查询中断号、据此调出对应中断服务程序。</li><li>教材简答(12)：中断控制器把<b>中断类型号</b>放在 I/O 总线<b>数据线</b>上而不是地址线上——中断类型号是标识"中断原因/来源"的信息、需要从控制器传送给 CPU，属于"数据"；地址线只用于定位存储单元/端口。</li><li>名解候选：中断源、中断号（中断类型号）、中断请求寄存器、可编程中断控制器、中断屏蔽字、中断响应优先级、中断处理优先级、中断服务程序。</li></ul>
-91.4 真题<br>
+<div class="kp-detail"><span class="kp-sub">91.1 基本功能（课件 4 项 + 教材第 5 项）</span>
+1. <b>及时记录</b>各种中断请求——通常用<b>中断请求寄存器</b>记录。<br>
+2. <b>自动响应</b>中断请求——CPU 处于"开中断"状态时，每执行完一条指令自动检测中断请求引脚，有请求即响应。<br>
+3. <b>自动判优</b>——多个请求同时到时，自动选择并响应优先级最高者。<br>
+4. <b>保护断点和现场</b>——使被打断的程序能正确恢复执行。<br>
+5. <b>中断屏蔽</b>——通过屏蔽实现多重中断的嵌套执行（教材补充第 5 项）。<br>
+断点 vs 现场（<span class="em">别互换</span>）：<br>
+<table><tr><th>名词</th><th>含义</th><th>由谁保存</th></tr><tr><td><b>断点</b></td><td>被打断程序将要执行的<b>下一条指令的地址</b></td><td>CPU（中断响应时）</td></tr><tr><td><b>现场</b></td><td>被打断程序在断点处<b>各通用寄存器的内容</b></td><td>中断服务程序</td></tr></table>
+<ul><li><b>中断屏蔽字</b>：每一位对应一个中断源，<span class="em">1=允许中断、0=不允许（屏蔽）</span>（教材口径；个别硬件位定义相反，答题以题目约定为准）。</li><li>软件可用指令修改屏蔽字 → <b>动态改变中断处理的先后次序</b>；作用是"暂停对某些中断的响应"（课件填空口径）。</li><li>屏蔽字寄存器是中断控制器中的一个 I/O 端口，由 CPU 用 I/O 指令设置。</li><li>开/关中断：中断响应时由硬件<b>关中断</b>（保护断点、现场期间不被打断）；恢复现场后开中断（中断返回指令自动恢复中断使能位）。</li></ul>
+<span class="kp-sub">91.2 两种中断优先级（2025.10 填空20）</span>
+<table><tr><th>优先级</th><th>管什么</th><th>由什么决定</th></tr><tr><td><b>中断响应优先级</b></td><td>多个中断同时请求时<span class="em">先响应谁</span></td><td>中断查询程序或中断判优电路</td></tr><tr><td><b>中断处理优先级</b></td><td>处理中<span class="em">谁能打断谁</span></td><td>各自的<b>中断屏蔽字</b>动态设定</td></tr></table>
+<span class="kp-sub">91.3 可编程中断控制器（PIC）与中断号</span>
+<ul><li>中断系统功能一般通过<b>可编程中断控制器 PIC</b> 实现：每个设备控制器一条 IRQ 线连到 PIC。</li><li>PIC 把有效请求记录在<b>中断请求寄存器</b>对应位，对所有未屏蔽请求按优先级排队，通过 INTR 信号向 CPU 发中断请求。</li><li>判优电路选出优先级最高的中断源并<b>编码得到中断号（中断类型号）</b>；操作系统按中断号调出相应的中断服务程序。</li><li>教材简答(12)：中断类型号放在 I/O 总线<span class="em">数据线</span>上而不是地址线上——它是标识"中断原因/来源"的信息、需要从控制器传给 CPU，属"数据"；地址线只用于定位存储单元/端口。</li><li>名解候选：中断源、中断号（中断类型号）、中断请求寄存器、可编程中断控制器、中断屏蔽字、中断响应优先级、中断处理优先级、中断服务程序。</li></ul>
+<span class="kp-sub">91.4 真题</span>
 <b>【2025.10·填空20】</b> 中断系统中存在两种中断优先级，一种是＿＿优先级，另一种是＿＿优先级。<br>
 <b>答案：</b>中断响应、中断处理（顺序可对调）<br>
 <b>【教材·第六章习题12】</b> 中断类型号放数据线的原因。<br>
-91.5 易错<br>
+<span class="kp-sub">91.5 易错</span>
 <span class="callout err">断点由 CPU 保存（下条指令地址）、现场由中断服务程序保存（通用寄存器内容）——教材反复考。
 两种优先级别混：同时请求先响应谁=响应优先级；处理中谁能打断谁=处理优先级（屏蔽字动态设定）。
 CPU 只有在"开中断"状态下才会自动响应中断（且在执行完当前指令后检测）。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点92</span><span class="kp-name">总线性能计算（自建）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2025.04、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">92.1 通用口径（四概念）<br>
-<ul><li>传输速率：单位 <b>MT/s</b>（每秒传输多少兆次）；时钟频率：单位 MHz（习惯说"MHz"实际是时钟频率）。</li><li><b>工作频率 = 时钟频率 × 倍数</b>（默认 1；倍数=1 时传输速率数值＝工作频率＝时钟频率）。</li><li><b>总线带宽 = 工作频率 × 数据宽度[B]</b>。</li></ul>
-92.2 处理器总线（前端总线 FSB）<br>
+<div class="kp-detail"><span class="kp-sub">92.1 通用口径（四概念）</span>
+<ul><li>三个概念先分清：<b>时钟频率</b>（每秒多少时钟周期，MHz）、<b>数据传输率</b>（每秒实际传多少次，MT/s、GT/s）、<b>带宽</b>（每秒传多少数据量，MB/s、GB/s）。</li><li><b>工作频率 = 时钟频率 × 倍数</b>（默认 1；倍数=1 时传输速率数值＝工作频率＝时钟频率）。</li><li><b>总线带宽 = 工作频率 × 数据宽度[B]</b>。</li><li>单位对应：MHz × B → 数值即 <b>MB/s</b>；GHz × B → 数值即 <b>GB/s</b>；<span class="em">计算前先统一单位</span>。</li></ul>
+<span class="kp-sub">92.2 处理器总线（前端总线 FSB）</span>
 <ul><li>从 Pentium Pro 起 FSB 采用 <b>4 倍并发</b>（Quad Pumped）技术：每个总线时钟周期传 4 次数据 → 数据传输速率 = 时钟频率 × 4。</li><li>例：时钟频率 333MHz → 数据传输速率 1333MT/s（1.333GT/s，习惯称"1333MHz"）。</li><li><b>2025.04 计算28(1)</b>：333MHz×4 = <b>1332MHz</b>（或习惯写 1333MHz）；带宽 = 1332MHz（或 1333MHz）× 64 位/8 = <b>10.656GB/s</b>（或 10.664GB/s）。</li><li>教材题7 同款：工作频率 1333MHz、64 位 → 带宽 = 1333 × 8 = <b>10.664GB/s</b>。</li></ul>
-92.3 QPI 总线<br>
+<span class="kp-sub">92.3 QPI 总线</span>
 <ul><li>20 条数据线；每次传输 20 位数据中<b>有效数据 16 位</b>，其余 4 位用于循环冗余校验（CRC）；<b>双向</b>（发送的同时可接收），每个时钟周期传 2 次数据。</li><li><b>速度 = 时钟频率 × 2</b>（单位 GT/s，也称 QPI 工作频率）。</li><li>总带宽公式：<b>总带宽 = 每秒传输次数 × 每次传输的有效数据[B] × 2</b>。</li><li><b>2025.04 计算28(2)</b>：2.4GHz × 2 = <b>4.8GT/s</b>（工作频率 4.8GT/s）；总带宽 = 4.8GT/s × 16位/8 × 2 = <b>19.2GB/s</b>。</li><li>教材题8：QPI 频率 6.4GT/s 时总带宽 = 6.4 × 2B × 2 = <b>25.6GB/s</b>。</li></ul>
-92.4 存储器总线<br>
+<span class="kp-sub">92.4 存储器总线</span>
 <ul><li>带宽 = 传输速率(MT/s) × 数据宽度[B]；<b>总带宽 = 总线带宽 × 通道数</b>；DDR 在时钟上升/下降沿各传一次（533MHz × 2 = 1066MT/s）。</li><li>教材题7：DDR3-1333——1333MT/s × 64位/8 = 10.664GB/s，3 通道总带宽 = <b>31.992GB/s</b>；DDR3-1066——1066 × 8 = 8.528GB/s，×3 = <b>25.584GB/s</b>（教材图口径 1066M×8B=8.5GB/s、×3≈25.6GB/s）。</li></ul>
-92.5 I/O 总线（PCI-e）——串行、带编码<br>
+<span class="kp-sub">92.5 I/O 总线（PCI-e）——串行、带编码</span>
 <ul><li>PCI-e×n = 具有 n 个通路的链路；1.0/2.0 用 <b>8b/10b 编码</b>（每 8 位数据编码成 10 位，有效率 8/10）；3.0/4.0/5.0 用 128b/130b。</li><li>总带宽公式：<b>总带宽 = 速率 × 2（双方向）× 编码效率 × 1/8（bit→B）</b>。</li><li>PCI-e 1.0（单通路各方向 2.5Gb/s）：2.5 × 2 × 8/10 × 1/8 = <b>0.5GB/s</b>/通路 → ×8 = <b>4GB/s</b>，×16 = <b>8GB/s</b>，×32 = <b>16GB/s</b>（教材题9：×8、×32 两问；也可用比例法 4×4=16）。</li><li>PCI-e 3.0（8Gb/s）：8 × 2 × 128/130 × 1/8 ≈ <b>1.969GB/s</b>/通路。</li></ul>
-92.6 真题<br>
+<span class="kp-sub">92.6 真题</span>
 <b>【2025.04·计算28】</b> (1) 前端总线（FSB）时钟频率为 333MHz，采用 4 倍并发技术传输数据，总线数据宽度 64 位，则工作频率和总线带宽各为多少？(2) QPI 总线时钟频率 2.4GHz，每时钟周期传输 2 次数据，有效数据位 16 位，则其速度是多少 GT/s？工作频率和总带宽各是多少？（教材第六章题 7、8 各取一半的原题；解答见 92.2、92.3）<br>
 <b>【教材·第六章题7/8/9】</b> FSB、QPI、PCI-e 全套（见上）。<br>
-92.7 易错<br>
+<span class="kp-sub">92.7 易错</span>
 <span class="callout err">QPI 别忘"×2 双向"：4.8GT/s × 2B × 2；用"16 位有效数据"=2B，不是 20 位。
 PCI-e 的 8b/10b 写成"×8/10"，最后还要 ×1/8 把 bit 换成 byte。
 存储器总线"总带宽"=单通道带宽 × 通道数；DDR 的 ×2 已体现在 MT/s（533MHz→1066MT/s）里，别重复乘。
@@ -2423,48 +2481,55 @@ FSB 的 4 倍并发：333MHz×4=1332MHz（习惯 1333MHz）——两种写法阅
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点93</span><span class="kp-name">中断服务程序与多重中断（自建）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2026.04、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">93.1 中断过程两阶段<br>
-<ul><li><b>中断响应</b>（完全由<b>硬件</b>完成）：关中断 → 保存断点 → 跳转到预先设定的中断服务程序，进入中断处理阶段。（教材 4.5.4 节写作“保护断点→关中断→识别”，两节顺序表述略有出入，三步写全即可——见考点66.3。）</li><li><b>中断处理</b>：执行中断服务程序（软件）。</li></ul>
-93.2 中断服务程序三阶段（2026.04 填空20）<br>
+<div class="kp-detail"><span class="kp-sub">93.1 中断过程两阶段</span>
+<ul><li><b>中断响应阶段（完全由硬件完成）</b>：关中断 → 保存断点 → 转入预先设定的中断服务程序。</li><li><b>中断处理阶段（软件）</b>：执行中断服务程序，完成设备相关处理。</li><li>（教材 4.5.4 节写作"保护断点→关中断→识别"，6.4 节写作"关中断→保存断点"，顺序略有出入；考试三步写全即可，见考点66.3。）</li></ul>
+<span class="kp-sub">93.2 中断服务程序三阶段（2026.04 填空20）</span>
 <table><tr><th>阶段</th><th>主要工作</th></tr><tr><td><b>准备阶段</b></td><td>把寄存器<b>现场保存到栈</b>上；按需（要响应新中断时）：①保存当前中断屏蔽字 ②设置新屏蔽字（指定处理阶段允许响应哪些中断源）③开中断——不需要响应新中断时可省略这三步</td></tr><tr><td><b>处理阶段</b></td><td>从中断控制器读出<b>中断号</b> → 按中断号查询并调用相应中断服务：先通知设备"中断已收到"、清除中断请求，再按设备具体功能处理（与设备紧密相关，通常作为设备驱动程序的一部分注册）</td></tr><tr><td><b>恢复阶段</b></td><td><b>关中断</b>、恢复现场和旧屏蔽字，最后执行<b>中断返回指令</b>（同时自动恢复处理器的中断使能位）</td></tr></table>
 <ul><li><span class="em">填空口径：三阶段 = 准备、处理、恢复</span>（不要写成"结束"）。</li></ul>
-93.3 多重中断（中断嵌套）<br>
-<ul><li>定义：中断处理过程中若到来<b>优先级更高</b>的新中断请求，CPU 立即暂停当前中断服务程序、转去处理新中断——称为<b>多重中断</b>或<b>中断嵌套</b>。</li><li>实现依靠<b>栈</b>：中断响应时把断点和程序状态字 PSW 压栈；中断返回从<b>栈顶</b>取断点——后进先出。</li><li>嵌套条件：当前中断服务程序所设置的<b>屏蔽字</b>对新中断"开放"（对应屏蔽位允许响应）。</li><li>图6.18 链条：用户进程执行中 → 1# 中断（断点 K1+1、PSW1 压栈）→ 处理中 2# 中断（K2+1、PSW2 压栈）→ 2# 处理中 3# 中断 → 3# 返回<b>先回到 2# 的断点</b>（不是回到 1# 或用户进程）→ 依次回到 1#、用户进程。</li></ul>
-93.4 关中断的时机（教材简答(7)）<br>
-<ul><li>为什么保护现场和恢复现场的过程中必须<b>关中断</b>：若允许中断，新中断会打断正在进行的现场保护/恢复，导致<b>现场状态不一致</b>甚至错误；关中断可确保恢复现场之前不会有其他中断打断处理过程。</li><li>时机归纳：中断响应阶段硬件关中断；准备阶段按需开中断（允许嵌套）；恢复阶段先关中断、恢复完再（经中断返回指令）开中断。</li><li>名解候选：多重中断、中断嵌套、断点保护、现场保护、（中断）响应与处理过程。</li></ul>
-93.5 真题<br>
+<span class="kp-sub">93.3 多重中断（中断嵌套）</span>
+<ul><li>定义：中断处理过程中来了<b>优先级更高</b>且允许响应的新中断，CPU 暂停当前中断服务程序、转去处理新中断——称<b>多重中断</b>或<b>中断嵌套</b>。</li><li>实现依靠<b>栈</b>：中断响应时把<b>断点和程序状态字 PSW</b> 压栈；返回时从栈顶取断点——<span class="em">后进先出</span>。</li><li>嵌套条件：当前中断服务程序所设置的<b>屏蔽字</b>对新中断"开放"（对应屏蔽位允许响应）。</li></ul>
+<span class="formula">用户进程 → 1# 中断（断点 K1+1、PSW1 压栈）
+→ 处理中 2# 中断（K2+1、PSW2 压栈）→ 处理中又被 3# 中断
+→ 3# 返回先回到 2# 的断点 → 再依次回到 1#、用户进程</span>
+<span class="kp-sub">93.4 关中断的时机（教材简答(7)）</span>
+<ul><li>为什么保护现场和恢复现场时必须<b>关中断</b>：若允许中断，新中断会打断正在进行的现场保护/恢复 → <span class="em">现场状态不一致甚至出错</span>。</li><li>时机归纳：</li></ul>
+<span class="formula">中断响应阶段：硬件关中断
+准备阶段：按需开中断（允许嵌套）
+恢复阶段：先关中断 → 恢复现场 → 中断返回（自动恢复中断使能位）</span>
+<ul><li>名解候选：多重中断、中断嵌套、断点保护、现场保护、（中断）响应与处理过程。</li></ul>
+<span class="kp-sub">93.5 真题</span>
 <b>【2026.04·填空20】</b> 中断服务程序包含三个阶段：准备阶段、＿＿阶段和＿＿阶段。<br>
 <b>答案：</b>处理、恢复<br>
 <b>【教材·第六章习题7】</b> 保护/恢复现场过程中必须关中断的原因。<br>
-93.6 易错<br>
+<span class="kp-sub">93.6 易错</span>
 <span class="callout err">三阶段=准备/处理/恢复；"恢复阶段"的工作与准备阶段相反——写"结束阶段"不得分。
 断点+PSW 由硬件在中断响应时压栈；现场寄存器由中断服务程序在准备阶段保存——分工别混。
 中断返回指令自动恢复中断使能位；嵌套时按栈后进先出返回，先回"最新的断点"。</span></div>
 </div>
 <div class="kp">
 <div class="kp-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleKp(this)"><span class="kp-num">考点94</span><span class="kp-name">中断/DMA 开销计算（自建）</span><span class="kp-level lv-S">S</span><span class="kp-freq">2026.04、教材习题</span><span class="kp-arrow">▼</span></div>
-<div class="kp-detail">94.1 计算框架（大纲"简单应用"：三种方式 CPU 开销比较）<br>
+<div class="kp-detail"><span class="kp-sub">94.1 计算框架（大纲"简单应用"：三种方式 CPU 开销比较）</span>
 <span class="formula">中断间隔 t = 缓存器容量（折算成字节）÷ 数据传输率
 每次中断开销 T = 中断响应与处理周期数 ÷ CPU 主频
 I/O 服务占用率 = T ÷ t（传送期间的占比）
 若设备只有一部分时间在传送：平均占用率 =（T ÷ t）× 设备工作时间占比</span>
 <ul><li>判断能否用中断方式：<b>每次中断开销远小于中断间隔</b>才可以；T≥t 时 CPU 被 I/O 拖垮。</li><li>三种方式开销口径：程序查询方式 CPU 用于 I/O 的时间为 <b>100%</b>（忙等待）；中断方式外设准备数据期间 CPU 可执行其他进程，只有当设备效率很低时才能大幅降低 CPU 的 I/O 开销；DMA 方式 CPU 只在初始化和"结束中断"时介入。</li></ul>
-94.2 例6.3（中断方式，硬盘）<br>
+<span class="kp-sub">94.2 例6.3（中断方式，硬盘）</span>
 <ul><li>设定：32 位单核 CPU 3GHz；硬盘传输带宽 128MB/s；控制器中 512B 数据缓存；中断方式每次传 512B；CPU 从 I/O 端口读一个字需 24 个时钟周期；系统调用开销 3µs、阻塞/调度 1.5µs、中断响应并调出服务程序 0.5µs、唤醒返回 3µs。</li><li>单次中断数据处理时间：512B ÷ 128MB/s = <b>4µs</b>；</li><li>读 512B 数据：512B ÷ 4B/字 × 24 周期 = 3072 周期 = 3072 ÷ 3GHz = <b>1µs</b>；</li><li>一轮 4KB = 8 次中断，每轮 = 3 + (4+0.5+1)×8 + 3 = <b>50µs</b>；</li><li>硬盘工作时间占比 = 4×8 ÷ 50 = <b>64%</b> → 实际数据传输率 = 128 × 64% = <b>81.92MB/s</b>；</li><li>进程 B 时间占比 = (4−1.5)×8 ÷ 50 = <b>40%</b>。</li></ul>
-94.3 例6.4（DMA 方式）<br>
+<span class="kp-sub">94.3 例6.4（DMA 方式）</span>
 <ul><li>每次 4KB：传 4KB = 4KB ÷ 128MB/s = 32µs；一轮 = 3 + 32 + 0.5 + 3 = <b>38.5µs</b>；硬盘占比 = 32/38.5 = <b>83.12%</b> → 实际传输率 106.39MB/s；B 占比 = 30.5/38.5 = <b>79.22%</b>。</li><li>每次 32KB：传 32KB = 256µs；一轮 = 3 + 256 + 0.5 + 3 = <b>262.5µs</b>；占比 = 97.52% → 实际传输率 124.83MB/s；B 占比 = 254.5/262.5 = <b>96.95%</b>。</li><li>对比结论：DMA 比中断方式硬盘实际传输率提升约 29.88%，B 占比达约 1.98 倍——高速外设不适合中断方式（中断频繁、开销大），适合 DMA。</li></ul>
-94.4 教材题13（打印机）<br>
+<span class="kp-sub">94.4 教材题13（打印机）</span>
 <ul><li>6 页/min × 50 行 × 80 字符 = 24000 字符/min = <b>400 字符/s</b> → 中断间隔 = 1/400 s = <b>2.5ms</b>；</li><li>每次中断响应+处理 = 1000 周期 ÷ 500MHz = <b>2µs</b> ≪ 2.5ms → <b>可以采用</b>中断控制方式（占用率约 0.08%）。</li></ul>
-94.5 教材题14（16 位缓存器外设）<br>
+<span class="kp-sub">94.5 教材题14（16 位缓存器外设）</span>
 <ul><li>16 位缓存器 = <b>2B</b>；</li><li>20KB/s：中断间隔 = 2B ÷ 20KB/s = <b>100µs</b>，开销 = 500 周期 ÷ 500MHz = <b>1µs</b> → 1% ≪ 100%，<b>可以</b>用中断方式；</li><li>2MB/s：中断间隔 = 2B ÷ 2MB/s = <b>1µs</b> = 开销 → 占用率 100%，<b>不可以</b>（CPU 全部耗在 I/O 上）。</li></ul>
-94.6 2026.04 分析设计29（中断主机占用率）<br>
+<span class="kp-sub">94.6 2026.04 分析设计29（中断主机占用率）</span>
 <ul><li>题：500MHz 主频；磁盘控制器 16B 数据缓存；磁盘传输速率 4MB/s；中断方式每次传送开销 500 个时钟周期；硬盘仅用 5% 的时间进行传送；求主机占用率。</li><li>中断间隔 = 16B ÷ 4MB/s = <b>4µs</b>；每次开销 = 500 ÷ 500MHz = <b>1µs</b>（1µs&lt;4µs，数据不会丢失）；</li><li>传送期间占用率 = 1/4 = 25%；硬盘只在 5% 时间传送 → 主机占用率 = 25% × 5% = <b>1.25%</b>。</li></ul>
-94.7 教材题15（DMA 传送对指令速度的影响）<br>
+<span class="kp-sub">94.7 教材题15（DMA 传送对指令速度的影响）</span>
 <ul><li>磁盘数据传输率 = 16 扇区 × 512B ÷ 8.192ms = <b>1MB/s</b>；</li><li>DMA 每次传 16 位 = 2B → 每秒需 0.5M 次，每次占一个总线周期（250ns）→ 总线被 DMA 占用 = 0.5M × 250ns = <b>12.5%</b>；</li><li>指令执行速度降低 <b>12.5%</b>。</li></ul>
-94.8 真题<br>
+<span class="kp-sub">94.8 真题</span>
 <b>【2026.04·分析设计29】</b> 设处理器按 500MHz 主频执行，磁盘控制器中有一个 16B 的数据缓存器，磁盘传输速率为 4MB/s；要求在磁盘传输数据过程中没有任何数据被错过，并假定 CPU 访存和 DMA 访存没有冲突。若用中断方式，每次传送的开销（包括中断响应和处理的时间）是 500 个时钟周期；如果硬盘仅用 5% 的时间进行传送，请分析处理器用在硬盘 I/O 操作上所花的时间百分比（主机占用率）。（解答见 94.6）<br>
 <b>【教材·第六章题13/14/15】</b> 中断/DMA 开销计算（例 6.3、6.4 为教材例题）。<br>
-94.9 易错<br>
+<span class="kp-sub">94.9 易错</span>
 <span class="callout err">先统一单位：MB/s ↔ B/µs（1MB/s = 1B/µs）；ms、µs、ns 别混用。
 "16 位缓存器"=2B，"16B 缓存器"=16B——看清"位"和"B"（题14 与 2026.04 就是这对易混设定）。
 "传送期间占用率"与"平均占用率"差一个设备工作时间占比（2026.04 要再乘 5%）。

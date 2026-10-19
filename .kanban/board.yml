@@ -1,0 +1,6 @@
+# Wekan Board Configuration
+# 多项目共用看板：board_id 共享，swimlane_id 隔离项目
+# swimlane_id 由 setup_board.py 自动填入
+board_id: ""
+swimlane_id: ""
+swimlane_name: "080901-mindmap"

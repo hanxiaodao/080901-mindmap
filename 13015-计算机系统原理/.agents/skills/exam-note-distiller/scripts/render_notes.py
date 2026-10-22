@@ -231,7 +231,12 @@ def build_chapters(chapters):
                  f'<span class="arrow">▼</span></div>')
         body = ['<div class="ch-body">']
         if ch['intro']:
-            body.append('<div class="ch-intro">' + render_body(ch['intro']) + '</div>')
+            # 「高频公式/高频易错」总览专题整章收进「速记图 PDF」：给章导语加 speedmap 标记，
+            # 收集逻辑在模板 exportSpeedmaps（凡带 .speedmap 的元素按章汇编，见模板头部注释）
+            cls = 'ch-intro'
+            if any(k in ch['title'] for k in ('高频公式', '高频易错')):
+                cls += ' speedmap'
+            body.append(f'<div class="{cls}">' + render_body(ch['intro']) + '</div>')
         for kp in ch['kps']:
             m = re.match(r'^考点(\d+)[：:]\s*(.*)$', kp['title'])
             num, name = (f'考点{m.group(1)}', m.group(2)) if m else ('', kp['title'])

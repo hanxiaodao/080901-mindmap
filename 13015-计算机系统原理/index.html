@@ -66,9 +66,9 @@ function expandAllForExport(){var st={theme:document.documentElement.getAttribut
 function restoreAfterExport(st){if(!st)return;document.documentElement.setAttribute('data-theme',st.theme);st.opens.forEach(function(p){p[0].classList.toggle('open',p[1])});st.disp.forEach(function(p){p[0].style.display=p[1]})}
 function exportPDF(){var st=expandAllForExport();showToast('已展开全部内容。请在打印对话框中，将目标打印机选为「另存为 PDF」',8000);window.addEventListener('afterprint',function onDone(){window.removeEventListener('afterprint',onDone);restoreAfterExport(st);hideToast()});setTimeout(function(){window.print()},350)}
 /* ── 速记图打印（导出菜单「速记图 PDF」）：收集所有带 .speedmap 标记的速记图（```tree 块由渲染脚本自动加标记，
-   其他形式的速记图手动加 class="speedmap"），按章汇编成打印视图——修改/新增速记图内容无需改这里 ── */
-function buildSpeedmapView(){var groups=[];[].forEach.call(document.querySelectorAll('.ch'),function(ch){var maps=ch.querySelectorAll('.speedmap');if(maps.length)groups.push([ch,[].slice.call(maps)])});if(!groups.length)return null;var view=document.createElement('div');view.id='speedmapView';var h1=document.querySelector('header h1'),head=document.createElement('div');head.className='sm-head';var smName=h1?h1.textContent.trim().replace(/\s*·\s*考点笔记$/,''):'';head.textContent=(smName||'考点笔记')+' · 章节速记图（共 '+groups.length+' 章）';view.appendChild(head);groups.forEach(function(g){var box=g[0].cloneNode(false);box.classList.add('sm-ch');var title=g[0].querySelector('.ch-title');if(title){var t=title.cloneNode(true);[].forEach.call(t.querySelectorAll('.badge,.arrow'),function(b){b.parentNode.removeChild(b)});box.appendChild(t)}var body=document.createElement('div');body.className='sm-body';g[1].forEach(function(m){body.appendChild(m.cloneNode(true))});box.appendChild(body);view.appendChild(box)});return view}
-function exportSpeedmaps(){var view=buildSpeedmapView();if(!view){showToast('本页暂无可打印的速记图',4000);return}var prevTheme=document.documentElement.getAttribute('data-theme');document.documentElement.setAttribute('data-theme','light');document.body.appendChild(view);document.body.classList.add('printing-speedmaps');showToast('已将 '+view.querySelectorAll('.sm-ch').length+' 章速记图汇编为打印视图。请在打印对话框中选择「另存为 PDF」或打印机',8000);window.addEventListener('afterprint',function onDone(){window.removeEventListener('afterprint',onDone);document.body.classList.remove('printing-speedmaps');if(view.parentNode)view.parentNode.removeChild(view);document.documentElement.setAttribute('data-theme',prevTheme);hideToast()});setTimeout(function(){window.print()},350)}
+   渲染脚本还给「高频公式/高频易错」总览专题的章导语整块加标记；其他形式的速记图手动加 class="speedmap"），按章汇编成打印视图——修改/新增速记图内容无需改这里 ── */
+function buildSpeedmapView(){var groups=[];[].forEach.call(document.querySelectorAll('.ch'),function(ch){var maps=ch.querySelectorAll('.speedmap');if(maps.length)groups.push([ch,[].slice.call(maps)])});if(!groups.length)return null;var view=document.createElement('div');view.id='speedmapView';var h1=document.querySelector('header h1'),head=document.createElement('div');head.className='sm-head';var smName=h1?h1.textContent.trim().replace(/\s*·\s*考点笔记$/,''):'';head.textContent=(smName||'考点笔记')+' · 速记图汇编（共 '+groups.length+' 部分）';view.appendChild(head);groups.forEach(function(g){var box=g[0].cloneNode(false);box.classList.add('sm-ch');var title=g[0].querySelector('.ch-title');if(title){var t=title.cloneNode(true);[].forEach.call(t.querySelectorAll('.badge,.arrow'),function(b){b.parentNode.removeChild(b)});box.appendChild(t)}var body=document.createElement('div');body.className='sm-body';g[1].forEach(function(m){body.appendChild(m.cloneNode(true))});box.appendChild(body);view.appendChild(box)});return view}
+function exportSpeedmaps(){var view=buildSpeedmapView();if(!view){showToast('本页暂无可打印的速记图',4000);return}var prevTheme=document.documentElement.getAttribute('data-theme');document.documentElement.setAttribute('data-theme','light');document.body.appendChild(view);document.body.classList.add('printing-speedmaps');showToast('已将 '+view.querySelectorAll('.sm-ch').length+' 部分速记图汇编为打印视图。请在打印对话框中选择「另存为 PDF」或打印机',8000);window.addEventListener('afterprint',function onDone(){window.removeEventListener('afterprint',onDone);document.body.classList.remove('printing-speedmaps');if(view.parentNode)view.parentNode.removeChild(view);document.documentElement.setAttribute('data-theme',prevTheme);hideToast()});setTimeout(function(){window.print()},350)}
 /* 内嵌 SVG → PNG：SVG 里的 var(--x) 颜色在独立序列化后会失效，需用计算后的具体颜色值重写 */
 function svgToPngDataUrl(svg){return new Promise(function(resolve){try{var rect=svg.getBoundingClientRect();var w=Math.max(1,Math.ceil(rect.width)),h=Math.max(1,Math.ceil(rect.height));var clone=svg.cloneNode(true);clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.setAttribute('width',w);clone.setAttribute('height',h);clone.removeAttribute('style');var src=[svg].concat([].slice.call(svg.querySelectorAll('*')));var dst=[clone].concat([].slice.call(clone.querySelectorAll('*')));for(var i=1;i<src.length;i++){var cs=getComputedStyle(src[i]),tag=src[i].tagName.toLowerCase(),st='fill:'+cs.fill+';stroke:'+cs.stroke+';';if(cs.stroke&&cs.stroke!=='none')st+='stroke-width:'+cs.strokeWidth+';';if(tag==='text')st+='font-family:'+cs.fontFamily+';font-size:'+cs.fontSize+';font-weight:'+cs.fontWeight+';';dst[i].setAttribute('style',st)}var str=new XMLSerializer().serializeToString(clone);var img=new Image();img.onload=function(){try{var s=2,cvs=document.createElement('canvas');cvs.width=w*s;cvs.height=h*s;var ctx=cvs.getContext('2d');ctx.scale(s,s);ctx.drawImage(img,0,0,w,h);resolve(cvs.toDataURL('image/png'))}catch(err){resolve(null)}};img.onerror=function(){resolve(null)};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(str)}catch(e){resolve(null)}})}
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -617,6 +617,7 @@ body.no-github .export-menu { right:64px; }
   #speedmapView .sm-ch { margin:0 0 32px; padding:0; border:0; background:none; box-shadow:none; }
   #speedmapView .ch-title { cursor:default; break-after:avoid; break-inside:avoid; padding:4px 0 8px 12px; border-bottom:1px solid var(--border-strong); margin-bottom:10px; }
   #speedmapView .sm-body { padding:0; }
+  #speedmapView .ch-intro { padding:0; border:0; background:none; }
   #speedmapView .kp { border:0; margin:0; padding:0; }
   #speedmapView .kp-title { cursor:default; break-after:avoid; padding:4px 0 8px; border-bottom:1px solid var(--border); }
   #speedmapView .kp-detail { display:block !important; padding:0; border:0; background:none; }
@@ -2560,7 +2561,7 @@ I/O 服务占用率 = T ÷ t（传送期间的占比）
 <div class="ch" style="--accent:#a3e635;--accent-light:#65a30d">
 <div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">高频公式</span><span class="arrow">▼</span></div>
 <div class="ch-body">
-<div class="ch-intro">考前最后一遍：以下公式全部出自六章考点，括号内可回查（能默写再进考场）。<br>
+<div class="ch-intro speedmap">考前最后一遍：以下公式全部出自六章考点，括号内可回查（能默写再进考场）。<br>
 <span class="formula">【性能 · 考点12】
 用户CPU时间 = 程序总时钟周期数 ÷ 时钟频率 = 总时钟周期数 × 时钟周期
 程序总时钟周期数 = Σ(CPIᵢ × Cᵢ)        综合CPI = 总时钟周期数 ÷ 总指令条数
@@ -2614,7 +2615,7 @@ I/O 占用率 = T ÷ t；平均占用率 = (T ÷ t) × 设备工作时间占比
 <div class="ch" style="--accent:#fb7185;--accent-light:#e11d48">
 <div class="ch-title" role="button" tabindex="0" aria-expanded="false" onclick="toggleCh(this)"><span class="ch-title-text">高频易错</span><span class="arrow">▼</span></div>
 <div class="ch-body">
-<div class="ch-intro">覆盖六章的跨卷高频易错点，按主题分组（"考点N"可回查原处）；纯公式结论见"高频公式"，此处只留易错提醒。<br>
+<div class="ch-intro speedmap">覆盖六章的跨卷高频易错点，按主题分组（"考点N"可回查原处）；纯公式结论见"高频公式"，此处只留易错提醒。<br>
 <b>系统概述</b><br>
 <span class="callout err">考点1：存储程序 = 程序和数据都先送主存、启动后自动逐条取指并执行——不是"程序放在硬盘上"。
 考点2：五大部件 = 运算器、控制器、存储器、输入设备、输出设备——寄存器是 CPU 内部部件，不单列。
